@@ -20,7 +20,15 @@ class SampleVersion extends Model
         return $this->belongsTo(User::class, 'uploaded_by');
     }
 
-    // Returns a viewable URL for the image. Uses local 'public' disk by default
+    // All images uploaded for this version (multiple-image upload support).
+    // image_path on this model is kept as the "cover" image for backward compatibility
+    // with existing views that only show one thumbnail.
+    public function images()
+    {
+        return $this->hasMany(SampleVersionImage::class)->orderBy('sort_order');
+    }
+
+    // Returns a viewable URL for the cover image. Uses local 'public' disk by default
     // (works immediately on XAMPP). Switch disk to 's3' in production for signed URLs.
     public function signedImageUrl(int $minutes = 15): string
     {

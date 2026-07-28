@@ -63,8 +63,23 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ url('/admin/sample-requests') }}" class="nav-link {{ request()->is('admin/sample-requests*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-plus-circle"></i><p>Sample Requests</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ url('/admin/samples') }}" class="nav-link {{ request()->is('admin/samples*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-tshirt"></i><p>Samples</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/skus') }}" class="nav-link {{ request()->is('admin/skus*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-barcode"></i><p>SKUs</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/pricing') }}" class="nav-link {{ request()->is('admin/pricing*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tags"></i><p>Pricing</p>
                         </a>
                     </li>
                     <li class="nav-item">

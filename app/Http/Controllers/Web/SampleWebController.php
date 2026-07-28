@@ -26,9 +26,24 @@ class SampleWebController extends Controller
     public function show(Request $request, Sample $sample)
     {
         $this->authorizeCompany($request, $sample);
-        $sample->load(['versions', 'comments.user']);
+        $sample->load(['versions.images', 'comments.user', 'sizeChartRows', 'skus', 'pricings']);
 
         return view('samples.show', compact('sample'));
+    }
+
+    public function approveSizeChart(Request $request, Sample $sample)
+    {
+        $this->authorizeCompany($request, $sample);
+
+        $sample->update([
+            'size_chart_status' => 'approved',
+            'size_chart_approved_by' => $request->user()->id,
+            'size_chart_approved_at' => now(),
+        ]);
+
+        AuditLog::record('sample.size_chart_approved', $sample, null, ['approved_by' => $request->user()->id]);
+
+        return back()->with('success', 'Size chart approved.');
     }
 
     public function approve(Request $request, Sample $sample)

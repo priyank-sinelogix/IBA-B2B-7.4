@@ -9,10 +9,12 @@ class Sample extends Model
     protected $fillable = [
         'company_id', 'sample_code', 'style_name', 'fabric', 'color',
         'status', 'submitted_by', 'submitted_at',
+        'size_chart_status', 'size_chart_approved_by', 'size_chart_approved_at',
     ];
 
     protected $casts = [
         'submitted_at' => 'datetime',
+        'size_chart_approved_at' => 'datetime',
     ];
 
     public function company()
@@ -38,5 +40,25 @@ class Sample extends Model
     public function submittedBy()
     {
         return $this->belongsTo(User::class, 'submitted_by');
+    }
+
+    public function skus()
+    {
+        return $this->hasMany(Sku::class);
+    }
+
+    public function sizeChartRows()
+    {
+        return $this->hasMany(SizeChartRow::class)->orderBy('sort_order');
+    }
+
+    public function sizeChartApprovedBy()
+    {
+        return $this->belongsTo(User::class, 'size_chart_approved_by');
+    }
+
+    public function pricings()
+    {
+        return $this->hasMany(SamplePricing::class);
     }
 }

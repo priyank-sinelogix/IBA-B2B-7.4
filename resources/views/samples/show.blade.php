@@ -8,6 +8,15 @@
             <div class="card-header"><h3 class="card-title">Current Version</h3></div>
             <div class="card-body text-center">
                 <img src="{{ optional($sample->latestVersion)->signedImageUrl() ?? 'https://via.placeholder.com/300' }}" class="img-fluid rounded mb-3" style="max-height:280px;object-fit:cover;">
+                @if($sample->latestVersion && $sample->latestVersion->images->count() > 1)
+                <div class="mb-3">
+                    @foreach($sample->latestVersion->images as $img)
+                        <a href="{{ $img->url() }}" target="_blank">
+                            <img src="{{ $img->url() }}" width="56" height="56" style="object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border">
+                        </a>
+                    @endforeach
+                </div>
+                @endif
                 <h5>{{ $sample->style_name }}</h5>
                 <p class="text-muted mb-1">Fabric: {{ $sample->fabric }}</p>
                 <p class="text-muted">Color: {{ $sample->color }}</p>
@@ -72,6 +81,80 @@
         </div>
     </div>
 </div>
+
+<!-- Size Chart -->
+@if($sample->sizeChartRows->count())
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title">
+                    Size Chart
+                    @if($sample->size_chart_status == 'approved')
+                        <span class="badge badge-approved ml-2">You Approved This</span>
+                    @else
+                        <span class="badge badge-pending ml-2">Awaiting Your Approval</span>
+                    @endif
+                </h3>
+                @if($sample->size_chart_status != 'approved')
+                <form method="POST" action="{{ url('/samples/'.$sample->id.'/size-chart/approve') }}">
+                    @csrf
+                    <button class="btn btn-sm btn-success"><i class="fas fa-check mr-1"></i> Approve Size Chart</button>
+                </form>
+                @endif
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th>Specifications</th>
+                            <th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th><th>3XL</th><th>4XL</th><th>5XL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($sample->sizeChartRows as $row)
+                        <tr>
+                            <td>{{ $row->specification }}</td>
+                            <td>{{ $row->xs }}</td><td>{{ $row->s }}</td><td>{{ $row->m }}</td><td>{{ $row->l }}</td>
+                            <td>{{ $row->xl }}</td><td>{{ $row->xxl }}</td><td>{{ $row->xxxl }}</td><td>{{ $row->xxxxl }}</td><td>{{ $row->xxxxxl }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
+@if($sample->pricings->count())
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header"><h3 class="card-title">Pricing</h3></div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr><th>Style</th><th>Fabric</th><th class="text-right">Fabric Cost + Accessories</th><th class="text-right">Stitching Cost</th><th class="text-right">COGP</th><th class="text-right">Margin</th><th class="text-right">Price USD</th></tr>
+                    </thead>
+                    <tbody>
+                    @foreach($sample->pricings as $p)
+                        <tr>
+                            <td>{{ $p->style }}</td><td>{{ $p->fabric }}</td>
+                            <td class="text-right">{{ number_format($p->fabric_cost,2) }}</td>
+                            <td class="text-right">{{ number_format($p->stitching_cost,2) }}</td>
+                            <td class="text-right">{{ number_format($p->cogp,2) }}</td>
+                            <td class="text-right">{{ number_format($p->margin,2) }}</td>
+                            <td class="text-right"><strong>{{ number_format($p->price_usd,2) }}</strong></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 
 <!-- Revise Modal -->
 <div class="modal fade" id="reviseModal">

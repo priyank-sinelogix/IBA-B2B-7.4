@@ -30,8 +30,54 @@ class SampleController extends Controller
 
     public function show(Sample $sample)
     {
-        $sample->load(['company', 'versions', 'comments.user']);
+        $sample->load(['company', 'versions.images', 'comments.user', 'sizeChartRows', 'sizeChartApprovedBy', 'skus', 'pricings']);
         return view('admin.samples.show', compact('sample'));
+    }
+
+    /**
+     * Saves the full Specifications x XS..5XL grid in one go (client-side "+" adds
+     * blank rows, this replaces the whole set on submit). Re-opens approval since
+     * the chart changed.
+     */
+    public function updateSizeChart(Request $request, Sample $sample)
+    {
+        $data = $request->validate([
+            'specification' => 'array',
+            'specification.*' => 'nullable|string|max:255',
+            'xs' => 'array', 's' => 'array', 'm' => 'array', 'l' => 'array', 'xl' => 'array',
+            'xxl' => 'array', 'xxxl' => 'array', 'xxxxl' => 'array', 'xxxxxl' => 'array',
+        ]);
+
+        $sample->sizeChartRows()->delete();
+
+        $specs = $data['specification'] ?? [];
+        foreach ($specs as $i => $spec) {
+            if (! trim($spec ?? '')) {
+                continue;
+            }
+
+            \App\Models\SizeChartRow::create([
+                'sample_id' => $sample->id,
+                'specification' => $spec,
+                'xs' => $data['xs'][$i] ?? null,
+                's' => $data['s'][$i] ?? null,
+                'm' => $data['m'][$i] ?? null,
+                'l' => $data['l'][$i] ?? null,
+                'xl' => $data['xl'][$i] ?? null,
+                'xxl' => $data['xxl'][$i] ?? null,
+                'xxxl' => $data['xxxl'][$i] ?? null,
+                'xxxxl' => $data['xxxxl'][$i] ?? null,
+                'xxxxxl' => $data['xxxxxl'][$i] ?? null,
+                'sort_order' => $i,
+            ]);
+        }
+
+        // Any change to the chart re-opens it for client approval
+        $sample->update(['size_chart_status' => 'pending', 'size_chart_approved_by' => null, 'size_chart_approved_at' => null]);
+
+        AuditLog::record('sample.size_chart_updated', $sample, null, ['rows' => count($specs)]);
+
+        return back()->with('success', 'Size chart saved and sent to client for approval.');
     }
 
     public function storeComment(Request $request, Sample $sample)
@@ -66,7 +112,8 @@ class SampleController extends Controller
             'style_name' => 'required|string|max:255',
             'fabric' => 'nullable|string|max:255',
             'color' => 'nullable|string|max:100',
-            'image' => 'required|image|max:5120',
+            'images' => 'required|array|min:1',
+            'images.*' => 'image|max:5120',
             'notes' => 'nullable|string|max:1000',
         ]);
 
@@ -91,7 +138,7 @@ class SampleController extends Controller
     public function edit(Sample $sample)
     {
         $companies = Company::orderBy('name')->get();
-        $sample->load(['versions', 'comments.user']);
+        $sample->load(['versions.images', 'comments.user']);
         return view('admin.samples.form', compact('sample', 'companies'));
     }
 
@@ -102,7 +149,8 @@ class SampleController extends Controller
             'style_name' => 'required|string|max:255',
             'fabric' => 'nullable|string|max:255',
             'color' => 'nullable|string|max:100',
-            'image' => 'nullable|image|max:5120',
+            'images' => 'nullable|array',
+            'images.*' => 'image|max:5120',
             'notes' => 'nullable|string|max:1000',
         ]);
 
@@ -115,8 +163,8 @@ class SampleController extends Controller
             'color' => $data['color'] ?? null,
         ]);
 
-        // Uploading a new image = new version + resets status to pending for re-approval
-        if ($request->hasFile('image')) {
+        // Uploading new images = new version + resets status to pending for re-approval
+        if ($request->hasFile('images')) {
             $nextVersion = ($sample->versions()->max('version_no') ?? 0) + 1;
             $this->storeVersion($request, $sample, $nextVersion);
             $sample->update(['status' => 'pending']);
@@ -137,14 +185,33 @@ class SampleController extends Controller
 
     private function storeVersion(Request $request, Sample $sample, int $versionNo): void
     {
-        $path = $request->file('image')->store('samples/'.$sample->id, 'public');
+        $files = $request->file('images', []);
 
-        SampleVersion::create([
+        // First image becomes the "cover" (image_path) for backward-compatible thumbnails;
+        // every image (including the first) is also saved into the version's gallery.
+        $coverPath = $files[0]->store('samples/'.$sample->id, 'public');
+
+        $version = SampleVersion::create([
             'sample_id' => $sample->id,
             'version_no' => $versionNo,
-            'image_path' => $path,
+            'image_path' => $coverPath,
             'notes' => $request->input('notes'),
             'uploaded_by' => $request->user()->id,
         ]);
+
+        \App\Models\SampleVersionImage::create([
+            'sample_version_id' => $version->id,
+            'image_path' => $coverPath,
+            'sort_order' => 0,
+        ]);
+
+        foreach (array_slice($files, 1) as $i => $file) {
+            $path = $file->store('samples/'.$sample->id, 'public');
+            \App\Models\SampleVersionImage::create([
+                'sample_version_id' => $version->id,
+                'image_path' => $path,
+                'sort_order' => $i + 1,
+            ]);
+        }
     }
 }

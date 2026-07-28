@@ -73,6 +73,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ url('/sample-requests') }}" class="nav-link {{ request()->is('sample-requests*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-plus-circle"></i><p>New Sample Requests</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ url('/samples') }}" class="nav-link {{ request()->is('samples*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-tshirt"></i><p>Sampling</p>
                         </a>

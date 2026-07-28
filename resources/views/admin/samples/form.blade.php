@@ -20,7 +20,14 @@
             @if($sample->exists && $sample->latestVersion)
             <div class="text-center mb-3">
                 <img src="{{ $sample->latestVersion->signedImageUrl() }}" class="img-fluid rounded" style="max-height:220px;object-fit:cover;">
-                <div class="text-muted small mt-1">Current image (version {{ $sample->latestVersion->version_no }})</div>
+                <div class="text-muted small mt-1">Cover image (version {{ $sample->latestVersion->version_no }})</div>
+                @if($sample->latestVersion->images->count() > 1)
+                <div class="mt-2">
+                    @foreach($sample->latestVersion->images as $img)
+                        <img src="{{ $img->url() }}" width="50" height="50" style="object-fit:cover;border-radius:6px;" class="mr-1 border">
+                    @endforeach
+                </div>
+                @endif
             </div>
             @endif
 
@@ -57,8 +64,9 @@
             </div>
 
             <div class="form-group">
-                <label>{{ $sample->exists ? 'Upload New Version (optional — resets to Pending)' : 'Sample Image' }}</label>
-                <input type="file" name="image" class="form-control-file" accept="image/*" {{ $sample->exists ? '' : 'required' }}>
+                <label>{{ $sample->exists ? 'Upload New Version — Multiple Images (optional — resets to Pending)' : 'Sample Images (multiple allowed)' }}</label>
+                <input type="file" name="images[]" class="form-control-file" accept="image/*" multiple {{ $sample->exists ? '' : 'required' }}>
+                <small class="text-muted">You can select multiple images at once (front, back, detail shots, etc). The first image becomes the cover thumbnail.</small>
             </div>
 
             <div class="form-group">
