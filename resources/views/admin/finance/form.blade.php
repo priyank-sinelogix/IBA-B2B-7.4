@@ -38,7 +38,7 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label>Amount (USD)</label>
+                    <label>Amount (₹)</label>
                     <input type="number" step="0.01" name="amount" class="form-control" required>
                 </div>
                 <div class="form-group col-6">

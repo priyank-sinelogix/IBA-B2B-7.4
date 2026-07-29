@@ -18,11 +18,11 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label>Credit Limit (USD)</label>
+                    <label>Credit Limit (₹)</label>
                     <input type="number" step="0.01" name="credit_limit" class="form-control" value="{{ old('credit_limit', $company->credit_limit ?? 0) }}" required>
                 </div>
                 <div class="form-group col-6">
-                    <label>Current Balance (USD)</label>
+                    <label>Current Balance (₹)</label>
                     <input type="number" step="0.01" name="current_balance" class="form-control" value="{{ old('current_balance', $company->current_balance ?? 0) }}" required>
                 </div>
             </div>

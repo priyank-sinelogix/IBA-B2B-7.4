@@ -15,8 +15,8 @@
                     <dt class="col-5">Code</dt><dd class="col-7">{{ $company->code }}</dd>
                     <dt class="col-5">Status</dt>
                     <dd class="col-7">{!! $company->is_active ? '<span class="badge badge-approved">Active</span>' : '<span class="badge badge-changes">Inactive</span>' !!}</dd>
-                    <dt class="col-5">Credit Limit</dt><dd class="col-7">USD {{ number_format($company->credit_limit, 2) }}</dd>
-                    <dt class="col-5">Current Balance</dt><dd class="col-7">USD {{ number_format($company->current_balance, 2) }}</dd>
+                    <dt class="col-5">Credit Limit</dt><dd class="col-7">₹{{ \App\Support\Currency::format($company->credit_limit) }}</dd>
+                    <dt class="col-5">Current Balance</dt><dd class="col-7">₹{{ \App\Support\Currency::format($company->current_balance) }}</dd>
                     <dt class="col-5">Credit Used</dt><dd class="col-7">{{ $company->creditUsedPercent() }}%</dd>
                     <dt class="col-5">Created</dt><dd class="col-7">{{ $company->created_at->format('d M Y') }}</dd>
                 </dl>

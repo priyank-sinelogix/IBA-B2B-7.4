@@ -41,7 +41,7 @@
                 </div>
                 <div>
                     <div class="text-muted small">Account Balance</div>
-                    <div class="h4 mb-0">USD {{ number_format($stats['balance'] ?? 48750.60, 2) }}</div>
+                    <div class="h4 mb-0">₹{{ \App\Support\Currency::format($stats['balance'] ?? 48750.60) }}</div>
                 </div>
             </div>
             <a href="{{ url('/finance') }}" class="small">View Statement</a>
@@ -132,9 +132,9 @@
             <div class="card-header"><h3 class="card-title">Account Statement</h3></div>
             <div class="card-body">
                 <div class="text-muted small">Current Balance</div>
-                <div class="h3 text-success">USD {{ number_format($stats['balance'] ?? 48750.60, 2) }}</div>
+                <div class="h3 text-success">₹{{ \App\Support\Currency::format($stats['balance'] ?? 48750.60) }}</div>
                 <div class="d-flex justify-content-between small text-muted mb-1">
-                    <span>Credit Limit: USD {{ number_format($stats['credit_limit'] ?? 100000, 2) }}</span>
+                    <span>Credit Limit: ₹{{ \App\Support\Currency::format($stats['credit_limit'] ?? 100000) }}</span>
                     <span>{{ $stats['credit_used_pct'] ?? 51 }}% Used</span>
                 </div>
                 <div class="progress mb-3" style="height:8px;">

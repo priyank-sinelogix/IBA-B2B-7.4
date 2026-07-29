@@ -26,8 +26,8 @@
                     <td class="text-capitalize">{{ str_replace('_',' ',$entry->type) }}</td>
                     <td>{{ $entry->reference_no }}</td>
                     <td>{{ $entry->description }}</td>
-                    <td class="text-right">{{ number_format($entry->amount, 2) }}</td>
-                    <td class="text-right">{{ number_format($entry->balance_after, 2) }}</td>
+                    <td class="text-right">₹{{ \App\Support\Currency::format($entry->amount) }}</td>
+                    <td class="text-right">₹{{ \App\Support\Currency::format($entry->balance_after) }}</td>
                 </tr>
             @empty
                 <tr><td colspan="7" class="text-center text-muted p-4">No ledger entries yet.</td></tr>

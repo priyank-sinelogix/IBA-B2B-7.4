@@ -31,11 +31,11 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label>Fabric Cost + Accessories (USD)</label>
+                    <label>Fabric Cost + Accessories (₹)</label>
                     <input type="number" step="0.01" id="fabricCost" name="fabric_cost" class="form-control" value="{{ old('fabric_cost', $pricing->fabric_cost ?? 0) }}" required>
                 </div>
                 <div class="form-group col-6">
-                    <label>Stitching Cost (USD)</label>
+                    <label>Stitching Cost (₹)</label>
                     <input type="number" step="0.01" id="stitchingCost" name="stitching_cost" class="form-control" value="{{ old('stitching_cost', $pricing->stitching_cost ?? 0) }}" required>
                 </div>
             </div>
@@ -45,11 +45,11 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label>Margin (USD)</label>
+                    <label>Margin (₹)</label>
                     <input type="number" step="0.01" name="margin" class="form-control" value="{{ old('margin', $pricing->margin ?? 0) }}" required>
                 </div>
                 <div class="form-group col-6">
-                    <label>Price USD</label>
+                    <label>Price (₹)</label>
                     <input type="number" step="0.01" name="price_usd" class="form-control" value="{{ old('price_usd', $pricing->price_usd ?? 0) }}" required>
                 </div>
             </div>

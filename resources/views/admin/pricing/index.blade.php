@@ -26,7 +26,7 @@
                     <th class="text-right">Stitching Cost</th>
                     <th class="text-right">COGP</th>
                     <th class="text-right">Margin</th>
-                    <th class="text-right">Price USD</th>
+                    <th class="text-right">Price (₹)</th>
                     <th></th>
                 </tr>
             </thead>
@@ -35,11 +35,11 @@
                 <tr>
                     <td>{{ $p->style }}</td>
                     <td>{{ $p->fabric }}</td>
-                    <td class="text-right">{{ number_format($p->fabric_cost, 2) }}</td>
-                    <td class="text-right">{{ number_format($p->stitching_cost, 2) }}</td>
-                    <td class="text-right">{{ number_format($p->cogp, 2) }}</td>
-                    <td class="text-right">{{ number_format($p->margin, 2) }}</td>
-                    <td class="text-right"><strong>{{ number_format($p->price_usd, 2) }}</strong></td>
+                    <td class="text-right">₹{{ \App\Support\Currency::format($p->fabric_cost) }}</td>
+                    <td class="text-right">₹{{ \App\Support\Currency::format($p->stitching_cost) }}</td>
+                    <td class="text-right">₹{{ \App\Support\Currency::format($p->cogp) }}</td>
+                    <td class="text-right">₹{{ \App\Support\Currency::format($p->margin) }}</td>
+                    <td class="text-right"><strong>₹{{ \App\Support\Currency::format($p->price_usd) }}</strong></td>
                     <td>
                         <a href="{{ url('/admin/pricing/'.$p->id.'/edit') }}" class="btn btn-sm btn-outline-secondary">Edit</a>
                         <form method="POST" action="{{ url('/admin/pricing/'.$p->id) }}" class="d-inline" onsubmit="return confirm('Delete this pricing entry?')">

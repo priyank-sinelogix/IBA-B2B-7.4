@@ -211,10 +211,10 @@
             </div>
             <div class="card-body p-0">
                 <table class="table table-hover mb-0">
-                    <thead><tr><th>Style</th><th class="text-right">COGP</th><th class="text-right">Price USD</th></tr></thead>
+                    <thead><tr><th>Style</th><th class="text-right">COGP</th><th class="text-right">Price (₹)</th></tr></thead>
                     <tbody>
                     @forelse($sample->pricings as $p)
-                        <tr><td>{{ $p->style }}</td><td class="text-right">{{ number_format($p->cogp,2) }}</td><td class="text-right">{{ number_format($p->price_usd,2) }}</td></tr>
+                        <tr><td>{{ $p->style }}</td><td class="text-right">₹{{ \App\Support\Currency::format($p->cogp) }}</td><td class="text-right">₹{{ \App\Support\Currency::format($p->price_usd) }}</td></tr>
                     @empty
                         <tr><td colspan="3" class="text-center text-muted p-3">No pricing entries yet.</td></tr>
                     @endforelse

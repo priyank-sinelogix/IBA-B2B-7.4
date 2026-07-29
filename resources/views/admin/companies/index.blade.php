@@ -16,8 +16,8 @@
                     <td><a href="{{ url('/admin/companies/'.$company->id) }}">{{ $company->name }}</a></td>
                     <td>{{ $company->code }}</td>
                     <td>{{ $company->users_count }}</td>
-                    <td>USD {{ number_format($company->credit_limit, 2) }}</td>
-                    <td>USD {{ number_format($company->current_balance, 2) }}</td>
+                    <td>₹{{ \App\Support\Currency::format($company->credit_limit) }}</td>
+                    <td>₹{{ \App\Support\Currency::format($company->current_balance) }}</td>
                     <td>{!! $company->is_active ? '<span class="badge badge-approved">Active</span>' : '<span class="badge badge-changes">Inactive</span>' !!}</td>
                     <td>
                         <a href="{{ url('/admin/companies/'.$company->id) }}" class="btn btn-sm btn-outline-primary">View</a>

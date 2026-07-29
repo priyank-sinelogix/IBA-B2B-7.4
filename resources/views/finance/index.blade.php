@@ -8,9 +8,9 @@
             <div class="card-header"><h3 class="card-title">Account Statement</h3></div>
             <div class="card-body">
                 <div class="text-muted small">Current Balance</div>
-                <div class="h3 text-success">USD {{ number_format($company->current_balance ?? 48750.60, 2) }}</div>
+                <div class="h3 text-success">₹{{ \App\Support\Currency::format($company->current_balance ?? 48750.60) }}</div>
                 <div class="d-flex justify-content-between small text-muted mb-1">
-                    <span>Credit Limit: USD {{ number_format($company->credit_limit ?? 100000, 2) }}</span>
+                    <span>Credit Limit: ₹{{ \App\Support\Currency::format($company->credit_limit ?? 100000) }}</span>
                     <span>{{ $company->creditUsedPercent() ?? 51 }}% Used</span>
                 </div>
                 <div class="progress mb-3" style="height:8px;">
