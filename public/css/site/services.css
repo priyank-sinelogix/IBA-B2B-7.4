@@ -1,0 +1,9 @@
+/* ============================================
+   Sewgo Marketing Site — services.css
+   ============================================ */
+
+.services-grid { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 900px) {
+    .services-grid { grid-template-columns: 1fr 1fr; }
+}

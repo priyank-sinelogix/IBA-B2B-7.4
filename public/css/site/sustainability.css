@@ -1,0 +1,13 @@
+/* ============================================
+   Sewgo Marketing Site — sustainability.css
+   ============================================ */
+
+.impact-scorecard-grid { grid-template-columns: 1fr 1.6fr 1fr; gap: 24px; align-items: center; }
+.methodology-grid { grid-template-columns: 1fr 1.4fr; gap: 30px; }
+.methodology-steps { grid-template-columns: repeat(3, 1fr); }
+.methodology-steps .step-highlight { grid-column: 1 / -1; background: var(--bg-mint); border-radius: 10px; padding: 10px; }
+.methodology-steps .step-highlight h4 { color: var(--teal-dark); }
+
+@media (max-width: 900px) {
+    .impact-scorecard-grid, .methodology-grid { grid-template-columns: 1fr; }
+}

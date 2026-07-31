@@ -1,0 +1,10 @@
+/* ============================================
+   Sewgo Marketing Site — media.css
+   ============================================ */
+
+.media-logo-row { row-gap: 24px; }
+
+.subscribe-box { background: var(--bg-soft); border-radius: 16px; padding: 30px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.subscribe-box .icon-circle { background: #fff; }
+.subscribe-box form { display: flex; gap: 10px; }
+.subscribe-box input[type="email"] { padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; min-width: 220px; }

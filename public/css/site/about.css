@@ -1,0 +1,5 @@
+/* ============================================
+   Sewgo Marketing Site — about.css
+   ============================================ */
+
+.about-story-grid { grid-template-columns: 1fr 1.2fr; align-items: start; }

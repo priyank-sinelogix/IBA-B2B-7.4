@@ -1,0 +1,17 @@
+/* ============================================
+   Sewgo Marketing Site — awards.css
+   ============================================ */
+
+.awards-grid { grid-template-columns: repeat(3, 1fr); }
+.badge-card .badge-icon { font-size: 1.4rem; }
+.badge-card .badge-icon.red { color: #c0392b; }
+.badge-card .badge-icon.orange { color: #e08a1e; }
+.badge-card .badge-icon.teal { color: var(--teal-dark); }
+.badge-card .badge-icon.blue { color: #2563eb; }
+.badge-card .badge-icon.purple { color: #6d28d9; }
+.badge-card .badge-icon.navy { color: var(--navy); }
+.awards-stats-panel { background: var(--bg-mint); border-radius: 14px; padding: 26px; }
+
+@media (max-width: 900px) {
+    .awards-grid { grid-template-columns: 1fr; }
+}

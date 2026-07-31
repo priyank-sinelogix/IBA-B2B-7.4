@@ -15,9 +15,23 @@ use App\Http\Controllers\Admin\Web\AuditLogController;
 use App\Http\Controllers\Admin\Web\SkuController;
 use App\Http\Controllers\Admin\Web\PricingController;
 use App\Http\Controllers\Admin\Web\PdfController;
+use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect('/login'));
+
+// Public marketing site (Sewgo) — no auth required
+Route::prefix('site')->group(function () {
+    Route::get('/', [SiteController::class, 'home']);
+    Route::get('/about', [SiteController::class, 'about']);
+    Route::get('/services', [SiteController::class, 'services']);
+    Route::get('/how-jit-works', [SiteController::class, 'howJitWorks']);
+    Route::get('/who-we-help', [SiteController::class, 'whoWeHelp']);
+    Route::get('/sustainability', [SiteController::class, 'sustainability']);
+    Route::get('/media', [SiteController::class, 'media']);
+    Route::get('/awards', [SiteController::class, 'awards']);
+    Route::get('/contact', [SiteController::class, 'contact']);
+});
 
 // Guest - customer
 Route::middleware('guest')->group(function () {
