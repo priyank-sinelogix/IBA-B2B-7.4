@@ -55,9 +55,11 @@
 <section class="wrap section">
     <div class="why-sewgo">
         <div class="why-video">
-            <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=70" alt="See how Sewgo works">
-            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <!-- <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=70" alt="See how Sewgo works"> -->
+            <!-- <div class="play-btn"><i class="fas fa-play"></i></div> -->
+            <video width="100%" controls=""><source src="{{ asset('images/site/iba_video_final_video.mp4') }}" type="video/mp4"><source src="{{ asset('images/site/ibaiba_video_final_video.mp4') }}" type="video/ogg">Your browser does not support the video tag.</video>
         </div>
+        
         <div>
             <div class="eyebrow">See How Sewgo Works</div>
             <h2>Why Sewgo?</h2>

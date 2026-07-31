@@ -10,7 +10,9 @@
 .footer-grid a { color: #b7c4d1; font-size: .88rem; }
 .footer-grid a:hover { color: #fff; }
 
-.footer-brand img.logo { height: 34px; filter: brightness(0) invert(1); margin-bottom: 14px; }
+.footer-brand img.logo { height: 50px; 
+    /* filter: brightness(0) invert(1);  */
+    margin-bottom: 14px; }
 .footer-brand p { color: #9fb0c1; font-size: .88rem; max-width: 300px; }
 
 .footer-social { display: flex; gap: 10px; margin-top: 16px; }
