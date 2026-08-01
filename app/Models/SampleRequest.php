@@ -42,4 +42,10 @@ class SampleRequest extends Model
     {
         return $this->hasMany(SampleRequestImage::class)->orderBy('sort_order');
     }
+
+    // Size chart the client fills in at request time (same grid used on the Sample later).
+    public function sizeChartRows()
+    {
+        return $this->hasMany(SizeChartRow::class)->orderBy('sort_order');
+    }
 }

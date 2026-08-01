@@ -18,11 +18,14 @@
                 @endforeach
             </select>
         </form>
+        <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead>
                 <tr>
                     <th>Style</th><th>Fabric</th>
-                    <th class="text-right">Fabric Cost + Accessories</th>
+                    <th class="text-right">Fabric Cost</th>
+                    <th class="text-right">Accessories</th>
+                    <th class="text-right">Operational Cost</th>
                     <th class="text-right">Stitching Cost</th>
                     <th class="text-right">COGP</th>
                     <th class="text-right">Margin</th>
@@ -36,6 +39,8 @@
                     <td>{{ $p->style }}</td>
                     <td>{{ $p->fabric }}</td>
                     <td class="text-right">₹{{ \App\Support\Currency::format($p->fabric_cost) }}</td>
+                    <td class="text-right">₹{{ \App\Support\Currency::format($p->accessories_cost) }}</td>
+                    <td class="text-right">₹{{ \App\Support\Currency::format($p->operational_cost) }}</td>
                     <td class="text-right">₹{{ \App\Support\Currency::format($p->stitching_cost) }}</td>
                     <td class="text-right">₹{{ \App\Support\Currency::format($p->cogp) }}</td>
                     <td class="text-right">₹{{ \App\Support\Currency::format($p->margin) }}</td>
@@ -49,10 +54,11 @@
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="8" class="text-center text-muted p-4">No pricing entries yet.</td></tr>
+                <tr><td colspan="10" class="text-center text-muted p-4">No pricing entries yet.</td></tr>
             @endforelse
             </tbody>
         </table>
+        </div>
     </div>
     <div class="card-footer">{{ $pricings->links() }}</div>
 </div>

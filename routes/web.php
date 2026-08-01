@@ -60,6 +60,8 @@ Route::middleware(['auth', 'customer.scope'])->group(function () {
     Route::get('/sample-requests', [SampleRequestWebController::class, 'index']);
     Route::get('/sample-requests/create', [SampleRequestWebController::class, 'create']);
     Route::post('/sample-requests', [SampleRequestWebController::class, 'store']);
+    Route::get('/sample-requests/{sampleRequest}/edit', [SampleRequestWebController::class, 'edit']);
+    Route::put('/sample-requests/{sampleRequest}', [SampleRequestWebController::class, 'update']);
 
     Route::get('/orders', [OrderWebController::class, 'index']);
 

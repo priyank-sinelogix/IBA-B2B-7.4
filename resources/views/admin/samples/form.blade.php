@@ -65,8 +65,9 @@
 
             <div class="form-group">
                 <label>{{ $sample->exists ? 'Upload New Version — Multiple Images (optional — resets to Pending)' : 'Sample Images (multiple allowed)' }}</label>
-                <input type="file" name="images[]" class="form-control-file" accept="image/*" multiple {{ $sample->exists ? '' : 'required' }}>
+                <input type="file" name="images[]" id="sampleImagesInput" class="form-control-file" accept="image/*" multiple {{ $sample->exists ? '' : 'required' }}>
                 <small class="text-muted">You can select multiple images at once (front, back, detail shots, etc). The first image becomes the cover thumbnail.</small>
+                <div id="sampleImagePreview" class="d-flex flex-wrap mt-2"></div>
             </div>
 
             <div class="form-group">
@@ -114,4 +115,27 @@
     </div>
 </div>
 @endif
+
+<script>
+    var sampleImagesInput = document.getElementById('sampleImagesInput');
+    if (sampleImagesInput) {
+        sampleImagesInput.addEventListener('change', function (e) {
+            var preview = document.getElementById('sampleImagePreview');
+            preview.innerHTML = '';
+            Array.from(e.target.files).forEach(function (file) {
+                var reader = new FileReader();
+                reader.onload = function (ev) {
+                    var img = document.createElement('img');
+                    img.src = ev.target.result;
+                    img.width = 64; img.height = 64;
+                    img.style.objectFit = 'cover';
+                    img.style.borderRadius = '6px';
+                    img.className = 'mr-2 mb-2 border';
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+    }
+</script>
 @endsection

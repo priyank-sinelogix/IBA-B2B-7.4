@@ -33,7 +33,8 @@ class PricingController extends Controller
     public function store(Request $request)
     {
         $data = $this->validated($request);
-        $data['cogp'] = $data['fabric_cost'] + $data['stitching_cost'];
+        $data['cogp'] = SamplePricing::calculateCogp($data);
+        $data['price_usd'] = $data['cogp'] + $data['margin'];
 
         $pricing = SamplePricing::create($data);
         AuditLog::record('pricing.created', $pricing, null, $pricing->only('style', 'price_usd'));
@@ -50,7 +51,8 @@ class PricingController extends Controller
     public function update(Request $request, SamplePricing $pricing)
     {
         $data = $this->validated($request);
-        $data['cogp'] = $data['fabric_cost'] + $data['stitching_cost'];
+        $data['cogp'] = SamplePricing::calculateCogp($data);
+        $data['price_usd'] = $data['cogp'] + $data['margin'];
 
         $before = $pricing->only('style', 'price_usd');
         $pricing->update($data);
@@ -68,6 +70,7 @@ class PricingController extends Controller
         return redirect('/admin/pricing?sample_id='.$sampleId)->with('success', 'Pricing entry deleted.');
     }
 
+    // price_usd and cogp are no longer accepted from the form — both are server-calculated.
     private function validated(Request $request): array
     {
         return $request->validate([
@@ -75,9 +78,10 @@ class PricingController extends Controller
             'style' => 'required|string|max:255',
             'fabric' => 'nullable|string|max:255',
             'fabric_cost' => 'required|numeric|min:0',
+            'accessories_cost' => 'required|numeric|min:0',
+            'operational_cost' => 'required|numeric|min:0',
             'stitching_cost' => 'required|numeric|min:0',
             'margin' => 'required|numeric|min:0',
-            'price_usd' => 'required|numeric|min:0',
         ]);
     }
 }

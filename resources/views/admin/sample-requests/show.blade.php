@@ -106,4 +106,34 @@
         @endif
     </div>
 </div>
+
+@if($sampleRequest->sizeChartRows->count())
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header"><h3 class="card-title">Size Chart (submitted by client)</h3></div>
+            <div class="card-body p-0">
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th>Specifications</th>
+                            <th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th><th>3XL</th><th>4XL</th><th>5XL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($sampleRequest->sizeChartRows as $row)
+                        <tr>
+                            <td>{{ $row->specification }}</td>
+                            <td>{{ $row->xs }}</td><td>{{ $row->s }}</td><td>{{ $row->m }}</td><td>{{ $row->l }}</td>
+                            <td>{{ $row->xl }}</td><td>{{ $row->xxl }}</td><td>{{ $row->xxxl }}</td><td>{{ $row->xxxxl }}</td><td>{{ $row->xxxxxl }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-muted small">This will be carried over automatically when you convert this request into a Sample.</div>
+        </div>
+    </div>
+</div>
+@endif
 @endsection

@@ -4,7 +4,7 @@
 @section('content')
 <div class="card col-lg-6 p-0">
     <div class="card-header"><h3 class="card-title">{{ isset($pricing) ? 'Edit' : 'New' }} Pricing Entry</h3></div>
-    <form method="POST" action="{{ isset($pricing) ? url('/admin/pricing/'.$pricing->id) : url('/admin/pricing') }}">
+    <form method="POST" action="{{ isset($pricing) ? url('/admin/pricing/'.$pricing->id) : url('/admin/pricing') }}" id="pricingForm">
         @csrf
         @if(isset($pricing)) @method('PUT') @endif
         <div class="card-body">
@@ -29,29 +29,41 @@
                 <label>Fabric</label>
                 <input type="text" name="fabric" class="form-control" value="{{ old('fabric', $pricing->fabric ?? '') }}" placeholder="Moss Crepe Spandex">
             </div>
+
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label>Fabric Cost + Accessories (₹)</label>
-                    <input type="number" step="0.01" id="fabricCost" name="fabric_cost" class="form-control" value="{{ old('fabric_cost', $pricing->fabric_cost ?? 0) }}" required>
+                    <label>Fabric Cost (₹)</label>
+                    <input type="number" step="0.01" class="form-control cost-input" name="fabric_cost" value="{{ old('fabric_cost', $pricing->fabric_cost ?? 0) }}" required>
+                </div>
+                <div class="form-group col-6">
+                    <label>Accessories (₹)</label>
+                    <input type="number" step="0.01" class="form-control cost-input" name="accessories_cost" value="{{ old('accessories_cost', $pricing->accessories_cost ?? 0) }}" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label>Operational Cost (₹)</label>
+                    <input type="number" step="0.01" class="form-control cost-input" name="operational_cost" value="{{ old('operational_cost', $pricing->operational_cost ?? 0) }}" required>
                 </div>
                 <div class="form-group col-6">
                     <label>Stitching Cost (₹)</label>
-                    <input type="number" step="0.01" id="stitchingCost" name="stitching_cost" class="form-control" value="{{ old('stitching_cost', $pricing->stitching_cost ?? 0) }}" required>
+                    <input type="number" step="0.01" class="form-control cost-input" name="stitching_cost" value="{{ old('stitching_cost', $pricing->stitching_cost ?? 0) }}" required>
                 </div>
             </div>
+
             <div class="form-group">
-                <label>COGP (auto: Fabric Cost + Stitching Cost)</label>
-                <input type="text" id="cogpDisplay" class="form-control" readonly value="{{ number_format(old('fabric_cost', $pricing->fabric_cost ?? 0) + old('stitching_cost', $pricing->stitching_cost ?? 0), 2) }}">
+                <label>COGP — auto: Fabric + Accessories + Operational + Stitching (₹)</label>
+                <input type="text" id="cogpDisplay" class="form-control" readonly style="background:#f2f4f7; font-weight:700;">
             </div>
-            <div class="form-row">
-                <div class="form-group col-6">
-                    <label>Margin (₹)</label>
-                    <input type="number" step="0.01" name="margin" class="form-control" value="{{ old('margin', $pricing->margin ?? 0) }}" required>
-                </div>
-                <div class="form-group col-6">
-                    <label>Price (₹)</label>
-                    <input type="number" step="0.01" name="price_usd" class="form-control" value="{{ old('price_usd', $pricing->price_usd ?? 0) }}" required>
-                </div>
+
+            <div class="form-group">
+                <label>Margin (₹)</label>
+                <input type="number" step="0.01" id="marginInput" class="form-control" name="margin" value="{{ old('margin', $pricing->margin ?? 0) }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Price — auto: COGP + Margin (₹)</label>
+                <input type="text" id="priceDisplay" class="form-control" readonly style="background:#eaf9f2; font-weight:800; color:#0a7a52;">
             </div>
         </div>
         <div class="card-footer">
@@ -62,20 +74,26 @@
 </div>
 
 <script>
-    // Just a visual convenience — the server recalculates COGP from the actual submitted values.
+    // Visual convenience only — the server recalculates COGP/Price from the actual submitted values.
     (function () {
-        var fabricCost = document.getElementById('fabricCost');
-        var stitchingCost = document.getElementById('stitchingCost');
+        var costInputs = document.querySelectorAll('.cost-input');
+        var marginInput = document.getElementById('marginInput');
         var cogpDisplay = document.getElementById('cogpDisplay');
+        var priceDisplay = document.getElementById('priceDisplay');
 
         function recalc() {
-            var f = parseFloat(fabricCost.value) || 0;
-            var s = parseFloat(stitchingCost.value) || 0;
-            cogpDisplay.value = (f + s).toFixed(2);
+            var cogp = 0;
+            costInputs.forEach(function (input) {
+                cogp += parseFloat(input.value) || 0;
+            });
+            var margin = parseFloat(marginInput.value) || 0;
+            cogpDisplay.value = cogp.toFixed(2);
+            priceDisplay.value = (cogp + margin).toFixed(2);
         }
 
-        fabricCost.addEventListener('input', recalc);
-        stitchingCost.addEventListener('input', recalc);
+        costInputs.forEach(function (input) { input.addEventListener('input', recalc); });
+        marginInput.addEventListener('input', recalc);
+        recalc();
     })();
 </script>
 @endsection

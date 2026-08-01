@@ -25,7 +25,7 @@ class SampleRequestController extends Controller
 
     public function show(SampleRequest $sampleRequest)
     {
-        $sampleRequest->load('company', 'requestedBy', 'convertedSample', 'images');
+        $sampleRequest->load('company', 'requestedBy', 'convertedSample', 'images', 'sizeChartRows');
         return view('admin.sample-requests.show', compact('sampleRequest'));
     }
 
@@ -105,6 +105,17 @@ class SampleRequestController extends Controller
             'status' => 'converted',
             'converted_sample_id' => $sample->id,
         ]);
+
+        // Carry over the size chart the client filled in at request time, if any
+        foreach ($sampleRequest->sizeChartRows as $row) {
+            \App\Models\SizeChartRow::create([
+                'sample_id' => $sample->id,
+                'specification' => $row->specification,
+                'xs' => $row->xs, 's' => $row->s, 'm' => $row->m, 'l' => $row->l, 'xl' => $row->xl,
+                'xxl' => $row->xxl, 'xxxl' => $row->xxxl, 'xxxxl' => $row->xxxxl, 'xxxxxl' => $row->xxxxxl,
+                'sort_order' => $row->sort_order,
+            ]);
+        }
 
         AuditLog::record('sample_request.converted', $sampleRequest, null, ['sample_id' => $sample->id]);
 
