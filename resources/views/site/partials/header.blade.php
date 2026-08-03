@@ -13,6 +13,12 @@
         <li><a href="{{ url('/site/about') }}" class="{{ request()->is('site/about') ? 'active' : '' }}">About</a></li>
         <li><a href="{{ url('/site/media') }}" class="{{ request()->is('site/media') ? 'active' : '' }}">Media</a></li>
         <li><a href="{{ url('/site/contact') }}" class="{{ request()->is('site/contact') ? 'active' : '' }}">Contact</a></li>
-        <li class="nav-cta"><a href="{{ url('/site/contact') }}" class="btn btn-teal"><i class="fas fa-file-alt"></i> Request a Quote</a></li>
+        <li><a href="{{ url('/login') }}" class="{{ request()->is('site/partner-login') ? 'active' : '' }}">Partner Login</a></li>
+        <!-- <li class="nav-cta"><a href="{{ url('/site/contact') }}" class="btn btn-teal"><i class="fas fa-file-alt"></i> Request a Quote</a></li> -->
+        <li class="nav-cta">
+            <a href="{{ url('/site/contact') }}" class="btn btn-teal">
+                Request a Quote
+            </a>
+        </li>
     </ul>
 </header>

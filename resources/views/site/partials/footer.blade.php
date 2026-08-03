@@ -37,9 +37,10 @@
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
+        
+    </div>
+    <div class="footer-bottom">
             <span>&copy; {{ date('Y') }} Sewgo. All rights reserved.</span>
             <span>Secure &amp; Confidential · No Obligation · Quick Response · Expert Support</span>
         </div>
-    </div>
 </footer>

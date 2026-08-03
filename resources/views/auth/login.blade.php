@@ -8,7 +8,7 @@
 @section('content')
 
 <div class="login-hero">
-    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1200&q=60" alt="">
+    <img class="hero-banner-img" src="{{ asset('images/site/banner3.png') }}" alt="Sewgo Partner Login">
     <div class="login-hero-content">
         <h1>Partner Login</h1>
         <p>Access your dashboard to manage orders, track production, view updates and more.</p>
@@ -55,22 +55,30 @@
     <h2>Why Partner with Sewgo?</h2>
     <div class="why-grid">
         <div class="why-item">
-            <div class="icon-circle"><i class="fas fa-file-invoice"></i></div>
+            <div class="icon-circle">
+                <img src="{{ asset('images/site/real_time_order_tracking_240.svg') }}" alt="Real-time Order Tracking">
+            </div>
             <h4>Real-time Order Tracking</h4>
             <p>Track every step of your production in real time.</p>
         </div>
         <div class="why-item">
-            <div class="icon-circle"><i class="fas fa-comments"></i></div>
+            <div class="icon-circle">
+                <img src="{{ asset('images/site/transparent_communication_240.svg') }}" alt="Transparent Communication">
+            </div>
             <h4>Transparent Communication</h4>
             <p>Stay connected with dedicated support.</p>
         </div>
         <div class="why-item">
-            <div class="icon-circle"><i class="fas fa-shield-check"></i></div>
+            <div class="icon-circle">
+                <img src="{{ asset('images/site/secure_reliable_platform_240.svg') }}" alt="Secure & Reliable Platform">
+            </div>
             <h4>Secure &amp; Reliable Platform</h4>
             <p>Your data and business are always safe with us.</p>
         </div>
         <div class="why-item">
-            <div class="icon-circle"><i class="fas fa-chart-line"></i></div>
+            <div class="icon-circle">
+                <img src="{{ asset('images/site/reports_analytics_240.svg') }}" alt="Reports & Analytics">
+            </div>
             <h4>Reports &amp; Analytics</h4>
             <p>Get actionable insights to grow your brand.</p>
         </div>
@@ -80,7 +88,14 @@
 <div class="cta-band">
     <div class="wrap">
         <div style="display:flex; align-items:center; gap:20px;">
-            <div class="cta-band-icon"><i class="fas fa-handshake"></i></div>
+            {{-- Handshake icon placeholder — replace with actual icon (recommended 300x300px SVG/PNG, white) --}}
+           
+
+            <!-- <div class="cta-band-icon img-placeholder img-placeholder-handshake"> -->
+                <!-- <i class="far fa-image"> -->
+                    <img src="{{ asset('images/site/hand.png') }}" class="handshake-img" alt="Handshake">
+                <!-- </i> -->
+            <!-- </div> -->
             <div>
                 <h3>Not a Partner Yet?</h3>
                 <p>Join leading fashion brands who trust Sewgo for their manufacturing needs.</p>
@@ -90,4 +105,8 @@
     </div>
 </div>
 
+@endsection
+
+@section('footer')
+    @include('site.partials.footer-simple')
 @endsection

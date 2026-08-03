@@ -6,7 +6,7 @@
     <title>@yield('title', 'Sewgo') | Powered by IBA Crafts</title>
     <meta name="description" content="@yield('meta_description', 'Sewgo is a technology-powered Just In Time garment manufacturing platform.')">
 
-    <link rel="icon" href="{{ asset('images/site/logo.jpg') }}">
+    <link rel="icon" href="{{ asset('images/site/favicon_icon.png') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,9 @@
 
     @yield('content')
 
-    @include('site.partials.footer')
+    @section('footer')
+        @include('site.partials.footer')
+    @show
 
     <script src="{{ asset('js/site/main.js') }}"></script>
     @stack('page-scripts')
