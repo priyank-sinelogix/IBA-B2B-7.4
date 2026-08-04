@@ -56,28 +56,28 @@
     <div class="why-grid">
         <div class="why-item">
             <div class="icon-circle">
-                <img src="{{ asset('images/site/real_time_order_tracking_240.svg') }}" alt="Real-time Order Tracking">
+                <img src="{{ asset('images/site/real_time_order_tracking.png') }}" alt="Real-time Order Tracking">
             </div>
             <h4>Real-time Order Tracking</h4>
             <p>Track every step of your production in real time.</p>
         </div>
         <div class="why-item">
             <div class="icon-circle">
-                <img src="{{ asset('images/site/transparent_communication_240.svg') }}" alt="Transparent Communication">
+                <img src="{{ asset('images/site/transparent_communication.png') }}" alt="Transparent Communication">
             </div>
             <h4>Transparent Communication</h4>
             <p>Stay connected with dedicated support.</p>
         </div>
         <div class="why-item">
             <div class="icon-circle">
-                <img src="{{ asset('images/site/secure_reliable_platform_240.svg') }}" alt="Secure & Reliable Platform">
+                <img src="{{ asset('images/site/secure_reliable_platform.png') }}" alt="Secure & Reliable Platform">
             </div>
             <h4>Secure &amp; Reliable Platform</h4>
             <p>Your data and business are always safe with us.</p>
         </div>
         <div class="why-item">
             <div class="icon-circle">
-                <img src="{{ asset('images/site/reports_analytics_240.svg') }}" alt="Reports & Analytics">
+                <img src="{{ asset('images/site/reports_analytics.png') }}" alt="Reports & Analytics">
             </div>
             <h4>Reports &amp; Analytics</h4>
             <p>Get actionable insights to grow your brand.</p>
@@ -87,21 +87,18 @@
 
 <div class="cta-band">
     <div class="wrap">
-        <div style="display:flex; align-items:center; gap:20px;">
-            {{-- Handshake icon placeholder — replace with actual icon (recommended 300x300px SVG/PNG, white) --}}
-           
+        <div class="cta-content">
+            <img src="{{ asset('images/site/hand.png') }}" class="handshake-img" alt="Handshake">
 
-            <!-- <div class="cta-band-icon img-placeholder img-placeholder-handshake"> -->
-                <!-- <i class="far fa-image"> -->
-                    <img src="{{ asset('images/site/hand.png') }}" class="handshake-img" alt="Handshake">
-                <!-- </i> -->
-            <!-- </div> -->
             <div>
                 <h3>Not a Partner Yet?</h3>
                 <p>Join leading fashion brands who trust Sewgo for their manufacturing needs.</p>
+
+                <a href="{{ url('/site/contact') }}" class="cta-band-btn">
+                    Partner With Us
+                </a>
             </div>
         </div>
-        <a href="{{ url('/site/contact') }}" class="cta-band-btn">Partner With Us</a>
     </div>
 </div>
 

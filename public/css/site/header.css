@@ -8,7 +8,7 @@
 }
 
 .brand { display: flex; align-items: center; gap: 10px; }
-.brand img.logo { height: 50px; width: auto; }
+.brand img.logo { height: 70px; width: auto; }
 .brand-sub { font-size: .6rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-top: 2px; }
 
 .nav-links { display: flex; align-items: center; gap: 15px; list-style: none; margin: 0; padding: 0; }
@@ -20,6 +20,9 @@
     padding: 6px;
 }
 .nav-links a:hover, .nav-links a.active { color: var(--teal-dark); border-color: var(--teal); }
+.nav-cta a:hover {
+    color: #fff;
+}
 
 .nav-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: var(--navy); cursor: pointer; }
 
@@ -57,6 +60,7 @@
         box-shadow:
             0 4px 0 rgba(8,120,102,.30),
             0 8px 18px rgba(15,185,138,.30);
+        color: #fff;
     }
     a.btn.btn-teal {
         color: #fff;

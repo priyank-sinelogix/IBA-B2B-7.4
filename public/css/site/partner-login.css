@@ -65,7 +65,7 @@
         display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
     .cta-band h3 { color: #fff; font-size: 1.3rem; margin-bottom: 4px; }
     .cta-band p { margin: 0; color: rgba(255,255,255,.9); font-size: .92rem; }
-    .cta-band-btn { background: #fff; color: var(--teal-dark); padding: 13px 26px; border-radius: 8px; font-weight: 700; white-space: nowrap; }
+    .cta-band-btn { background: var(--teal); color: #fff; padding: 13px 26px; border-radius: 8px; font-weight: 700; white-space: nowrap; }
 
     @media (max-width: 800px) {
         .why-grid { grid-template-columns: 1fr 1fr; }
@@ -108,7 +108,122 @@
         #0f2a4a 0%,
         #12395b 35%,
         #0b6c72 75%,
-        #0fb98a 100%);
+        #0e5843 100%);
     color: #fff;
     padding: 44px 0;
+}
+
+
+.cta-content{
+    display: flex;
+    align-items: center;
+    gap: 70px;
+}
+
+.cta-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.cta-band h3{
+    margin-bottom: 6px;
+}
+
+.cta-band p{
+    margin: 0;
+}
+
+.cta-band-btn{
+    display: inline-block;
+    margin-top: 18px;
+    align-self: flex-start;
+}
+
+@media (max-width: 800px) {
+    .why-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .login-card {
+        padding: 30px 24px;
+    }
+
+    .login-hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .cta-content{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cta-band-btn{
+        align-self: center;
+    }
+}
+
+
+.why-section,
+.cta-band {
+    border: none !important;
+}
+
+.why-section::before,
+.why-section::after,
+.cta-band::before,
+.cta-band::after {
+    display: none !important;
+}
+
+.why-section {
+    margin-bottom: 0;
+    padding-bottom: 60px;
+}
+
+.cta-band {
+    margin-top: 0;
+}
+
+.why-section {
+    position: relative;
+    padding-bottom: 80px;
+}
+
+.why-section::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    width: 180px;      /* line length */
+    height: 1px;
+    background: #d9e2ea;
+}
+
+.why-section {
+    border-bottom: 1px solid #e6eaee;
+}
+
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.why-item {
+    position: relative;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Vertical divider */
+.why-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: -15px;
+    width: 1px;
+    height: 180px; /* apne content ke hisab se adjust kar lena */
+    background: #d9e2ea;
 }
