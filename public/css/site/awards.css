@@ -3,15 +3,35 @@
    ============================================ */
 
 .awards-grid { grid-template-columns: repeat(3, 1fr); }
-.badge-card .badge-icon { font-size: 1.4rem; }
-.badge-card .badge-icon.red { color: #c0392b; }
-.badge-card .badge-icon.orange { color: #e08a1e; }
-.badge-card .badge-icon.teal { color: var(--teal-dark); }
-.badge-card .badge-icon.blue { color: #2563eb; }
-.badge-card .badge-icon.purple { color: #6d28d9; }
-.badge-card .badge-icon.navy { color: var(--navy); }
-.awards-stats-panel { background: var(--bg-mint); border-radius: 14px; padding: 26px; }
+.badge-card { display: flex; flex-direction: column; }
+.badge-card .badge-logo { height: 34px; max-width: 160px; object-fit: contain; margin-bottom: 14px; }
+.awards-stats-panel { background: var(--bg-mint); padding: 30px 0; }
+.stats-row-icons { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+.stat-icon-item { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 190px; }
+.stat-icon-item img { width: 46px; height: 46px; object-fit: contain; flex-shrink: 0; }
+.stat-icon-item strong { display: block; font-size: 1.05rem; color: var(--navy); }
+.stat-icon-item span { font-size: .85rem; color: var(--muted); }
+
+.awards-cta { border-radius: 0; padding: 50px 0; }
+.awards-cta-inner { display: flex; align-items: center; gap: 34px; }
+.awards-cta-icon { width: 90px; height: 90px; object-fit: contain; flex-shrink: 0; }
+.awards-cta-text { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.awards-cta-text p { margin: 0; }
+.awards-cta-text .btn-teal { margin-top: 8px; }
+
+.partner-btn{
+    padding: 10px;
+    border-bottom: 2px solid transparent;
+    color: #fff;
+    background: var(--teal-dark);
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+}
 
 @media (max-width: 900px) {
     .awards-grid { grid-template-columns: 1fr; }
+    .stats-row-icons { flex-direction: column; }
+    .awards-cta-inner { flex-direction: column; text-align: center; }
+    .awards-cta-text { align-items: center; }
 }

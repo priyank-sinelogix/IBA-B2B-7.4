@@ -25,7 +25,7 @@
     @yield('content')
 
     @section('footer')
-        @include('site.partials.footer')
+        @include('site.partials.footer-simple')
     @show
 
     <script src="{{ asset('js/site/main.js') }}"></script>

@@ -17,6 +17,7 @@
                     <li><a href="{{ url('/site/how-jit-works') }}">How JIT Works</a></li>
                     <li><a href="{{ url('/site/who-we-help') }}">Who We Help</a></li>
                     <li><a href="{{ url('/site/sustainability') }}">Sustainability</a></li>
+                    <li><a href="{{ url('/site/awards') }}">Awards &amp; Recognitions</a></li>
                 </ul>
             </div>
             <div>

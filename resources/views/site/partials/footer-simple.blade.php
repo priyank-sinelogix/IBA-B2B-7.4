@@ -9,6 +9,9 @@
                     <li><a href="{{ url('/site/who-we-help') }}">Catalog</a></li>
                     <li><a href="{{ url('/site/about') }}">About</a></li>
                     <li><a href="{{ url('/site/contact') }}">Contact</a></li>
+                    <li><a href="{{ url('/site/awards') }}">Awards &amp; Recognitions</a></li>
+                    <li><a href="{{ url('/site/sustainability') }}">Sustainability</a></li>
+
                 </ul>
             </div>
             <div>

@@ -9,15 +9,16 @@
         <li><a href="{{ url('/site') }}" class="{{ request()->is('site') ? 'active' : '' }}">Home</a></li>
         <li><a href="{{ url('/site/how-jit-works') }}" class="{{ request()->is('site/how-jit-works') ? 'active' : '' }}">How JIT Works</a></li>
         <li><a href="{{ url('/site/services') }}" class="{{ request()->is('site/services') ? 'active' : '' }}">Services</a></li>
-        <li><a href="{{ url('/site/who-we-help') }}" class="{{ request()->is('site/who-we-help') ? 'active' : '' }}">Who We Help</a></li>
+        <li><a href="{{ url('/site/awards') }}" class="{{ request()->is('site/awards') ? 'active' : '' }}">Awards</a></li>
+        <li><a href="{{ url('/site/sustainability') }}" class="{{ request()->is('site/sustainability') ? 'active' : '' }}">Sustainability</a></li>
         <li><a href="{{ url('/site/about') }}" class="{{ request()->is('site/about') ? 'active' : '' }}">About</a></li>
         <li><a href="{{ url('/site/media') }}" class="{{ request()->is('site/media') ? 'active' : '' }}">Media</a></li>
         <li><a href="{{ url('/site/contact') }}" class="{{ request()->is('site/contact') ? 'active' : '' }}">Contact</a></li>
         <li><a href="{{ url('/login') }}" class="{{ request()->is('site/partner-login') ? 'active' : '' }}">Partner Login</a></li>
-        <!-- <li class="nav-cta"><a href="{{ url('/site/contact') }}" class="btn btn-teal"><i class="fas fa-file-alt"></i> Request a Quote</a></li> -->
+        
         <li class="nav-cta">
             <a href="{{ url('/site/contact') }}" class="btn btn-teal">
-                Request a Quote
+                <i class="fas fa-user-tie"></i> Request a Quote
             </a>
         </li>
     </ul>
