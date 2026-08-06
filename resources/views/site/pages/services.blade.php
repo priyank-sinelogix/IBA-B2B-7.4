@@ -52,7 +52,7 @@
 <div class="wrap" style="padding-bottom:60px;">
     <div class="cta-band-final" style="margin:0;">
         <div><h3>Let's Build the Future of Fashion, Together.</h3><p>Partner with Sewgo and experience the power of Just In Time manufacturing.</p></div>
-        <a href="{{ url('/site/contact') }}" class="btn-white">Request a Quote →</a>
+        <a href="{{ url('/contact') }}" class="btn-white">Request a Quote →</a>
     </div>
 </div>
 @endsection

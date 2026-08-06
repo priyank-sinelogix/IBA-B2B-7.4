@@ -59,7 +59,7 @@
     .why-item h4 { font-size: 1rem; margin-bottom: 6px; }
     .why-item p { color: var(--muted); font-size: .87rem; margin: 0; }
 
-    .cta-band { background: var(--teal); color: #fff; padding: 44px 0; }
+    .cta-band { background: var(--teal); color: #fff; padding-left: 44px;padding-right: 44px; }
     .cta-band .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
     .cta-band-icon { width: 54px; height: 54px; border: 2px solid rgba(255,255,255,.5); border-radius: 50%;
         display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
@@ -110,7 +110,7 @@
         #0b6c72 75%,
         #0e5843 100%);
     color: #fff;
-    padding: 44px 0;
+    padding: 22px 44px;
 }
 
 

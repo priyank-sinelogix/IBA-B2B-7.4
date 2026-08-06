@@ -13,8 +13,8 @@
             <h1>How Just In Time Manufacturing Works</h1>
             <p class="lead">At Sewgo, garments are produced only after an order is received. Our JIT model eliminates inventory risk, reduces waste, and ensures faster fulfillment with unmatched flexibility for modern brands.</p>
             <div style="display:flex; gap:12px; margin-top:22px;">
-                <a href="{{ url('/site/contact') }}" class="btn btn-teal"><i class="far fa-calendar"></i> Book a Discovery Call</a>
-                <a href="{{ url('/site/contact') }}" class="btn" style="border:1.5px solid var(--border); color:var(--navy);">Request Sample Kit</a>
+                <a href="{{ url('/contact') }}" class="btn btn-teal"><i class="far fa-calendar"></i> Book a Discovery Call</a>
+                <a href="{{ url('/contact') }}" class="btn" style="border:1.5px solid var(--border); color:var(--navy);">Request Sample Kit</a>
             </div>
         </div>
         <div class="jit-panel">
@@ -101,8 +101,8 @@
     <div class="cta-band-final" style="background:var(--navy); margin:0;">
         <div><h3>Ready to Launch with JIT?</h3><p>Grow your brand without inventory risk. Let Sewgo handle production, so you can focus on sales.</p></div>
         <div class="actions">
-            <a href="{{ url('/site/contact') }}" class="btn-white">Request a Quote</a>
-            <a href="{{ url('/site/contact') }}" class="btn-ghost">Book a Discovery Call</a>
+            <a href="{{ url('/contact') }}" class="btn-white">Request a Quote</a>
+            <a href="{{ url('/contact') }}" class="btn-ghost">Book a Discovery Call</a>
         </div>
     </div>
 </div>

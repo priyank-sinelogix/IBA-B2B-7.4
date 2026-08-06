@@ -2,7 +2,7 @@
    Sewgo Marketing Site — footer.css
    ============================================ */
 
-.site-footer { background: var(--navy); color: #cfd9e3; padding: 56px 0 24px; margin-top: 0px; }
+.site-footer { background: var(--navy); color: #cfd9e3; padding-top: 56px; padding-bottom: 56px; margin-top: 0px; }
 
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
 .footer-grid h4 { color: #fff; font-size: .95rem; margin-bottom: 14px; }
@@ -34,48 +34,9 @@
 .footer-grid-simple a:hover { color: #fff; }
 .footer-grid-simple a i { width: 16px; }
 
-.footer-bottom-simple {
-    border-top: 1px solid rgba(255,255,255,.12); margin-top: 40px; padding-top: 24px;
-    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
-    background: white
-
-}
-.footer-bottom-simple img.logo { height: 50px; 
-    /* filter: brightness(0) invert(1);  */
-}
-.footer-bottom-simple span { font-size: .82rem; color: #8fa0b3; }
-
 @media (max-width: 800px) {
-    .footer-grid-simple { grid-template-columns: 1fr; }
-    .footer-bottom-simple { flex-direction: column; text-align: center; }
+    .footer-grid-simple { grid-template-columns: 1fr; padding: 0; }
 }
-
-
-
-
-.footer-bottom-simple {
-    border-top: 1px solid rgba(255,255,255,.12);
-    margin-top: 40px;
-    padding-top: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 14px;
-
-    background: #fff;   /* White background */
-    padding: 20px 30px;
-}
-
-.footer-bottom-simple span {
-    font-size: .82rem;
-    color: #555;        /* Dark text on white */
-}
-
-.footer-bottom-simple img.logo {
-    height: 50px;
-}
-
 .footer-bottom-simple a {
     color: var(--navy);
 }
@@ -85,17 +46,18 @@
 }
 
 .site-footer{
-    padding-bottom: 0;
+    padding-left: 44px;
+    padding-right: 44px;
 }
-
-
-
-
 .footer-bottom-simple{
     background: #fff;
-    margin-top: 40px;
-    padding: 12px 150px;
+    background: #edfffa;
+    margin-top: 0px;
+    padding: 12px 44px;
+    
+}
 
+.footer-bottom-wrap{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
@@ -134,7 +96,7 @@
 }
 
 @media (max-width:768px){
-    .footer-bottom-simple{
+    .footer-bottom-wrap{
         grid-template-columns: 1fr;
         gap: 20px;
         text-align: center;

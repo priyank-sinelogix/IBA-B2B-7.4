@@ -129,8 +129,8 @@
     <div class="cta-band-final" style="margin:0;">
         <div><h3>Let's Find the Right JIT Setup for Your Business</h3><p>Tell us about your needs and we'll design the perfect manufacturing plan for you.</p></div>
         <div class="actions">
-            <a href="{{ url('/site/contact') }}" class="btn-white">Book a Discovery Call</a>
-            <a href="{{ url('/site/contact') }}" class="btn-ghost">Request a Quote</a>
+            <a href="{{ url('/contact') }}" class="btn-white">Book a Discovery Call</a>
+            <a href="{{ url('/contact') }}" class="btn-ghost">Request a Quote</a>
         </div>
     </div>
 </div>

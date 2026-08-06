@@ -13,20 +13,20 @@
             <div>
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="{{ url('/site/about') }}">About Us</a></li>
-                    <li><a href="{{ url('/site/how-jit-works') }}">How JIT Works</a></li>
-                    <li><a href="{{ url('/site/who-we-help') }}">Who We Help</a></li>
-                    <li><a href="{{ url('/site/sustainability') }}">Sustainability</a></li>
-                    <li><a href="{{ url('/site/awards') }}">Awards &amp; Recognitions</a></li>
+                    <li><a href="{{ url('/about') }}">About Us</a></li>
+                    <li><a href="{{ url('/how-jit-works') }}">How JIT Works</a></li>
+                    <li><a href="{{ url('/who-we-help') }}">Who We Help</a></li>
+                    <li><a href="{{ url('/sustainability') }}">Sustainability</a></li>
+                    <li><a href="{{ url('/awards') }}">Awards &amp; Recognitions</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="{{ url('/site/services') }}">JIT Manufacturing</a></li>
-                    <li><a href="{{ url('/site/services') }}">Product Development</a></li>
-                    <li><a href="{{ url('/site/services') }}">Cut &amp; Sew Manufacturing</a></li>
-                    <li><a href="{{ url('/site/services') }}">Logistics Support</a></li>
+                    <li><a href="{{ url('/services') }}">JIT Manufacturing</a></li>
+                    <li><a href="{{ url('/services') }}">Product Development</a></li>
+                    <li><a href="{{ url('/services') }}">Cut &amp; Sew Manufacturing</a></li>
+                    <li><a href="{{ url('/services') }}">Logistics Support</a></li>
                 </ul>
             </div>
             <div>

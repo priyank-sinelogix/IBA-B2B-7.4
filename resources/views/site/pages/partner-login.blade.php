@@ -450,7 +450,7 @@ Log In
 
 New Partner?
 
-<a href="{{ url('/site/contact') }}">
+<a href="{{ url('/contact') }}">
 
 Request Access
 

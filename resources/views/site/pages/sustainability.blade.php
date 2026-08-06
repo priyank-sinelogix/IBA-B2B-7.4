@@ -114,8 +114,8 @@
             <p>Choose JIT. Choose Responsibility. Choose Sewgo.</p>
         </div>
         <div class="actions">
-            <a href="{{ url('/site/contact') }}" class="btn-white"><img src="{{ asset('images/site/IconQuotePlant.png') }}" alt="">Request a Quote</a>
-            <a href="{{ url('/site/contact') }}" class="btn-ghost"><img src="{{ asset('images/site/IconCalendar.png') }}" alt="">Book a Discovery Call</a>
+            <a href="{{ url('/contact') }}" class="btn-white"><img src="{{ asset('images/site/IconQuotePlant.png') }}" alt="">Request a Quote</a>
+            <a href="{{ url('/contact') }}" class="btn-ghost"><img src="{{ asset('images/site/IconCalendar.png') }}" alt="">Book a Discovery Call</a>
         </div>
     </div>
 </div>

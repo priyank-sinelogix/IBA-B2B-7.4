@@ -42,7 +42,7 @@
         <div class="awards-cta-text">
             <h3>Recognition fuels responsibility.</h3>
             <p>We remain committed to building a sustainable, technology-first manufacturing ecosystem for the global fashion industry.</p>
-            <a href="{{ url('/site/contact') }}" class="partner-btn btn-teal">Partner With Us</a>
+            <a href="{{ url('/contact') }}" class="partner-btn btn-teal">Partner With Us</a>
         </div>
     </div>
 </div>

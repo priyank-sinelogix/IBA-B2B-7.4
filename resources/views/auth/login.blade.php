@@ -7,7 +7,7 @@
 
 @section('content')
 
-<div class="login-hero">
+<div class="wrap login-hero">
     <img class="hero-banner-img" src="{{ asset('images/site/banner3.png') }}" alt="Sewgo Partner Login">
     <div class="login-hero-content">
         <h1>Partner Login</h1>
@@ -46,7 +46,7 @@
             <button type="submit" class="btn-login">Log In</button>
         </form>
 
-        <p class="signup-note">New Partner? <a href="{{ url('/site/contact') }}">Request Access</a></p>
+        <p class="signup-note">New Partner? <a href="{{ url('/contact') }}">Request Access</a></p>
         <p class="staff-note"><a href="{{ url('/admin/login') }}">IBA Team Member? Staff Login →</a></p>
     </div>
 </div>
@@ -85,8 +85,9 @@
     </div>
 </section>
 
-<div class="cta-band">
-    <div class="wrap">
+
+<div class="wrap">
+    <div class="cta-band">
         <div class="cta-content">
             <img src="{{ asset('images/site/hand.png') }}" class="handshake-img" alt="Handshake">
 
@@ -94,7 +95,7 @@
                 <h3>Not a Partner Yet?</h3>
                 <p>Join leading fashion brands who trust Sewgo for their manufacturing needs.</p>
 
-                <a href="{{ url('/site/contact') }}" class="cta-band-btn">
+                <a href="{{ url('/contact') }}" class="cta-band-btn">
                     Partner With Us
                 </a>
             </div>

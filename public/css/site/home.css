@@ -2,12 +2,14 @@
    Sewgo Marketing Site — home.css
    ============================================ */
 
-section.home-hero.wrap { max-width: none; padding: 0; margin: 0; }
+section.home-hero.wrap {
+    /* max-width: none; padding: 0; margin: 0;  */
+}
 .home-hero { position: relative; min-height: 640px; display: flex; align-items: center; overflow: hidden; background: #fff; }
 .home-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 
 /* .home-hero-content { position: relative; z-index: 2; max-width: 600px; padding: 50px 24px 50px max(24px, calc((100vw - 1180px) / 2 + 24px)); } */
-.home-hero-content { position: relative; z-index: 2; max-width: 725px; padding: 50px 24px 50px max(24px, calc((100vw - 1180px) / 10 + 24px)); }
+.home-hero-content { position: relative; z-index: 2; max-width: 725px; padding: 50px 24px 50px max(24px, calc((100vw - 1180px) / 0 + 24px)); }
 .home-hero h1 { font-size: 2.7rem; margin-bottom: 6px; }
 .home-hero h1 .line-navy { color: var(--navy); display: block; }
 .home-hero h1 .line-teal { color: var(--teal); display: block; }
@@ -17,7 +19,7 @@ section.home-hero.wrap { max-width: none; padding: 0; margin: 0; }
 .home-hero-actions .btn-outline-navy { border: 1.5px solid var(--border); color: var(--navy); background: #fff; }
 .home-hero .mini-stats {
     flex-wrap: nowrap; gap: 18px;
-    background: linear-gradient(90deg, rgba(255,255,255,0%) 0%, rgba(255,255,255,.55) 55%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(90deg, rgba(255,255,255,0%) 0%, rgba(255,255,255,.55) 95%, rgba(255,255,255,0) 100%);
     border-radius: 14px; padding: 16px 20px;
 }
 .home-hero .mini-stat { flex: 1 1 0; gap: 10px; min-width: 0; }
@@ -90,11 +92,11 @@ section.home-hero.wrap { max-width: none; padding: 0; margin: 0; }
 .sustain-band .item span { font-size: .78rem; color: #b9c7d5; }
 
 .trust-strip { text-align: center; }
-.trust-logos { display: flex; justify-content: flex-start; align-items: flex-start; gap: 0; flex-wrap: nowrap; margin-top: 20px; overflow-x: auto; padding-bottom: 8px; }
-.trust-logos .t-logo { text-align: center; width: 190px; flex: 0 0 190px; padding: 0 20px; }
-.trust-logos .t-logo { border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
-.trust-logos .t-logo img { width: 160px; height: 50px; object-fit: contain; margin: 0 auto 10px; }
-.trust-logos .t-logo span { font-size: 12px; color: var(--muted); width: 110px; height: 55px; object-fit: contain; display: inline-block; overflow: hidden; text-overflow: ellipsis; }
+.trust-logos { display: flex; justify-content: space-between; align-items: flex-start; gap: 0; flex-wrap: nowrap; margin-top: 20px; }
+.trust-logos .t-logo { text-align: center; flex: 1 1 0; min-width: 0; padding: 0 16px; }
+.trust-logos .t-logo:not(:first-child) { border-left: 1px solid var(--border); }
+.trust-logos .t-logo img { max-width: 100%; width: 140px; height: 50px; object-fit: contain; margin: 0 auto 10px; }
+.trust-logos .t-logo span { font-size: 12px; color: var(--muted); display: block; }
 
 .step-flow { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 10px 0; }
 .step-flow .step { flex: 1; min-width: 130px; }
@@ -131,6 +133,9 @@ section.home-hero.wrap { max-width: none; padding: 0; margin: 0; }
     .sustain-band .item:not(:first-child) { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,.22); padding-top: 20px; }
     .step-flow { flex-direction: column; }
     .step-arrow { transform: rotate(90deg); }
+    .trust-logos { flex-wrap: wrap; justify-content: center; }
+    .trust-logos .t-logo { flex: 1 1 45%; padding: 16px; }
+    .trust-logos .t-logo:not(:first-child) { border-left: none; }
 }
 
 @media (max-width: 480px) {

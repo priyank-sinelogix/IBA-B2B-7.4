@@ -27,8 +27,8 @@
         </div>
 
         <div class="home-hero-actions">
-            <a href="{{ url('/site/how-jit-works') }}" class="btn btn-teal">Explore How JIT Works</a>
-            <a href="{{ url('/site/contact') }}" class="btn btn-outline-navy"><i class="fas fa-play"></i> Watch Sewgo in Action</a>
+            <a href="{{ url('/how-jit-works') }}" class="btn btn-teal">Explore How JIT Works</a>
+            <a href="{{ url('/contact') }}" class="btn btn-outline-navy"><i class="fas fa-play"></i> Watch Sewgo in Action</a>
         </div>
     </div>
 
@@ -39,8 +39,8 @@
     </div>
 </section>
 
-<div class="stat-band">
-    <div class="wrap" style="grid-template-columns: repeat(5,1fr);">
+<div class="wrap stat-band">
+    <div class="stat-band-grid" style="grid-template-columns: repeat(5,1fr);">
         <div class="stat"><i class="far fa-clock"></i><div><div class="num">48H</div><div class="lbl">Dispatch (Speed you can trust)</div></div></div>
         <div class="stat"><i class="fas fa-user"></i><div><div class="num">1 MOQ</div><div class="lbl">No inventory, Order as low as 1 piece</div></div></div>
         <div class="stat"><i class="fas fa-tshirt"></i><div><div class="num">1000+</div><div class="lbl">Styles Delivered Monthly</div></div></div>
@@ -59,7 +59,7 @@
             <div class="eyebrow">See How Sewgo Works</div>
             <h2>Why Sewgo?</h2>
             <p>We render the first order cyclic. Garments are made-on-demand within 24–48 hours.</p>
-            <a href="{{ url('/site/how-jit-works') }}" class="know-more">Know More Details →</a>
+            <a href="{{ url('/how-jit-works') }}" class="know-more">Know More Details →</a>
             <p>On all JIT working models garment manufacturing unit only at the time of sales order or at stock-out of previous JIT-based sale is placed to the unit. Ensuring 0% liquidation &amp; 100% flexibility.</p>
             <div class="why-icons">
                 <div class="icon-card"><div class="icon-circle"><img src="{{ asset('images/site/NoWastage.png') }}" alt=""></div><h4>No Wastage</h4></div>
@@ -141,7 +141,7 @@
         <!-- <div class="item"><img src="{{ asset('images/site/BagsMore.png') }}" alt=""><span>Bags &amp; More</span></div> -->
     </div>
     <div style="text-align:center; margin-top:30px;">
-        <a href="{{ url('/site/services') }}" class="btn" style="border:1.5px solid var(--teal); color:var(--teal-dark);">Explore Design Library →</a>
+        <a href="{{ url('/services') }}" class="btn" style="border:1.5px solid var(--teal); color:var(--teal-dark);">Explore Design Library →</a>
     </div>
 </section>
 
@@ -205,16 +205,16 @@
     </div>
 </section>
 
-<div class="">
+<div class="wrap">
     <div class="cta-band-final" style="background: linear-gradient(90deg, #0f2a4a 0%, #12395b 35%, #0b6c72 75%, #0e5843 100%);margin:0;">
         <div><h3>Ready to Scale Your Brand with JIT?</h3><p>Let's build a future-ready, inventory-free fashion business together.</p></div>
         <div class="actions">
             <div class="action-item">
-                <a href="{{ url('/site/contact') }}" class="btn-white"><i class="far fa-calendar-check"></i> Book a Discovery Call</a>
+                <a href="{{ url('/contact') }}" class="btn-white"><i class="far fa-calendar-check"></i> Book a Discovery Call</a>
                 <span class="action-caption"><i class="far fa-clock"></i> Quick Response</span>
             </div>
             <div class="action-item">
-                <a href="{{ url('/site/contact') }}" class="btn-ghost"><i class="fas fa-box-open"></i> Request a Sample Kit</a>
+                <a href="{{ url('/contact') }}" class="btn-ghost"><i class="fas fa-box-open"></i> Request a Sample Kit</a>
                 <span class="action-caption"><i class="fas fa-gear"></i> Custom Solutions</span>
             </div>
         </div>
