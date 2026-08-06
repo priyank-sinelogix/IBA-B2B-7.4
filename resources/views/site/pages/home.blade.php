@@ -199,9 +199,9 @@
         <!-- <div class="t-logo"><img src="{{ asset('images/site/IISIIIMTAngels.png') }}" alt="IISI · IIMT Angels"><span>Most Promising Startup Award 2022</span></div>
         <div class="t-logo"><img src="{{ asset('images/site/MahindraMahindra.png') }}" alt="Mahindra &amp; Mahindra"><span>Spirit of Manufacturing Award 2021</span></div>
         <div class="t-logo"><img src="{{ asset('images/site/StartupIndia.png') }}" alt="Startup India"><span>Recognized Startup</span></div> -->
-        <div class="t-logo"><img src="{{ asset('images/site/Seoul.png') }}" alt="Startup India"><span>Seoul</span></div>
-        <div class="t-logo"><img src="{{ asset('images/site/TheEconomicTimes.png') }}" alt="The Economic Times"><span>The Economic Times</span></div>
-        <div class="t-logo"><img src="{{ asset('images/site/BuisnessWorld.png') }}" alt="Business World"><span>Buisness World</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/Seoul.png') }}" alt="Startup India"><span>Seoul Design Award 2025</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/TheEconomicTimes.png') }}" alt="The Economic Times"><span>ET MSME Awards 2025</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/BuisnessWorld.png') }}" alt="Business World"><span>BW Retail 40 Under 40 Award – 2024</span></div>
     </div>
 </section>
 
