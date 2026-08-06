@@ -196,13 +196,16 @@
         <div class="t-logo"><img src="{{ asset('images/site/NASSCOM.png') }}" alt="NASSCOM"><span>Emerge 50 · Winner 2025</span></div>
         <div class="t-logo"><img src="{{ asset('images/site/SMEChampions.png') }}" alt="SME Champions"><span>Winner 2024</span></div>
         <div class="t-logo"><img src="{{ asset('images/site/Entrepreneur.png') }}" alt="Entrepreneur"><span>India's Tech 25 – D2C · July 2024</span></div>
-        <div class="t-logo"><img src="{{ asset('images/site/IISIIIMTAngels.png') }}" alt="IISI · IIMT Angels"><span>Most Promising Startup Award 2022</span></div>
+        <!-- <div class="t-logo"><img src="{{ asset('images/site/IISIIIMTAngels.png') }}" alt="IISI · IIMT Angels"><span>Most Promising Startup Award 2022</span></div>
         <div class="t-logo"><img src="{{ asset('images/site/MahindraMahindra.png') }}" alt="Mahindra &amp; Mahindra"><span>Spirit of Manufacturing Award 2021</span></div>
-        <div class="t-logo"><img src="{{ asset('images/site/StartupIndia.png') }}" alt="Startup India"><span>Recognized Startup</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/StartupIndia.png') }}" alt="Startup India"><span>Recognized Startup</span></div> -->
+        <div class="t-logo"><img src="{{ asset('images/site/Seoul.png') }}" alt="Startup India"><span>Seoul</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/TheEconomicTimes.png') }}" alt="The Economic Times"><span>The Economic Times</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/BuisnessWorld.png') }}" alt="Business World"><span>Buisness World</span></div>
     </div>
 </section>
 
-<div class="" style="padding-bottom:20px;">
+<div class="">
     <div class="cta-band-final" style="background:var(--navy); margin:0;">
         <div><h3>Ready to Scale Your Brand with JIT?</h3><p>Let's build a future-ready, inventory-free fashion business together.</p></div>
         <div class="actions">
