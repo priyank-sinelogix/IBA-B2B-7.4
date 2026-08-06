@@ -201,7 +201,7 @@
         <div class="t-logo"><img src="{{ asset('images/site/StartupIndia.png') }}" alt="Startup India"><span>Recognized Startup</span></div> -->
         <div class="t-logo"><img src="{{ asset('images/site/Seoul.png') }}" alt="Startup India"><span>Seoul Design Award 2025</span></div>
         <div class="t-logo"><img src="{{ asset('images/site/TheEconomicTimes.png') }}" alt="The Economic Times"><span>ET MSME Awards 2025</span></div>
-        <div class="t-logo"><img src="{{ asset('images/site/BuisnessWorld.png') }}" alt="Business World"><span>BW Retail 40 Under 40 Award – 2024</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/BuisnessWorld.png') }}" alt="Business World"><span>BW Retail 40 Under 40 Award 2024</span></div>
     </div>
 </section>
 
