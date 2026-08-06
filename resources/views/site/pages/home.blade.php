@@ -206,7 +206,7 @@
 </section>
 
 <div class="">
-    <div class="cta-band-final" style="background:var(--navy); margin:0;">
+    <div class="cta-band-final" style="background: linear-gradient(90deg, #0f2a4a 0%, #12395b 35%, #0b6c72 75%, #0e5843 100%);margin:0;">
         <div><h3>Ready to Scale Your Brand with JIT?</h3><p>Let's build a future-ready, inventory-free fashion business together.</p></div>
         <div class="actions">
             <div class="action-item">
