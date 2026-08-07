@@ -51,9 +51,26 @@ class SiteController extends Controller
         return view('site.pages.awards');
     }
 
-    // No reference design was provided for the Contact page yet — placeholder for now.
     public function contact()
     {
-        return $this->comingSoon('Contact');
+        return view('site.pages.contact');
+    }
+
+    public function submitContact(\Illuminate\Http\Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required|string|max:100',
+            'last_name' => 'required|string|max:100',
+            'work_email' => 'required|email|max:150',
+            'phone' => 'nullable|string|max:30',
+            'ext' => 'nullable|string|max:10',
+            'company' => 'required|string|max:150',
+            'website' => 'nullable|url|max:200',
+            'company_size' => 'nullable|string|max:20',
+            'message' => 'nullable|string|max:2000',
+            'learned_from' => 'nullable|string|max:100',
+        ]);
+
+        return redirect('/contact')->with('success', "Thanks! We've received your message and will get back to you within 24 hours.");
     }
 }

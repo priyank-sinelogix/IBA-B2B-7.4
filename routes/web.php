@@ -28,6 +28,7 @@ Route::get('/sustainability', [SiteController::class, 'sustainability']);
 Route::get('/media', [SiteController::class, 'media']);
 Route::get('/awards', [SiteController::class, 'awards']);
 Route::get('/contact', [SiteController::class, 'contact']);
+Route::post('/contact', [SiteController::class, 'submitContact']);
 
 // Guest - customer
 Route::middleware('guest')->group(function () {
