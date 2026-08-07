@@ -5,7 +5,7 @@
 section.home-hero.wrap {
     /* max-width: none; padding: 0; margin: 0;  */
 }
-.home-hero { position: relative; min-height: 640px; display: flex; align-items: center; overflow: hidden; background: #fff; }
+.home-hero { position: relative; min-height: 500px; display: flex; align-items: center; overflow: hidden; background: #fff; margin-bottom: 20px;}
 .home-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 
 /* .home-hero-content { position: relative; z-index: 2; max-width: 600px; padding: 50px 24px 50px max(24px, calc((100vw - 1180px) / 2 + 24px)); } */

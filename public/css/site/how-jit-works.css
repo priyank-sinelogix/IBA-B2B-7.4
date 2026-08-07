@@ -2,15 +2,19 @@
    Sewgo Marketing Site — how-jit-works.css
    ============================================ */
 
-.jit-panel { background: var(--navy-dark); border-radius: 16px; padding: 24px; color: #fff; box-shadow: 0 20px 50px rgba(15,42,74,.25); }
-.jit-panel .row-title { display:flex; justify-content:space-between; font-size:.78rem; color:#9fb0c1; margin-bottom:14px; }
-.jit-stages { display:flex; justify-content:space-between; margin: 14px 0 20px; }
-.jit-stages .st { text-align:center; font-size:.68rem; color:#b9c7d5; }
-.jit-stages .st .dot { width:10px; height:10px; border-radius:50%; background:#6fe0c0; margin:0 auto 6px; }
-.jit-metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:16px; }
-.jit-metrics .m { background:rgba(255,255,255,.06); border-radius:10px; padding:10px; text-align:center; }
-.jit-metrics .m .v { font-weight:800; font-size:1.05rem; }
-.jit-metrics .m .l { font-size:.65rem; color:#9fb0c1; }
+section.jit-hero.wrap { max-width: none; 
+    /* padding: 0; margin: 0;  */
+}
+.jit-hero { position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden; background: #fff; }
+.jit-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.jit-hero::before {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, #fff 0%, #fff 36%, rgba(255,255,255,.82) 0%, rgba(255,255,255,0) 50%);
+}
+.jit-hero-content {
+    position: relative; z-index: 2; max-width: 480px;
+    padding: 60px 24px 60px max(24px, calc((100vw - 1180px) / 0 + 24px));
+}
 .flow-diagram { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
 .flow-box { background:#fff; border:1px solid var(--border); border-radius:12px; padding:16px; min-width:150px; text-align:center; font-size:.82rem; }
 .flow-arrow { color: var(--teal-dark); font-size: 1.2rem; }
@@ -112,6 +116,10 @@
 .faq-list .faq-item summary { font-size: .85rem; }
 
 @media (max-width: 900px) {
+    .jit-hero { min-height: 0; flex-direction: column; align-items: stretch; }
+    .jit-hero-bg { position: relative; height: 220px; }
+    .jit-hero::before { display: none; }
+    .jit-hero-content { padding: 30px 24px; }
     .tech-faq-row { flex-direction: column; }
     .tech-icons { flex-direction: column; gap: 16px; }
     .tech-item { padding-left: 0; }

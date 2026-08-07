@@ -6,36 +6,21 @@
 @endpush
 
 @section('content')
-<div class="wrap">
-    <div class="hero-split">
-        <div>
-            <div class="eyebrow">Smarter Manufacturing. Made After You Sell.</div>
-            <h1>How Just In Time Manufacturing Works</h1>
-            <p class="lead">At Sewgo, garments are produced only after an order is received. Our JIT model eliminates inventory risk, reduces waste, and ensures faster fulfillment with unmatched flexibility for modern brands.</p>
-            <div style="display:flex; gap:12px; margin-top:22px;">
-                <a href="{{ url('/contact') }}" class="btn btn-teal"><i class="far fa-calendar"></i> Book a Discovery Call</a>
-                <a href="{{ url('/contact') }}" class="btn" style="border:1.5px solid var(--border); color:var(--navy);">Request Sample Kit</a>
-            </div>
-        </div>
-        <div class="jit-panel">
-            <div class="row-title"><span>JIT PRODUCTION CONTROL</span><span>● Real-time Sync</span></div>
-            <div style="font-size:.75rem; color:#9fb0c1;">ORDER TRIGGER — New Order Received #SGO-78456</div>
-            <div class="jit-stages">
-                <div class="st"><div class="dot"></div>Cutting</div>
-                <div class="st"><div class="dot"></div>Stitching</div>
-                <div class="st"><div class="dot"></div>Finishing</div>
-                <div class="st"><div class="dot"></div>QA Check</div>
-                <div class="st"><div class="dot"></div>Packing</div>
-            </div>
-            <div class="jit-metrics">
-                <div class="m"><div class="v">32</div><div class="l">Orders Today</div></div>
-                <div class="m"><div class="v">18</div><div class="l">In Production</div></div>
-                <div class="m"><div class="v">27</div><div class="l">Dispatched</div></div>
-                <div class="m"><div class="v">98%</div><div class="l">On Time Rate</div></div>
-            </div>
+
+
+<section class="wrap jit-hero">
+    <img class="jit-hero-bg" src="{{ asset('images/site/HowJitWorks/HowjJtWorksBanner.jpg') }}" alt="">
+    <div class="jit-hero-content">
+        <div class="eyebrow">Smarter Manufacturing. Made After You Sell.</div>
+        <h1>How Just In Time Manufacturing Works</h1>
+        <p class="lead">At Sewgo, garments are produced only after an order is received. Our JIT model eliminates inventory risk, reduces waste, and ensures faster fulfillment with unmatched flexibility for modern brands.</p>
+        <div style="display:flex; gap:12px; margin-top:22px;">
+            <a href="{{ url('/contact') }}" class="btn btn-teal"><i class="far fa-calendar"></i> Book a Discovery Call</a>
+            <a href="{{ url('/contact') }}" class="btn" style="border:1.5px solid var(--border); color:var(--navy);">Request Sample Kit</a>
         </div>
     </div>
-</div>
+</section>
+
 
 <div class="wrap stat-band">
     <div class="stat-band-grid" style="grid-template-columns: repeat(5,1fr);">
