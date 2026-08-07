@@ -14,7 +14,7 @@ section.home-hero.wrap {
 .home-hero h1 .line-navy { color: var(--navy); display: block; }
 .home-hero h1 .line-teal { color: var(--teal); display: block; }
 .home-hero h3 { font-size: 1.5rem; color: var(--navy); margin: 4px 0 16px; }
-.home-hero p.lead { color: var(--muted); max-width: 460px; }
+.home-hero p.lead { color: var(--muted); max-width: 460px; font-size:18px;}
 .home-hero-actions { position: relative; z-index: 2; display: flex; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
 .home-hero-actions .btn-outline-navy { border: 1.5px solid var(--border); color: var(--navy); background: #fff; }
 .home-hero .mini-stats {

@@ -16,7 +16,7 @@
             <span class="line-navy">Sell First.</span>
             <span class="line-teal">Make Next.</span>
         </h1>
-        <h3>Only After You Sell.</h3>
+        <!-- <h3>Only After You Sell.</h3> -->
         <p class="lead">We manufacture only when an order is placed. No inventory. No risk. Just speed, flexibility and complete visibility.</p>
 
         <div class="mini-stats">
@@ -152,7 +152,7 @@
             <h2>The Smarter Way to Manufacture</h2>
         </div>
         <div class="vs-grid">
-            <div class="vs-icon-circle"><img src="{{ asset('images/site/TraditionalManufacturing.png') }}" alt=""></div>
+            <div class="vs-icon-circle"><img src="{{ asset('images/site/SewgoJIT.png') }}" alt=""></div>
             <div class="vs-col bad">
                 <h4>Traditional Manufacturing</h4>
                 <ul>
@@ -174,7 +174,7 @@
                     <li><i class="fas fa-check"></i> Cash flow friendly, pay as you sell</li>
                 </ul>
             </div>
-            <div class="vs-icon-circle"><img src="{{ asset('images/site/SewgoJIT.png') }}" alt=""></div>
+            <div class="vs-icon-circle"><img src="{{ asset('images/site/TraditionalManufacturing.png') }}" alt=""></div>
         </div>
     </div>
 </section>

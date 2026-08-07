@@ -58,7 +58,7 @@ img { max-width: 100%; display: block; }
 .btn-outline:hover { background: rgba(255,255,255,.12); }
 
 /* ===== Shared page components (reused across marketing pages) ===== */
-.eyebrow { color: var(--teal-dark); font-weight: 700; font-size: .82rem; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 10px; }
+.eyebrow { color: var(--teal-dark); font-weight: 700; font-size: 20px; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 10px; }
 
 .hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; padding: 56px 0 40px; }
 .hero-split h1 { font-size: 2.6rem; margin-bottom: 16px; }
@@ -112,7 +112,7 @@ img { max-width: 100%; display: block; }
 .info-card ul li i { color: var(--teal-dark); margin-top: 3px; }
 
 .cta-band-final { background: var(--teal); padding: 44px; display: flex;
-    align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin: 60px 0; }
+    align-items: center; justify-content: center; gap: 150px; flex-wrap: wrap; margin: 60px 0; }
 .cta-band-final h3 { color: #fff; font-size: 1.4rem; margin-bottom: 6px; }
 .cta-band-final p { color: rgba(255,255,255,.92); margin: 0; }
 .cta-band-final .actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
