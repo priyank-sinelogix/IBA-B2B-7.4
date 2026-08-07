@@ -1,6 +1,6 @@
 <header class="site-nav wrap">
     <a href="{{ url('/') }}" class="brand">
-        <img src="{{ asset('images/site/logo.jpg') }}" alt="Sewgo" class="logo">
+        <img src="{{ asset('images/site/logo.png') }}" alt="Sewgo" class="logo">
     </a>
 
     <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>

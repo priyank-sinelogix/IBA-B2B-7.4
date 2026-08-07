@@ -2,7 +2,7 @@
     <div class="wrap">
         <div class="footer-grid">
             <div class="footer-brand">
-                <img src="{{ asset('images/site/logo.jpg') }}" alt="Sewgo" class="logo">
+                <img src="{{ asset('images/site/logo.png') }}" alt="Sewgo" class="logo">
                 <p>Sewgo is a technology-powered Just In Time garment manufacturing platform that helps fashion brands produce only what sells — faster, smarter and better for the planet.</p>
                 <div class="footer-social">
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>

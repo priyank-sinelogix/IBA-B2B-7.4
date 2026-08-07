@@ -52,7 +52,7 @@
 <div class="footer-bottom-simple">
     <div class="footer-bottom-wrap">
         <div class="footer-bottom-item footer-left">
-            <img src="{{ asset('images/site/logo.jpg') }}" alt="Sewgo" class="logo">
+            <img src="{{ asset('images/site/logo.png') }}" alt="Sewgo" class="logo">
         </div>
 
         <div class="footer-bottom-item footer-center">
