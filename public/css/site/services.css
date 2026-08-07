@@ -3,6 +3,14 @@
    ============================================ */
 
 .services-grid { grid-template-columns: repeat(4, 1fr); }
+.services-grid .info-card { text-align: center; }
+.info-card .icon-circle { width: 85px; height: 85px; }
+.services-grid .info-card .icon-circle { margin-left: auto; margin-right: auto; }
+.services-grid .info-card .icon-circle img { width: 70px; height: 70px; object-fit: contain; }
+
+.stat-band .stat .lbl strong { display: block; color: #fff; font-weight: 700; font-size: .85rem; margin-bottom: 2px; }
+
+.icon-grid.cols-5 .icon-card .icon-circle img { width: 60px; height: 60px; object-fit: contain; }
 
 @media (max-width: 900px) {
     .services-grid { grid-template-columns: 1fr 1fr; }
