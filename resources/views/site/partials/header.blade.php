@@ -8,10 +8,10 @@
     <ul class="nav-links" id="navLinks">
         <li><a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">Home</a></li>
         <li><a href="{{ url('/how-jit-works') }}" class="{{ request()->is('how-jit-works') ? 'active' : '' }}">How JIT Works</a></li>
-        <li><a href="{{ url('/services') }}" class="{{ request()->is('services') ? 'active' : '' }}">Services</a></li>
-        <li><a href="{{ url('/awards') }}" class="{{ request()->is('awards') ? 'active' : '' }}">Awards</a></li>
-        <li><a href="{{ url('/sustainability') }}" class="{{ request()->is('sustainability') ? 'active' : '' }}">Sustainability</a></li>
         <li><a href="{{ url('/about') }}" class="{{ request()->is('about') ? 'active' : '' }}">About</a></li>
+        <li><a href="{{ url('/services') }}" class="{{ request()->is('services') ? 'active' : '' }}">Services</a></li>
+        <li><a href="{{ url('/sustainability') }}" class="{{ request()->is('sustainability') ? 'active' : '' }}">Sustainability</a></li>
+        <li><a href="{{ url('/awards') }}" class="{{ request()->is('awards') ? 'active' : '' }}">Awards</a></li>
         <li><a href="{{ url('/media') }}" class="{{ request()->is('media') ? 'active' : '' }}">Media</a></li>
         <li><a href="{{ url('/contact') }}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a></li>
         <li><a href="{{ url('/login') }}" class="{{ request()->is('partner-login') ? 'active' : '' }}">Partner Login</a></li>

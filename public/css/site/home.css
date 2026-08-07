@@ -112,10 +112,6 @@ section.home-hero.wrap {
 }
 .step-arrow { color: var(--border); font-size: 1.2rem; align-self: center; }
 
-.cta-band-final .actions { align-items: flex-start; }
-/* .cta-band-final  {background: linear-gradient(90deg, #0f2a4a 0%, #12395b 35%, #0b6c72 75%, #0e5843 100%);} */
-.action-item { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-.action-caption { font-size: .8rem; color: rgba(255,255,255,.85); display: inline-flex; align-items: center; gap: 6px; }
 
 @media (max-width: 900px) {
     .home-hero { min-height: 0; flex-direction: column; align-items: stretch; }
