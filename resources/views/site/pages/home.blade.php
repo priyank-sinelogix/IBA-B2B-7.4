@@ -39,15 +39,7 @@
     </div>
 </section>
 
-<div class="wrap stat-band">
-    <div class="stat-band-grid" style="grid-template-columns: repeat(5,1fr);">
-        <div class="stat"><i class="far fa-clock"></i><div><div class="num">48H</div><div class="lbl">Dispatch (Speed you can trust)</div></div></div>
-        <div class="stat"><i class="fas fa-user"></i><div><div class="num">1 MOQ</div><div class="lbl">No inventory, Order as low as 1 piece</div></div></div>
-        <div class="stat"><i class="fas fa-tshirt"></i><div><div class="num">1000+</div><div class="lbl">Styles Delivered Monthly</div></div></div>
-        <div class="stat"><i class="fas fa-globe"></i><div><div class="num">40+</div><div class="lbl">JIT-Enabled Manufacturing Units</div></div></div>
-        <div class="stat"><i class="fas fa-industry"></i><div><div class="num">10M+</div><div class="lbl">Garments Produced Annually</div></div></div>
-    </div>
-</div>
+@include('site.partials.stat-band-standard')
 
 <section class="wrap section">
     <div class="why-sewgo">
@@ -108,7 +100,7 @@
             
             <!-- <div class="brand-card-media"><img src="{{ asset('images/site/BuiltforYourBrand.jpg') }} alt=""></div> -->
         </div>
-        <div class="brand-card tint-pink">
+        <div class="brand-card tint-teal">
             <div>
                 <h3>Better for Your Customer</h3>
                 <ul>

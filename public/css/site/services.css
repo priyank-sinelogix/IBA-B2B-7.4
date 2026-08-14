@@ -4,12 +4,25 @@
 
 .services-grid { grid-template-columns: repeat(4, 1fr); }
 .services-grid .info-card { text-align: center; }
-.info-card .icon-circle { width: 85px; height: 85px; }
-.services-grid .info-card .icon-circle { margin-left: auto; margin-right: auto; }
-.services-grid .info-card .icon-circle img { width: 70px; height: 70px; object-fit: contain; }
+.services-grid .info-card .services-icon { width: 70px; height: 70px; object-fit: contain; margin: 0 auto 14px; }
 
-.icon-grid.cols-5 .icon-card .icon-circle img { width: 60px; height: 60px; object-fit: contain; }
+.icon-grid.cols-5 .icon-card .services-icon { width: 60px; height: 60px; object-fit: contain; margin: 0 auto 14px; }
+
+.cta-band-final.services-cta-final {
+    background: var(--bg-mint); border-radius: 14px; justify-content: flex-start;
+    flex-wrap: nowrap; gap: 24px; padding: 26px 30px;
+}
+.services-cta-icon { width: 56px; height: 56px; object-fit: contain; flex-shrink: 0; }
+.services-cta-final .cta-band-final-text { text-align: left; min-width: 0; flex: 1; }
+.services-cta-final .cta-band-final-text h3 { color: var(--navy); font-size: 1.2rem; margin-bottom: 4px; }
+.services-cta-final .cta-band-final-text p { color: var(--muted); }
+.services-cta-final .btn-white {
+    background: var(--teal-dark); color: #fff; flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 8px;
+}
 
 @media (max-width: 900px) {
     .services-grid { grid-template-columns: 1fr 1fr; }
+    .cta-band-final.services-cta-final { flex-direction: column; text-align: center; flex-wrap: wrap; }
+    .services-cta-final .cta-band-final-text { text-align: center; }
 }

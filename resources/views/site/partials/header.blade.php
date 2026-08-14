@@ -11,6 +11,7 @@
         <li><a href="{{ url('/about') }}" class="{{ request()->is('about') ? 'active' : '' }}">About</a></li>
         <li><a href="{{ url('/services') }}" class="{{ request()->is('services') ? 'active' : '' }}">Services</a></li>
         <li><a href="{{ url('/sustainability') }}" class="{{ request()->is('sustainability') ? 'active' : '' }}">Sustainability</a></li>
+        <li><a href="{{ url('/who-we-help') }}" class="{{ request()->is('who-we-help') ? 'active' : '' }}">Who We Help</a></li>
         <li><a href="{{ url('/awards') }}" class="{{ request()->is('awards') ? 'active' : '' }}">Awards</a></li>
         <li><a href="{{ url('/media') }}" class="{{ request()->is('media') ? 'active' : '' }}">Media</a></li>
         <li><a href="{{ url('/contact') }}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a></li>

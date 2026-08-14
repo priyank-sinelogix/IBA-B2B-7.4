@@ -188,8 +188,8 @@
     </div>
 </div>
 <div class="wrap">
-    <div class="cta-band-final" style="background: linear-gradient(90deg, #0f2a4a 0%, #12395b 35%, #0b6c72 75%, #0e5843 100%);margin:0;">
-        <div><h3>Ready to Launch with JIT?</h3><p>Grow your brand without inventory risk. Let Sewgo handle production, so you can focus on sales.</p></div>
+    <div class="cta-band-final jit-cta-final" style="background: linear-gradient(90deg, #0f2a4a 0%, #12395b 35%, #0b6c72 75%, #0e5843 100%);margin:0;">
+        <div class="cta-band-final-text"><h3>Ready to Launch with JIT?</h3><p>Grow your brand without inventory risk. Let Sewgo handle production, so you can focus on sales.</p></div>
         <div class="actions">
             <div class="action-item">
                 <a href="{{ url('/contact') }}" class="btn-white"><i class="far fa-calendar-check"></i> Book a Discovery Call</a>

@@ -2,6 +2,17 @@
    Sewgo Marketing Site — how-jit-works.css
    ============================================ */
 
+.cta-band-final.jit-cta-final { flex-wrap: nowrap; justify-content: space-between; gap: 40px; padding: 40px 44px; }
+.jit-cta-final .cta-band-final-text { text-align: left; min-width: 0; }
+.jit-cta-final .cta-band-final-text h3 { white-space: nowrap; }
+.jit-cta-final .actions { flex-shrink: 0; flex-wrap: nowrap; }
+
+@media (max-width: 900px) {
+    .cta-band-final.jit-cta-final { flex-direction: column; flex-wrap: wrap; text-align: center; }
+    .jit-cta-final .cta-band-final-text { text-align: center; }
+    .jit-cta-final .cta-band-final-text h3 { white-space: normal; }
+}
+
 section.jit-hero.wrap { max-width: none; 
     /* padding: 0; margin: 0;  */
 }
@@ -44,7 +55,7 @@ section.jit-hero.wrap { max-width: none;
 .jit-flow .step-arrow { color: var(--muted); font-size: .78rem; align-self: center; flex-shrink: 0; }
 
 .trigger-row { display: flex; align-items: center; gap: 50px; }
-.trigger-text { flex: 0 0 360px; max-width: 360px; }
+.trigger-text { flex: 0 0 400px; max-width: 400px; }
 .trigger-text h2 { font-size: 1.6rem; margin-bottom: 10px; }
 .trigger-text > p { color: var(--muted); font-size: .9rem; margin-bottom: 20px; }
 .trigger-checklist { list-style: none; margin: 0; padding: 0; }
