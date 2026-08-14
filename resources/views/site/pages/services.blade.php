@@ -27,15 +27,7 @@
         <div class="info-card"><div class="icon-circle"><img src="{{ asset('images/site/Services/SustainablePractices.png') }}" alt=""></div><h3>Sustainable Practices</h3><p>Eco-friendly materials, responsible production and less waste for a better tomorrow.</p></div>
     </div>
 </div>
-<div class="wrap stat-band">
-    <div class="stat-band-grid" style="grid-template-columns: repeat(5,1fr);">
-        <div class="stat"><img src="{{ asset('images/site/Services/icon/Dispatch.png') }}" alt=""><div><div class="num">48H</div><div class="lbl"><strong>Dispatch</strong>Speed you can trust</div></div></div>
-        <div class="stat"><img src="{{ asset('images/site/Services/icon/MOQ.png') }}" alt=""><div><div class="num">1 MOQ</div><div class="lbl"><strong>Minimum Order</strong>As low as 1 piece</div></div></div>
-        <div class="stat"><img src="{{ asset('images/site/Services/icon/Sizes.png') }}" alt=""><div><div class="num">1000+</div><div class="lbl"><strong>Brands Served</strong>Globally</div></div></div>
-        <div class="stat"><img src="{{ asset('images/site/Services/icon/Shipping.png') }}" alt=""><div><div class="num">40+</div><div class="lbl"><strong>Countries</strong>We ship worldwide</div></div></div>
-        <div class="stat"><img src="{{ asset('images/site/Services/icon/Brands.png') }}" alt=""><div><div class="num">10M+</div><div class="lbl"><strong>Garments Produced</strong>And counting</div></div></div>
-    </div>
-</div>
+@include('site.partials.stat-band-standard')
 
 
 <div class="wrap section" style="">

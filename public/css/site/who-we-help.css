@@ -2,8 +2,96 @@
    Sewgo Marketing Site — who-we-help.css
    ============================================ */
 
-.who-we-help-grid { grid-template-columns: repeat(3, 1fr); }
+section.whh-hero.wrap { 
+    /* max-width: none; padding: 0; margin: 0;  */
+}
+.whh-hero { position: relative; min-height: 500px; display: flex; align-items: center; overflow: hidden; background: #fff; }
+.whh-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.whh-hero::before {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, #fff 0%, #fff 34%, rgba(255,255,255,.82) 54%, rgba(255,255,255,0) 80%);
+}
+.whh-hero-content {
+    position: relative; z-index: 2; max-width: 620px;
+    padding: 50px 24px 50px max(24px, calc((100vw - 1180px) / 0 + 24px));
+}
+.whh-hero-content .mini-stats { margin-top: 26px; gap: 0; flex-wrap: nowrap; }
+.whh-hero-content .mini-stat {
+    flex-direction: column; align-items: center; text-align: center; gap: 8px;
+    flex: 1 1 0; min-width: 0; padding: 0 18px;
+}
+.whh-hero-content .mini-stat:first-child { padding-left: 0; }
+.whh-hero-content .mini-stat:not(:first-child) { border-left: 1px solid var(--border); }
+.whh-hero-content .mini-stat img { width: 26px; height: 26px; object-fit: contain; }
+.whh-hero-content .mini-stat strong { color: var(--navy); font-size: .82rem; }
+.whh-hero-content .mini-stat > div { font-size: .74rem; color: var(--muted); line-height: 1.35; }
+
+.icon-grid.cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+.why-model-grid .icon-card { position: relative; padding: 0 14px; }
+.why-model-grid .icon-card:not(:first-child)::before {
+    content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px; background: var(--border);
+}
+.why-model-grid .icon-card .icon-circle {
+    width: auto; height: auto; background: transparent; border-radius: 0; margin: 0 auto 14px;
+}
+.why-model-grid .icon-card .icon-circle img { width: 42px; height: 42px; object-fit: contain; }
+.why-model-grid .icon-card h4 { color: var(--navy); font-size: .88rem; min-height: 2.3em; }
+.why-model-grid .icon-card p { font-size: .78rem; min-height: 2.2em; }
+
+.whh-cta-final { position: relative; overflow: hidden; border-radius: 14px;
+    justify-content: space-between; flex-wrap: nowrap; padding: 30px 40px; gap: 30px; }
+.whh-cta-icon { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; }
+.whh-cta-final .cta-band-final-text { text-align: left; min-width: 0; flex: 1; }
+.whh-cta-final .actions { flex-shrink: 0; flex-wrap: nowrap; }
+.whh-cta-final .btn-white,
+.whh-cta-final .btn-ghost { display: flex; align-items: center; gap: 8px; border-radius: 10px; }
+.whh-cta-final .btn-white i,
+.whh-cta-final .btn-ghost i { font-size: 15px; }
 
 @media (max-width: 900px) {
+    .whh-cta-final { flex-direction: column; text-align: center; padding: 26px 20px; flex-wrap: wrap; }
+    .whh-cta-final .cta-band-final-text { text-align: center; }
+}
+
+.supports-grid .icon-card {
+    border: 1px solid var(--border); border-radius: 14px; padding: 28px 20px; background: #fff;
+}
+.supports-grid .icon-card .icon-circle {
+    width: auto; height: auto; background: transparent; border-radius: 0; margin: 0 auto 16px;
+}
+.supports-grid .icon-card .icon-circle img { width: 60px; height: 60px; object-fit: contain; }
+.supports-grid .icon-card h4 { color: var(--navy); font-size: 1rem; }
+.supports-grid .icon-card p { font-size: .82rem; }
+
+.who-we-help-grid { grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.who-we-help-grid .info-card { padding: 26px 18px; text-align: center; }
+.who-we-help-grid .info-card .icon-circle {
+    width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 16px; font-size: 1.4rem;
+}
+.who-we-help-grid .info-card .icon-circle img { width: 50px; height: 50px; object-fit: contain; }
+.who-we-help-grid .info-card h3 { font-size: .95rem; margin-bottom: 6px; min-height: 2.5em; }
+.who-we-help-grid .info-card > p { font-size: .8rem; margin-bottom: 14px; min-height: 2.4em; }
+.who-we-help-grid .info-card ul { text-align: left; }
+.who-we-help-grid .info-card ul li i {
+    width: 16px; height: 16px; border-radius: 50%; background: transparent; border: 1.5px solid var(--teal-dark); color: var(--teal-dark);
+    display: flex; align-items: center; justify-content: center; font-size: .55rem; margin-top: 1px; flex-shrink: 0;
+}
+
+@media (max-width: 1100px) {
+    .who-we-help-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+    .whh-hero { min-height: 0; flex-direction: column; align-items: stretch; }
+    .whh-hero-bg { position: relative; height: 260px; }
+    .whh-hero::before { display: none; }
+    .whh-hero-content { max-width: none; padding: 30px 24px; }
     .who-we-help-grid { grid-template-columns: 1fr; }
+    .icon-grid.cols-6 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 700px) {
+    .who-we-help-grid { grid-template-columns: 1fr 1fr; }
+    .icon-grid.cols-6 { grid-template-columns: repeat(2, 1fr); }
 }
