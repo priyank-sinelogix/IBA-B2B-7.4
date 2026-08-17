@@ -65,7 +65,7 @@ img { max-width: 100%; display: block; }
 .hero-split p.lead { color: var(--muted); font-size: 1.05rem; max-width: 480px; }
 .hero-split img, .hero-media { border-radius: 16px; box-shadow: 0 20px 50px rgba(15,42,74,.14); }
 
-.hero-dark { background: linear-gradient(120deg, var(--navy), var(--navy-dark)); color: #fff; padding: 70px 0; position: relative; overflow: hidden; }
+.hero-dark { background: linear-gradient(120deg, var(--navy), var(--navy-dark)); color: #fff; padding: 125px 0; position: relative; overflow: hidden; }
 .hero-dark img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .28; }
 .hero-dark .wrap { position: relative; z-index: 2; }
 .hero-dark h1 { color: #fff; font-size: 2.5rem; margin-bottom: 14px; }

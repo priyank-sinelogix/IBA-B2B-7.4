@@ -5,16 +5,20 @@
 .awards-grid { grid-template-columns: repeat(3, 1fr); }
 .badge-card { display: flex; flex-direction: column; }
 .badge-card .badge-logo { height: 70px; max-width: 160px; object-fit: contain; margin-bottom: 14px; }
-.awards-stats-panel { background: var(--bg-mint); padding: 30px 0; }
-.stats-row-icons { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
-.stat-icon-item { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 190px; }
+.badge-card .badge-icon { width: 150px; height: auto; object-fit: contain; margin-bottom: 14px; }
+.awards-stats-panel { background: var(--bg-mint); padding: 24px 44px;  }
+.stats-row-icons { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0; }
+.stat-icon-item { display: flex; align-items: center; gap: 14px; flex: 1 1 0; min-width: 0; padding: 0 24px; position: relative; }
+.stat-icon-item:first-child { padding-left: 0; }
+.stat-icon-item:last-child { padding-right: 0; }
+.stat-icon-item:not(:first-child)::before { content: ''; position: absolute; left: -1px; top: 4px; bottom: 4px; width: 1px; background: var(--border); }
 .stat-icon-item img { width: 46px; height: 46px; object-fit: contain; flex-shrink: 0; }
 .stat-icon-item strong { display: block; font-size: 1.05rem; color: var(--navy); }
 .stat-icon-item span { font-size: .85rem; color: var(--muted); }
 
 .awards-cta { border-radius: 0; padding: 50px 0; }
-.awards-cta-inner { display: flex; align-items: center; gap: 34px; }
-.awards-cta-icon { width: 90px; height: 90px; object-fit: contain; flex-shrink: 0; }
+.awards-cta-inner { display: flex; align-items: center; gap: 50px; }
+.awards-cta-icon { width: 120px; height: 120px; object-fit: contain; flex-shrink: 0; }
 .awards-cta-text { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .awards-cta-text p { margin: 0; }
 .awards-cta-text .btn-teal { margin-top: 8px; }
