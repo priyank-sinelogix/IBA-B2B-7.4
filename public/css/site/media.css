@@ -2,9 +2,39 @@
    Sewgo Marketing Site — media.css
    ============================================ */
 
-.media-logo-row { row-gap: 24px; }
+.media-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.media-stat-card {
+    background: #fff; border-radius: 12px; box-shadow: 0 6px 16px rgba(15,42,74,.06);
+    padding: 18px 20px; display: flex; align-items: center; justify-content: center; gap: 14px;
+}
+.media-stat-card img { width: auto; height: 60px; object-fit: contain; flex-shrink: 0; }
+.media-stat-card strong { display: block; color: var(--navy); font-size: 1.15rem; font-weight: 800; }
+.media-stat-card span { font-size: .82rem; color: var(--muted); }
 
-.subscribe-box { background: var(--bg-soft); border-radius: 16px; padding: 30px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-.subscribe-box .icon-circle { background: #fff; }
+.media-section-head { position: relative; padding-bottom: 16px; }
+.media-section-head::after {
+    content: ''; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+    width: 140px; height: 3px; border-radius: 2px; background: var(--teal-dark);
+}
+
+.media-featured-section { padding-bottom: 40px; }
+.media-divider { border: none; border-top: 1px solid var(--border); width: 70%; margin: 0 auto;margin-bottom: 50px; }
+
+.media-logo-row { row-gap: 24px; }
+.media-logo-row img { height: 75px; width: auto; max-width: 140px; object-fit: contain; }
+
+.subscribe-box { background: var(--bg-mint); padding: 44px 10px; display: flex; align-items: center; justify-content: center; gap: 50px; flex-wrap: wrap; }
+.subscribe-icon { width: 120px; height: 90px; object-fit: contain; flex-shrink: 0; }
 .subscribe-box form { display: flex; gap: 10px; }
 .subscribe-box input[type="email"] { padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; min-width: 220px; }
+
+@media (max-width: 700px) {
+    .media-stats-grid { grid-template-columns: 1fr; }
+}
+
+.logo-row {
+filter:none;
+}
+.media-card{
+    border-bottom:none;
+}
