@@ -49,20 +49,73 @@
 
 <div class="wrap section" style="padding-top:0;">
     <div class="section-head media-section-head"><h2>Latest Highlights</h2></div>
-    <div>
-        <div class="media-card">
-            <img src="{{ asset('images/site/Media/Highlight/OnDemandManufacturing.jpg') }}" alt="">
-            <div><h4>Sewgo on the Future of On-Demand Manufacturing</h4><p>Our Co-founder shares insights on how JIT is solving inventory challenges for global fashion brands.</p><a href="#">Watch Interview →</a></div>
+    @php
+        $pressItems = [
+            ['the_hindu.png', 'The Hindu', '1.jpg'],
+            ['yahoo.png', 'Yahoo News', 'Yahoo-small.jpg'],
+            ['the_asian_age.png', 'The Asian Age', '2.png'],
+            ['financial_express.png', 'Financial Express', '3.jpg'],
+            ['the_hindu.png', 'The Hindu', '4.jpg'],
+            ['Business_standard.png', 'Business Standard', '5.png'],
+            ['thenew_indianexpress_red.png', 'The New Indian Express', '6.jpg'],
+            ['thenew_indianexpress_red.png', 'The New Indian Express', '7.jpg'],
+            ['thenew_indianexpress_red.png', 'The New Indian Express', '8.jpg'],
+            ['sme_world.png', 'SME World', '9.png'],
+            ['deccan_herald.png', 'Deccan Herald', '11.png'],
+            ['morning_standard.png', 'Morning Standard', '12.jpg'],
+            ['the-times-of-india.png', 'The Times of India', '13.jpg'],
+            ['the_sunday_guardian.png', 'The Sunday Guardian', '14.jpg'],
+            ['the-news-of-india.png', 'The News of India', '1.svg'],
+            ['financial_express.png', 'Financial Express', '2.svg'],
+            ['smart_water_and_waste.png', 'Smart Water &amp; Waste', '3.svg'],
+            ['financial_express.png', 'Financial Express', '4.svg'],
+            ['press_trust_india.png', 'Press Trust of India', '5.svg'],
+            ['fibre2fashion.png', 'Fibre2Fashion', 'Fashion.JPG'],
+            ['CNBC-Logo-Square.png', 'CNBC', 'CNBC.png'],
+            ['bloomberg-news.png', 'Bloomberg', 'Bloomberg.png'],
+            ['outlook_media.png', 'Outlook Media', '2.JPG'],
+            ['yourStory.PNG', 'YourStory', 'yourStory.PNG'],
+            ['the_week.png', 'The Week', '3.JPG'],
+            ['REPUBLIC.png', 'Republic', '33.JPG'],
+            ['thenew_indianexpress_red.png', 'The New Indian Express', '5.jpg'],
+            ['project_hatch.png', 'Project Hatch', 'Capture.JPG'],
+            ['smart_water_and_waste.png', 'Smart Water &amp; Waste', '12-Capture.JPG'],
+            ['thehindu_business_line.png', 'The Hindu Business Line', '88.JPG'],
+            ['deccan_herald.png', 'Deccan Herald', '9-Capture.JPG'],
+            ['thenew_indianexpress_red.png', 'The New Indian Express', '10-Capture.JPG'],
+            ['txtile_value_chain.png', 'Textile Value Chain', '11-111.JPG'],
+            ['the_sunday_guardian.png', 'The Sunday Guardian', 'Capture.JPG'],
+            ['financial_express.png', 'Financial Express', '13-Capture.JPG'],
+            ['the-news-of-india.png', 'The News of India', '14-Capture.JPG'],
+            ['Rretailer.png', 'Retailer', '15-Capture.JPG'],
+            ['smb_story.png', 'SMB Story', '16-Capture.JPG'],
+            ['silicon_india.png', 'Silicon India', '17-17.JPG'],
+            ['deccan_herald.png', 'Deccan Herald', '7-Capture.JPG'],
+            ['thehindu_business_line.png', 'The Hindu Business Line', '8-Capture.JPG'],
+            ['thenew_indianexpress_red.png', 'The New Indian Express', '21-21.JPG'],
+            ['outlook_media.png', 'Outlook Media', '21-21.JPG'],
+            ['Business_standard.png', 'Business Standard', '11-Capture.JPG'],
+            ['rediffdotcom.png', 'Rediff', '11-Capture.JPG'],
+            ['ciol.png', 'CIOL', '12-Capture.JPG'],
+            ['franchiseindia.png', 'Franchise India', '13-Capture.JPG'],
+            ['ENTREPENEUR.png', 'Entrepreneur', '14-Capture.JPG'],
+            ['the-news-of-india.png', 'The News of India', '15-Capture.JPG'],
+            ['financial_express.png', 'Financial Express', '16-Capture.JPG'],
+        ];
+    @endphp
+    <div class="press-grid">
+        @foreach ($pressItems as [$logo, $name, $clip])
+        <div class="press-card" data-clip="{{ asset('images/site/Media/Press/'.$clip) }}" data-name="{{ $name }}">
+            <img class="press-logo" src="{{ asset('images/site/Media/LogoMedia/'.$logo) }}" alt="{{ $name }}">
+            <img class="press-clip" src="{{ asset('images/site/Media/Press/'.$clip) }}" alt="">
         </div>
-        <div class="media-card">
-            <img src="{{ asset('images/site/Media/Highlight/SustainableSupplyChain.jpg') }}" alt="">
-            <div><h4>Building a Sustainable Fashion Supply Chain</h4><p>Feature story on our technology-led manufacturing model and sustainability mission.</p><a href="#">Read Article →</a></div>
-        </div>
-        <div class="media-card">
-            <img src="{{ asset('images/site/Media/Highlight/JitTransformingFashion.jpg') }}" alt="">
-            <div><h4>How JIT Manufacturing is Transforming Fashion</h4><p>Sewgo featured in leading business magazine for innovation in agile manufacturing.</p><a href="#">Read More →</a></div>
-        </div>
+        @endforeach
     </div>
+</div>
+
+<div class="press-modal" id="pressModal">
+    <span class="press-modal-close" id="pressModalClose">&times;</span>
+    <img id="pressModalImg" src="" alt="">
 </div>
 
 <div class="wrap" style="">
@@ -80,3 +133,33 @@
     </div>
 </div>
 @endsection
+
+@push('page-scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var modal = document.getElementById('pressModal');
+    var modalImg = document.getElementById('pressModalImg');
+    var closeBtn = document.getElementById('pressModalClose');
+
+    document.querySelectorAll('.press-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+            modalImg.src = card.dataset.clip;
+            modalImg.alt = card.dataset.name || '';
+            modal.classList.add('open');
+        });
+    });
+
+    function closeModal() {
+        modal.classList.remove('open');
+        modalImg.src = '';
+    }
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+    });
+});
+</script>
+@endpush

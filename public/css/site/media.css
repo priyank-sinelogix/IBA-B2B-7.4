@@ -28,8 +28,38 @@
 .subscribe-box form { display: flex; gap: 10px; }
 .subscribe-box input[type="email"] { padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; min-width: 220px; }
 
+.press-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.press-card {
+    background: var(--bg-soft); border-radius: 12px; padding: 14px; height: 320px; cursor: pointer;
+    display: flex; flex-direction: column; transition: transform .15s, box-shadow .15s;
+}
+.press-card:hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(15,42,74,.1); }
+.press-logo { height: 26px; width: auto; max-width: 100%; object-fit: contain; margin-bottom: 10px; flex-shrink: 0; }
+.press-clip {
+    flex: 1; min-height: 0; width: 100%; object-fit: cover; display: block; background: #fff;
+    border: 1px solid var(--border); border-radius: 4px; box-shadow: 0 2px 8px rgba(15,42,74,.08);
+}
+
+.press-modal {
+    display: none; position: fixed; inset: 0; z-index: 999; background: rgba(10,20,35,.85);
+    align-items: center; justify-content: center; padding: 40px 20px;
+}
+.press-modal.open { display: flex; }
+.press-modal img {
+    max-width: 100%; max-height: 90vh; border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,.4); background: #fff;
+}
+.press-modal-close {
+    position: absolute; top: 20px; right: 30px; color: #fff; font-size: 2.2rem; font-weight: 300;
+    cursor: pointer; line-height: 1;
+}
+
+@media (max-width: 900px) {
+    .press-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 700px) {
     .media-stats-grid { grid-template-columns: 1fr; }
+    .press-grid { grid-template-columns: 1fr; }
 }
 
 .logo-row {
