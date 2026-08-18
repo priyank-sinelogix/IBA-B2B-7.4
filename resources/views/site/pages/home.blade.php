@@ -174,10 +174,10 @@
 <section class="wrap" style="padding-bottom:30px;">
     <div class="sustain-band">
         <div class="wrap-inner">
-            <div class="item"><img src="{{ asset('images/site/SustainableDesign.png') }}" alt=""><div><strong>Sustainable by Design</strong><span>We produce only what's sold. Together, we build a more sustainable tomorrow.</span></div></div>
-            <div class="item"><img src="{{ asset('images/site/WaterSaved.png') }}" alt=""><div><strong>10M+</strong><span>Liters of Water Saved</span></div></div>
-            <div class="item"><img src="{{ asset('images/site/LessWaste.png') }}" alt=""><div><strong>Less Waste</strong><span>Zero Overproduction</span></div></div>
-            <div class="item"><img src="{{ asset('images/site/LowerCarbon.png') }}" alt=""><div><strong>Lower Carbon</strong><span>Lower Supply Chain</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/SustainableDesign2.png') }}" alt=""><div><strong>Sustainable by Design</strong><span>We produce only what's sold. Together, we build a more sustainable tomorrow.</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/WaterSaved2.png') }}" alt=""><div><strong>10M+</strong><span>Liters of Water Saved</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/LessWaste2.png') }}" alt=""><div><strong>Less Waste</strong><span>Zero Overproduction</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/LowerCarbon2.png') }}" alt=""><div><strong>Lower Carbon</strong><span>Lower Supply Chain</span></div></div>
         </div>
     </div>
 </section>

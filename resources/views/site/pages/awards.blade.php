@@ -7,7 +7,7 @@
 
 @section('content')
 <div class="wrap hero-dark">
-    <img class="bg" src="{{ asset('images/site/Awards/AwardBanner.JPG') }}" alt="">
+    <img class="bg" src="{{ asset('images/site/Awards/AwardBanner.jpg') }}" alt="">
     <div class="wrap">
         <h1>Awards &amp; Recognitions</h1>
         <p class="lead">Milestones that inspire us to innovate, excel and create impact every day.</p>

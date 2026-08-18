@@ -87,7 +87,7 @@ section.home-hero.wrap {
 .sustain-band .wrap-inner { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; align-items: center; gap: 24px; color: #fff; }
 .sustain-band .item { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .sustain-band .item:not(:first-child) { border-left: 1px solid rgba(255,255,255,.22); padding-left: 24px; }
-.sustain-band .item img { width: 34px; height: 34px; object-fit: contain; flex-shrink: 0; }
+.sustain-band .item img { width: auto; height: 55px; object-fit: contain; flex-shrink: 0; }
 .sustain-band .item strong { display: block; font-size: .95rem; }
 .sustain-band .item span { font-size: .78rem; color: #b9c7d5; }
 
