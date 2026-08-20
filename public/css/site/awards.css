@@ -3,7 +3,7 @@
    ============================================ */
 
 .awards-grid { grid-template-columns: repeat(3, 1fr); }
-.badge-card { display: flex; flex-direction: column; }
+.badge-card { display: flex; flex-direction: column; background: #fff;}
 .badge-card .badge-logo { height: 70px; max-width: 160px; object-fit: contain; margin-bottom: 14px; }
 .badge-card .badge-icon { width: 150px; height: auto; object-fit: contain; margin-bottom: 14px; }
 .awards-stats-panel { background: var(--bg-mint); padding: 24px 44px;  }
