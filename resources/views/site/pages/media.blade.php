@@ -102,24 +102,25 @@
             ['the-news-of-india.png', 'The News of India', '15-Capture.jpg'],
             ['financial_express.png', 'Financial Express', '16-Capture.jpg'],
             // New
-            ['businessnewsthisweek_logo.png', 'Business News This Week', 'businessnewsthisweek.png'],
-            ['Leap_To_Unicorn_logo.png', 'Leap To Unicorn: Season 3', 'Leap_To_Unicorn.jpg'],
-            ['et-logo.webp', 'Featured in The Economic Times', 'et.png'],
-            ['ap_logo.jpg', 'Making Fashion Agile with SOQs & JIT', 'ap.png'],
-            ['TecoyaTrend.png', 'Making Fashion Agile with SOQs & JIT', 'TecoyaTrend.png'],
-            ['Moneymint.png', 'Spreadsheet to Stitch: The Tech-Driven Evolution of Moomaya', 'Moneymint.png'],
-            ['YourStory.png', 'IBA Crafts Is Using Just-In-Time Tech to Eliminate Fashion Waste | Featured on YourStory', 'yourStory2.png'],
-            ['ap_logo.jpg', 'Powered by AI: The future of fashion', 'ap2.png'],
-            ['htsmartcast_logo.webp', 'Sustainability Meets Style: Redefining Fashion | Ft. MooMaya - Nitin Kapoor', 'htsmartcast.png'],
-            ['et-logo.webp', 'Just in time for ultra fast fashion: How a Noida-based manufacturer is churning out clothes on demand', 'et2.png'],
-            ['ap_logo.jpg', '15 Tech Gurus Reshaping Fashion with Cutting-Edge Solutions', 'ap3.png'],
-            ['f2flogo.svg', 'Moomaya, a pioneering force in the fashion world, is redefining style with its unique and sustainable approach.', 'f2f.png'],
-            ['ap_logo.jpg', 'On-demand manufacturing and zero inventory models make waves', 'ap4.png'],
+            ['businessnewsthisweek_logo.png', 'Business News This Week', 'businessnewsthisweek.png','https://businessnewsthisweek.com/business/tally-msme-honours-2026-celebrates-the-entrepreneurs-shaping-indias-growth-story/'],
+            ['Leap_To_Unicorn_logo.png', 'Leap To Unicorn', 'Leap_To_Unicorn.jpg'],
+            ['et-logo.webp', 'The Economic Times', 'et.png','https://m.economictimes.com/small-biz/sme-sector/et-make-in-india-sme-summit-in-noida-highlights-the-citys-potential-as-a-key-manufacturing-hub/amp_articleshow/124869575.cms'],
+            ['ap_logo.jpg', 'Apparel Resources', 'ap.png','https://apparelresources.com/business-news/retail/soq-playbook-start-ups-test-win-scale-fast/'],
+            ['TecoyaTrend.png', 'Tecoya Trend', 'TecoyaTrend.png'],
+            ['Moneymint.png', 'Money Mint', 'Moneymint.png','https://moneymint.com/how-moomaya-turned-spreadsheet-to-stitch-building-4m-fashion-empire/'],
+            ['yourStory.png', 'Your Story', 'yourStory2.png','https://yourstory.com/2025/06/noida-startup-uses-tech-eliminate-fashion-waste'],
+            ['ap_logo.jpg', 'Apparel Resources', 'ap2.png','https://apparelresources.com/technology-news/retail-tech/powered-ai-future-fashion/'],
+            ['htsmartcast_logo.webp', 'HTSmartCast', 'htsmartcast.png','https://www.htsmartcast.com/business-podcasts/startup-beat-2/sustainability-meets-style-redefining-fashion-ft-moomaya-nitin-kapoor'],
+            ['et-logo.webp', 'The Economic Times', 'et2.png','https://economictimes.indiatimes.com/small-biz/entrepreneurship/just-in-time-for-ultra-fast-fashion-how-a-noida-based-manufacturer-is-churning-out-clothes-on-demand/articleshow/112335968.cms'],
+            ['ap_logo.jpg', 'Apparel Resources', 'ap3.png','https://apparelresources.com/technology-news/retail-tech/15-tech-gurus-reshaping-fashion-cutting-edge-solutions/'],
+            ['f2f.png', 'Fibre 2 Fashion', 'f2f.png','https://www.fibre2fashion.com/interviews/industry-speak/moomaya/nitin-kapoor/13809/'],
+            ['ap_logo.jpg', 'Apparel Resources', 'ap4.png','https://apparelresources.com/technology-news/manufacturing-tech/demand-manufacturing-zero-inventory-models-make-waves/'],
         ];
     @endphp
     <div class="press-grid">
-        @foreach ($pressItems as [$logo, $name, $clip])
-        <div class="press-card" data-clip="{{ asset('images/site/Media/Press/'.$clip) }}" data-name="{{ $name }}">
+        @foreach ($pressItems as $item)
+        @php [$logo, $name, $clip] = $item; $link = $item[3] ?? null; @endphp
+        <div class="press-card" data-clip="{{ asset('images/site/Media/Press/'.$clip) }}" data-name="{{ $name }}" @if($link) data-link="{{ $link }}" @endif>
             <img class="press-logo" src="{{ asset('images/site/Media/LogoMedia/'.$logo) }}" alt="{{ $name }}">
             <img class="press-clip" src="{{ asset('images/site/Media/Press/'.$clip) }}" alt="">
         </div>
@@ -157,6 +158,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelectorAll('.press-card').forEach(function (card) {
         card.addEventListener('click', function () {
+            if (card.dataset.link) {
+                window.open(card.dataset.link, '_blank', 'noopener');
+                return;
+            }
             modalImg.src = card.dataset.clip;
             modalImg.alt = card.dataset.name || '';
             modal.classList.add('open');
