@@ -101,6 +101,20 @@
             ['ENTREPENEUR.png', 'Entrepreneur', '14-Capture.jpg'],
             ['the-news-of-india.png', 'The News of India', '15-Capture.jpg'],
             ['financial_express.png', 'Financial Express', '16-Capture.jpg'],
+            // New
+            ['businessnewsthisweek_logo.png', 'Business News This Week', 'businessnewsthisweek.png'],
+            ['Leap_To_Unicorn_logo.png', 'Leap To Unicorn: Season 3', 'Leap_To_Unicorn.jpg'],
+            ['et-logo.webp', 'Featured in The Economic Times', 'et.png'],
+            ['ap_logo.jpg', 'Making Fashion Agile with SOQs & JIT', 'ap.png'],
+            ['TecoyaTrend.png', 'Making Fashion Agile with SOQs & JIT', 'TecoyaTrend.png'],
+            ['Moneymint.png', 'Spreadsheet to Stitch: The Tech-Driven Evolution of Moomaya', 'Moneymint.png'],
+            ['YourStory.png', 'Spreadsheet', 'yourStory2.png'],
+            ['ap_logo.jpg', 'Spreadsheet', 'ap2.png'],
+            ['htsmartcast_logo.webp', 'Spreadsheet', 'htsmartcast.png'],
+            ['et-logo.webp', 'Spreadsheet', 'et2.png'],
+            ['ap_logo.jpg', 'Spreadsheet', 'ap3.png'],
+            ['f2flogo.svg', 'Spreadsheet', 'f2f.png'],
+            ['ap_logo.jpg', 'Spreadsheet', 'ap4.png'],
         ];
     @endphp
     <div class="press-grid">
