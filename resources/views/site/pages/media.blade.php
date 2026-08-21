@@ -108,13 +108,13 @@
             ['ap_logo.jpg', 'Making Fashion Agile with SOQs & JIT', 'ap.png'],
             ['TecoyaTrend.png', 'Making Fashion Agile with SOQs & JIT', 'TecoyaTrend.png'],
             ['Moneymint.png', 'Spreadsheet to Stitch: The Tech-Driven Evolution of Moomaya', 'Moneymint.png'],
-            ['YourStory.png', 'Spreadsheet', 'yourStory2.png'],
-            ['ap_logo.jpg', 'Spreadsheet', 'ap2.png'],
-            ['htsmartcast_logo.webp', 'Spreadsheet', 'htsmartcast.png'],
-            ['et-logo.webp', 'Spreadsheet', 'et2.png'],
-            ['ap_logo.jpg', 'Spreadsheet', 'ap3.png'],
-            ['f2flogo.svg', 'Spreadsheet', 'f2f.png'],
-            ['ap_logo.jpg', 'Spreadsheet', 'ap4.png'],
+            ['YourStory.png', 'IBA Crafts Is Using Just-In-Time Tech to Eliminate Fashion Waste | Featured on YourStory', 'yourStory2.png'],
+            ['ap_logo.jpg', 'Powered by AI: The future of fashion', 'ap2.png'],
+            ['htsmartcast_logo.webp', 'Sustainability Meets Style: Redefining Fashion | Ft. MooMaya - Nitin Kapoor', 'htsmartcast.png'],
+            ['et-logo.webp', 'Just in time for ultra fast fashion: How a Noida-based manufacturer is churning out clothes on demand', 'et2.png'],
+            ['ap_logo.jpg', '15 Tech Gurus Reshaping Fashion with Cutting-Edge Solutions', 'ap3.png'],
+            ['f2flogo.svg', 'Moomaya, a pioneering force in the fashion world, is redefining style with its unique and sustainable approach.', 'f2f.png'],
+            ['ap_logo.jpg', 'On-demand manufacturing and zero inventory models make waves', 'ap4.png'],
         ];
     @endphp
     <div class="press-grid">
