@@ -125,7 +125,15 @@
                         <span class="badge badge-pending ml-2">Pending Client Approval</span>
                     @endif
                 </h3>
-                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addSizeChartRow()"><i class="fas fa-plus mr-1"></i> Add Row</button>
+                <div>
+                    <a href="{{ asset('templates/size-chart-sample.csv') }}" class="btn btn-sm btn-outline-secondary" download><i class="fas fa-download mr-1"></i> Sample CSV</a>
+                    <form action="{{ url('/admin/samples/'.$sample->id.'/size-chart/import-csv') }}" method="POST" enctype="multipart/form-data" style="display:inline-block;" id="sizeChartCsvForm">
+                        @csrf
+                        <input type="file" name="csv_file" accept=".csv,text/csv" id="sizeChartCsvInput" style="display:none;" onchange="document.getElementById('sizeChartCsvForm').submit();">
+                        <button type="button" class="btn btn-sm btn-outline-success" onclick="document.getElementById('sizeChartCsvInput').click();"><i class="fas fa-file-csv mr-1"></i> Upload CSV</button>
+                    </form>
+                    <button type="button" class="btn btn-sm btn-outline-primary" onclick="addSizeChartRow()"><i class="fas fa-plus mr-1"></i> Add Row</button>
+                </div>
             </div>
             <form method="POST" action="{{ url('/admin/samples/'.$sample->id.'/size-chart') }}">
                 @csrf

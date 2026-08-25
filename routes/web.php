@@ -87,6 +87,7 @@ Route::middleware(['auth', 'role:admin,super_admin'])->prefix('admin')->group(fu
     // Admin posting their own point/comment on a sample (visible to the client too)
     Route::post('/samples/{sample}/comment', [\App\Http\Controllers\Admin\Web\SampleController::class, 'storeComment']);
     Route::post('/samples/{sample}/size-chart', [\App\Http\Controllers\Admin\Web\SampleController::class, 'updateSizeChart']);
+    Route::post('/samples/{sample}/size-chart/import-csv', [\App\Http\Controllers\Admin\Web\SampleController::class, 'importSizeChartCsv']);
     Route::get('/samples/{sample}/pdf', [PdfController::class, 'generate']);
 
     // Client-submitted new sample requests

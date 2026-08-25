@@ -80,6 +80,68 @@ class SampleController extends Controller
         return back()->with('success', 'Size chart saved and sent to client for approval.');
     }
 
+    /**
+     * Bulk-replaces the size chart from an uploaded CSV. Expected columns:
+     * Specification,XS,S,M,L,XL,XXL,XXXL,XXXXL,XXXXXL (header row required).
+     */
+    public function importSizeChartCsv(Request $request, Sample $sample)
+    {
+        $request->validate([
+            'csv_file' => 'required|file|mimes:csv,txt|max:2048',
+        ]);
+
+        $handle = fopen($request->file('csv_file')->getRealPath(), 'r');
+        if (! $handle) {
+            return back()->with('error', 'Could not read the uploaded file.');
+        }
+
+        $rows = [];
+        fgetcsv($handle); // skip header row
+
+        while (($line = fgetcsv($handle)) !== false) {
+            $specification = trim($line[0] ?? '');
+            if ($specification === '') {
+                continue;
+            }
+
+            $rows[] = [
+                'specification' => $specification,
+                'xs' => $this->csvNum($line[1] ?? null),
+                's' => $this->csvNum($line[2] ?? null),
+                'm' => $this->csvNum($line[3] ?? null),
+                'l' => $this->csvNum($line[4] ?? null),
+                'xl' => $this->csvNum($line[5] ?? null),
+                'xxl' => $this->csvNum($line[6] ?? null),
+                'xxxl' => $this->csvNum($line[7] ?? null),
+                'xxxxl' => $this->csvNum($line[8] ?? null),
+                'xxxxxl' => $this->csvNum($line[9] ?? null),
+            ];
+        }
+        fclose($handle);
+
+        if (empty($rows)) {
+            return back()->with('error', 'No valid rows found in the CSV file.');
+        }
+
+        $sample->sizeChartRows()->delete();
+
+        foreach ($rows as $i => $row) {
+            \App\Models\SizeChartRow::create($row + ['sample_id' => $sample->id, 'sort_order' => $i]);
+        }
+
+        $sample->update(['size_chart_status' => 'pending', 'size_chart_approved_by' => null, 'size_chart_approved_at' => null]);
+
+        AuditLog::record('sample.size_chart_imported', $sample, null, ['rows' => count($rows)]);
+
+        return back()->with('success', count($rows).' size chart row(s) imported from CSV and sent to client for approval.');
+    }
+
+    private function csvNum($value)
+    {
+        $value = trim((string) $value);
+        return $value === '' ? null : (float) $value;
+    }
+
     public function storeComment(Request $request, Sample $sample)
     {
         $request->validate(['comment' => 'required|string|max:2000']);
