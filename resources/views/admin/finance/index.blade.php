@@ -26,8 +26,13 @@
                     <td class="text-capitalize">{{ str_replace('_',' ',$entry->type) }}</td>
                     <td>{{ $entry->reference_no }}</td>
                     <td>{{ $entry->description }}</td>
-                    <td class="text-right">₹{{ \App\Support\Currency::format($entry->amount) }}</td>
-                    <td class="text-right">₹{{ \App\Support\Currency::format($entry->balance_after) }}</td>
+                    <td class="text-right">
+                        {{ \App\Support\Currency::display($entry->amount, $entry->company->currency) }}
+                        @if($entry->company->currency && !$entry->company->currency->is_base)
+                            <span class="text-muted small d-block">≈ {{ \App\Support\Currency::display(\App\Support\Currency::convert($entry->amount, $entry->company->currency, \App\Models\Currency::base()), \App\Models\Currency::base()) }}</span>
+                        @endif
+                    </td>
+                    <td class="text-right">{{ \App\Support\Currency::display($entry->balance_after, $entry->company->currency) }}</td>
                 </tr>
             @empty
                 <tr><td colspan="7" class="text-center text-muted p-4">No ledger entries yet.</td></tr>

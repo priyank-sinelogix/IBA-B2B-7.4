@@ -12,7 +12,7 @@ class PricingController extends Controller
 {
     public function index(Request $request)
     {
-        $query = SamplePricing::with('sample.company');
+        $query = SamplePricing::with('sample.company.currency');
         if ($request->filled('sample_id')) {
             $query->where('sample_id', $request->get('sample_id'));
         }

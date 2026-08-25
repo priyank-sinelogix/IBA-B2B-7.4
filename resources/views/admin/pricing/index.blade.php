@@ -29,22 +29,23 @@
                     <th class="text-right">Stitching Cost</th>
                     <th class="text-right">COGP</th>
                     <th class="text-right">Margin</th>
-                    <th class="text-right">Price (₹)</th>
+                    <th class="text-right">Price</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
             @forelse($pricings as $p)
+                @php $ccy = optional($p->sample)->company ? $p->sample->company->currency : null; @endphp
                 <tr>
                     <td>{{ $p->style }}</td>
                     <td>{{ $p->fabric }}</td>
-                    <td class="text-right">₹{{ \App\Support\Currency::format($p->fabric_cost) }}</td>
-                    <td class="text-right">₹{{ \App\Support\Currency::format($p->accessories_cost) }}</td>
-                    <td class="text-right">₹{{ \App\Support\Currency::format($p->operational_cost) }}</td>
-                    <td class="text-right">₹{{ \App\Support\Currency::format($p->stitching_cost) }}</td>
-                    <td class="text-right">₹{{ \App\Support\Currency::format($p->cogp) }}</td>
-                    <td class="text-right">₹{{ \App\Support\Currency::format($p->margin) }}</td>
-                    <td class="text-right"><strong>₹{{ \App\Support\Currency::format($p->price_usd) }}</strong></td>
+                    <td class="text-right">{{ \App\Support\Currency::display($p->fabric_cost, $ccy) }}</td>
+                    <td class="text-right">{{ \App\Support\Currency::display($p->accessories_cost, $ccy) }}</td>
+                    <td class="text-right">{{ \App\Support\Currency::display($p->operational_cost, $ccy) }}</td>
+                    <td class="text-right">{{ \App\Support\Currency::display($p->stitching_cost, $ccy) }}</td>
+                    <td class="text-right">{{ \App\Support\Currency::display($p->cogp, $ccy) }}</td>
+                    <td class="text-right">{{ \App\Support\Currency::display($p->margin, $ccy) }}</td>
+                    <td class="text-right"><strong>{{ \App\Support\Currency::display($p->price_usd, $ccy) }}</strong></td>
                     <td>
                         <a href="{{ url('/admin/pricing/'.$p->id.'/edit') }}" class="btn btn-sm btn-outline-secondary">Edit</a>
                         <form method="POST" action="{{ url('/admin/pricing/'.$p->id) }}" class="d-inline" onsubmit="return confirm('Delete this pricing entry?')">

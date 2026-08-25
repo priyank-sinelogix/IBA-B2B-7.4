@@ -10,7 +10,7 @@ class Company extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'code', 'credit_limit', 'current_balance', 'logo_path', 'is_active',
+        'name', 'code', 'currency_id', 'credit_limit', 'current_balance', 'logo_path', 'is_active',
     ];
 
     protected $casts = [
@@ -18,6 +18,11 @@ class Company extends Model
         'current_balance' => 'decimal:2',
         'is_active' => 'boolean',
     ];
+
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class);
+    }
 
     public function users()
     {

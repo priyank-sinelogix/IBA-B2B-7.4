@@ -15,8 +15,21 @@
                     <dt class="col-5">Code</dt><dd class="col-7">{{ $company->code }}</dd>
                     <dt class="col-5">Status</dt>
                     <dd class="col-7">{!! $company->is_active ? '<span class="badge badge-approved">Active</span>' : '<span class="badge badge-changes">Inactive</span>' !!}</dd>
-                    <dt class="col-5">Credit Limit</dt><dd class="col-7">₹{{ \App\Support\Currency::format($company->credit_limit) }}</dd>
-                    <dt class="col-5">Current Balance</dt><dd class="col-7">₹{{ \App\Support\Currency::format($company->current_balance) }}</dd>
+                    <dt class="col-5">Currency</dt><dd class="col-7">{{ optional($company->currency)->code }} ({{ optional($company->currency)->name }})</dd>
+                    <dt class="col-5">Credit Limit</dt>
+                    <dd class="col-7">
+                        {{ \App\Support\Currency::display($company->credit_limit, $company->currency) }}
+                        @if($company->currency && !$company->currency->is_base)
+                            <span class="text-muted small d-block">≈ {{ \App\Support\Currency::display(\App\Support\Currency::convert($company->credit_limit, $company->currency, \App\Models\Currency::base()), \App\Models\Currency::base()) }}</span>
+                        @endif
+                    </dd>
+                    <dt class="col-5">Current Balance</dt>
+                    <dd class="col-7">
+                        {{ \App\Support\Currency::display($company->current_balance, $company->currency) }}
+                        @if($company->currency && !$company->currency->is_base)
+                            <span class="text-muted small d-block">≈ {{ \App\Support\Currency::display(\App\Support\Currency::convert($company->current_balance, $company->currency, \App\Models\Currency::base()), \App\Models\Currency::base()) }}</span>
+                        @endif
+                    </dd>
                     <dt class="col-5">Credit Used</dt><dd class="col-7">{{ $company->creditUsedPercent() }}%</dd>
                     <dt class="col-5">Created</dt><dd class="col-7">{{ $company->created_at->format('d M Y') }}</dd>
                 </dl>
@@ -114,8 +127,8 @@
                         <tr>
                             <td>{{ $le->created_at->format('d M Y') }}</td>
                             <td class="text-capitalize">{{ str_replace('_',' ',$le->type) }}</td>
-                            <td class="text-right">{{ number_format($le->amount, 2) }}</td>
-                            <td class="text-right">{{ number_format($le->balance_after, 2) }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($le->amount, $company->currency) }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($le->balance_after, $company->currency) }}</td>
                         </tr>
                     @empty
                         <tr><td colspan="4" class="text-center text-muted p-3">No ledger entries yet.</td></tr>

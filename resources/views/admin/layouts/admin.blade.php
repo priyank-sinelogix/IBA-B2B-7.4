@@ -98,6 +98,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ url('/admin/currencies') }}" class="nav-link {{ request()->is('admin/currencies*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-coins"></i><p>Currencies</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ url('/admin/users') }}" class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-user-cog"></i><p>Staff & Client Users</p>
                         </a>

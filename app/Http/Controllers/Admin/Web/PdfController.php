@@ -10,7 +10,7 @@ class PdfController extends Controller
 {
     public function generate(Sample $sample)
     {
-        $sample->load(['company', 'latestVersion', 'sizeChartRows', 'comments.user', 'skus', 'pricings']);
+        $sample->load(['company.currency', 'latestVersion', 'sizeChartRows', 'comments.user', 'skus', 'pricings']);
 
         // Images must be embedded as local file paths (or base64) for dompdf — public URLs
         // over http(s) won't render reliably, so we resolve the actual disk path here.

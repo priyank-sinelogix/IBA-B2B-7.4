@@ -13,7 +13,7 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $companyId = $request->user()->company_id;
-        $company = $request->user()->company;
+        $company = $request->user()->company()->with('currency')->first();
 
         $stats = [
             'samples_pending' => Sample::where('company_id', $companyId)->where('status', 'pending')->count(),
@@ -35,6 +35,6 @@ class DashboardController extends Controller
             ->where('company_id', $companyId)
             ->latest()->take(5)->get();
 
-        return view('dashboard', compact('stats', 'pendingSamples', 'orders', 'recentMessages'));
+        return view('dashboard', compact('stats', 'pendingSamples', 'orders', 'recentMessages', 'company'));
     }
 }

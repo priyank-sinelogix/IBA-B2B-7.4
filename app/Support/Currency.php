@@ -2,6 +2,8 @@
 
 namespace App\Support;
 
+use App\Models\Currency as CurrencyModel;
+
 class Currency
 {
     /**
@@ -38,5 +40,65 @@ class Currency
     public static function inr($amount, int $decimals = 2): string
     {
         return '₹'.self::format($amount, $decimals);
+    }
+
+    /**
+     * Formats an amount with the correct symbol and grouping style for a given
+     * currency. $currency accepts a Currency model, a currency code string
+     * (e.g. 'USD'), or null (falls back to INR so old call sites keep working).
+     */
+    public static function display($amount, $currency = null, int $decimals = 2): string
+    {
+        $code = 'INR';
+        $symbol = '₹';
+
+        if ($currency instanceof CurrencyModel) {
+            $code = strtoupper($currency->code);
+            $symbol = $currency->symbol;
+        } elseif (is_string($currency) && $currency !== '') {
+            $code = strtoupper($currency);
+            $symbol = self::symbolFor($code);
+        }
+
+        if ($code === 'INR') {
+            return $symbol.self::format($amount, $decimals);
+        }
+
+        $amount = (float) $amount;
+        $negative = $amount < 0;
+
+        return $symbol.($negative ? '-' : '').number_format(abs($amount), $decimals, '.', ',');
+    }
+
+    public static function symbolFor(string $code): string
+    {
+        $code = strtoupper($code);
+
+        return [
+            'INR' => '₹',
+            'USD' => '$',
+            'EUR' => '€',
+            'GBP' => '£',
+            'AED' => 'د.إ',
+            'AUD' => 'A$',
+            'CAD' => 'C$',
+        ][$code] ?? $code.' ';
+    }
+
+    /**
+     * Converts an amount from one currency into another using each currency's
+     * exchange_rate — both rates are stored relative to the same base currency
+     * (see the `currencies` table, where the base row has exchange_rate = 1).
+     */
+    public static function convert(float $amount, CurrencyModel $from, CurrencyModel $to): float
+    {
+        if ($from->id === $to->id) {
+            return round($amount, 2);
+        }
+
+        $amountInBase = $amount * (float) $from->exchange_rate;
+        $toRate = (float) $to->exchange_rate;
+
+        return $toRate > 0 ? round($amountInBase / $toRate, 2) : 0.0;
     }
 }

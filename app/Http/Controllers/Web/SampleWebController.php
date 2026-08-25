@@ -26,7 +26,7 @@ class SampleWebController extends Controller
     public function show(Request $request, Sample $sample)
     {
         $this->authorizeCompany($request, $sample);
-        $sample->load(['versions.images', 'comments.user', 'sizeChartRows', 'skus', 'pricings']);
+        $sample->load(['company.currency', 'versions.images', 'comments.user', 'sizeChartRows', 'skus', 'pricings']);
 
         return view('samples.show', compact('sample'));
     }

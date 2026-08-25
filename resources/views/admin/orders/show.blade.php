@@ -32,8 +32,9 @@
                 <dl class="row mb-0">
                     <dt class="col-5">Name</dt><dd class="col-7">{{ $order->company->name }}</dd>
                     <dt class="col-5">Code</dt><dd class="col-7">{{ $order->company->code }}</dd>
-                    <dt class="col-5">Credit Limit</dt><dd class="col-7">₹{{ \App\Support\Currency::format($order->company->credit_limit) }}</dd>
-                    <dt class="col-5">Current Balance</dt><dd class="col-7">₹{{ \App\Support\Currency::format($order->company->current_balance) }}</dd>
+                    <dt class="col-5">Currency</dt><dd class="col-7">{{ optional($order->company->currency)->code }}</dd>
+                    <dt class="col-5">Credit Limit</dt><dd class="col-7">{{ \App\Support\Currency::display($order->company->credit_limit, $order->company->currency) }}</dd>
+                    <dt class="col-5">Current Balance</dt><dd class="col-7">{{ \App\Support\Currency::display($order->company->current_balance, $order->company->currency) }}</dd>
                     <dt class="col-5">Status</dt>
                     <dd class="col-7">{!! $order->company->is_active ? '<span class="badge badge-approved">Active</span>' : '<span class="badge badge-changes">Inactive</span>' !!}</dd>
                 </dl>

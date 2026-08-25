@@ -135,19 +135,19 @@
             <div class="card-body p-0">
                 <table class="table table-hover mb-0">
                     <thead>
-                        <tr><th>Style</th><th>Fabric</th><th class="text-right">Fabric Cost</th><th class="text-right">Accessories</th><th class="text-right">Operational Cost</th><th class="text-right">Stitching Cost</th><th class="text-right">COGP</th><th class="text-right">Margin</th><th class="text-right">Price (₹)</th></tr>
+                        <tr><th>Style</th><th>Fabric</th><th class="text-right">Fabric Cost</th><th class="text-right">Accessories</th><th class="text-right">Operational Cost</th><th class="text-right">Stitching Cost</th><th class="text-right">COGP</th><th class="text-right">Margin</th><th class="text-right">Price</th></tr>
                     </thead>
                     <tbody>
                     @foreach($sample->pricings as $p)
                         <tr>
                             <td>{{ $p->style }}</td><td>{{ $p->fabric }}</td>
-                            <td class="text-right">₹{{ \App\Support\Currency::format($p->fabric_cost) }}</td>
-                            <td class="text-right">₹{{ \App\Support\Currency::format($p->accessories_cost) }}</td>
-                            <td class="text-right">₹{{ \App\Support\Currency::format($p->operational_cost) }}</td>
-                            <td class="text-right">₹{{ \App\Support\Currency::format($p->stitching_cost) }}</td>
-                            <td class="text-right">₹{{ \App\Support\Currency::format($p->cogp) }}</td>
-                            <td class="text-right">₹{{ \App\Support\Currency::format($p->margin) }}</td>
-                            <td class="text-right"><strong>₹{{ \App\Support\Currency::format($p->price_usd) }}</strong></td>
+                            <td class="text-right">{{ \App\Support\Currency::display($p->fabric_cost, $sample->company->currency ?? null) }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($p->accessories_cost, $sample->company->currency ?? null) }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($p->operational_cost, $sample->company->currency ?? null) }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($p->stitching_cost, $sample->company->currency ?? null) }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($p->cogp, $sample->company->currency ?? null) }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($p->margin, $sample->company->currency ?? null) }}</td>
+                            <td class="text-right"><strong>{{ \App\Support\Currency::display($p->price_usd, $sample->company->currency ?? null) }}</strong></td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -9,15 +9,16 @@
     </div>
     <div class="card-body p-0">
         <table class="table table-hover mb-0">
-            <thead><tr><th>Name</th><th>Code</th><th>Users</th><th>Credit Limit</th><th>Balance</th><th>Status</th><th></th></tr></thead>
+            <thead><tr><th>Name</th><th>Code</th><th>Currency</th><th>Users</th><th>Credit Limit</th><th>Balance</th><th>Status</th><th></th></tr></thead>
             <tbody>
             @forelse($companies as $company)
                 <tr>
                     <td><a href="{{ url('/admin/companies/'.$company->id) }}">{{ $company->name }}</a></td>
                     <td>{{ $company->code }}</td>
+                    <td>{{ optional($company->currency)->code }}</td>
                     <td>{{ $company->users_count }}</td>
-                    <td>₹{{ \App\Support\Currency::format($company->credit_limit) }}</td>
-                    <td>₹{{ \App\Support\Currency::format($company->current_balance) }}</td>
+                    <td>{{ \App\Support\Currency::display($company->credit_limit, $company->currency) }}</td>
+                    <td>{{ \App\Support\Currency::display($company->current_balance, $company->currency) }}</td>
                     <td>{!! $company->is_active ? '<span class="badge badge-approved">Active</span>' : '<span class="badge badge-changes">Inactive</span>' !!}</td>
                     <td>
                         <a href="{{ url('/admin/companies/'.$company->id) }}" class="btn btn-sm btn-outline-primary">View</a>
@@ -29,7 +30,7 @@
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="7" class="text-center text-muted p-4">No companies yet — click "Add Company" to onboard your first client.</td></tr>
+                <tr><td colspan="8" class="text-center text-muted p-4">No companies yet — click "Add Company" to onboard your first client.</td></tr>
             @endforelse
             </tbody>
         </table>

@@ -27,7 +27,7 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        $order->load(['company', 'stageLogs.order', 'shipments']);
+        $order->load(['company.currency', 'stageLogs.order', 'shipments']);
         return view('admin.orders.show', compact('order'));
     }
 
@@ -35,7 +35,7 @@ class OrderController extends Controller
     {
         $order = new Order();
         $companies = Company::orderBy('name')->get();
-        return view('admin.orders.form', compact('order', 'companies', 'stages'))
+        return view('admin.orders.form', compact('order', 'companies'))
             ->with('stages', $this->stages);
     }
 

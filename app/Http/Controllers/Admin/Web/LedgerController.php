@@ -14,7 +14,7 @@ class LedgerController extends Controller
 {
     public function index(Request $request)
     {
-        $query = LedgerEntry::with('company');
+        $query = LedgerEntry::with('company.currency');
         if ($request->filled('company_id')) {
             $query->where('company_id', $request->get('company_id'));
         }
@@ -26,7 +26,7 @@ class LedgerController extends Controller
 
     public function create()
     {
-        $companies = Company::orderBy('name')->get();
+        $companies = Company::with('currency')->orderBy('name')->get();
         $orders = Order::orderBy('order_no')->get();
         return view('admin.finance.form', compact('companies', 'orders'));
     }

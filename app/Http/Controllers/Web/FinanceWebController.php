@@ -10,7 +10,7 @@ class FinanceWebController extends Controller
 {
     public function index(Request $request)
     {
-        $company = $request->user()->company;
+        $company = $request->user()->company()->with('currency')->first();
 
         $ledgerEntries = LedgerEntry::where('company_id', $company->id)
             ->latest()->paginate(20);

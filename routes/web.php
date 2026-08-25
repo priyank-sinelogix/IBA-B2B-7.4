@@ -79,6 +79,7 @@ Route::middleware(['auth', 'role:admin,super_admin'])->prefix('admin')->group(fu
 
     // Full resource routes now include 'show' — every list row is clickable
     Route::resource('companies', CompanyController::class);
+    Route::resource('currencies', \App\Http\Controllers\Admin\Web\CurrencyController::class)->except(['show']);
     Route::resource('samples', \App\Http\Controllers\Admin\Web\SampleController::class);
     Route::resource('orders', \App\Http\Controllers\Admin\Web\OrderController::class);
     Route::resource('shipments', \App\Http\Controllers\Admin\Web\ShipmentController::class);

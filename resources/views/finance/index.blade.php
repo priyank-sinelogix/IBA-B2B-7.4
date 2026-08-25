@@ -8,9 +8,9 @@
             <div class="card-header"><h3 class="card-title">Account Statement</h3></div>
             <div class="card-body">
                 <div class="text-muted small">Current Balance</div>
-                <div class="h3 text-success">₹{{ \App\Support\Currency::format($company->current_balance ?? 48750.60) }}</div>
+                <div class="h3 text-success">{{ \App\Support\Currency::display($company->current_balance ?? 48750.60, $company->currency ?? null) }}</div>
                 <div class="d-flex justify-content-between small text-muted mb-1">
-                    <span>Credit Limit: ₹{{ \App\Support\Currency::format($company->credit_limit ?? 100000) }}</span>
+                    <span>Credit Limit: {{ \App\Support\Currency::display($company->credit_limit ?? 100000, $company->currency ?? null) }}</span>
                     <span>{{ $company->creditUsedPercent() ?? 51 }}% Used</span>
                 </div>
                 <div class="progress mb-3" style="height:8px;">
@@ -33,8 +33,8 @@
                             <td class="text-capitalize">{{ str_replace('_',' ',$entry->type) }}</td>
                             <td>{{ $entry->reference_no }}</td>
                             <td>{{ $entry->description }}</td>
-                            <td class="text-right">{{ number_format($entry->amount, 2) }}</td>
-                            <td class="text-right">{{ number_format($entry->balance_after, 2) }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($entry->amount, $company->currency ?? null) }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($entry->balance_after, $company->currency ?? null) }}</td>
                         </tr>
                     @empty
                         <tr><td colspan="6" class="text-center text-muted p-4">

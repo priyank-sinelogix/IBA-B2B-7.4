@@ -30,7 +30,7 @@ class SampleController extends Controller
 
     public function show(Sample $sample)
     {
-        $sample->load(['company', 'versions.images', 'comments.user', 'sizeChartRows', 'sizeChartApprovedBy', 'skus', 'pricings']);
+        $sample->load(['company.currency', 'versions.images', 'comments.user', 'sizeChartRows', 'sizeChartApprovedBy', 'skus', 'pricings']);
         return view('admin.samples.show', compact('sample'));
     }
 
