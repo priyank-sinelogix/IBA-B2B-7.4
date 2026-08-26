@@ -14,10 +14,12 @@
 
                     <div class="form-group">
                         <label>Client Company</label>
-                        <select name="company_id" class="form-control" required>
+                        <select name="company_id" id="companySelect" class="form-control" required onchange="updateShippingPriceCurrency()">
                             <option value="">-- Select --</option>
                             @foreach($companies as $c)
-                                <option value="{{ $c->id }}" {{ old('company_id', $shipment->company_id) == $c->id ? 'selected' : '' }}>{{ $c->name }}</option>
+                                <option value="{{ $c->id }}"
+                                    data-currency-symbol="{{ optional($c->currency)->symbol ?? '₹' }}"
+                                    {{ old('company_id', $shipment->company_id) == $c->id ? 'selected' : '' }}>{{ $c->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -47,6 +49,14 @@
                             <label>Destination</label>
                             <input type="text" name="destination" class="form-control" value="{{ old('destination', $shipment->destination) }}">
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Shipping Price <span class="text-muted">(optional)</span></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text" id="shippingPriceSymbol">₹</span></div>
+                            <input type="number" step="0.01" min="0" name="shipping_price" class="form-control" value="{{ old('shipping_price', $shipment->shipping_price) }}">
+                        </div>
+                        <small class="text-muted">In the selected client's own currency.</small>
                     </div>
                     <div class="form-group">
                         <label>Status</label>
@@ -103,4 +113,14 @@
     </div>
     @endif
 </div>
+
+<script>
+    function updateShippingPriceCurrency() {
+        var select = document.getElementById('companySelect');
+        var opt = select.options[select.selectedIndex];
+        var symbol = (opt && opt.dataset.currencySymbol) ? opt.dataset.currencySymbol : '₹';
+        document.getElementById('shippingPriceSymbol').textContent = symbol;
+    }
+    document.addEventListener('DOMContentLoaded', updateShippingPriceCurrency);
+</script>
 @endsection

@@ -10,7 +10,8 @@ class ShipmentWebController extends Controller
 {
     public function index(Request $request)
     {
-        $shipments = Shipment::where('company_id', $request->user()->company_id)
+        $shipments = Shipment::with('company.currency')
+            ->where('company_id', $request->user()->company_id)
             ->latest('status_updated_at')->paginate(15);
 
         return view('shipments.index', compact('shipments'));

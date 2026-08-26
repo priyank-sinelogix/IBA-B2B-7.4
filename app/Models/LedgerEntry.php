@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class LedgerEntry extends Model
 {
     protected $fillable = [
-        'company_id', 'type', 'reference_no', 'amount', 'balance_after', 'description', 'order_id',
+        'company_id', 'type', 'reference_no', 'amount', 'balance_after', 'description', 'order_id', 'shipment_id',
     ];
 
     protected $casts = [
@@ -23,5 +23,10 @@ class LedgerEntry extends Model
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    public function shipment()
+    {
+        return $this->belongsTo(Shipment::class);
     }
 }

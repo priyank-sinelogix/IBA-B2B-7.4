@@ -9,7 +9,7 @@
     </div>
     <div class="card-body p-0">
         <table class="table table-hover mb-0">
-            <thead><tr><th>AWB</th><th>Client</th><th>Carrier</th><th>Origin</th><th>Destination</th><th>Status</th><th></th></tr></thead>
+            <thead><tr><th>AWB</th><th>Client</th><th>Carrier</th><th>Origin</th><th>Destination</th><th class="text-right">Shipping Price</th><th>Status</th><th></th></tr></thead>
             <tbody>
             @forelse($shipments as $shipment)
                 <tr>
@@ -18,6 +18,7 @@
                     <td>{{ $shipment->carrier }}</td>
                     <td>{{ $shipment->origin }}</td>
                     <td>{{ $shipment->destination }}</td>
+                    <td class="text-right">{{ $shipment->shipping_price !== null ? \App\Support\Currency::display($shipment->shipping_price, $shipment->company->currency) : '—' }}</td>
                     <td><span class="badge badge-info text-capitalize">{{ str_replace('_',' ',$shipment->status) }}</span></td>
                     <td>
                         <a href="{{ url('/admin/shipments/'.$shipment->id) }}" class="btn btn-sm btn-outline-primary">View</a>
@@ -29,7 +30,7 @@
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="7" class="text-center text-muted p-4">No shipments yet.</td></tr>
+                <tr><td colspan="8" class="text-center text-muted p-4">No shipments yet.</td></tr>
             @endforelse
             </tbody>
         </table>

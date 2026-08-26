@@ -15,6 +15,8 @@
                     <dt class="col-5">Carrier</dt><dd class="col-7">{{ $shipment->carrier }}</dd>
                     <dt class="col-5">Origin</dt><dd class="col-7">{{ $shipment->origin ?? '—' }}</dd>
                     <dt class="col-5">Destination</dt><dd class="col-7">{{ $shipment->destination ?? '—' }}</dd>
+                    <dt class="col-5">Shipping Price</dt>
+                    <dd class="col-7">{{ $shipment->shipping_price !== null ? \App\Support\Currency::display($shipment->shipping_price, $shipment->company->currency) : '—' }}</dd>
                     <dt class="col-5">Status</dt>
                     <dd class="col-7"><span class="badge badge-info text-capitalize">{{ str_replace('_',' ',$shipment->status) }}</span></dd>
                     <dt class="col-5">Last Updated</dt><dd class="col-7">{{ optional($shipment->status_updated_at)->format('d M Y, h:i A') }}</dd>

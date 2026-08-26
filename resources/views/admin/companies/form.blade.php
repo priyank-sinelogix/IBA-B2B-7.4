@@ -21,7 +21,7 @@
                 <select name="currency_id" class="form-control" required>
                     <option value="">Select currency</option>
                     @foreach($currencies as $currency)
-                        <option value="{{ $currency->id }}" {{ old('currency_id', $company->currency_id ?? '') == $currency->id ? 'selected' : '' }}>
+                        <option value="{{ $currency->id }}" {{ old('currency_id', $company->currency_id ?? optional(\App\Models\Currency::base())->id) == $currency->id ? 'selected' : '' }}>
                             {{ $currency->code }} ({{ $currency->symbol }}) — {{ $currency->name }}
                         </option>
                     @endforeach
