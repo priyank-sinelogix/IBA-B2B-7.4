@@ -126,6 +126,60 @@ section.jit-hero.wrap { max-width: none;
 .faq-list .faq-item:last-child { margin-bottom: 0; }
 .faq-list .faq-item summary { font-size: .85rem; }
 
+.codesign-panel { background: var(--bg-mint); border-radius: 24px; padding: 25px 20px; }
+.codesign-grid { display: grid; grid-template-columns: .50fr 1fr; gap: 50px; align-items: center; margin-bottom: 15px; }
+
+.codesign-text h2 { font-size: 1.9rem; margin-bottom: 16px; }
+.codesign-text h2 .line-navy { color: var(--navy); display: block; }
+.codesign-text h2 .line-teal { color: var(--teal-dark); display: block; }
+.codesign-text > p { color: var(--muted); font-size: .92rem; margin-bottom: 20px; }
+
+.codesign-checklist { list-style: none; margin: 0 0 26px; padding: 0; }
+.codesign-checklist li { display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--navy); font-size: .92rem; margin-bottom: 14px; }
+.codesign-checklist li:last-child { margin-bottom: 0; }
+.check-badge {
+    width: 22px; height: 22px; border-radius: 50%; background: var(--teal-dark); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-size: .68rem; flex-shrink: 0;
+}
+.codesign-cta { border-radius: 10px; padding: 14px 26px; font-size: .95rem; }
+
+.codesign-flow { display: flex; align-items: flex-start; justify-content: space-between; gap: 4px; margin-bottom: 10px; }
+.codesign-step { flex: 1; min-width: 0; text-align: center; }
+.codesign-step-icon {
+    width: 68px; height: 68px; border-radius: 50%; background: #fff; display: flex;
+    align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 6px 16px rgba(15,42,74,.06);
+}
+.codesign-step-icon img { width: 38px; height: 38px; object-fit: contain; }
+.codesign-step span { font-size: .74rem; font-weight: 700; color: var(--navy); line-height: 1.3; }
+.codesign-arrow { color: var(--muted); font-size: .8rem; flex-shrink: 0; margin-top: 26px; }
+
+/* .codesign-media { border-radius: 16px; overflow: hidden; box-shadow: 0 16px 40px rgba(15,42,74,.1); background: #fff; } */
+.codesign-media { border-radius: 16px; overflow: hidden; 
+    /* box-shadow: 0 16px 40px rgba(15,42,74,.1); 
+    background: #fff;  */
+}
+/* .codesign-media img { width: 100%; height: 320px; object-fit: contain; object-position: left center; display: block; } */
+.codesign-media img { width: 100%; height: 320px; object-fit: contain; object-position: center; display: block; }
+
+.codesign-stats {
+    background: #fff; border-radius: 16px; padding: 22px 10px;
+    display: flex; align-items: center; justify-content: space-between;
+}
+.codesign-stats .item { flex: 1 1 0; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 0 18px; position: relative; }
+.codesign-stats .item:first-child { padding-left: 0; }
+.codesign-stats .item:last-child { padding-right: 0; }
+.codesign-stats .item:not(:first-child)::before { content: ''; position: absolute; left: 0; top: 2px; bottom: 2px; width: 1px; background: var(--border); }
+.codesign-stats .item img { width: 34px; height: 34px; object-fit: contain; flex-shrink: 0; }
+.codesign-stats .item strong { display: block; color: var(--navy); font-size: 1.05rem; line-height: 1.2; }
+.codesign-stats .item span { font-size: .78rem; color: var(--muted); }
+
+@media (max-width: 1150px) {
+    .codesign-grid { grid-template-columns: 1fr; }
+    .codesign-stats { flex-wrap: wrap; gap: 16px 0; }
+    .codesign-stats .item { flex: 1 1 45%; padding: 8px 18px; }
+    .codesign-stats .item:not(:first-child)::before { display: none; }
+}
+
 @media (max-width: 900px) {
     .jit-hero { min-height: 0; flex-direction: column; align-items: stretch; }
     .jit-hero-bg { position: relative; height: 220px; }
@@ -147,4 +201,11 @@ section.jit-hero.wrap { max-width: none;
     .dispatch-item { flex-direction: column; align-items: stretch; }
     .dispatch-media { flex: none; height: 160px; }
     .dispatch-arrow { transform: rotate(90deg); align-self: center; }
+    .codesign-panel { padding: 32px 20px; }
+    .codesign-flow { flex-direction: column; align-items: stretch; gap: 16px; }
+    .codesign-step { display: flex; align-items: center; gap: 14px; text-align: left; }
+    .codesign-step-icon { margin: 0; flex-shrink: 0; }
+    .codesign-arrow { transform: rotate(90deg); margin: 0 auto; }
+    .codesign-stats .item { flex: 1 1 100%; padding: 10px 0; }
+    .codesign-stats .item:not(:first-child) { border-top: 1px solid var(--border); }
 }

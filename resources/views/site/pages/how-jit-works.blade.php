@@ -107,6 +107,60 @@
 </div>
 
 <div class="wrap section" style="padding-top:0;">
+    <div class="codesign-panel">
+        <div class="codesign-grid">
+            <div class="codesign-text">
+                <h2><span class="line-navy">Don't Have Designs?</span><span class="line-teal">We Co-Create With You.</span></h2>
+                <p>Whether you're starting fresh or scaling up, our platform empowers you to launch your fashion brand effortlessly — with or without your own designs.</p>
+                <ul class="codesign-checklist">
+                    <li><span class="check-badge"><i class="fas fa-check"></i></span>Access 20,000+ proven fashion designs</li>
+                    <li><span class="check-badge"><i class="fas fa-check"></i></span>Customize prints, tweak trends, or request exclusives</li>
+                    <li><span class="check-badge"><i class="fas fa-check"></i></span>Get mockups, AR/VR try-ons &amp; styling help</li>
+                    <li><span class="check-badge"><i class="fas fa-check"></i></span>Instant product imagery for your store</li>
+                </ul>
+                <a href="{{ url('/contact') }}" class="btn btn-teal codesign-cta">Let's Co-Create <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="codesign-visual">
+                <div class="codesign-flow">
+                    <div class="codesign-step">
+                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/ShareIdeas.png') }}" alt=""></div>
+                        <span>Share Your Ideas<br>or Mood Board</span>
+                    </div>
+                    <i class="fas fa-arrow-right codesign-arrow"></i>
+                    <div class="codesign-step">
+                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/DesignRefine.png') }}" alt=""></div>
+                        <span>We Design &amp;<br>Refine Together</span>
+                    </div>
+                    <i class="fas fa-arrow-right codesign-arrow"></i>
+                    <div class="codesign-step">
+                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/SampleIn48Hrs.png') }}" alt=""></div>
+                        <span>Sample in 48 Hrs<br>(virtual / physical)</span>
+                    </div>
+                    <i class="fas fa-arrow-right codesign-arrow"></i>
+                    <div class="codesign-step">
+                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/ProduceShip.png') }}" alt=""></div>
+                        <span>Produce &amp; Ship<br>On Time</span>
+                    </div>
+                    <i class="fas fa-arrow-right codesign-arrow"></i>
+                    <div class="codesign-step">
+                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/BrandReady.png') }}" alt=""></div>
+                        <span>Your Brand,<br>Ready to Sell</span>
+                    </div>
+                </div>
+                <div class="codesign-media"><img src="{{ asset('images/site/HowJitWorks/CoCreate/CoCreateWorkspace2.jpg') }}" alt=""></div>
+            </div>
+        </div>
+        <div class="codesign-stats">
+            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatCountries.png') }}" alt=""><div><strong>40+</strong><span>Countries</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatPrints.png') }}" alt=""><div><strong>2,000+</strong><span>Prints Available</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatDispatch.png') }}" alt=""><div><strong>48H</strong><span>Dispatch</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatTeam.png') }}" alt=""><div><strong>170+</strong><span>Team Members</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatSustainable.png') }}" alt=""><div><strong>Sustainable</strong><span>Fashion Made Easy</span></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="wrap section" style="padding-top:0;">
     <div class="section-head"><h2>What Makes Sewgo Different</h2><p>Our JIT model is designed to help brands grow smarter.</p></div>
     <div class="diff-cards">
         <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffNoDeadStock.png') }}" alt=""></div><h4>No Dead Stock</h4><p>Produce only after you sell. Zero unsold inventory.</p></div>
