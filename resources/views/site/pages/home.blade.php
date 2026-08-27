@@ -64,20 +64,43 @@
 </section>
 
 <section class="wrap section" style="padding-top:0;">
-    <div class="section-head">
-        <div class="eyebrow">Our JIT Process</div>
-        <h2>From Order to Doorstep in 5 Simple Steps</h2>
-    </div>
-    <div class="step-flow">
-        <div class="step"><div class="step-icon-box"><img src="{{ asset('images/site/YouChoose.png') }}" alt=""></div><span class="num-badge">1</span><h4>You Choose</h4><p>Select from our design library or share yours</p></div>
-        <i class="fas fa-chevron-right step-arrow"></i>
-        <div class="step"><div class="step-icon-box"><img src="{{ asset('images/site/OrderReceived.png') }}" alt=""></div><span class="num-badge">2</span><h4>Order Received</h4><p>We confirm and plan for your order</p></div>
-        <i class="fas fa-chevron-right step-arrow"></i>
-        <div class="step"><div class="step-icon-box"><img src="{{ asset('images/site/WeManufacture.png') }}" alt=""></div><span class="num-badge">3</span><h4>We Manufacture</h4><p>Garments are produced within 24–48 hours</p></div>
-        <i class="fas fa-chevron-right step-arrow"></i>
-        <div class="step"><div class="step-icon-box"><img src="{{ asset('images/site/QualityCheck.png') }}" alt=""></div><span class="num-badge">4</span><h4>Quality Check</h4><p>Checked for quality and branding</p></div>
-        <i class="fas fa-chevron-right step-arrow"></i>
-        <div class="step"><div class="step-icon-box"><img src="{{ asset('images/site/PackedShipped.png') }}" alt=""></div><span class="num-badge">5</span><h4>Packed &amp; Shipped</h4><p>Delivered to your doorstep anywhere in the world</p></div>
+    <div class="jit-process-panel">
+        <div class="jit-process-head">
+            <h2>How JIT Works</h2>
+            <p class="jit-process-sub">A Customer's Order in Action</p>
+            <div class="jit-process-rule"></div>
+            <div class="jit-process-label"><i class="fas fa-shield-check"></i> Step-by-step explanation:</div>
+        </div>
+        <div class="jit-process-flow">
+            <div class="jit-process-step">
+                <span class="jit-process-badge">1</span>
+                <h4>Customer orders from their online store.</h4>
+                <div class="jit-process-img"><img src="{{ asset('images/site/Home/JitProcess/CustomerOrders.jpg') }}" alt=""></div>
+                <p>Customers place orders on your store (Shopify, Magento, etc.), which are instantly integrated into Sewgo's JIT system for immediate processing.</p>
+            </div>
+            <div class="jit-process-arrow"><span class="jit-process-arrow-line"></span><i class="fas fa-play"></i></div>
+            <div class="jit-process-step">
+                <span class="jit-process-badge">2</span>
+                <h4>We customize and manufacture your order with care.</h4>
+                <div class="jit-process-img"><img src="{{ asset('images/site/Home/JitProcess/CustomizeManufacture.jpg') }}" alt=""></div>
+                <p>We start with a white or grey fabric, customize it through printing, embroidery, or coloring, and then stitch it into a completed garment based on pre-approved designs.</p>
+            </div>
+            <div class="jit-process-arrow"><span class="jit-process-arrow-line"></span><i class="fas fa-play"></i></div>
+            <div class="jit-process-step">
+                <span class="jit-process-badge">3</span>
+                <h4>Quality checked and delivered on time.</h4>
+                <div class="jit-process-img"><img src="{{ asset('images/site/Home/JitProcess/QualityDelivered.jpg') }}" alt=""></div>
+                <p>Our team conducts quality checks on the garments produced within a 48-hour timeframe and then ships them directly to the designated destination.</p>
+            </div>
+            <div class="jit-process-arrow"><span class="jit-process-arrow-line"></span><i class="fas fa-play"></i></div>
+            <div class="jit-process-step">
+                <span class="jit-process-badge">4</span>
+                <h4>Higher profits. Zero waste. Better for the planet.</h4>
+                <div class="jit-process-img"><img src="{{ asset('images/site/Home/JitProcess/HigherProfits.jpg') }}" alt=""></div>
+                <p>You retain the profits, as our model ensures there is no unsold inventory or wastage, maximizing your return on investment while minimizing environmental impact.</p>
+            </div>
+        </div>
+        <div class="jit-process-footer"><span><i class="fas fa-heart"></i> Powered by <strong>IBA Crafts</strong></span></div>
     </div>
 </section>
 
@@ -123,18 +146,27 @@
         <h2>Apparel &amp; Home Solutions for Every Need</h2>
     </div>
     <div class="manufacture-row">
-        <div class="item"><img src="{{ asset('images/site/WomensWear.png') }}" alt=""><span>Women's Wear</span></div>
-        <div class="item"><img src="{{ asset('images/site/MensWear.png') }}" alt=""><span>Men's Wear</span></div>
-        <div class="item"><img src="{{ asset('images/site/Kidswear.png') }}" alt=""><span>Kidswear</span></div>
-        <div class="item"><img src="{{ asset('images/site/Activewear.png') }}" alt=""><span>Activewear</span></div>
-        <div class="item"><img src="{{ asset('images/site/LoungewearInnerwear.png') }}" alt=""><span>Loungewear &amp; Innerwear</span></div>
-        <!-- <div class="item"><img src="{{ asset('images/site/Accessories.png') }}" alt=""><span>Accessories</span></div> -->
-        <div class="item"><img src="{{ asset('images/site/HomeTextiles.png') }}" alt=""><span>Home Textiles</span></div>
-        <!-- <div class="item"><img src="{{ asset('images/site/BagsMore.png') }}" alt=""><span>Bags &amp; More</span></div> -->
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/WomensWear.png') }}" alt=""><span>Women's Wear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/MensWear.png') }}" alt=""><span>Men's Wear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Kidswear.png') }}" alt=""><span>Kidswear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Activewear.png') }}" alt=""><span>Activewear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/LoungewearInnerwear.png') }}" alt=""><span>Loungewear &amp; Innerwear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/HomeTextiles.png') }}" alt=""><span>Home Textiles</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/PlusSizeWear.png') }}" alt=""><span>Plus Size Wear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Sleepwear.png') }}" alt=""><span>Sleepwear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/ResortWear.png') }}" alt=""><span>Resort Wear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/OccasionWear.png') }}" alt=""><span>Occasion Wear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/FashionBasics.png') }}" alt=""><span>Fashion Basics</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/CustomizedUniforms.png') }}" alt=""><span>Customized Uniforms</span></div>
+        <div class="item"></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/CushionCovers.png') }}" alt=""><span>Cushion Covers</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Curtains.png') }}" alt=""><span>Curtains</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/TableLinen.png') }}" alt=""><span>Table Linen</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/KitchenLinen.png') }}" alt=""><span>Kitchen Linen</span></div>
     </div>
-    <div style="text-align:center; margin-top:30px;">
+    <!-- <div style="text-align:center; margin-top:30px;">
         <a href="{{ url('/services') }}" class="btn" style="border:1.5px solid var(--teal); color:var(--teal-dark);">Explore Design Library →</a>
-    </div>
+    </div> -->
 </section>
 
 <section class="wrap section" style="padding-top:0;">
