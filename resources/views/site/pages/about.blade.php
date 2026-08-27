@@ -102,21 +102,21 @@
             <img src="{{ asset('images/site/AboutUs/leadership/NitinKapoor.png') }}" alt="">
             <div class="leader-info">
                 <h4>Nitin Kapoor</h4><span>CEO &amp; Co-Founder</span>
-                <a href="#" class="leader-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/nitinkapoorjustintime/" class="leader-linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="leader-card">
             <img src="{{ asset('images/site/AboutUs/leadership/HemaKapoor.png') }}" alt="">
             <div class="leader-info">
                 <h4>Hema Kapoor</h4><span>Co-Founder &amp; Creative Director</span>
-                <a href="#" class="leader-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/hema-n-kapoor/" class="leader-linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="leader-card">
             <img src="{{ asset('images/site/AboutUs/leadership/AmitGupta.png') }}" alt="">
             <div class="leader-info">
                 <h4>Amit Gupta</h4><span>Co-Founder &amp; COO</span>
-                <a href="#" class="leader-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/company/iba-crafts-private-limited/posts/?feedView=all" class="leader-linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     </div>
