@@ -63,31 +63,109 @@
     <div class="methodology-panels">
         <div class="method-left-card">
             <h3>Our Methodology</h3>
-            <p>We follow a science-based approach to estimate emissions avoided through our JIT model.</p>
+            <p>We follow a low-impact, tech-driven process that prioritizes people and the planet at every step.</p>
             <ul class="method-checklist">
-                <li><i class="fas fa-check-circle"></i>Activity data from actual operations</li>
-                <li><i class="fas fa-check-circle"></i>Assumptions benchmarked with Indian garment manufacturing</li>
-                <li><i class="fas fa-check-circle"></i>Comparative analysis with conventional manufacturing practices</li>
-                <li><i class="fas fa-check-circle"></i>Aligned with GHG Protocol (Scopes 1, 2, 3 &amp; 4)</li>
+                <li><i class="fas fa-check-circle"></i>Our Just In Time model cut overproduction</li>
+                <li><i class="fas fa-check-circle"></i>Digital printing &amp; laser techniques minimize water and energy use</li>
+                <li><i class="fas fa-check-circle"></i>Responsible sourcing of fabrics and ethical manufacturing is at our core</li>
+                <li><i class="fas fa-check-circle"></i>Ships within 24–48 hours for faster delivery, less impact</li>
             </ul>
+            <div class="method-highlights">
+                <div class="method-highlights-head"><img src="{{ asset('images/site/Sustanibility/OurMethodology/KeyHighlightsLeaf.png') }}" alt=""> Key Highlights</div>
+                <div class="method-highlight-row">
+                    <div class="icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/HighlightWaterSaved.png') }}" alt=""></div>
+                    <div><strong>10.2M+ Liters</strong><span>Water Saved in FY24</span></div>
+                </div>
+                <div class="method-highlight-row">
+                    <div class="icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/HighlightEmissionsAvoided.png') }}" alt=""></div>
+                    <div><strong>398,154 Kg CO₂e</strong><span>GHG Emissions Avoided</span></div>
+                </div>
+                <div class="method-highlight-row">
+                    <div class="icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/HighlightGarmentsShipped.png') }}" alt=""></div>
+                    <div><strong>1M+ Garments</strong><span>Shipped with Care</span></div>
+                </div>
+            </div>
         </div>
         <div class="method-right-card">
             <div class="method-flow">
-                <div class="method-step"><div class="method-step-icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/TraditionalMassProduction.png') }}" alt=""></div><h4>Traditional Mass<br>Production</h4></div>
+                <div class="method-step">
+                    <div class="method-step-icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/TechDrivenProduction.png') }}" alt=""></div>
+                    <div class="method-step-num">1</div>
+                    <h4>Tech-Driven<br>Production</h4>
+                    <p>Efficient planning &amp; smart systems</p>
+                </div>
                 <div class="method-arrow"><i class="fas fa-chevron-right"></i></div>
-                <div class="method-step"><div class="method-step-icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/OverproductionAndInventoryWaste.png') }}" alt=""></div><h4>Overproduction &amp;<br>Inventory Waste</h4></div>
+                <div class="method-step">
+                    <div class="method-step-icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/OnDemandMadeToOrder.png') }}" alt=""></div>
+                    <div class="method-step-num">2</div>
+                    <h4>On-Demand &amp;<br>Made-to-Order</h4>
+                    <p>Only what's needed, when it's needed</p>
+                </div>
                 <div class="method-arrow"><i class="fas fa-chevron-right"></i></div>
-                <div class="method-step"><div class="method-step-icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/HigherResourcesAndEmissions.png') }}" alt=""></div><h4>Higher Resource<br>Use &amp; Emissions</h4></div>
+                <div class="method-step">
+                    <div class="method-step-icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/LowerEmissionsLessWaste.png') }}" alt=""></div>
+                    <div class="method-step-num">3</div>
+                    <h4>Lower Emissions<br>&amp; Less Waste</h4>
+                    <p>Reduced energy use &amp; fabric waste</p>
+                </div>
                 <div class="method-arrow"><i class="fas fa-chevron-right"></i></div>
-                <div class="method-step"><div class="method-step-icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/SewgoJITModel.png') }}" alt=""></div><h4>Sewgo JIT Model<br>(Order-Based)</h4></div>
+                <div class="method-step">
+                    <div class="method-step-icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/EthicalHumanCentricLabor.png') }}" alt=""></div>
+                    <div class="method-step-num">4</div>
+                    <h4>Ethical &amp; Human-<br>Centric Labor</h4>
+                    <p>Supporting skilled workers &amp; fair wages</p>
+                </div>
                 <div class="method-arrow"><i class="fas fa-chevron-right"></i></div>
-                <div class="method-step"><div class="method-step-icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/ZeroInventoryWaste.png') }}" alt=""></div><h4>Zero Inventory<br>Waste</h4></div>
+                <div class="method-step">
+                    <div class="method-step-icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/SustainableByDesign.png') }}" alt=""></div>
+                    <div class="method-step-num">5</div>
+                    <h4>Sustainable<br>by Design</h4>
+                    <p>Eco-friendly inks, fabrics &amp; practices</p>
+                </div>
                 <div class="method-arrow"><i class="fas fa-chevron-right"></i></div>
-                <div class="method-step"><div class="method-step-icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/LowerEmissionAndConservation.png') }}" alt=""></div><h4>Lower Emissions &amp;<br>Conservation</h4></div>
+                <div class="method-step">
+                    <div class="method-step-icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/LowerImpactBetterWorld.png') }}" alt=""></div>
+                    <div class="method-step-num">6</div>
+                    <h4>Lower Impact,<br>Better World</h4>
+                    <p>Positive change at scale</p>
+                </div>
             </div>
             <div class="method-quote">
                 <img src="{{ asset('images/site/Sustanibility/OurMethodology/QuoteLeaf.png') }}" alt="">
-                <p>Every order made with Sewgo is a step towards a <strong>cleaner, smarter and more sustainable future.</strong></p>
+                <p>Every order we process is a step towards a <strong>cleaner, greener, and more responsible fashion future.</strong></p>
+            </div>
+            <div class="method-impact-head"><span>Our Impact in Action</span></div>
+            <div class="method-impact-grid">
+                <div class="method-impact-stat">
+                    <div class="icon-outline"><img src="{{ asset('images/site/Sustanibility/OurMethodology/ImpactWaterSaved.png') }}" alt=""></div>
+                    <div class="num">10.2M+</div>
+                    <div class="lbl">Liters</div>
+                    <div class="sub">Water Saved in FY24</div>
+                </div>
+                <div class="method-impact-stat">
+                    <div class="icon-outline"><img src="{{ asset('images/site/Sustanibility/OurMethodology/ImpactEmissionsAvoided.png') }}" alt=""></div>
+                    <div class="num">398,154</div>
+                    <div class="lbl">Kg CO₂e</div>
+                    <div class="sub">GHG Emissions Avoided (J-PAL Verified)</div>
+                </div>
+                <div class="method-impact-stat">
+                    <div class="icon-outline"><img src="{{ asset('images/site/Sustanibility/OurMethodology/ImpactGarmentsShipped.png') }}" alt=""></div>
+                    <div class="num">1M+</div>
+                    <div class="lbl">Garments</div>
+                    <div class="sub">Shipped with Care</div>
+                </div>
+                <div class="method-impact-stat">
+                    <div class="icon-outline"><img src="{{ asset('images/site/Sustanibility/OurMethodology/ImpactCountriesShipped.png') }}" alt=""></div>
+                    <div class="num">40+</div>
+                    <div class="lbl">Countries</div>
+                    <div class="sub">We Ship Worldwide</div>
+                </div>
+                <div class="method-impact-stat">
+                    <div class="icon-outline"><img src="{{ asset('images/site/Sustanibility/OurMethodology/ImpactPeopleEmpowered.png') }}" alt=""></div>
+                    <div class="num">170+</div>
+                    <div class="lbl">People</div>
+                    <div class="sub">Empowered Every Day</div>
+                </div>
             </div>
         </div>
     </div>
