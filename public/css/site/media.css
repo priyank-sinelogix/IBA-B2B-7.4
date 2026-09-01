@@ -62,6 +62,11 @@
     .press-grid { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 480px) {
+    .subscribe-box form { flex-wrap: wrap; justify-content: center; }
+    .subscribe-box input[type="email"] { min-width: 0; width: 100%; }
+}
+
 .logo-row {
 filter:none;
 }

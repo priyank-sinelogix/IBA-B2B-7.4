@@ -158,7 +158,7 @@
         <div class="item"><img src="{{ asset('images/site/Home/Manufacture/OccasionWear.png') }}" alt=""><span>Occasion Wear</span></div>
         <div class="item"><img src="{{ asset('images/site/Home/Manufacture/FashionBasics.png') }}" alt=""><span>Fashion Basics</span></div>
         <div class="item"><img src="{{ asset('images/site/Home/Manufacture/CustomizedUniforms.png') }}" alt=""><span>Customized Uniforms</span></div>
-        <div class="item"></div>
+        <div class="item hide_class"></div>
         <div class="item"><img src="{{ asset('images/site/Home/Manufacture/CushionCovers.png') }}" alt=""><span>Cushion Covers</span></div>
         <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Curtains.png') }}" alt=""><span>Curtains</span></div>
         <div class="item"><img src="{{ asset('images/site/Home/Manufacture/TableLinen.png') }}" alt=""><span>Table Linen</span></div>

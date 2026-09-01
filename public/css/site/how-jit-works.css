@@ -23,8 +23,8 @@ section.jit-hero.wrap { max-width: none;
     background: linear-gradient(90deg, #fff 0%, #fff 36%, rgba(255,255,255,.82) 0%, rgba(255,255,255,0) 50%);
 }
 .jit-hero-content {
-    position: relative; z-index: 2; max-width: 480px;
-    padding: 60px 24px 60px max(24px, calc((100vw - 1180px) / 0 + 24px));
+    position: relative; z-index: 2; max-width: 700px;
+    padding: 60px 24px;
 }
 .flow-diagram { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
 .flow-box { background:#fff; border:1px solid var(--border); border-radius:12px; padding:16px; min-width:150px; text-align:center; font-size:.82rem; }

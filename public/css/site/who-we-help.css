@@ -13,7 +13,7 @@ section.whh-hero.wrap {
 }
 .whh-hero-content {
     position: relative; z-index: 2; max-width: 620px;
-    padding: 50px 24px 50px max(24px, calc((100vw - 1180px) / 0 + 24px));
+    padding: 50px 24px;
 }
 .whh-hero-content .mini-stats { margin-top: 26px; gap: 0; flex-wrap: nowrap; }
 .whh-hero-content .mini-stat {
@@ -52,6 +52,54 @@ section.whh-hero.wrap {
 @media (max-width: 900px) {
     .whh-cta-final { flex-direction: column; text-align: center; padding: 26px 20px; flex-wrap: wrap; }
     .whh-cta-final .cta-band-final-text { text-align: center; }
+}
+
+/* ===== "Sewgo at a Glance" testimonial + stat panel ===== */
+.whh-quote-panel {
+    background: #fff; border-radius: 20px; padding: 34px 40px;
+    box-shadow: 0 0 0 1px rgba(15,185,138,.14), 0 24px 50px rgba(15,42,74,.06);
+    display: flex; align-items: center; gap: 0;
+}
+.whh-quote-text { flex: 1.3; min-width: 0; padding-right: 34px; }
+.whh-quote-text p { font-style: italic; color: var(--ink); font-size: 1rem; line-height: 1.6; margin: 0; }
+
+.whh-quote-who {
+    flex: 0 0 auto; display: flex; align-items: center; gap: 16px;
+    padding: 0 34px; border-left: 1px solid var(--border); border-right: 1px solid var(--border);
+}
+.whh-quote-icon {
+    width: 68px; height: 68px; border-radius: 50%; background: var(--bg-mint); color: var(--teal-dark);
+    display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;
+}
+.whh-quote-who strong { display: block; color: var(--navy); font-size: .92rem; margin-bottom: 4px; white-space: nowrap; }
+.whh-quote-who span { display: block; color: var(--muted); font-size: .8rem; white-space: nowrap; }
+
+.whh-quote-stats { flex: 0 0 auto; padding-left: 34px; text-align: center; }
+.whh-quote-stats-label {
+    color: var(--teal-dark); font-weight: 700; font-size: .72rem; letter-spacing: .8px;
+    text-transform: uppercase; margin-bottom: 12px; white-space: nowrap;
+}
+.whh-quote-stats-row { display: flex; align-items: center; gap: 0; }
+.whh-quote-stat { padding: 0 16px; position: relative; }
+.whh-quote-stat:not(:first-child) { border-left: 1px solid var(--border); }
+.whh-quote-stat .num { color: var(--teal-dark); font-weight: 800; font-size: 1.3rem; line-height: 1.1; white-space: nowrap; }
+.whh-quote-stat .lbl { color: var(--muted); font-size: .76rem; white-space: nowrap; }
+
+@media (max-width: 900px) {
+    .whh-quote-panel { flex-direction: column; padding: 30px 24px; text-align: center; }
+    .whh-quote-text { padding-right: 0; margin-bottom: 24px; }
+    .whh-quote-who {
+        border-left: none; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        padding: 20px 0; margin-bottom: 20px; width: 100%; justify-content: center;
+    }
+    .whh-quote-stats { padding-left: 0; }
+}
+
+@media (max-width: 480px) {
+    .whh-quote-who { flex-direction: column; gap: 10px; }
+    .whh-quote-who strong, .whh-quote-who span { white-space: normal; }
+    .whh-quote-stats-row { flex-wrap: wrap; justify-content: center; gap: 10px 0; }
+    .whh-quote-stat { flex: 1 1 33%; }
 }
 
 .supports-grid .icon-card {

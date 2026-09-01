@@ -22,14 +22,16 @@
 <div class="wrap section">
     <div class="contact-row">
         <div class="contact-info">
-            <div class="eyebrow" style="color:#6fe0c0;">Contact Information</div>
+            <div class="eyebrow" style="color:#6fe0c0;">Contact Us</div>
             <h2>We'd Love to Hear From You</h2>
             <p>Reach out directly or fill the form — whichever works best for you.</p>
             <ul class="contact-info-list">
-                <li><i class="far fa-envelope"></i><div><strong>Email</strong><span>hello@sewgo.com</span></div></li>
-                <li><i class="fas fa-phone"></i><div><strong>Phone</strong><span>+91 95138 88875</span></div></li>
-                <li><i class="fas fa-location-dot"></i><div><strong>Office</strong><span>IBA Crafts Pvt. Ltd., Tiruppur, Tamil Nadu, India</span></div></li>
-                <li><i class="far fa-clock"></i><div><strong>Working Hours</strong><span>Mon – Sat, 9:00 AM – 6:00 PM IST</span></div></li>
+                <li><i class="fas fa-location-dot"></i><div><strong>India</strong><span>Noida, Uttar Pradesh</span></div></li>
+                <li><i class="fas fa-location-dot"></i><div><strong>USA</strong><span>Cheyenne, Wyoming</span></div></li>
+                <li><i class="fas fa-location-dot"></i><div><strong>Canada</strong><span>Toronto, Ontario</span></div></li>
+                <li><i class="far fa-envelope"></i><div><strong>Email</strong><span>hello@sewgo.io</span></div></li>
+                <li><i class="fas fa-phone"></i><div><strong>Phone</strong><span>+91 95825 57282</span></div></li>
+                <li><i class="fas fa-globe"></i><div><strong>Website</strong><span>www.sewgo.io</span></div></li>
             </ul>
             <div class="contact-info-divider"></div>
             <div class="contact-info-social">
@@ -40,6 +42,7 @@
                     <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
+            <p style="color:#8fa0b3; font-size:.78rem; margin:20px 0 0;">Powered by IBA Crafts</p>
         </div>
 
         <div class="contact-form-card">

@@ -101,16 +101,24 @@
 </div>
 
 <div class="wrap" style="padding-bottom:20px;">
-    <div class="quote-block">
-        <p style="font-style:italic; margin:0; flex:1; min-width:260px; color:var(--ink);">"Sewgo's JIT model lets us test, launch, and scale without the risk. It's the smartest way we've grown our fashion business."</p>
-        <div class="who">
-            <img src="{{ asset('images/site/WhoWeHelp/justphoto.jpg') }}" alt="">
-            <div><strong>Ananya Mehta</strong><span>Founder, Urban Loom</span></div>
+    <div class="whh-quote-panel">
+        <div class="whh-quote-text">
+            <p>"Sewgo's JIT model lets us test, launch, and scale without the risk. It's the smartest way we've grown our fashion business."</p>
         </div>
-        <div class="metrics">
-            <div class="metric"><div class="num">3X</div><div class="lbl">Faster Launches</div></div>
-            <div class="metric"><div class="num">60%</div><div class="lbl">Less Inventory Risk</div></div>
-            <div class="metric"><div class="num">2M+</div><div class="lbl">Units Produced</div></div>
+        <div class="whh-quote-who">
+            <div class="whh-quote-icon"><i class="fas fa-quote-left"></i></div>
+            <div>
+                <strong>Founder, D2C Fashion Brand</strong>
+                <span>Identity withheld for privacy</span>
+            </div>
+        </div>
+        <div class="whh-quote-stats">
+            <div class="whh-quote-stats-label">Sewgo at a Glance</div>
+            <div class="whh-quote-stats-row">
+                <div class="whh-quote-stat"><div class="num">48H</div><div class="lbl">Dispatch</div></div>
+                <div class="whh-quote-stat"><div class="num">1 MOQ</div><div class="lbl">Minimum Order</div></div>
+                <div class="whh-quote-stat"><div class="num">40+</div><div class="lbl">Countries</div></div>
+            </div>
         </div>
     </div>
 </div>

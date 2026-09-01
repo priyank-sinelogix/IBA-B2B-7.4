@@ -78,7 +78,7 @@
                 </div>
                 <div class="method-highlight-row">
                     <div class="icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/HighlightEmissionsAvoided.png') }}" alt=""></div>
-                    <div><strong>398,154 Kg CO₂e</strong><span>GHG Emissions Avoided</span></div>
+                    <div><strong>398,154 Kg CO₂-eq</strong><span>GHG Emissions Avoided</span></div>
                 </div>
                 <div class="method-highlight-row">
                     <div class="icon"><img src="{{ asset('images/site/Sustanibility/OurMethodology/HighlightGarmentsShipped.png') }}" alt=""></div>
@@ -145,7 +145,7 @@
                 <div class="method-impact-stat">
                     <div class="icon-outline"><img src="{{ asset('images/site/Sustanibility/OurMethodology/ImpactEmissionsAvoided.png') }}" alt=""></div>
                     <div class="num">398,154</div>
-                    <div class="lbl">Kg CO₂e</div>
+                    <div class="lbl">Kg CO₂-eq</div>
                     <div class="sub">GHG Emissions Avoided (J-PAL Verified)</div>
                 </div>
                 <div class="method-impact-stat">

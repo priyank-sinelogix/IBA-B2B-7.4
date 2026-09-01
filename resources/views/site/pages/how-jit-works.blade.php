@@ -23,12 +23,12 @@
 
 
 <div class="wrap stat-band">
-    <div class="stat-band-grid" style="grid-template-columns: repeat(5,1fr);">
-        <div class="stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitDispatch.png') }}" alt=""><div><div class="num">24–48H</div><div class="lbl">Production &amp; Dispatch</div></div></div>
-        <div class="stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitMoq.png') }}" alt=""><div><div class="num">MOQ 1</div><div class="lbl">Start From 1 Piece</div></div></div>
-        <div class="stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitSizes.png') }}" alt=""><div><div class="num">Multiple</div><div class="lbl">Sizes &amp; Prints</div></div></div>
-        <div class="stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitShipping.png') }}" alt=""><div><div class="num">Global</div><div class="lbl">Shipping</div></div></div>
-        <div class="stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitBrands.png') }}" alt=""><div><div class="num">1000+</div><div class="lbl">Brands Served</div></div></div>
+    <div class="row stat-band-grid">
+        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitDispatch.png') }}" alt=""><div><div class="num">24–48H</div><div class="lbl">Production &amp; Dispatch</div></div></div>
+        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitMoq.png') }}" alt=""><div><div class="num">MOQ 1</div><div class="lbl">Start From 1 Piece</div></div></div>
+        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitSizes.png') }}" alt=""><div><div class="num">Multiple</div><div class="lbl">Sizes &amp; Prints</div></div></div>
+        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitShipping.png') }}" alt=""><div><div class="num">Global</div><div class="lbl">Shipping</div></div></div>
+        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitBrands.png') }}" alt=""><div><div class="num">1000+</div><div class="lbl">Brands Served</div></div></div>
     </div>
 </div>
 

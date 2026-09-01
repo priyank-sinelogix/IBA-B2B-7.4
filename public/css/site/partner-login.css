@@ -74,6 +74,11 @@
         .cta-band .wrap { flex-direction: column; text-align: center; }
     }
 
+    @media (max-width: 480px) {
+        .why-grid { grid-template-columns: 1fr; }
+        .why-item:not(:last-child)::after { display: none; }
+    }
+
 /* ===== Blank image placeholders (swap for real assets) ===== */
 .img-placeholder {
         background: repeating-linear-gradient(45deg, #eef1f4, #eef1f4 10px, #f7f8fa 10px, #f7f8fa 20px);

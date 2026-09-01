@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactFormSubmitted;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class SiteController extends Controller
 {
@@ -58,7 +61,7 @@ class SiteController extends Controller
 
     public function submitContact(\Illuminate\Http\Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'first_name' => 'required|string|max:100',
             'last_name' => 'required|string|max:100',
             'work_email' => 'required|email|max:150',
@@ -70,6 +73,12 @@ class SiteController extends Controller
             'message' => 'nullable|string|max:2000',
             'learned_from' => 'nullable|string|max:100',
         ]);
+
+        try {
+            Mail::to('info@ibacrafts.com')->send(new ContactFormSubmitted($data));
+        } catch (\Throwable $e) {
+            Log::error('Contact form email failed to send: ' . $e->getMessage());
+        }
 
         return redirect('/contact')->with('success', "Thanks! We've received your message and will get back to you within 24 hours.");
     }

@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="{{ asset('css/site/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/footer.css') }}">
@@ -28,6 +30,7 @@
         @include('site.partials.footer-simple')
     @show
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/site/main.js') }}"></script>
     @stack('page-scripts')
 </body>
