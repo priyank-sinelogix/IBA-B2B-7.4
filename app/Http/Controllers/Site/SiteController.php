@@ -82,7 +82,8 @@ class SiteController extends Controller
             $extra[] = "Heard about us via: {$data['learned_from']}";
         }
         if ($extra) {
-            $description .= ($description ? "\n\n" : '') . implode("\n", $extra);
+            // $description .= ($description ? "\n\n" : '') . implode("\n", $extra);
+            $description .= ($description ? "\n\n" : '');
         }
 
         try {
@@ -94,6 +95,8 @@ class SiteController extends Controller
                 'Compnay' => $data['company'],
                 'Website' => $data['website'] ?? '',
                 'description' => $description,
+                'company_size' => $data['company_size'] ?? '',
+                'learned_from' => $data['learned_from'] ?? '',
                 'social_media' => '',
             ]);
 
