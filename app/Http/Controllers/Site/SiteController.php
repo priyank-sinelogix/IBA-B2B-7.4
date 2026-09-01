@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Mail\ContactFormSubmitted;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 
 class SiteController extends Controller
 {
@@ -74,10 +73,35 @@ class SiteController extends Controller
             'learned_from' => 'nullable|string|max:100',
         ]);
 
+        $description = trim($data['message'] ?? '');
+        $extra = [];
+        if (!empty($data['company_size'])) {
+            $extra[] = "Company Size: {$data['company_size']}";
+        }
+        if (!empty($data['learned_from'])) {
+            $extra[] = "Heard about us via: {$data['learned_from']}";
+        }
+        if ($extra) {
+            $description .= ($description ? "\n\n" : '') . implode("\n", $extra);
+        }
+
         try {
-            Mail::to('info@ibacrafts.com')->send(new ContactFormSubmitted($data));
+            $response = Http::timeout(10)->withOptions(['verify' => false])->post('https://s4sassy.com/API_NewDevelopment/sewgo.php?typ=save_addr', [
+                'Fname' => $data['first_name'],
+                'Lname' => $data['last_name'],
+                'Email' => $data['work_email'],
+                'phone' => $data['phone'] ?? '',
+                'Compnay' => $data['company'],
+                'Website' => $data['website'] ?? '',
+                'description' => $description,
+                'social_media' => '',
+            ]);
+
+            if (!$response->successful()) {
+                Log::error('Contact form API call returned an error: ' . $response->body());
+            }
         } catch (\Throwable $e) {
-            Log::error('Contact form email failed to send: ' . $e->getMessage());
+            Log::error('Contact form API call failed: ' . $e->getMessage());
         }
 
         return redirect('/contact')->with('success', "Thanks! We've received your message and will get back to you within 24 hours.");
