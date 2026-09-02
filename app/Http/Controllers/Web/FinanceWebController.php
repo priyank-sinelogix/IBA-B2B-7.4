@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\LedgerEntry;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class FinanceWebController extends Controller
@@ -20,8 +21,14 @@ class FinanceWebController extends Controller
 
     public function downloadStatement(Request $request)
     {
-        // TODO: generate PDF via barryvdh/laravel-dompdf or similar,
-        // store record in `statements` table, then stream/download.
-        abort(501, 'Statement generation not yet implemented.');
+        $company = $request->user()->company()->with('currency')->first();
+
+        $ledgerEntries = LedgerEntry::where('company_id', $company->id)
+            ->oldest()->get();
+
+        $pdf = Pdf::loadView('finance.statement-pdf', compact('company', 'ledgerEntries'))
+            ->setPaper('a4', 'portrait');
+
+        return $pdf->download('statement-'.$company->code.'-'.now()->format('Y-m-d').'.pdf');
     }
 }
