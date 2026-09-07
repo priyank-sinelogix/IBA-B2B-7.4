@@ -13,7 +13,7 @@
         <p>Have a question about JIT manufacturing, pricing, or partnering with Sewgo? Fill out the form below and our team will get back to you within 24 hours.</p>
         <div class="contact-hero-stats">
             <div class="chs-item"><i class="far fa-clock"></i><span>24H Response Time</span></div>
-            <div class="chs-item"><i class="fas fa-users"></i><span>1000+ Brands Trust Us</span></div>
+            <div class="chs-item"><i class="fas fa-users"></i><span>20,000+ Prints Available</span></div>
             <div class="chs-item"><i class="fas fa-globe"></i><span>Support in 40+ Countries</span></div>
         </div>
     </div>

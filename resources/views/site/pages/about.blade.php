@@ -69,7 +69,9 @@
             <div class="built-by-stat"><img src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/Employees.png') }}" alt=""><div class="num">170+</div><span>Employees</span></div>
             <div class="built-by-stat"><img src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/GarmentsPerDay.png') }}" alt=""><div class="num">2,500</div><span>Garments/Day Capacity</span></div>
         </div>
-        <img class="built-by-img" src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/BuiltByIbaCrafts.jpg') }}" alt="">
+        <div class="built-by-media">
+            <img class="built-by-img" src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/BuiltByIbaCrafts.jpg') }}" alt="">
+        </div>
     </div>
 </div>
 
