@@ -13,6 +13,7 @@
                 <dl class="row mb-0">
                     <dt class="col-5">Order No.</dt><dd class="col-7">{{ $order->order_no }}</dd>
                     <dt class="col-5">Style Name</dt><dd class="col-7">{{ $order->style_name }}</dd>
+                    <dt class="col-5">Linked Sample</dt><dd class="col-7">{{ $order->sample->sample_code ?? '—' }}</dd>
                     <dt class="col-5">Quantity</dt><dd class="col-7">{{ number_format($order->quantity) }} Pcs</dd>
                     <dt class="col-5">Current Stage</dt>
                     <dd class="col-7"><span class="badge badge-info text-capitalize">{{ str_replace('_',' ',$order->current_stage) }}</span></dd>
@@ -56,6 +57,39 @@
                         <li class="list-group-item text-muted text-center">No stage history yet.</li>
                     @endforelse
                 </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title">Order History (VMS)</h3>
+                @if($order->sample && $vmsMatches->isNotEmpty())
+                    <span class="badge badge-info">{{ $vmsMatches->count() }} order{{ $vmsMatches->count() == 1 ? '' : 's' }} found</span>
+                @endif
+            </div>
+            <div class="card-body p-0">
+                @if(!$order->sample)
+                    <div class="text-center text-muted p-3">No sample linked to this order — edit the order and select a sample to enable VMS SKU matching.</div>
+                @elseif($vmsMatches->isEmpty())
+                    <div class="text-center text-muted p-3">No orders found in VMS yet for this sample's SKUs (or the VMS server could not be reached).</div>
+                @else
+                    <table class="table table-hover mb-0">
+                        <thead><tr><th>Order ID</th><th>SKU</th><th>Size</th><th>Qty</th><th>Status</th><th>Order Date</th><th>Dispatch Date</th></tr></thead>
+                        <tbody>
+                        @foreach($vmsMatches as $row)
+                            <tr>
+                                <td>{{ $row->orderid }}</td>
+                                <td>{{ $row->sku }}</td>
+                                <td>{{ $row->size }}</td>
+                                <td>{{ $row->qty }}</td>
+                                <td>{{ $row->sendformaking }}</td>
+                                <td>{{ $row->create_date }}</td>
+                                <td>{{ $row->dispatch_date }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                @endif
             </div>
         </div>
 

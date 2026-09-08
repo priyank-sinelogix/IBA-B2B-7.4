@@ -7,19 +7,59 @@ use App\Models\AuditLog;
 use App\Models\Company;
 use App\Models\Order;
 use App\Models\OrderStageLog;
+use App\Models\Sample;
+use App\Models\Sku;
+use App\Support\VmsOrderMatcher;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class OrderController extends Controller
 {
     private array $stages = ['cutting', 'sewing', 'qc_inspection', 'packing', 'dispatched'];
 
+    /**
+     * Orders are now sourced live from VMS: every SKU we've generated is
+     * matched against vms_selldata and the matching rows are shown as the
+     * order list — nothing is fetched-and-saved locally, so this always
+     * reflects VMS as of "right now".
+     */
     public function index(Request $request)
     {
-        $query = Order::with('company');
+        $skuQuery = Sku::with('sample.company')->whereHas('sample');
         if ($request->filled('company_id')) {
-            $query->where('company_id', $request->get('company_id'));
+            $skuQuery->whereHas('sample', function ($q) use ($request) {
+                $q->where('company_id', $request->get('company_id'));
+            });
         }
-        $orders = $query->latest()->paginate(15);
+        $skusByCode = $skuQuery->get()->keyBy('sku_code');
+        $vmsRows = VmsOrderMatcher::matchSkus($skusByCode->keys());
+
+        $rows = $vmsRows->map(function ($vmsRow) use ($skusByCode) {
+            $sku = $skusByCode->get($vmsRow->sku);
+
+            return (object) [
+                'company' => optional($sku)->sample->company ?? null,
+                'sample' => optional($sku)->sample,
+                'sku_code' => $vmsRow->sku,
+                'orderid' => $vmsRow->orderid,
+                'qty' => $vmsRow->qty,
+                'size' => $vmsRow->size,
+                'status' => $vmsRow->sendformaking,
+                'order_date' => $vmsRow->create_date,
+                'dispatch_date' => $vmsRow->dispatch_date,
+            ];
+        });
+
+        $page = (int) $request->get('page', 1);
+        $perPage = 15;
+        $orders = new LengthAwarePaginator(
+            $rows->forPage($page, $perPage)->values(),
+            $rows->count(),
+            $perPage,
+            $page,
+            ['path' => $request->url(), 'query' => $request->query()]
+        );
+
         $companies = Company::orderBy('name')->get();
 
         return view('admin.orders.index', compact('orders', 'companies'));
@@ -27,15 +67,17 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        $order->load(['company.currency', 'stageLogs.order', 'shipments']);
-        return view('admin.orders.show', compact('order'));
+        $order->load(['company.currency', 'sample.skus', 'stageLogs.order', 'shipments']);
+        $vmsMatches = $order->vmsMatches();
+        return view('admin.orders.show', compact('order', 'vmsMatches'));
     }
 
     public function create()
     {
         $order = new Order();
         $companies = Company::orderBy('name')->get();
-        return view('admin.orders.form', compact('order', 'companies'))
+        $samples = Sample::where('status', 'approved')->orderBy('style_name')->get();
+        return view('admin.orders.form', compact('order', 'companies', 'samples'))
             ->with('stages', $this->stages);
     }
 
@@ -59,8 +101,9 @@ class OrderController extends Controller
     public function edit(Order $order)
     {
         $companies = Company::orderBy('name')->get();
+        $samples = Sample::where('status', 'approved')->orderBy('style_name')->get();
         $order->load('stageLogs');
-        return view('admin.orders.form', compact('order', 'companies'))
+        return view('admin.orders.form', compact('order', 'companies', 'samples'))
             ->with('stages', $this->stages);
     }
 
@@ -96,6 +139,7 @@ class OrderController extends Controller
     {
         return $request->validate([
             'company_id' => 'required|exists:companies,id',
+            'sample_id' => 'nullable|exists:samples,id',
             'order_no' => 'required|string|max:100|unique:orders,order_no'.($ignoreId ? ",$ignoreId" : ''),
             'style_name' => 'required|string|max:255',
             'quantity' => 'required|integer|min:1',

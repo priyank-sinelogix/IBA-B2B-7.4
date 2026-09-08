@@ -3,22 +3,25 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header"><h3 class="card-title">Active Orders</h3></div>
+    <div class="card-header"><h3 class="card-title">My Orders <small class="text-muted">(live from VMS, matched by SKU)</small></h3></div>
     <div class="card-body p-0">
         <table class="table table-hover mb-0">
-            <thead><tr><th>Order No.</th><th>Style Name</th><th>Stage</th><th>Quantity</th><th>ETA</th></tr></thead>
+            <thead><tr><th>Style / Sample</th><th>SKU</th><th>Order ID</th><th>Size</th><th>Qty</th><th>Status</th><th>Order Date</th><th>Dispatch Date</th></tr></thead>
             <tbody>
-            @forelse($orders ?? [] as $order)
+            @forelse($orders ?? [] as $row)
                 <tr>
-                    <td>{{ $order->order_no }}</td>
-                    <td>{{ $order->style_name }}</td>
-                    <td><span class="badge badge-info text-capitalize">{{ str_replace('_',' ',$order->current_stage) }}</span></td>
-                    <td>{{ number_format($order->quantity) }} Pcs</td>
-                    <td>{{ optional($order->eta)->format('d M Y') }}</td>
+                    <td>{{ optional($row->sample)->style_name ?? '—' }}</td>
+                    <td>{{ $row->sku_code }}</td>
+                    <td>{{ $row->orderid }}</td>
+                    <td>{{ $row->size }}</td>
+                    <td>{{ number_format((float) $row->qty) }}</td>
+                    <td><span class="badge badge-info">{{ $row->status }}</span></td>
+                    <td>{{ $row->order_date }}</td>
+                    <td>{{ $row->dispatch_date }}</td>
                 </tr>
             @empty
-                <tr><td colspan="5" class="text-center text-muted p-4">
-                    No records yet. Connect <code>$orders</code> from <code>OrderWebController@index</code>.
+                <tr><td colspan="8" class="text-center text-muted p-4">
+                    No orders found yet in VMS for your samples' SKUs.
                 </td></tr>
             @endforelse
             </tbody>

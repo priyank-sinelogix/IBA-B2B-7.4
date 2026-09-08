@@ -63,6 +63,28 @@ return [
             ]) : [],
         ],
 
+        // Read-only connection to the separate VMS (production/SKU) database on
+        // another server. Used only to look up matching SKUs in vms_selldata —
+        // never write through this connection.
+        'vms' => [
+            'driver' => 'mysql',
+            'host' => env('VMS_DB_HOST', ''),
+            'port' => env('VMS_DB_PORT', '3306'),
+            'database' => env('VMS_DB_DATABASE', 'vms'),
+            'username' => env('VMS_DB_USERNAME', ''),
+            'password' => env('VMS_DB_PASSWORD', ''),
+            'unix_socket' => '',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::ATTR_TIMEOUT => 5,
+            ]) : [],
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),

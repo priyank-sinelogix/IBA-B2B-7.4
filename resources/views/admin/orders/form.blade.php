@@ -22,6 +22,16 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Sample (for SKU / VMS matching)</label>
+                        <select name="sample_id" class="form-control">
+                            <option value="">-- None --</option>
+                            @foreach($samples as $s)
+                                <option value="{{ $s->id }}" {{ old('sample_id', $order->sample_id) == $s->id ? 'selected' : '' }}>{{ $s->sample_code }} — {{ $s->style_name }}</option>
+                            @endforeach
+                        </select>
+                        <small class="form-text text-muted">Linking a sample lets the order auto-match its generated SKUs against VMS production data.</small>
+                    </div>
+                    <div class="form-group">
                         <label>Order No.</label>
                         <input type="text" name="order_no" class="form-control" value="{{ old('order_no', $order->order_no) }}" placeholder="ORD-240512" required>
                     </div>

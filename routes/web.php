@@ -81,7 +81,10 @@ Route::middleware(['auth', 'role:admin,super_admin'])->prefix('admin')->group(fu
     Route::resource('companies', CompanyController::class);
     Route::resource('currencies', \App\Http\Controllers\Admin\Web\CurrencyController::class)->except(['show']);
     Route::resource('samples', \App\Http\Controllers\Admin\Web\SampleController::class);
-    Route::resource('orders', \App\Http\Controllers\Admin\Web\OrderController::class);
+    // Orders are now sourced live from VMS (matched by SKU) — manual creation
+    // disabled for now per requirement; uncomment 'create','store' to restore it.
+    Route::resource('orders', \App\Http\Controllers\Admin\Web\OrderController::class)
+        ->except(['create', 'store']);
     Route::resource('shipments', \App\Http\Controllers\Admin\Web\ShipmentController::class);
     Route::resource('users', \App\Http\Controllers\Admin\Web\UserController::class);
 
