@@ -18,7 +18,7 @@ class SampleWebController extends Controller
             $query->where('status', $request->get('status'));
         }
 
-        $samples = $query->latest('submitted_at')->paginate(15);
+        $samples = $query->latest('submitted_at')->paginate(100);
 
         return view('samples.index', compact('samples'));
     }

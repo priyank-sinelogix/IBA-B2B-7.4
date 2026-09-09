@@ -28,7 +28,7 @@
             <tbody>
             @forelse($samples as $sample)
                 <tr>
-                    <td><img src="{{ optional($sample->latestVersion)->signedImageUrl() ?? 'https://via.placeholder.com/44' }}" width="40" height="40" style="object-fit:cover;border-radius:6px;"></td>
+                    <td><img src="{{ optional($sample->latestVersion)->signedImageUrl() ?? 'https://via.placeholder.com/44' }}" style="width:40px;height:40px;object-fit:cover;border-radius:6px;"></td>
                     <td><a href="{{ url('/admin/samples/'.$sample->id) }}">{{ $sample->sample_code }}</a></td>
                     <td>{{ $sample->company->name }}</td>
                     <td>{{ $sample->style_name }}</td>

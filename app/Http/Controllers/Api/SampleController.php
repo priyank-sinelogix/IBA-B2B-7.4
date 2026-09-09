@@ -19,7 +19,7 @@ class SampleController extends Controller
         $samples = Sample::with(['latestVersion'])
             ->where('company_id', $companyId) // hard scope - no cross-tenant leakage
             ->latest('submitted_at')
-            ->paginate(20);
+            ->paginate(100);
 
         return response()->json($samples);
     }

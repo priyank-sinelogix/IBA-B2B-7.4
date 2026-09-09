@@ -19,7 +19,7 @@
                 <div class="mb-3">
                     @foreach($sample->latestVersion->images as $img)
                         <a href="{{ $img->url() }}" target="_blank">
-                            <img src="{{ $img->url() }}" width="56" height="56" style="object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border">
+                            <img src="{{ $img->url() }}" style="width:56px;height:56px;object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border">
                         </a>
                     @endforeach
                 </div>
@@ -55,7 +55,7 @@
                 <ul class="list-group list-group-flush">
                     @forelse($sample->versions as $version)
                     <li class="list-group-item d-flex align-items-center">
-                        <img src="{{ $version->signedImageUrl() }}" width="40" height="40" style="object-fit:cover;border-radius:6px;" class="mr-3">
+                        <img src="{{ $version->signedImageUrl() }}" style="width:40px;height:40px;object-fit:cover;border-radius:6px;flex-shrink:0;" class="mr-3">
                         <div>
                             <div class="font-weight-bold small">Version {{ $version->version_no }} ({{ $version->images->count() }} image{{ $version->images->count() == 1 ? '' : 's' }})</div>
                             <div class="text-muted small">{{ $version->notes }}</div>

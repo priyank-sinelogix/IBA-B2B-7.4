@@ -18,7 +18,7 @@ class LedgerController extends Controller
         if ($request->filled('company_id')) {
             $query->where('company_id', $request->get('company_id'));
         }
-        $entries = $query->latest()->paginate(20);
+        $entries = $query->latest()->paginate(100);
         $companies = Company::orderBy('name')->get();
 
         return view('admin.finance.index', compact('entries', 'companies'));

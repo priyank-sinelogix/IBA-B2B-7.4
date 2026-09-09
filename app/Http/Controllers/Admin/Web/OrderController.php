@@ -51,7 +51,7 @@ class OrderController extends Controller
         });
 
         $page = (int) $request->get('page', 1);
-        $perPage = 15;
+        $perPage = 100;
         $orders = new LengthAwarePaginator(
             $rows->forPage($page, $perPage)->values(),
             $rows->count(),

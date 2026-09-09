@@ -16,7 +16,7 @@ class PricingController extends Controller
         if ($request->filled('sample_id')) {
             $query->where('sample_id', $request->get('sample_id'));
         }
-        $pricings = $query->latest()->paginate(20);
+        $pricings = $query->latest()->paginate(100);
         $samples = Sample::orderBy('style_name')->get();
 
         return view('admin.pricing.index', compact('pricings', 'samples'));

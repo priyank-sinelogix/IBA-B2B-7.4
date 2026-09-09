@@ -12,7 +12,7 @@ class ShipmentWebController extends Controller
     {
         $shipments = Shipment::with('company.currency')
             ->where('company_id', $request->user()->company_id)
-            ->latest('status_updated_at')->paginate(15);
+            ->latest('status_updated_at')->paginate(100);
 
         return view('shipments.index', compact('shipments'));
     }

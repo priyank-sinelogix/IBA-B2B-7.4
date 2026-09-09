@@ -14,7 +14,7 @@ class FinanceWebController extends Controller
         $company = $request->user()->company()->with('currency')->first();
 
         $ledgerEntries = LedgerEntry::where('company_id', $company->id)
-            ->latest()->paginate(20);
+            ->latest()->paginate(100);
 
         return view('finance.index', compact('company', 'ledgerEntries'));
     }

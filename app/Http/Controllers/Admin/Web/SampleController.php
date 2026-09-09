@@ -22,7 +22,7 @@ class SampleController extends Controller
             $query->where('status', $request->get('status'));
         }
 
-        $samples = $query->latest('submitted_at')->paginate(15);
+        $samples = $query->latest('submitted_at')->paginate(100);
         $companies = Company::orderBy('name')->get();
 
         return view('admin.samples.index', compact('samples', 'companies'));

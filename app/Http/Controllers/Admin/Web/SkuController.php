@@ -18,7 +18,7 @@ class SkuController extends Controller
         if ($request->filled('sample_id')) {
             $query->where('sample_id', $request->get('sample_id'));
         }
-        $skus = $query->latest()->paginate(20);
+        $skus = $query->latest()->paginate(100);
         $samples = Sample::where('status', 'approved')->orderBy('style_name')->get();
 
         return view('admin.skus.index', compact('skus', 'samples'));

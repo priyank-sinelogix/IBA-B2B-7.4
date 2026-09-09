@@ -12,7 +12,7 @@ class MessageWebController extends Controller
     {
         $messages = Message::with('sender')
             ->where('company_id', $request->user()->company_id)
-            ->latest()->paginate(20);
+            ->latest()->paginate(100);
 
         return view('messages.index', compact('messages'));
     }

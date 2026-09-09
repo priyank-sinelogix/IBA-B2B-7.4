@@ -9,7 +9,7 @@ class AuditLogController extends Controller
 {
     public function index()
     {
-        $logs = AuditLog::with(['company', 'user'])->latest('created_at')->paginate(30);
+        $logs = AuditLog::with(['company', 'user'])->latest('created_at')->paginate(100);
         return view('admin.audit-logs.index', compact('logs'));
     }
 }

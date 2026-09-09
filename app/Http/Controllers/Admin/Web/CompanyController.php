@@ -11,7 +11,7 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        $companies = Company::with('currency')->withCount('users')->latest()->paginate(15);
+        $companies = Company::with('currency')->withCount('users')->latest()->paginate(100);
         return view('admin.companies.index', compact('companies'));
     }
 

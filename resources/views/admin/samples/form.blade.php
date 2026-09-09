@@ -24,7 +24,7 @@
                 @if($sample->latestVersion->images->count() > 1)
                 <div class="mt-2">
                     @foreach($sample->latestVersion->images as $img)
-                        <img src="{{ $img->url() }}" width="50" height="50" style="object-fit:cover;border-radius:6px;" class="mr-1 border">
+                        <img src="{{ $img->url() }}" style="width:50px;height:50px;object-fit:cover;border-radius:6px;" class="mr-1 border">
                     @endforeach
                 </div>
                 @endif

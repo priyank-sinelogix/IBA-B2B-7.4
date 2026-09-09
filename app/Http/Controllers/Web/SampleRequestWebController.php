@@ -12,7 +12,7 @@ class SampleRequestWebController extends Controller
     {
         $requests = SampleRequest::where('company_id', $request->user()->company_id)
             ->with('images')
-            ->latest()->paginate(15);
+            ->latest()->paginate(100);
 
         return view('sample-requests.index', compact('requests'));
     }

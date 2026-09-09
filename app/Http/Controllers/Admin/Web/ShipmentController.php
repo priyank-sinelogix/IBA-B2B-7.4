@@ -20,7 +20,7 @@ class ShipmentController extends Controller
         if ($request->filled('company_id')) {
             $query->where('company_id', $request->get('company_id'));
         }
-        $shipments = $query->latest('status_updated_at')->paginate(15);
+        $shipments = $query->latest('status_updated_at')->paginate(100);
         $companies = Company::with('currency')->orderBy('name')->get();
 
         return view('admin.shipments.index', compact('shipments', 'companies'));

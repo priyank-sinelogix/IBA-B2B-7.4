@@ -18,7 +18,7 @@ class SampleRequestController extends Controller
         if ($request->filled('status')) {
             $query->where('status', $request->get('status'));
         }
-        $requests = $query->latest()->paginate(15);
+        $requests = $query->latest()->paginate(100);
 
         return view('admin.sample-requests.index', compact('requests'));
     }
