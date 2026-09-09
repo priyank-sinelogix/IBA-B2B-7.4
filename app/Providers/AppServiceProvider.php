@@ -22,8 +22,12 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
+        if (app()->environment('production')) {
+            \URL::forceScheme('https');
+        }
+
         // Admin panel (AdminLTE) and auth pages are Bootstrap 4 — Laravel's
         // default pagination view uses unstyled Tailwind SVG icons that
         // render huge without Tailwind's CSS loaded, so use Bootstrap's here.
