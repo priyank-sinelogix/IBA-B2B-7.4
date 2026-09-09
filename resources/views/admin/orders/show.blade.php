@@ -82,7 +82,7 @@
                                 <td>{{ $row->sku }}</td>
                                 <td>{{ $row->size }}</td>
                                 <td>{{ $row->qty }}</td>
-                                <td>{{ $row->sendformaking }}</td>
+                                <td>{{ \App\Support\VmsOrderMatcher::statusLabel($row->sendformaking) }}</td>
                                 <td>{{ $row->create_date }}</td>
                                 <td>{{ $row->dispatch_date }}</td>
                             </tr>

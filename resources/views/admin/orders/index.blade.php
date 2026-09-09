@@ -29,7 +29,7 @@
                     <td>{{ $row->orderid }}</td>
                     <td>{{ $row->size }}</td>
                     <td>{{ number_format((float) $row->qty) }}</td>
-                    <td><span class="badge badge-info">{{ $row->status }}</span></td>
+                    <td><span class="badge badge-info">{{ \App\Support\VmsOrderMatcher::statusLabel($row->status) }}</span></td>
                     <td>{{ $row->order_date }}</td>
                     <td>{{ $row->dispatch_date }}</td>
                 </tr>
