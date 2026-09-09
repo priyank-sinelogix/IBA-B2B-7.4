@@ -27,10 +27,11 @@
             <div>
                 <h4>Contact Us</h4>
                 <ul>
-                    <li>India – IBA Crafts Pvt. Ltd.</li>
-                    <li>E-17, Sector - 11, Noida,<br>Uttar Pradesh - 201301, India</li>
-                    <li><a href="mailto:info@sewgo.com"><i class="far fa-envelope"></i> info@sewgo.com</a></li>
-                    <li><a href="https://sewgo.com"><i class="fas fa-globe"></i> www.sewgo.com</a></li>
+                    <li>India – Noida, Uttar Pradesh</li>
+                    <li>USA – Cheyenne, Wyoming</li>
+                    <li>Canada – Toronto, Ontario</li>
+                    <li><a href="mailto:hello@sewgo.io"><i class="far fa-envelope"></i> hello@sewgo.io</a></li>
+                    <li><a href="tel:+919582557282"><i class="fas fa-phone"></i> +91 95825 57282</a></li>
                 </ul>
             </div>
         </div>
@@ -55,8 +56,9 @@
             <img src="{{ asset('images/site/logo.png') }}" alt="Sewgo" class="logo">
         </div>
 
-        <div class="footer-bottom-item footer-center">
-            <span>&copy; {{ date('Y') }} Sewgo. All Rights Reserved.</span>
+        <div class="footer-bottom-item footer-center" style="display:flex; align-items:center; justify-content:center; white-space:nowrap;">
+            <span>&copy; {{ date('Y') }} Sewgo. All Rights Reserved. · Powered by</span>
+            <img src="{{ asset('images/site/ibacraftlogo.png') }}" alt="IBA Crafts" style="height:20px; margin-left:6px;">
         </div>
 
         <div class="footer-bottom-item footer-right">

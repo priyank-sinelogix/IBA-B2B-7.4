@@ -50,6 +50,10 @@ class SampleWebController extends Controller
     {
         $this->authorizeCompany($request, $sample);
 
+        if ($sample->status === 'approved') {
+            return back()->with('error', 'This sample has already been approved.');
+        }
+
         $before = $sample->only('status');
         $sample->update(['status' => 'approved']);
 

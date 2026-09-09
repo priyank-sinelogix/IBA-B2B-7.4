@@ -22,13 +22,17 @@
                 <p class="text-muted">Color: {{ $sample->color }}</p>
 
                 <div class="d-flex justify-content-center mt-3">
-                    <form method="POST" action="{{ url('/samples/'.$sample->id.'/approve') }}" class="mr-2">
-                        @csrf
-                        <button class="btn btn-success"><i class="fas fa-check mr-1"></i> Approve</button>
-                    </form>
-                    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#reviseModal">
-                        <i class="fas fa-redo mr-1"></i> Request Revision
-                    </button>
+                    @if($sample->status === 'approved')
+                        <span class="badge badge-approved p-2"><i class="fas fa-check mr-1"></i> You Approved This Sample</span>
+                    @else
+                        <form method="POST" action="{{ url('/samples/'.$sample->id.'/approve') }}" class="mr-2">
+                            @csrf
+                            <button class="btn btn-success"><i class="fas fa-check mr-1"></i> Approve</button>
+                        </form>
+                        <button class="btn btn-outline-danger" data-toggle="modal" data-target="#reviseModal">
+                            <i class="fas fa-redo mr-1"></i> Request Revision
+                        </button>
+                    @endif
                 </div>
             </div>
         </div>

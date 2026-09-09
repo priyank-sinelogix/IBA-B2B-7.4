@@ -56,7 +56,12 @@
 
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <label class="mb-0"><strong>Size Chart (optional)</strong> — let IBA know the measurements you need</label>
-                <button type="button" class="btn btn-sm btn-outline-primary" onclick="addSizeChartRow()"><i class="fas fa-plus mr-1"></i> Add Row</button>
+                <div>
+                    <a href="{{ asset('templates/size-chart-sample.csv') }}" class="btn btn-sm btn-outline-secondary" download><i class="fas fa-download mr-1"></i> Sample CSV</a>
+                    <input type="file" accept=".csv,text/csv" id="sizeChartCsvInput" style="display:none;">
+                    <button type="button" class="btn btn-sm btn-outline-success" onclick="document.getElementById('sizeChartCsvInput').click();"><i class="fas fa-file-csv mr-1"></i> Upload CSV</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary" onclick="addSizeChartRow()"><i class="fas fa-plus mr-1"></i> Add Row</button>
+                </div>
             </div>
             <table class="table table-bordered mb-0" id="sizeChartTable">
                 <thead>
@@ -106,8 +111,8 @@
 </div>
 
 <script>
-    function addSizeChartRow() {
-        var tbody = document.getElementById('sizeChartBody');
+    function buildSizeChartRow(values) {
+        values = values || [];
         var row = document.createElement('tr');
         var cols = ['specification', 'xs', 's', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl', 'xxxxxl'];
         cols.forEach(function (name, i) {
@@ -117,14 +122,43 @@
             input.name = name + '[]';
             input.type = i === 0 ? 'text' : 'number';
             if (i > 0) input.step = '0.01';
+            if (values[i] !== undefined) input.value = values[i];
             td.appendChild(input);
             row.appendChild(td);
         });
         var actionTd = document.createElement('td');
         actionTd.innerHTML = '<button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest(\'tr\').remove()">&times;</button>';
         row.appendChild(actionTd);
-        tbody.appendChild(row);
+        return row;
     }
+
+    function addSizeChartRow() {
+        document.getElementById('sizeChartBody').appendChild(buildSizeChartRow());
+    }
+
+    // Parse a CSV (Specification,XS,S,M,L,XL,XXL,XXXL,XXXXL,XXXXXL) client-side and
+    // replace the size chart rows with it — works for both create and edit since
+    // it just fills the same inputs that get submitted with the form either way.
+    document.getElementById('sizeChartCsvInput').addEventListener('change', function (e) {
+        var file = e.target.files[0];
+        if (!file) return;
+
+        var reader = new FileReader();
+        reader.onload = function (ev) {
+            var lines = ev.target.result.split(/\r?\n/).filter(function (l) { return l.trim() !== ''; });
+            lines.shift(); // skip header row
+
+            var tbody = document.getElementById('sizeChartBody');
+            tbody.innerHTML = '';
+            lines.forEach(function (line) {
+                var cells = line.split(',').map(function (c) { return c.trim(); });
+                if (!cells[0]) return;
+                tbody.appendChild(buildSizeChartRow(cells));
+            });
+        };
+        reader.readAsText(file);
+        e.target.value = '';
+    });
 
     // Simple thumbnail preview of newly selected images before upload
     document.getElementById('refImagesInput').addEventListener('change', function (e) {
