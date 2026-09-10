@@ -11,28 +11,24 @@
 
             <div class="form-group">
                 <label>Approved Sample / Style</label>
-                <select name="sample_id" class="form-control" required>
-                    <option value="">-- Select --</option>
-                    @foreach($samples as $s)
-                        <option value="{{ $s->id }}" {{ optional($selectedSample)->id == $s->id ? 'selected' : '' }}>{{ $s->sample_code }} — {{ $s->style_name }}</option>
-                    @endforeach
+                <select name="sample_id" id="sampleSelect" class="form-control">
+                    @if($selectedSample)
+                        <option value="{{ $selectedSample->id }}" selected>{{ $selectedSample->sample_code }} — {{ $selectedSample->style_name }}</option>
+                    @endif
                 </select>
-                @if($samples->isEmpty())
-                    <small class="text-muted">No approved samples yet — a sample must be client-approved before SKUs can be generated.</small>
-                @endif
             </div>
             <div class="form-row">
                 <div class="form-group col-4">
                     <label>Fabric</label>
-                    <input type="text" name="fabric" class="form-control" placeholder="Moss Crepe Spandex">
+                    <input type="text" name="fabric" id="fabricInput" class="form-control" placeholder="Moss Crepe Spandex" value="{{ old('fabric', optional($selectedSample)->fabric) }}">
                 </div>
                 <div class="form-group col-4">
                     <label>Print</label>
-                    <input type="text" name="print" class="form-control">
+                    <input type="text" name="print" class="form-control" value="{{ old('print') }}">
                 </div>
                 <div class="form-group col-4">
                     <label>Colour</label>
-                    <input type="text" name="colour" class="form-control" placeholder="Black">
+                    <input type="text" name="colour" id="colourInput" class="form-control" placeholder="Black" value="{{ old('colour', optional($selectedSample)->color) }}">
                 </div>
             </div>
             <div class="form-group">
@@ -58,4 +54,16 @@
         </div>
     </form>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        ibaAjaxSelect2('#sampleSelect', 'samples', { placeholder: 'Search approved sample / style...', approvedOnly: true });
+
+        $('#sampleSelect').on('select2:select', function (e) {
+            var data = e.params.data || {};
+            document.getElementById('fabricInput').value = data.fabric || '';
+            document.getElementById('colourInput').value = data.colour || '';
+        });
+    });
+</script>
 @endsection

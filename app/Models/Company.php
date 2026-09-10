@@ -49,6 +49,11 @@ class Company extends Model
         return $this->hasMany(LedgerEntry::class);
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     public function creditUsedPercent(): float
     {
         if ((float) $this->credit_limit <= 0) {

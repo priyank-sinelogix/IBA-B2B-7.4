@@ -11,15 +11,7 @@
 
             <div class="form-group">
                 <label>Client Company</label>
-                <select name="company_id" id="companySelect" class="form-control" required onchange="updateAmountCurrency()">
-                    <option value="">-- Select --</option>
-                    @foreach($companies as $c)
-                        <option value="{{ $c->id }}"
-                            data-currency-code="{{ optional($c->currency)->code }}"
-                            data-currency-symbol="{{ optional($c->currency)->symbol ?? '₹' }}">
-                            {{ $c->name }} ({{ optional($c->currency)->code }}) — Balance: {{ \App\Support\Currency::display($c->current_balance, $c->currency) }}
-                        </option>
-                    @endforeach
+                <select name="company_id" id="companySelect" class="form-control">
                 </select>
             </div>
             <div class="form-group">
@@ -33,11 +25,7 @@
             </div>
             <div class="form-group">
                 <label>Linked Order (optional)</label>
-                <select name="order_id" class="form-control">
-                    <option value="">-- None --</option>
-                    @foreach($orders as $o)
-                        <option value="{{ $o->id }}">{{ $o->order_no }} — {{ $o->style_name }}</option>
-                    @endforeach
+                <select name="order_id" id="orderSelect" class="form-control">
                 </select>
             </div>
             <div class="form-row">
@@ -67,13 +55,15 @@
 </div>
 
 <script>
-    function updateAmountCurrency() {
-        var select = document.getElementById('companySelect');
-        var opt = select.options[select.selectedIndex];
-        var code = (opt && opt.dataset.currencyCode) ? opt.dataset.currencyCode : '';
-        var symbol = (opt && opt.dataset.currencySymbol) ? opt.dataset.currencySymbol : '₹';
-        document.getElementById('amountCurrencyLabel').textContent = code || 'select company first';
-        document.getElementById('amountCurrencySymbol').textContent = symbol;
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+        ibaAjaxSelect2('#companySelect', 'companies', { placeholder: 'Search client company...' });
+        ibaAjaxSelect2('#orderSelect', 'orders', { placeholder: 'Search order...', allowClear: true });
+
+        $('#companySelect').on('select2:select', function (e) {
+            var data = e.params.data || {};
+            document.getElementById('amountCurrencyLabel').textContent = data.currency_code || 'select company first';
+            document.getElementById('amountCurrencySymbol').textContent = data.currency_symbol || '₹';
+        });
+    });
 </script>
 @endsection

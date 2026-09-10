@@ -8,6 +8,9 @@
         <a href="{{ url('/admin/users/create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus mr-1"></i> Add User</a>
     </div>
     <div class="card-body p-0">
+        <form class="d-flex p-3 border-bottom" method="GET">
+            @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search name, email...'])
+        </form>
         <table class="table table-hover mb-0">
             <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Company</th><th>Status</th><th></th></tr></thead>
             <tbody>
@@ -33,6 +36,6 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer">{{ $users->links() }}</div>
+    <div class="card-footer">{{ $users->appends(request()->query())->links() }}</div>
 </div>
 @endsection

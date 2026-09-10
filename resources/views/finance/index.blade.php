@@ -24,6 +24,9 @@
         <div class="card">
             <div class="card-header"><h3 class="card-title">Ledger Entries</h3></div>
             <div class="card-body p-0">
+                <form class="d-flex p-3 border-bottom" method="GET">
+                    @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search reference, description...'])
+                </form>
                 <table class="table table-hover mb-0">
                     <thead><tr><th>Date</th><th>Type</th><th>Reference</th><th>Description</th><th class="text-right">Amount</th><th class="text-right">Balance</th></tr></thead>
                     <tbody>
@@ -44,6 +47,7 @@
                     </tbody>
                 </table>
             </div>
+            <div class="card-footer">{{ optional($ledgerEntries ?? null)->appends(request()->query())->links() }}</div>
         </div>
     </div>
 </div>

@@ -11,13 +11,20 @@
     </div>
     <div class="card-body p-0">
         <form class="d-flex p-3 border-bottom" method="GET">
-            <select name="company_id" class="form-control" style="max-width:220px;" onchange="this.form.submit()">
-                <option value="">All Clients</option>
-                @foreach($companies as $c)
-                    <option value="{{ $c->id }}" {{ request('company_id') == $c->id ? 'selected' : '' }}>{{ $c->name }}</option>
-                @endforeach
+            <select name="company_id" id="companyFilterSelect" class="form-control mr-2" style="max-width:220px;">
+                <option value=""></option>
+                @if($selectedCompany ?? null)
+                    <option value="{{ $selectedCompany->id }}" selected>{{ $selectedCompany->name }}</option>
+                @endif
             </select>
+            @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search SKU, order ID, style...'])
         </form>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                ibaAjaxSelect2('#companyFilterSelect', 'companies', { placeholder: 'All Clients', allowClear: true });
+                $('#companyFilterSelect').on('select2:select select2:clear', function () { $(this).closest('form').submit(); });
+            });
+        </script>
         <table class="table table-hover mb-0">
             <thead><tr><th>Client</th><th>Style / Sample</th><th>SKU</th><th>VMS Order ID</th><th>Size</th><th>Qty</th><th>Status</th><th>Order Date</th><th>Dispatch Date</th></tr></thead>
             <tbody>
@@ -39,6 +46,6 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer">{{ $orders->links() }}</div>
+    <div class="card-footer">{{ $orders->appends(request()->query())->links() }}</div>
 </div>
 @endsection

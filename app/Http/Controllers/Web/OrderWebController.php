@@ -43,8 +43,17 @@ class OrderWebController extends Controller
             ];
         });
 
+        if ($request->filled('search')) {
+            $term = mb_strtolower($request->get('search'));
+            $rows = $rows->filter(function ($row) use ($term) {
+                return str_contains(mb_strtolower($row->sku_code ?? ''), $term)
+                    || str_contains(mb_strtolower((string) $row->orderid), $term)
+                    || str_contains(mb_strtolower(optional($row->sample)->style_name ?? ''), $term);
+            })->values();
+        }
+
         $page = (int) $request->get('page', 1);
-        $perPage = 100;
+        $perPage = $this->perPage($request);
         $orders = new LengthAwarePaginator(
             $rows->forPage($page, $perPage)->values(),
             $rows->count(),

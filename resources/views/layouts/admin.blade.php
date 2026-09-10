@@ -28,6 +28,11 @@
         .btn-iba{ background:var(--iba-navy); color:#fff; }
         .btn-iba:hover{ background:#0b1f38; color:#fff; }
         .navbar-white{ border-bottom:1px solid #eef0f2; }
+        table.table thead th{ position:relative; }
+        table.table thead th:not(.no-sort){ cursor:pointer; user-select:none; }
+        table.table thead th:not(.no-sort):hover{ background:#f2f4f7; }
+        table.table thead th[data-sort-dir="asc"]::after{ content:' \25B2'; font-size:.7em; }
+        table.table thead th[data-sort-dir="desc"]::after{ content:' \25BC'; font-size:.7em; }
     </style>
     @stack('styles')
 </head>
@@ -104,7 +109,17 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ url('/messages') }}" class="nav-link {{ request()->is('messages*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-comment-dots"></i><p>Messages</p>
+                            <i class="nav-icon fas fa-comment-dots"></i><p>Messages
+                                @php
+                                    $unreadMessageCount = auth()->user() ? \App\Models\Message::where('company_id', auth()->user()->company_id)
+                                        ->where('is_read', false)
+                                        ->whereHas('sender', function ($q) { $q->whereIn('role', ['admin', 'super_admin']); })
+                                        ->count() : 0;
+                                @endphp
+                                @if($unreadMessageCount > 0)
+                                    <span class="badge badge-danger right">{{ $unreadMessageCount }}</span>
+                                @endif
+                            </p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -144,6 +159,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+<script src="{{ asset('js/admin/table-sort.js') }}"></script>
 @stack('scripts')
 </body>
 </html>

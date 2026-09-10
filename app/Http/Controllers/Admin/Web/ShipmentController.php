@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\AuditLog;
 use App\Models\Company;
 use App\Models\LedgerEntry;
-use App\Models\Order;
 use App\Models\Shipment;
 use App\Models\ShipmentTrackingEvent;
 use Illuminate\Http\Request;
@@ -20,7 +19,15 @@ class ShipmentController extends Controller
         if ($request->filled('company_id')) {
             $query->where('company_id', $request->get('company_id'));
         }
-        $shipments = $query->latest('status_updated_at')->paginate(100);
+        if ($request->filled('search')) {
+            $term = '%'.$request->get('search').'%';
+            $query->where(function ($q) use ($term) {
+                $q->where('awb_number', 'like', $term)
+                    ->orWhere('carrier', 'like', $term)
+                    ->orWhere('destination', 'like', $term);
+            });
+        }
+        $shipments = $query->latest('status_updated_at')->paginate($this->perPage($request));
         $companies = Company::with('currency')->orderBy('name')->get();
 
         return view('admin.shipments.index', compact('shipments', 'companies'));
@@ -35,9 +42,7 @@ class ShipmentController extends Controller
     public function create()
     {
         $shipment = new Shipment();
-        $companies = Company::with('currency')->orderBy('name')->get();
-        $orders = Order::orderBy('order_no')->get();
-        return view('admin.shipments.form', compact('shipment', 'companies', 'orders'));
+        return view('admin.shipments.form', compact('shipment'));
     }
 
     public function store(Request $request)
@@ -63,10 +68,8 @@ class ShipmentController extends Controller
 
     public function edit(Shipment $shipment)
     {
-        $companies = Company::with('currency')->orderBy('name')->get();
-        $orders = Order::orderBy('order_no')->get();
-        $shipment->load('trackingEvents');
-        return view('admin.shipments.form', compact('shipment', 'companies', 'orders'));
+        $shipment->load(['company.currency', 'order', 'trackingEvents']);
+        return view('admin.shipments.form', compact('shipment'));
     }
 
     public function update(Request $request, Shipment $shipment)

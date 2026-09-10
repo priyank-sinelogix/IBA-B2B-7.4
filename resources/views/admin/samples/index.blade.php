@@ -9,18 +9,25 @@
     </div>
     <div class="card-body p-0">
         <form class="d-flex p-3 border-bottom" method="GET">
-            <select name="company_id" class="form-control mr-2" style="max-width:220px;" onchange="this.form.submit()">
-                <option value="">All Clients</option>
-                @foreach($companies as $c)
-                    <option value="{{ $c->id }}" {{ request('company_id') == $c->id ? 'selected' : '' }}>{{ $c->name }}</option>
-                @endforeach
+            <select name="company_id" id="companyFilterSelect" class="form-control mr-2" style="max-width:220px;">
+                <option value=""></option>
+                @if($selectedCompany ?? null)
+                    <option value="{{ $selectedCompany->id }}" selected>{{ $selectedCompany->name }}</option>
+                @endif
             </select>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    ibaAjaxSelect2('#companyFilterSelect', 'companies', { placeholder: 'All Clients', allowClear: true });
+                    $('#companyFilterSelect').on('select2:select select2:clear', function () { $(this).closest('form').submit(); });
+                });
+            </script>
             <select name="status" class="form-control mr-2" style="max-width:200px;" onchange="this.form.submit()">
                 <option value="">All Status</option>
                 <option value="pending" {{ request('status')=='pending'?'selected':'' }}>Pending</option>
                 <option value="approved" {{ request('status')=='approved'?'selected':'' }}>Approved</option>
                 <option value="changes_requested" {{ request('status')=='changes_requested'?'selected':'' }}>Changes Requested</option>
             </select>
+            @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search code, style, fabric...'])
         </form>
 
         <table class="table table-hover mb-0">
@@ -53,6 +60,6 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer">{{ $samples->links() }}</div>
+    <div class="card-footer">{{ $samples->appends(request()->query())->links() }}</div>
 </div>
 @endsection

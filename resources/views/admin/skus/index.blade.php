@@ -11,13 +11,20 @@
     </div>
     <div class="card-body p-0">
         <form class="d-flex p-3 border-bottom" method="GET">
-            <select name="sample_id" class="form-control" style="max-width:280px;" onchange="this.form.submit()">
-                <option value="">All Approved Samples</option>
-                @foreach($samples as $s)
-                    <option value="{{ $s->id }}" {{ request('sample_id') == $s->id ? 'selected' : '' }}>{{ $s->sample_code }} — {{ $s->style_name }}</option>
-                @endforeach
+            <select name="sample_id" id="sampleFilterSelect" class="form-control mr-2" style="max-width:280px;">
+                <option value=""></option>
+                @if($selectedSample ?? null)
+                    <option value="{{ $selectedSample->id }}" selected>{{ $selectedSample->sample_code }} — {{ $selectedSample->style_name }}</option>
+                @endif
             </select>
+            @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search SKU, style, fabric...'])
         </form>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                ibaAjaxSelect2('#sampleFilterSelect', 'samples', { placeholder: 'All Approved Samples', allowClear: true, approvedOnly: true });
+                $('#sampleFilterSelect').on('select2:select select2:clear', function () { $(this).closest('form').submit(); });
+            });
+        </script>
         <table class="table table-hover mb-0">
             <thead><tr><th>SKU Code</th><th>Style</th><th>Fabric</th><th>Print</th><th>Colour</th><th>Size</th><th></th></tr></thead>
             <tbody>
@@ -43,6 +50,6 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer">{{ $skus->links() }}</div>
+    <div class="card-footer">{{ $skus->appends(request()->query())->links() }}</div>
 </div>
 @endsection

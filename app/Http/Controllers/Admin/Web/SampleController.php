@@ -21,11 +21,20 @@ class SampleController extends Controller
         if ($request->filled('status')) {
             $query->where('status', $request->get('status'));
         }
+        if ($request->filled('search')) {
+            $term = '%'.$request->get('search').'%';
+            $query->where(function ($q) use ($term) {
+                $q->where('sample_code', 'like', $term)
+                    ->orWhere('style_name', 'like', $term)
+                    ->orWhere('fabric', 'like', $term)
+                    ->orWhere('color', 'like', $term);
+            });
+        }
 
-        $samples = $query->latest('submitted_at')->paginate(100);
-        $companies = Company::orderBy('name')->get();
+        $samples = $query->latest('submitted_at')->paginate($this->perPage($request));
+        $selectedCompany = $request->filled('company_id') ? Company::find($request->get('company_id')) : null;
 
-        return view('admin.samples.index', compact('samples', 'companies'));
+        return view('admin.samples.index', compact('samples', 'selectedCompany'));
     }
 
     public function show(Sample $sample)
@@ -162,8 +171,7 @@ class SampleController extends Controller
     public function create()
     {
         $sample = new Sample();
-        $companies = Company::orderBy('name')->get();
-        return view('admin.samples.form', compact('sample', 'companies'));
+        return view('admin.samples.form', compact('sample'));
     }
 
     public function store(Request $request)
@@ -199,9 +207,8 @@ class SampleController extends Controller
 
     public function edit(Sample $sample)
     {
-        $companies = Company::orderBy('name')->get();
-        $sample->load(['versions.images', 'comments.user']);
-        return view('admin.samples.form', compact('sample', 'companies'));
+        $sample->load(['company', 'versions.images', 'comments.user']);
+        return view('admin.samples.form', compact('sample'));
     }
 
     public function update(Request $request, Sample $sample)

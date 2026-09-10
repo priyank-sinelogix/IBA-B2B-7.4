@@ -36,11 +36,10 @@
             </div>
             <div class="form-group" id="companyField" style="display: {{ old('role', $user->role ?? 'customer') == 'customer' ? 'block' : 'none' }};">
                 <label>Client Company</label>
-                <select name="company_id" class="form-control">
-                    <option value="">-- Select --</option>
-                    @foreach($companies as $c)
-                        <option value="{{ $c->id }}" {{ old('company_id', $user->company_id) == $c->id ? 'selected' : '' }}>{{ $c->name }}</option>
-                    @endforeach
+                <select name="company_id" id="companySelect" class="form-control">
+                    @if($user->exists && $user->company)
+                        <option value="{{ $user->company->id }}" selected>{{ $user->company->name }}</option>
+                    @endif
                 </select>
             </div>
             <div class="form-group form-check">
@@ -54,4 +53,10 @@
         </div>
     </form>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        ibaAjaxSelect2('#companySelect', 'companies', { placeholder: 'Search client company...', allowClear: true });
+    });
+</script>
 @endsection

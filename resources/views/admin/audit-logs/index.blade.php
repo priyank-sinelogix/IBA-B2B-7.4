@@ -5,6 +5,9 @@
 <div class="card">
     <div class="card-header"><h3 class="card-title">Full Activity Audit Trail</h3></div>
     <div class="card-body p-0">
+        <form class="d-flex p-3 border-bottom" method="GET">
+            @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search action...'])
+        </form>
         <table class="table table-hover mb-0">
             <thead><tr><th>Date</th><th>User</th><th>Client</th><th>Action</th><th>Subject</th><th>IP</th></tr></thead>
             <tbody>
@@ -23,6 +26,6 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer">{{ $logs->links() }}</div>
+    <div class="card-footer">{{ $logs->appends(request()->query())->links() }}</div>
 </div>
 @endsection

@@ -9,9 +9,16 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $companies = Company::with('currency')->withCount('users')->latest()->paginate(100);
+        $query = Company::with('currency')->withCount('users');
+        if ($request->filled('search')) {
+            $term = '%'.$request->get('search').'%';
+            $query->where(function ($q) use ($term) {
+                $q->where('name', 'like', $term)->orWhere('code', 'like', $term);
+            });
+        }
+        $companies = $query->latest()->paginate($this->perPage($request));
         return view('admin.companies.index', compact('companies'));
     }
 

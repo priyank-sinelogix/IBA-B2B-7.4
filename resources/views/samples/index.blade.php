@@ -13,6 +13,10 @@
         </div>
     </div>
     <div class="card-body p-0">
+        <form class="d-flex p-3 border-bottom" method="GET">
+            <input type="hidden" name="status" value="{{ request('status') }}">
+            @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search code, style, fabric...'])
+        </form>
         <table class="table table-hover mb-0">
             <thead>
                 <tr>

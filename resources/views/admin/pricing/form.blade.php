@@ -11,14 +11,14 @@
             @if ($errors->any())<div class="alert alert-danger">{{ $errors->first() }}</div>@endif
 
             <div class="form-group">
+                @php
+                    $preselected = isset($pricing) ? optional($pricing->sample) : ($selectedSample ?? null);
+                @endphp
                 <label>Sample / Style</label>
-                <select name="sample_id" class="form-control" required>
-                    <option value="">-- Select --</option>
-                    @foreach($samples as $s)
-                        <option value="{{ $s->id }}" {{ old('sample_id', isset($pricing) ? $pricing->sample_id : optional($selectedSample ?? null)->id) == $s->id ? 'selected' : '' }}>
-                            {{ $s->sample_code }} — {{ $s->style_name }}
-                        </option>
-                    @endforeach
+                <select name="sample_id" id="sampleSelect" class="form-control">
+                    @if($preselected)
+                        <option value="{{ $preselected->id }}" selected>{{ $preselected->sample_code }} — {{ $preselected->style_name }}</option>
+                    @endif
                 </select>
             </div>
             <div class="form-group">
@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
                 <label>Fabric</label>
-                <input type="text" name="fabric" class="form-control" value="{{ old('fabric', $pricing->fabric ?? '') }}" placeholder="Moss Crepe Spandex">
+                <input type="text" name="fabric" id="fabricInput" class="form-control" value="{{ old('fabric', $pricing->fabric ?? optional($preselected)->fabric) }}" placeholder="Moss Crepe Spandex">
             </div>
 
             <div class="form-row">
@@ -74,6 +74,14 @@
 </div>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        ibaAjaxSelect2('#sampleSelect', 'samples', { placeholder: 'Search sample / style...' });
+
+        $('#sampleSelect').on('select2:select', function (e) {
+            var data = e.params.data || {};
+            document.getElementById('fabricInput').value = data.fabric || '';
+        });
+    });
     // Visual convenience only — the server recalculates COGP/Price from the actual submitted values.
     (function () {
         var costInputs = document.querySelectorAll('.cost-input');

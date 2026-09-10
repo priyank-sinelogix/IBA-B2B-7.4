@@ -18,18 +18,26 @@ class SkuController extends Controller
         if ($request->filled('sample_id')) {
             $query->where('sample_id', $request->get('sample_id'));
         }
-        $skus = $query->latest()->paginate(100);
-        $samples = Sample::where('status', 'approved')->orderBy('style_name')->get();
+        if ($request->filled('search')) {
+            $term = '%'.$request->get('search').'%';
+            $query->where(function ($q) use ($term) {
+                $q->where('sku_code', 'like', $term)
+                    ->orWhere('style_name', 'like', $term)
+                    ->orWhere('fabric', 'like', $term)
+                    ->orWhere('colour', 'like', $term);
+            });
+        }
+        $skus = $query->latest()->paginate($this->perPage($request));
+        $selectedSample = $request->filled('sample_id') ? Sample::find($request->get('sample_id')) : null;
 
-        return view('admin.skus.index', compact('skus', 'samples'));
+        return view('admin.skus.index', compact('skus', 'selectedSample'));
     }
 
     public function create(Request $request)
     {
-        $samples = Sample::where('status', 'approved')->orderBy('style_name')->get();
         $selectedSample = $request->filled('sample_id') ? Sample::find($request->get('sample_id')) : null;
 
-        return view('admin.skus.form', compact('samples', 'selectedSample'))->with('sizes', $this->sizes);
+        return view('admin.skus.form', compact('selectedSample'))->with('sizes', $this->sizes);
     }
 
     public function store(Request $request)

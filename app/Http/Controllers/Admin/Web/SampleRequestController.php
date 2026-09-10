@@ -18,7 +18,15 @@ class SampleRequestController extends Controller
         if ($request->filled('status')) {
             $query->where('status', $request->get('status'));
         }
-        $requests = $query->latest()->paginate(100);
+        if ($request->filled('search')) {
+            $term = '%'.$request->get('search').'%';
+            $query->where(function ($q) use ($term) {
+                $q->where('style_name', 'like', $term)
+                    ->orWhere('fabric_preference', 'like', $term)
+                    ->orWhere('colour_preference', 'like', $term);
+            });
+        }
+        $requests = $query->latest()->paginate($this->perPage($request));
 
         return view('admin.sample-requests.index', compact('requests'));
     }

@@ -33,11 +33,10 @@
 
             <div class="form-group">
                 <label>Client Company</label>
-                <select name="company_id" class="form-control" required>
-                    <option value="">-- Select --</option>
-                    @foreach($companies as $c)
-                        <option value="{{ $c->id }}" {{ old('company_id', $sample->company_id) == $c->id ? 'selected' : '' }}>{{ $c->name }}</option>
-                    @endforeach
+                <select name="company_id" id="companySelect" class="form-control">
+                    @if($sample->exists && $sample->company)
+                        <option value="{{ $sample->company->id }}" selected>{{ $sample->company->name }}</option>
+                    @endif
                 </select>
             </div>
 
@@ -117,6 +116,9 @@
 @endif
 
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        ibaAjaxSelect2('#companySelect', 'companies', { placeholder: 'Search client company...' });
+    });
     var sampleImagesInput = document.getElementById('sampleImagesInput');
     if (sampleImagesInput) {
         sampleImagesInput.addEventListener('change', function (e) {

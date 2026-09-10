@@ -4,16 +4,22 @@ namespace App\Http\Controllers\Admin\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\AuditLog;
-use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::with('company')->latest()->paginate(100);
+        $query = User::with('company');
+        if ($request->filled('search')) {
+            $term = '%'.$request->get('search').'%';
+            $query->where(function ($q) use ($term) {
+                $q->where('name', 'like', $term)->orWhere('email', 'like', $term);
+            });
+        }
+        $users = $query->latest()->paginate($this->perPage($request));
         return view('admin.users.index', compact('users'));
     }
 
@@ -26,8 +32,7 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        $companies = Company::orderBy('name')->get();
-        return view('admin.users.form', compact('user', 'companies'));
+        return view('admin.users.form', compact('user'));
     }
 
     public function store(Request $request)
@@ -56,8 +61,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $companies = Company::orderBy('name')->get();
-        return view('admin.users.form', compact('user', 'companies'));
+        $user->load('company');
+        return view('admin.users.form', compact('user'));
     }
 
     public function update(Request $request, User $user)

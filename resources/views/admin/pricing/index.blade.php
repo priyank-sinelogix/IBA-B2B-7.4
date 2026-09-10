@@ -11,13 +11,20 @@
     </div>
     <div class="card-body p-0">
         <form class="d-flex p-3 border-bottom" method="GET">
-            <select name="sample_id" class="form-control" style="max-width:280px;" onchange="this.form.submit()">
-                <option value="">All Samples</option>
-                @foreach($samples as $s)
-                    <option value="{{ $s->id }}" {{ request('sample_id') == $s->id ? 'selected' : '' }}>{{ $s->sample_code }} — {{ $s->style_name }}</option>
-                @endforeach
+            <select name="sample_id" id="sampleFilterSelect" class="form-control mr-2" style="max-width:280px;">
+                <option value=""></option>
+                @if($selectedSample)
+                    <option value="{{ $selectedSample->id }}" selected>{{ $selectedSample->sample_code }} — {{ $selectedSample->style_name }}</option>
+                @endif
             </select>
+            @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search style, sample code...'])
         </form>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                ibaAjaxSelect2('#sampleFilterSelect', 'samples', { placeholder: 'All Samples', allowClear: true });
+                $('#sampleFilterSelect').on('select2:select select2:clear', function () { $(this).closest('form').submit(); });
+            });
+        </script>
         <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead>
@@ -61,6 +68,6 @@
         </table>
         </div>
     </div>
-    <div class="card-footer">{{ $pricings->links() }}</div>
+    <div class="card-footer">{{ $pricings->appends(request()->query())->links() }}</div>
 </div>
 @endsection

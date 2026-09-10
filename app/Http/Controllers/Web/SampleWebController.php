@@ -17,8 +17,17 @@ class SampleWebController extends Controller
         if ($request->filled('status')) {
             $query->where('status', $request->get('status'));
         }
+        if ($request->filled('search')) {
+            $term = '%'.$request->get('search').'%';
+            $query->where(function ($q) use ($term) {
+                $q->where('sample_code', 'like', $term)
+                    ->orWhere('style_name', 'like', $term)
+                    ->orWhere('fabric', 'like', $term)
+                    ->orWhere('color', 'like', $term);
+            });
+        }
 
-        $samples = $query->latest('submitted_at')->paginate(100);
+        $samples = $query->latest('submitted_at')->paginate($this->perPage($request));
 
         return view('samples.index', compact('samples'));
     }

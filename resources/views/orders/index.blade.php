@@ -5,6 +5,9 @@
 <div class="card">
     <div class="card-header"><h3 class="card-title">My Orders <small class="text-muted">(live from VMS, matched by SKU)</small></h3></div>
     <div class="card-body p-0">
+        <form class="d-flex p-3 border-bottom" method="GET">
+            @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search SKU, order ID, style...'])
+        </form>
         <table class="table table-hover mb-0">
             <thead><tr><th>Style / Sample</th><th>SKU</th><th>Order ID</th><th>Size</th><th>Qty</th><th>Status</th><th>Order Date</th><th>Dispatch Date</th></tr></thead>
             <tbody>
@@ -27,6 +30,6 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer">{{ optional($orders ?? null)->links() }}</div>
+    <div class="card-footer">{{ optional($orders ?? null)->appends(request()->query())->links() }}</div>
 </div>
 @endsection

@@ -14,22 +14,18 @@
 
                     <div class="form-group">
                         <label>Client Company</label>
-                        <select name="company_id" id="companySelect" class="form-control" required onchange="updateShippingPriceCurrency()">
-                            <option value="">-- Select --</option>
-                            @foreach($companies as $c)
-                                <option value="{{ $c->id }}"
-                                    data-currency-symbol="{{ optional($c->currency)->symbol ?? '₹' }}"
-                                    {{ old('company_id', $shipment->company_id) == $c->id ? 'selected' : '' }}>{{ $c->name }}</option>
-                            @endforeach
+                        <select name="company_id" id="companySelect" class="form-control">
+                            @if($shipment->exists && $shipment->company)
+                                <option value="{{ $shipment->company->id }}" selected>{{ $shipment->company->name }}</option>
+                            @endif
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Linked Order (optional)</label>
-                        <select name="order_id" class="form-control">
-                            <option value="">-- None --</option>
-                            @foreach($orders as $o)
-                                <option value="{{ $o->id }}" {{ old('order_id', $shipment->order_id) == $o->id ? 'selected' : '' }}>{{ $o->order_no }} — {{ $o->style_name }}</option>
-                            @endforeach
+                        <select name="order_id" id="orderSelect" class="form-control">
+                            @if($shipment->exists && $shipment->order)
+                                <option value="{{ $shipment->order->id }}" selected>{{ $shipment->order->order_no }} — {{ $shipment->order->style_name }}</option>
+                            @endif
                         </select>
                     </div>
                     <div class="form-group">
@@ -115,12 +111,18 @@
 </div>
 
 <script>
-    function updateShippingPriceCurrency() {
-        var select = document.getElementById('companySelect');
-        var opt = select.options[select.selectedIndex];
-        var symbol = (opt && opt.dataset.currencySymbol) ? opt.dataset.currencySymbol : '₹';
-        document.getElementById('shippingPriceSymbol').textContent = symbol;
-    }
-    document.addEventListener('DOMContentLoaded', updateShippingPriceCurrency);
+    document.addEventListener('DOMContentLoaded', function () {
+        ibaAjaxSelect2('#companySelect', 'companies', { placeholder: 'Search client company...' });
+        ibaAjaxSelect2('#orderSelect', 'orders', { placeholder: 'Search order...', allowClear: true });
+
+        $('#companySelect').on('select2:select', function (e) {
+            var symbol = (e.params.data && e.params.data.currency_symbol) ? e.params.data.currency_symbol : '₹';
+            document.getElementById('shippingPriceSymbol').textContent = symbol;
+        });
+
+        @if($shipment->exists && $shipment->company)
+            document.getElementById('shippingPriceSymbol').textContent = '{{ optional($shipment->company->currency)->symbol ?? '₹' }}';
+        @endif
+    });
 </script>
 @endsection

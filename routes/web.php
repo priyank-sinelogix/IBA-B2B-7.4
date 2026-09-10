@@ -112,4 +112,13 @@ Route::middleware(['auth', 'role:admin,super_admin'])->prefix('admin')->group(fu
     Route::delete('/finance/{entry}', [LedgerController::class, 'destroy']);
 
     Route::get('/audit-logs', [AuditLogController::class, 'index']);
+
+    // Client <-> IBA messaging, viewed/replied to from the admin side
+    Route::get('/messages', [\App\Http\Controllers\Admin\Web\MessageController::class, 'index']);
+    Route::get('/messages/{company}', [\App\Http\Controllers\Admin\Web\MessageController::class, 'show']);
+    Route::post('/messages/{company}', [\App\Http\Controllers\Admin\Web\MessageController::class, 'store']);
+
+    // AJAX search backing Select2 dropdowns (companies/samples/orders) so
+    // forms don't have to dump every row into the page as the tables grow.
+    Route::get('/ajax/search/{type}', [\App\Http\Controllers\Admin\Web\AjaxSearchController::class, 'search']);
 });

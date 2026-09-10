@@ -16,18 +16,23 @@ class PricingController extends Controller
         if ($request->filled('sample_id')) {
             $query->where('sample_id', $request->get('sample_id'));
         }
-        $pricings = $query->latest()->paginate(100);
-        $samples = Sample::orderBy('style_name')->get();
+        if ($request->filled('search')) {
+            $term = '%'.$request->get('search').'%';
+            $query->whereHas('sample', function ($q) use ($term) {
+                $q->where('style_name', 'like', $term)->orWhere('sample_code', 'like', $term);
+            });
+        }
+        $pricings = $query->latest()->paginate($this->perPage($request));
+        $selectedSample = $request->filled('sample_id') ? Sample::find($request->get('sample_id')) : null;
 
-        return view('admin.pricing.index', compact('pricings', 'samples'));
+        return view('admin.pricing.index', compact('pricings', 'selectedSample'));
     }
 
     public function create(Request $request)
     {
-        $samples = Sample::orderBy('style_name')->get();
         $selectedSample = $request->filled('sample_id') ? Sample::find($request->get('sample_id')) : null;
 
-        return view('admin.pricing.form', compact('samples', 'selectedSample'));
+        return view('admin.pricing.form', compact('selectedSample'));
     }
 
     public function store(Request $request)
@@ -44,8 +49,7 @@ class PricingController extends Controller
 
     public function edit(SamplePricing $pricing)
     {
-        $samples = Sample::orderBy('style_name')->get();
-        return view('admin.pricing.form', compact('pricing', 'samples'));
+        return view('admin.pricing.form', compact('pricing'));
     }
 
     public function update(Request $request, SamplePricing $pricing)

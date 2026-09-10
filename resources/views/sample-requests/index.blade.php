@@ -8,6 +8,9 @@
         <a href="{{ url('/sample-requests/create') }}" class="btn btn-sm btn-iba"><i class="fas fa-plus mr-1"></i> New Request</a>
     </div>
     <div class="card-body p-0">
+        <form class="d-flex p-3 border-bottom" method="GET">
+            @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search style, fabric, colour...'])
+        </form>
         <table class="table table-hover mb-0">
             <thead><tr><th>Style</th><th>Fabric Pref.</th><th>Colour Pref.</th><th>Images</th><th>Status</th><th>Submitted</th><th></th></tr></thead>
             <tbody>
@@ -38,6 +41,6 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer">{{ $requests->links() }}</div>
+    <div class="card-footer">{{ $requests->appends(request()->query())->links() }}</div>
 </div>
 @endsection

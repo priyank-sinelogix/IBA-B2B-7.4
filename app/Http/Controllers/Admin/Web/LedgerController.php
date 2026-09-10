@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\AuditLog;
 use App\Models\Company;
 use App\Models\LedgerEntry;
-use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,17 +17,21 @@ class LedgerController extends Controller
         if ($request->filled('company_id')) {
             $query->where('company_id', $request->get('company_id'));
         }
-        $entries = $query->latest()->paginate(100);
-        $companies = Company::orderBy('name')->get();
+        if ($request->filled('search')) {
+            $term = '%'.$request->get('search').'%';
+            $query->where(function ($q) use ($term) {
+                $q->where('reference_no', 'like', $term)->orWhere('description', 'like', $term);
+            });
+        }
+        $entries = $query->latest()->paginate($this->perPage($request));
+        $selectedCompany = $request->filled('company_id') ? Company::find($request->get('company_id')) : null;
 
-        return view('admin.finance.index', compact('entries', 'companies'));
+        return view('admin.finance.index', compact('entries', 'selectedCompany'));
     }
 
     public function create()
     {
-        $companies = Company::with('currency')->orderBy('name')->get();
-        $orders = Order::orderBy('order_no')->get();
-        return view('admin.finance.form', compact('companies', 'orders'));
+        return view('admin.finance.form');
     }
 
     public function store(Request $request)

@@ -13,8 +13,15 @@ class FinanceWebController extends Controller
     {
         $company = $request->user()->company()->with('currency')->first();
 
-        $ledgerEntries = LedgerEntry::where('company_id', $company->id)
-            ->latest()->paginate(100);
+        $query = LedgerEntry::where('company_id', $company->id);
+        if ($request->filled('search')) {
+            $term = '%'.$request->get('search').'%';
+            $query->where(function ($q) use ($term) {
+                $q->where('reference_no', 'like', $term)->orWhere('description', 'like', $term);
+            });
+        }
+
+        $ledgerEntries = $query->latest()->paginate($this->perPage($request));
 
         return view('finance.index', compact('company', 'ledgerEntries'));
     }

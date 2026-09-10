@@ -10,9 +10,19 @@ class ShipmentWebController extends Controller
 {
     public function index(Request $request)
     {
-        $shipments = Shipment::with('company.currency')
-            ->where('company_id', $request->user()->company_id)
-            ->latest('status_updated_at')->paginate(100);
+        $query = Shipment::with('company.currency')
+            ->where('company_id', $request->user()->company_id);
+
+        if ($request->filled('search')) {
+            $term = '%'.$request->get('search').'%';
+            $query->where(function ($q) use ($term) {
+                $q->where('awb_number', 'like', $term)
+                    ->orWhere('carrier', 'like', $term)
+                    ->orWhere('destination', 'like', $term);
+            });
+        }
+
+        $shipments = $query->latest('status_updated_at')->paginate($this->perPage($request));
 
         return view('shipments.index', compact('shipments'));
     }

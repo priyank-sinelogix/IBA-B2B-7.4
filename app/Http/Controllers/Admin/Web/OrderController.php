@@ -50,8 +50,18 @@ class OrderController extends Controller
             ];
         });
 
+        if ($request->filled('search')) {
+            $term = mb_strtolower($request->get('search'));
+            $rows = $rows->filter(function ($row) use ($term) {
+                return str_contains(mb_strtolower($row->sku_code ?? ''), $term)
+                    || str_contains(mb_strtolower((string) $row->orderid), $term)
+                    || str_contains(mb_strtolower(optional($row->company)->name ?? ''), $term)
+                    || str_contains(mb_strtolower(optional($row->sample)->style_name ?? ''), $term);
+            })->values();
+        }
+
         $page = (int) $request->get('page', 1);
-        $perPage = 100;
+        $perPage = $this->perPage($request);
         $orders = new LengthAwarePaginator(
             $rows->forPage($page, $perPage)->values(),
             $rows->count(),
@@ -60,9 +70,9 @@ class OrderController extends Controller
             ['path' => $request->url(), 'query' => $request->query()]
         );
 
-        $companies = Company::orderBy('name')->get();
+        $selectedCompany = $request->filled('company_id') ? Company::find($request->get('company_id')) : null;
 
-        return view('admin.orders.index', compact('orders', 'companies'));
+        return view('admin.orders.index', compact('orders', 'selectedCompany'));
     }
 
     public function show(Order $order)
@@ -75,9 +85,7 @@ class OrderController extends Controller
     public function create()
     {
         $order = new Order();
-        $companies = Company::orderBy('name')->get();
-        $samples = Sample::where('status', 'approved')->orderBy('style_name')->get();
-        return view('admin.orders.form', compact('order', 'companies', 'samples'))
+        return view('admin.orders.form', compact('order'))
             ->with('stages', $this->stages);
     }
 
@@ -100,10 +108,8 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-        $companies = Company::orderBy('name')->get();
-        $samples = Sample::where('status', 'approved')->orderBy('style_name')->get();
-        $order->load('stageLogs');
-        return view('admin.orders.form', compact('order', 'companies', 'samples'))
+        $order->load(['company', 'sample', 'stageLogs']);
+        return view('admin.orders.form', compact('order'))
             ->with('stages', $this->stages);
     }
 

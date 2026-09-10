@@ -13,6 +13,7 @@
                 <option value="converted" {{ request('status')=='converted'?'selected':'' }}>Converted</option>
                 <option value="rejected" {{ request('status')=='rejected'?'selected':'' }}>Rejected</option>
             </select>
+            @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search style, fabric...'])
         </form>
         <table class="table table-hover mb-0">
             <thead><tr><th>Client</th><th>Style</th><th>Fabric Pref.</th><th>Requested By</th><th>Status</th><th>Date</th><th></th></tr></thead>
@@ -38,6 +39,6 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer">{{ $requests->links() }}</div>
+    <div class="card-footer">{{ $requests->appends(request()->query())->links() }}</div>
 </div>
 @endsection

@@ -10,9 +10,18 @@ class SampleRequestWebController extends Controller
 {
     public function index(Request $request)
     {
-        $requests = SampleRequest::where('company_id', $request->user()->company_id)
-            ->with('images')
-            ->latest()->paginate(100);
+        $query = SampleRequest::where('company_id', $request->user()->company_id)->with('images');
+
+        if ($request->filled('search')) {
+            $term = '%'.$request->get('search').'%';
+            $query->where(function ($q) use ($term) {
+                $q->where('style_name', 'like', $term)
+                    ->orWhere('fabric_preference', 'like', $term)
+                    ->orWhere('colour_preference', 'like', $term);
+            });
+        }
+
+        $requests = $query->latest()->paginate($this->perPage($request));
 
         return view('sample-requests.index', compact('requests'));
     }

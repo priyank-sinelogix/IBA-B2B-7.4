@@ -14,6 +14,13 @@ class MessageWebController extends Controller
             ->where('company_id', $request->user()->company_id)
             ->latest()->paginate(100);
 
+        Message::where('company_id', $request->user()->company_id)
+            ->where('is_read', false)
+            ->whereHas('sender', function ($q) {
+                $q->whereIn('role', ['admin', 'super_admin']);
+            })
+            ->update(['is_read' => true]);
+
         return view('messages.index', compact('messages'));
     }
 
@@ -25,6 +32,7 @@ class MessageWebController extends Controller
             'company_id' => $request->user()->company_id,
             'sender_id' => $request->user()->id,
             'body' => $request->input('body'),
+            'is_read' => true,
         ]);
 
         return back()->with('success', 'Message sent.');

@@ -14,20 +14,18 @@
 
                     <div class="form-group">
                         <label>Client Company</label>
-                        <select name="company_id" class="form-control" required>
-                            <option value="">-- Select --</option>
-                            @foreach($companies as $c)
-                                <option value="{{ $c->id }}" {{ old('company_id', $order->company_id) == $c->id ? 'selected' : '' }}>{{ $c->name }}</option>
-                            @endforeach
+                        <select name="company_id" id="companySelect" class="form-control">
+                            @if($order->exists && $order->company)
+                                <option value="{{ $order->company->id }}" selected>{{ $order->company->name }}</option>
+                            @endif
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Sample (for SKU / VMS matching)</label>
-                        <select name="sample_id" class="form-control">
-                            <option value="">-- None --</option>
-                            @foreach($samples as $s)
-                                <option value="{{ $s->id }}" {{ old('sample_id', $order->sample_id) == $s->id ? 'selected' : '' }}>{{ $s->sample_code }} — {{ $s->style_name }}</option>
-                            @endforeach
+                        <select name="sample_id" id="sampleSelect" class="form-control">
+                            @if($order->exists && $order->sample)
+                                <option value="{{ $order->sample->id }}" selected>{{ $order->sample->sample_code }} — {{ $order->sample->style_name }}</option>
+                            @endif
                         </select>
                         <small class="form-text text-muted">Linking a sample lets the order auto-match its generated SKUs against VMS production data.</small>
                     </div>
@@ -88,4 +86,11 @@
     </div>
     @endif
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        ibaAjaxSelect2('#companySelect', 'companies', { placeholder: 'Search client company...' });
+        ibaAjaxSelect2('#sampleSelect', 'samples', { placeholder: 'Search sample / style...', allowClear: true, approvedOnly: true });
+    });
+</script>
 @endsection
