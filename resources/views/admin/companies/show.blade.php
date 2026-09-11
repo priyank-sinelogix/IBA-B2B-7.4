@@ -76,20 +76,23 @@
         </div>
 
         <div class="card">
-            <div class="card-header"><h3 class="card-title">Recent Orders</h3></div>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title">Recent Orders <small class="text-muted">(live from VMS)</small></h3>
+                <a href="{{ url('/admin/orders?company_id='.$company->id) }}" class="small">View All</a>
+            </div>
             <div class="card-body p-0">
                 <table class="table table-hover mb-0">
-                    <thead><tr><th>Order No.</th><th>Style</th><th>Stage</th><th></th></tr></thead>
+                    <thead><tr><th>Order ID</th><th>SKUs</th><th>Status</th><th>Order Date</th></tr></thead>
                     <tbody>
                     @forelse($orders as $o)
                         <tr>
-                            <td>{{ $o->order_no }}</td>
-                            <td>{{ $o->style_name }}</td>
-                            <td class="text-capitalize">{{ str_replace('_',' ',$o->current_stage) }}</td>
-                            <td><a href="{{ url('/admin/orders/'.$o->id) }}" class="btn btn-sm btn-outline-secondary">View</a></td>
+                            <td>{{ $o->orderid }}</td>
+                            <td>{{ $o->sku_count }}</td>
+                            <td><span class="badge badge-info">{{ \App\Support\VmsOrderMatcher::statusLabel($o->status) }}</span></td>
+                            <td>{{ $o->order_date }}</td>
                         </tr>
                     @empty
-                        <tr><td colspan="4" class="text-center text-muted p-3">No orders yet.</td></tr>
+                        <tr><td colspan="4" class="text-center text-muted p-3">No orders found yet in VMS for this company's SKUs.</td></tr>
                     @endforelse
                     </tbody>
                 </table>

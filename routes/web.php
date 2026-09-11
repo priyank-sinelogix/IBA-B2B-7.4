@@ -121,4 +121,6 @@ Route::middleware(['auth', 'role:admin,super_admin'])->prefix('admin')->group(fu
     // AJAX search backing Select2 dropdowns (companies/samples/orders) so
     // forms don't have to dump every row into the page as the tables grow.
     Route::get('/ajax/search/{type}', [\App\Http\Controllers\Admin\Web\AjaxSearchController::class, 'search']);
+    Route::get('/ajax/vms-orders', [\App\Http\Controllers\Admin\Web\AjaxSearchController::class, 'vmsOrders']);
+    Route::get('/ajax/vms-order-skus', [\App\Http\Controllers\Admin\Web\AjaxSearchController::class, 'vmsOrderSkus']);
 });

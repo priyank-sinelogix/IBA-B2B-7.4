@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Order;
 use App\Models\Sample;
+use App\Support\VmsOrderMatcher;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
@@ -75,5 +76,53 @@ class AjaxSearchController extends Controller
             'results' => $results,
             'pagination' => ['more' => $page * self::PER_PAGE < $total],
         ]);
+    }
+
+    /**
+     * Searchable "VMS Order" dropdown for the Shipment form — distinct VMS
+     * order IDs found against the selected company's own generated SKUs.
+     */
+    public function vmsOrders(Request $request): JsonResponse
+    {
+        $companyId = (int) $request->get('company_id');
+        $q = trim((string) $request->get('q', ''));
+
+        if (!$companyId) {
+            return response()->json(['results' => [], 'pagination' => ['more' => false]]);
+        }
+
+        $orderIds = VmsOrderMatcher::ordersForCompany($companyId, $q);
+
+        $results = $orderIds->take(self::PER_PAGE)->map(function ($orderid) {
+            return ['id' => $orderid, 'text' => $orderid];
+        })->values();
+
+        return response()->json([
+            'results' => $results,
+            'pagination' => ['more' => false],
+        ]);
+    }
+
+    /**
+     * The SKUs (of the selected company) that belong to a given VMS order —
+     * used to render the Shipment form's "which SKUs are in this shipment"
+     * checkbox list.
+     */
+    public function vmsOrderSkus(Request $request): JsonResponse
+    {
+        $companyId = (int) $request->get('company_id');
+        $orderid = trim((string) $request->get('orderid', ''));
+
+        if (!$companyId || $orderid === '') {
+            return response()->json(['skus' => []]);
+        }
+
+        $rows = VmsOrderMatcher::skusForCompanyOrder($companyId, $orderid)->map(function ($row) {
+            $row->status_label = VmsOrderMatcher::statusLabel($row->status);
+
+            return $row;
+        });
+
+        return response()->json(['skus' => $rows->values()]);
     }
 }

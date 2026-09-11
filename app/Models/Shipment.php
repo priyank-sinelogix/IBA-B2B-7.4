@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Shipment extends Model
 {
     protected $fillable = [
-        'company_id', 'order_id', 'awb_number', 'carrier', 'origin',
+        'company_id', 'order_id', 'vms_orderid', 'awb_number', 'carrier', 'origin',
         'destination', 'shipping_price', 'status', 'status_updated_at',
     ];
 
@@ -29,6 +29,11 @@ class Shipment extends Model
     public function trackingEvents()
     {
         return $this->hasMany(ShipmentTrackingEvent::class)->orderBy('event_at');
+    }
+
+    public function skus()
+    {
+        return $this->belongsToMany(Sku::class, 'shipment_skus');
     }
 
     public function ledgerEntries()

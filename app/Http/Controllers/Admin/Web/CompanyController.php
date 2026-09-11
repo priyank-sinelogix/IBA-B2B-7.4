@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Currency;
+use App\Models\Sku;
+use App\Support\VmsOrderMatcher;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -26,7 +28,10 @@ class CompanyController extends Controller
     {
         $company->load('users', 'currency');
         $samples = $company->samples()->latest('submitted_at')->take(10)->get();
-        $orders = $company->orders()->latest()->take(10)->get();
+        $skuCodes = Sku::whereHas('sample', function ($q) use ($company) {
+            $q->where('company_id', $company->id);
+        })->pluck('sku_code');
+        $orders = VmsOrderMatcher::recentOrders($skuCodes, 10);
         $shipments = $company->shipments()->latest('status_updated_at')->take(10)->get();
         $ledgerEntries = $company->ledgerEntries()->latest()->take(10)->get();
 

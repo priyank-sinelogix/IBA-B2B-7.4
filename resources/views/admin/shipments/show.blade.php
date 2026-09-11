@@ -37,17 +37,23 @@
             </div>
         </div>
 
-        @if($shipment->order)
+        @if($shipment->vms_orderid)
         <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h3 class="card-title">Linked Order</h3>
-                <a href="{{ url('/admin/orders/'.$shipment->order->id) }}" class="btn btn-sm btn-outline-secondary">View Order</a>
-            </div>
-            <div class="card-body">
-                <dl class="row mb-0">
-                    <dt class="col-5">Order No.</dt><dd class="col-7">{{ $shipment->order->order_no }}</dd>
-                    <dt class="col-5">Style</dt><dd class="col-7">{{ $shipment->order->style_name }}</dd>
-                </dl>
+            <div class="card-header"><h3 class="card-title">VMS Order — {{ $shipment->vms_orderid }}</h3></div>
+            <div class="card-body p-0">
+                <table class="table table-sm mb-0">
+                    <thead><tr><th>SKU</th><th>Size</th><th></th></tr></thead>
+                    <tbody>
+                    @forelse($shipment->skus as $sku)
+                        <tr>
+                            <td>{{ $sku->sku_code }}</td>
+                            <td>{{ $sku->size ?? '—' }}</td>
+                        </tr>
+                    @empty
+                        <tr><td colspan="2" class="text-center text-muted p-3">No SKUs tagged on this shipment yet.</td></tr>
+                    @endforelse
+                    </tbody>
+                </table>
             </div>
         </div>
         @endif

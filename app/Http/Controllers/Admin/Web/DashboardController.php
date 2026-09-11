@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
-use App\Models\Order;
 use App\Models\Sample;
 use App\Models\Shipment;
+use App\Models\Sku;
+use App\Support\VmsOrderMatcher;
 
 class DashboardController extends Controller
 {
@@ -15,7 +16,7 @@ class DashboardController extends Controller
         $stats = [
             'companies' => Company::count(),
             'samples_pending' => Sample::where('status', 'pending')->count(),
-            'active_orders' => Order::where('current_stage', '!=', 'dispatched')->count(),
+            'active_orders' => VmsOrderMatcher::orderCount(Sku::pluck('sku_code')),
             'shipments_in_transit' => Shipment::where('status', 'in_transit')->count(),
         ];
 

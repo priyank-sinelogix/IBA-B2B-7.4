@@ -21,12 +21,31 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Linked Order (optional)</label>
-                        <select name="order_id" id="orderSelect" class="form-control">
-                            @if($shipment->exists && $shipment->order)
-                                <option value="{{ $shipment->order->id }}" selected>{{ $shipment->order->order_no }} — {{ $shipment->order->style_name }}</option>
+                        <label>Order (VMS)</label>
+                        <select name="vms_orderid" id="vmsOrderSelect" class="form-control">
+                            @if($shipment->exists && $shipment->vms_orderid)
+                                <option value="{{ $shipment->vms_orderid }}" selected>{{ $shipment->vms_orderid }}</option>
                             @endif
                         </select>
+                        <small class="text-muted">Company select karne ke baad uske VMS orders yahan search ho sakenge.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>SKUs in this shipment</label>
+                        <div id="skuChecklist" class="border rounded p-2" style="max-height:220px; overflow-y:auto;">
+                            @forelse($orderSkuRows as $row)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="sku_ids[]" value="{{ $row->sku_id }}" id="sku{{ $row->sku_id }}"
+                                        {{ $shipment->exists && $shipment->skus->contains('id', $row->sku_id) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="sku{{ $row->sku_id }}">
+                                        {{ $row->sku_code }}@if($row->size) — {{ $row->size }}@endif
+                                        <span class="text-muted small">(Qty: {{ $row->qty }}, {{ \App\Support\VmsOrderMatcher::statusLabel($row->status) }})</span>
+                                    </label>
+                                </div>
+                            @empty
+                                <div class="text-muted small">Pehle Company aur Order select karo.</div>
+                            @endforelse
+                        </div>
+                        <small class="text-muted">Order ke saare SKUs me se sirf wahi tick karo jo is shipment mein ja rahe hain (order ke SKUs alag shipments mein split ho sakte hain).</small>
                     </div>
                     <div class="form-group">
                         <label>AWB / Tracking No.</label>
@@ -113,11 +132,69 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         ibaAjaxSelect2('#companySelect', 'companies', { placeholder: 'Search client company...' });
-        ibaAjaxSelect2('#orderSelect', 'orders', { placeholder: 'Search order...', allowClear: true });
+
+        function currentCompanyId() {
+            return $('#companySelect').val() || '';
+        }
+
+        function renderSkuChecklist(rows, checkedIds) {
+            checkedIds = checkedIds || [];
+            var container = $('#skuChecklist');
+            if (!rows.length) {
+                container.html('<div class="text-muted small">Is order me is company ke liye koi SKU nahi mila.</div>');
+                return;
+            }
+            var html = '';
+            rows.forEach(function (row) {
+                var checked = checkedIds.indexOf(row.sku_id) !== -1 ? 'checked' : '';
+                var sizeText = row.size ? ' — ' + row.size : '';
+                html += '<div class="form-check">'
+                    + '<input class="form-check-input" type="checkbox" name="sku_ids[]" value="' + row.sku_id + '" id="sku' + row.sku_id + '" ' + checked + '>'
+                    + '<label class="form-check-label" for="sku' + row.sku_id + '">' + row.sku_code + sizeText
+                    + ' <span class="text-muted small">(Qty: ' + row.qty + ', ' + (row.status_label || '') + ')</span></label>'
+                    + '</div>';
+            });
+            container.html(html);
+        }
+
+        $('#vmsOrderSelect').select2({
+            theme: 'bootstrap4',
+            width: '100%',
+            placeholder: 'Search VMS order...',
+            allowClear: true,
+            minimumInputLength: 0,
+            ajax: {
+                url: '{{ url('/admin/ajax/vms-orders') }}',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return { company_id: currentCompanyId(), q: params.term || '' };
+                },
+                processResults: function (data) {
+                    return { results: data.results };
+                },
+                cache: true
+            }
+        });
 
         $('#companySelect').on('select2:select', function (e) {
             var symbol = (e.params.data && e.params.data.currency_symbol) ? e.params.data.currency_symbol : '₹';
             document.getElementById('shippingPriceSymbol').textContent = symbol;
+
+            // Company changed — the previously selected order/SKUs no longer apply.
+            $('#vmsOrderSelect').val(null).trigger('change');
+            renderSkuChecklist([], []);
+        });
+
+        $('#vmsOrderSelect').on('select2:select select2:clear', function () {
+            var orderid = $('#vmsOrderSelect').val();
+            if (!orderid) {
+                renderSkuChecklist([], []);
+                return;
+            }
+            $.getJSON('{{ url('/admin/ajax/vms-order-skus') }}', { company_id: currentCompanyId(), orderid: orderid })
+                .done(function (data) { renderSkuChecklist(data.skus || [], []); })
+                .fail(function () { renderSkuChecklist([], []); });
         });
 
         @if($shipment->exists && $shipment->company)

@@ -100,23 +100,23 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h3 class="card-title">Order Tracking</h3>
+                <h3 class="card-title">Order Tracking <small class="text-muted">(live from VMS)</small></h3>
                 <a href="{{ url('/orders') }}" class="small">View All</a>
             </div>
             <div class="card-body p-0">
                 <table class="table table-hover mb-0">
-                    <thead><tr><th>Order No.</th><th>Style Name</th><th>Stage</th><th>Qty</th><th>ETA</th></tr></thead>
+                    <thead><tr><th>Order ID</th><th>SKUs</th><th>Status</th><th>Order Date</th><th>Dispatch Date</th></tr></thead>
                     <tbody>
                     @forelse($orders ?? [] as $order)
                         <tr>
-                            <td>{{ $order->order_no }}</td>
-                            <td>{{ $order->style_name }}</td>
-                            <td><span class="badge badge-info text-capitalize">{{ str_replace('_',' ',$order->current_stage) }}</span></td>
-                            <td>{{ number_format($order->quantity) }} Pcs</td>
-                            <td>{{ optional($order->eta)->format('d M Y') }}</td>
+                            <td>{{ $order->orderid }}</td>
+                            <td>{{ $order->sku_count }}</td>
+                            <td><span class="badge badge-info">{{ \App\Support\VmsOrderMatcher::statusLabel($order->status) }}</span></td>
+                            <td>{{ $order->order_date }}</td>
+                            <td>{{ $order->dispatch_date ?? '—' }}</td>
                         </tr>
                     @empty
-                        <tr><td colspan="5" class="text-center text-muted p-4">No orders yet — connect the OrderController query here.</td></tr>
+                        <tr><td colspan="5" class="text-center text-muted p-4">No orders found yet in VMS for your samples' SKUs.</td></tr>
                     @endforelse
                     </tbody>
                 </table>

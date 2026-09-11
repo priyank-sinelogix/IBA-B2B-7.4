@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\LedgerEntry;
 use App\Models\Shipment;
 use App\Models\ShipmentTrackingEvent;
+use App\Support\VmsOrderMatcher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -35,21 +36,24 @@ class ShipmentController extends Controller
 
     public function show(Shipment $shipment)
     {
-        $shipment->load(['company.currency', 'order', 'trackingEvents']);
+        $shipment->load(['company.currency', 'skus', 'trackingEvents']);
         return view('admin.shipments.show', compact('shipment'));
     }
 
     public function create()
     {
         $shipment = new Shipment();
-        return view('admin.shipments.form', compact('shipment'));
+        return view('admin.shipments.form', compact('shipment'))->with('orderSkuRows', collect());
     }
 
     public function store(Request $request)
     {
         $data = $this->validated($request);
+        $skuIds = $data['sku_ids'] ?? [];
+        unset($data['sku_ids']);
         $data['status_updated_at'] = now();
         $shipment = Shipment::create($data);
+        $shipment->skus()->sync($skuIds);
 
         ShipmentTrackingEvent::create([
             'shipment_id' => $shipment->id,
@@ -68,13 +72,19 @@ class ShipmentController extends Controller
 
     public function edit(Shipment $shipment)
     {
-        $shipment->load(['company.currency', 'order', 'trackingEvents']);
-        return view('admin.shipments.form', compact('shipment'));
+        $shipment->load(['company.currency', 'skus', 'trackingEvents']);
+        $orderSkuRows = $shipment->vms_orderid
+            ? VmsOrderMatcher::skusForCompanyOrder($shipment->company_id, $shipment->vms_orderid)
+            : collect();
+
+        return view('admin.shipments.form', compact('shipment', 'orderSkuRows'));
     }
 
     public function update(Request $request, Shipment $shipment)
     {
         $data = $this->validated($request, $shipment->id);
+        $skuIds = $data['sku_ids'] ?? [];
+        unset($data['sku_ids']);
         $before = $shipment->only('status');
 
         if ($before['status'] !== $data['status']) {
@@ -90,6 +100,7 @@ class ShipmentController extends Controller
         }
 
         $shipment->update($data);
+        $shipment->skus()->sync($skuIds);
 
         $this->syncShippingCharge($shipment);
 
@@ -159,7 +170,9 @@ class ShipmentController extends Controller
     {
         return $request->validate([
             'company_id' => 'required|exists:companies,id',
-            'order_id' => 'nullable|exists:orders,id',
+            'vms_orderid' => 'nullable|string|max:100',
+            'sku_ids' => 'nullable|array',
+            'sku_ids.*' => 'integer|exists:skus,id',
             'awb_number' => 'required|string|max:100',
             'carrier' => 'required|string|max:100',
             'origin' => 'nullable|string|max:255',

@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Sample;
-use App\Models\Order;
+use App\Models\Sku;
 use App\Models\Message;
+use App\Support\VmsOrderMatcher;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -15,9 +16,13 @@ class DashboardController extends Controller
         $companyId = $request->user()->company_id;
         $company = $request->user()->company()->with('currency')->first();
 
+        $skuCodes = Sku::whereHas('sample', function ($q) use ($companyId) {
+            $q->where('company_id', $companyId);
+        })->pluck('sku_code');
+
         $stats = [
             'samples_pending' => Sample::where('company_id', $companyId)->where('status', 'pending')->count(),
-            'active_orders' => Order::where('company_id', $companyId)->where('current_stage', '!=', 'dispatched')->count(),
+            'active_orders' => VmsOrderMatcher::orderCount($skuCodes),
             'balance' => $company->current_balance ?? 0,
             'credit_limit' => $company->credit_limit ?? 0,
             'credit_used_pct' => $company->creditUsedPercent() ?? 0,
@@ -29,7 +34,7 @@ class DashboardController extends Controller
             ->whereIn('status', ['pending', 'changes_requested'])
             ->latest('submitted_at')->take(5)->get();
 
-        $orders = Order::where('company_id', $companyId)->latest()->take(5)->get();
+        $orders = VmsOrderMatcher::recentOrders($skuCodes, 5);
 
         $recentMessages = Message::with('sender')
             ->where('company_id', $companyId)

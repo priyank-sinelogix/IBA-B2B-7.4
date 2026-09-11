@@ -26,11 +26,12 @@
             });
         </script>
         <table class="table table-hover mb-0">
-            <thead><tr><th>SKU Code</th><th>Style</th><th>Fabric</th><th>Print</th><th>Colour</th><th>Size</th><th></th></tr></thead>
+            <thead><tr><th>SKU Code</th><th>Client Company</th><th>Style</th><th>Fabric</th><th>Print</th><th>Colour</th><th>Size</th><th></th></tr></thead>
             <tbody>
             @forelse($skus as $sku)
                 <tr>
                     <td><strong>{{ $sku->sku_code }}</strong></td>
+                    <td>{{ optional(optional($sku->sample)->company)->name ?? '—' }}</td>
                     <td>{{ $sku->style_name }}</td>
                     <td>{{ $sku->fabric ?? '—' }}</td>
                     <td>{{ $sku->print ?? '—' }}</td>
