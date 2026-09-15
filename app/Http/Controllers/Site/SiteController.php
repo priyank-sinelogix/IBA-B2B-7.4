@@ -58,6 +58,11 @@ class SiteController extends Controller
         return view('site.pages.contact');
     }
 
+    public function privacyPolicy()
+    {
+        return view('site.pages.privacy-policy');
+    }
+
     public function submitContact(\Illuminate\Http\Request $request)
     {
         $data = $request->validate([

@@ -96,7 +96,7 @@
                     
                 </div>
                 <div class="contact-form-actions">
-                    <p>We keep any info you share with us private and confidential.For more on how we process and protect data,please review IBA Crafts's Privacy Policy</p>
+                    <p>We keep any info you share with us private and confidential. For more on how we process and protect data, please review IBA Crafts's <a href="{{ url('/privacy-policy') }}" style="color:var(--teal-dark); font-weight:700;">Privacy Policy</a>.</p>
                 </div>
             </form>
         </div>

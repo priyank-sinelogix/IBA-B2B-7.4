@@ -12,6 +12,7 @@
                     <li><a href="{{ url('/contact') }}">Contact</a></li>
                     <li><a href="{{ url('/awards') }}">Awards &amp; Recognitions</a></li>
                     <li><a href="{{ url('/sustainability') }}">Sustainability</a></li>
+                    <li><a href="{{ url('/privacy-policy') }}">Privacy Policy</a></li>
 
                 </ul>
             </div>
