@@ -23,11 +23,6 @@
                     <option value="debit_note">Debit Note (increases balance owed)</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label>Linked Order (optional)</label>
-                <select name="order_id" id="orderSelect" class="form-control">
-                </select>
-            </div>
             <div class="form-row">
                 <div class="form-group col-6">
                     <label>Amount (<span id="amountCurrencyLabel">select company first</span>)</label>
@@ -57,7 +52,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         ibaAjaxSelect2('#companySelect', 'companies', { placeholder: 'Search client company...' });
-        ibaAjaxSelect2('#orderSelect', 'orders', { placeholder: 'Search order...', allowClear: true });
 
         $('#companySelect').on('select2:select', function (e) {
             var data = e.params.data || {};

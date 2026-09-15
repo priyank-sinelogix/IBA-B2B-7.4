@@ -42,7 +42,6 @@ class LedgerController extends Controller
             'reference_no' => 'nullable|string|max:100',
             'amount' => 'required|numeric|min:0.01',
             'description' => 'nullable|string|max:1000',
-            'order_id' => 'nullable|exists:orders,id',
         ]);
 
         DB::transaction(function () use ($data, &$entry) {

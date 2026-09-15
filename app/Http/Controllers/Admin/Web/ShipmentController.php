@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AuditLog;
 use App\Models\Company;
 use App\Models\LedgerEntry;
+use App\Models\SamplePricing;
 use App\Models\Shipment;
 use App\Models\ShipmentTrackingEvent;
 use App\Support\VmsOrderMatcher;
@@ -53,7 +54,7 @@ class ShipmentController extends Controller
         unset($data['sku_ids']);
         $data['status_updated_at'] = now();
         $shipment = Shipment::create($data);
-        $shipment->skus()->sync($skuIds);
+        $shipment->skus()->sync($this->skuSyncData($shipment->company_id, $shipment->vms_orderid, $skuIds));
 
         ShipmentTrackingEvent::create([
             'shipment_id' => $shipment->id,
@@ -63,7 +64,7 @@ class ShipmentController extends Controller
             'event_at' => now(),
         ]);
 
-        $this->syncShippingCharge($shipment);
+        $this->syncShipmentInvoice($shipment);
 
         AuditLog::record('shipment.created', $shipment, null, $shipment->only('awb_number', 'status'));
 
@@ -100,18 +101,18 @@ class ShipmentController extends Controller
         }
 
         $shipment->update($data);
-        $shipment->skus()->sync($skuIds);
+        $shipment->skus()->sync($this->skuSyncData($shipment->company_id, $shipment->vms_orderid, $skuIds));
 
-        $this->syncShippingCharge($shipment);
+        $this->syncShipmentInvoice($shipment);
 
         return redirect('/admin/shipments')->with('success', 'Shipment updated.');
     }
 
     public function destroy(Shipment $shipment)
     {
-        // Reverse any shipping charge already billed to the client before the
+        // Reverse any invoice already billed to the client before the
         // shipment record itself goes away.
-        $this->syncShippingCharge($shipment, 0.0);
+        $this->syncShipmentInvoice($shipment, 0.0);
 
         AuditLog::record('shipment.deleted', $shipment, $shipment->only('awb_number'), null);
         $shipment->delete();
@@ -120,16 +121,50 @@ class ShipmentController extends Controller
     }
 
     /**
-     * Keeps the client's ledger balance in sync with this shipment's shipping
-     * price. Ledger entries are immutable (see LedgerController::destroy), so
-     * instead of editing a past entry we post an invoice/credit_note for the
-     * *difference* between what's already been charged for this shipment and
-     * what should now be charged — this also cleanly handles price removal
-     * (full reversal) and shipment deletion (pass $desiredPrice = 0).
+     * Builds the belongsToMany sync array with each SKU's qty as pivot data —
+     * always re-read fresh from VMS (never trusted from the submitted form),
+     * since VMS's order qty is the source of truth, not something an admin
+     * should be able to type over.
      */
-    private function syncShippingCharge(Shipment $shipment, ?float $desiredPrice = null): void
+    private function skuSyncData(int $companyId, ?string $vmsOrderid, array $skuIds): array
     {
-        $desiredPrice = round($desiredPrice ?? (float) ($shipment->shipping_price ?? 0), 2);
+        if (empty($skuIds) || !$vmsOrderid) {
+            return [];
+        }
+
+        $qtyBySkuId = VmsOrderMatcher::skusForCompanyOrder($companyId, $vmsOrderid)
+            ->keyBy('sku_id')
+            ->map(function ($row) { return (int) $row->qty; });
+
+        $sync = [];
+        foreach ($skuIds as $skuId) {
+            $sync[$skuId] = ['qty' => $qtyBySkuId->get($skuId, 0)];
+        }
+
+        return $sync;
+    }
+
+    /**
+     * Keeps the client's ledger balance in sync with this shipment's total
+     * charge — product value (each tagged SKU's qty × its Sample Pricing
+     * rate) plus the shipping price. Ledger entries are immutable (see
+     * LedgerController::destroy), so instead of editing a past entry we post
+     * an invoice/credit_note for the *difference* between what's already
+     * been charged for this shipment and what should now be charged — this
+     * also cleanly handles price removal (full reversal) and shipment
+     * deletion (pass $overrideTotal = 0).
+     */
+    private function syncShipmentInvoice(Shipment $shipment, ?float $overrideTotal = null): void
+    {
+        if ($overrideTotal !== null) {
+            $desiredTotal = round($overrideTotal, 2);
+        } else {
+            $shipment->load('skus');
+            $productValue = $shipment->skus->sum(function ($sku) {
+                return SamplePricing::unitPriceForSample($sku->sample_id) * (int) ($sku->pivot->qty ?? 0);
+            });
+            $desiredTotal = round($productValue + (float) ($shipment->shipping_price ?? 0), 2);
+        }
 
         $alreadyCharged = round(
             (float) LedgerEntry::where('shipment_id', $shipment->id)->where('type', 'invoice')->sum('amount')
@@ -137,7 +172,7 @@ class ShipmentController extends Controller
             2
         );
 
-        $delta = round($desiredPrice - $alreadyCharged, 2);
+        $delta = round($desiredTotal - $alreadyCharged, 2);
         if ($delta === 0.0) {
             return;
         }
@@ -156,14 +191,14 @@ class ShipmentController extends Controller
                 'amount' => abs($delta),
                 'balance_after' => $newBalance,
                 'description' => $type === 'invoice'
-                    ? 'Shipping charge — shipment '.$shipment->awb_number
-                    : 'Shipping charge adjustment — shipment '.$shipment->awb_number,
+                    ? 'Shipment invoice (product + shipping) — shipment '.$shipment->awb_number
+                    : 'Shipment invoice adjustment — shipment '.$shipment->awb_number,
             ]);
 
             $company->update(['current_balance' => $newBalance]);
         });
 
-        AuditLog::record('shipment.shipping_charge_synced', $shipment, null, ['delta' => $delta]);
+        AuditLog::record('shipment.invoice_synced', $shipment, null, ['delta' => $delta]);
     }
 
     private function validated(Request $request, ?int $ignoreId = null): array

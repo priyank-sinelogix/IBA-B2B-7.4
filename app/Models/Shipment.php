@@ -33,7 +33,7 @@ class Shipment extends Model
 
     public function skus()
     {
-        return $this->belongsToMany(Sku::class, 'shipment_skus');
+        return $this->belongsToMany(Sku::class, 'shipment_skus')->withPivot('qty');
     }
 
     public function ledgerEntries()

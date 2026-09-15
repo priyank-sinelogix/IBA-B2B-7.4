@@ -38,21 +38,47 @@
         </div>
 
         @if($shipment->vms_orderid)
+        @php
+            $productValue = $shipment->skus->sum(function ($sku) {
+                return \App\Models\SamplePricing::unitPriceForSample($sku->sample_id) * (int) ($sku->pivot->qty ?? 0);
+            });
+            $totalCharge = $productValue + (float) ($shipment->shipping_price ?? 0);
+        @endphp
         <div class="card">
             <div class="card-header"><h3 class="card-title">VMS Order — {{ $shipment->vms_orderid }}</h3></div>
             <div class="card-body p-0">
                 <table class="table table-sm mb-0">
-                    <thead><tr><th>SKU</th><th>Size</th><th></th></tr></thead>
+                    <thead><tr><th>SKU</th><th>Size</th><th class="text-right">Qty</th><th class="text-right">Rate</th><th class="text-right">Value</th></tr></thead>
                     <tbody>
                     @forelse($shipment->skus as $sku)
+                        @php $rate = \App\Models\SamplePricing::unitPriceForSample($sku->sample_id); @endphp
                         <tr>
                             <td>{{ $sku->sku_code }}</td>
                             <td>{{ $sku->size ?? '—' }}</td>
+                            <td class="text-right">{{ $sku->pivot->qty ?? 0 }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($rate, $shipment->company->currency) }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($rate * (int) ($sku->pivot->qty ?? 0), $shipment->company->currency) }}</td>
                         </tr>
                     @empty
-                        <tr><td colspan="2" class="text-center text-muted p-3">No SKUs tagged on this shipment yet.</td></tr>
+                        <tr><td colspan="5" class="text-center text-muted p-3">No SKUs tagged on this shipment yet.</td></tr>
                     @endforelse
                     </tbody>
+                    @if($shipment->skus->isNotEmpty())
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" class="text-right font-weight-bold">Product Value</td>
+                            <td class="text-right font-weight-bold">{{ \App\Support\Currency::display($productValue, $shipment->company->currency) }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-right">+ Shipping Price</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($shipment->shipping_price ?? 0, $shipment->company->currency) }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-right font-weight-bold">Total Invoiced to Ledger</td>
+                            <td class="text-right font-weight-bold">{{ \App\Support\Currency::display($totalCharge, $shipment->company->currency) }}</td>
+                        </tr>
+                    </tfoot>
+                    @endif
                 </table>
             </div>
         </div>

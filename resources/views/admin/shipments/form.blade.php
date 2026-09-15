@@ -27,25 +27,33 @@
                                 <option value="{{ $shipment->vms_orderid }}" selected>{{ $shipment->vms_orderid }}</option>
                             @endif
                         </select>
-                        <small class="text-muted">Company select karne ke baad uske VMS orders yahan search ho sakenge.</small>
+                        <small class="text-muted">Once you select a company, its VMS orders can be searched here.</small>
                     </div>
                     <div class="form-group">
                         <label>SKUs in this shipment</label>
-                        <div id="skuChecklist" class="border rounded p-2" style="max-height:220px; overflow-y:auto;">
+                        <div id="skuChecklist" class="border rounded p-2" style="max-height:260px; overflow-y:auto;">
                             @forelse($orderSkuRows as $row)
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="sku_ids[]" value="{{ $row->sku_id }}" id="sku{{ $row->sku_id }}"
-                                        {{ $shipment->exists && $shipment->skus->contains('id', $row->sku_id) ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="sku{{ $row->sku_id }}">
-                                        {{ $row->sku_code }}@if($row->size) — {{ $row->size }}@endif
-                                        <span class="text-muted small">(Qty: {{ $row->qty }}, {{ \App\Support\VmsOrderMatcher::statusLabel($row->status) }})</span>
-                                    </label>
+                                @php $existingPivot = $shipment->exists ? $shipment->skus->firstWhere('id', $row->sku_id) : null; @endphp
+                                <div class="d-flex align-items-center border-bottom py-1 sku-row" data-unit-price="{{ $row->unit_price }}" data-qty="{{ $row->qty }}">
+                                    <div class="form-check flex-grow-1 mb-0">
+                                        <input class="form-check-input sku-check" type="checkbox" name="sku_ids[]" value="{{ $row->sku_id }}" id="sku{{ $row->sku_id }}"
+                                            {{ $existingPivot ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="sku{{ $row->sku_id }}">
+                                            {{ $row->sku_code }}@if($row->size) — {{ $row->size }}@endif
+                                            <span class="text-muted small">({{ \App\Support\VmsOrderMatcher::statusLabel($row->status) }}, Rate: {{ number_format($row->unit_price, 2) }})</span>
+                                        </label>
+                                    </div>
+                                    <span class="badge badge-light border" style="min-width:60px;">Qty: {{ $row->qty }}</span>
                                 </div>
                             @empty
-                                <div class="text-muted small">Pehle Company aur Order select karo.</div>
+                                <div class="text-muted small">Select a Company and Order first.</div>
                             @endforelse
                         </div>
-                        <small class="text-muted">Order ke saare SKUs me se sirf wahi tick karo jo is shipment mein ja rahe hain (order ke SKUs alag shipments mein split ho sakte hain).</small>
+                        <small class="text-muted">Tick only the SKUs that are actually going in this shipment (an order's SKUs can be split across multiple shipments). Qty comes from VMS and can't be edited.</small>
+                        <div class="d-flex justify-content-between small mt-1">
+                            <span>Product Value</span>
+                            <strong id="productValueDisplay">0.00</strong>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>AWB / Tracking No.</label>
@@ -69,9 +77,13 @@
                         <label>Shipping Price <span class="text-muted">(optional)</span></label>
                         <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text" id="shippingPriceSymbol">₹</span></div>
-                            <input type="number" step="0.01" min="0" name="shipping_price" class="form-control" value="{{ old('shipping_price', $shipment->shipping_price) }}">
+                            <input type="number" step="0.01" min="0" name="shipping_price" id="shippingPriceInput" class="form-control" value="{{ old('shipping_price', $shipment->shipping_price) }}">
                         </div>
                         <small class="text-muted">In the selected client's own currency.</small>
+                    </div>
+                    <div class="alert alert-light border d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted small">Product Value + Shipping Price — this amount will be invoiced to the client's Finance ledger once saved.</span>
+                        <strong id="totalChargeDisplay">0.00</strong>
                     </div>
                     <div class="form-group">
                         <label>Status</label>
@@ -141,21 +153,44 @@
             checkedIds = checkedIds || [];
             var container = $('#skuChecklist');
             if (!rows.length) {
-                container.html('<div class="text-muted small">Is order me is company ke liye koi SKU nahi mila.</div>');
+                container.html('<div class="text-muted small">No SKUs found for this company in this order.</div>');
+                recalcTotals();
                 return;
             }
             var html = '';
             rows.forEach(function (row) {
                 var checked = checkedIds.indexOf(row.sku_id) !== -1 ? 'checked' : '';
                 var sizeText = row.size ? ' — ' + row.size : '';
-                html += '<div class="form-check">'
-                    + '<input class="form-check-input" type="checkbox" name="sku_ids[]" value="' + row.sku_id + '" id="sku' + row.sku_id + '" ' + checked + '>'
+                var unitPrice = parseFloat(row.unit_price) || 0;
+                var qty = parseInt(row.qty, 10) || 0;
+                html += '<div class="d-flex align-items-center border-bottom py-1 sku-row" data-unit-price="' + unitPrice + '" data-qty="' + qty + '">'
+                    + '<div class="form-check flex-grow-1 mb-0">'
+                    + '<input class="form-check-input sku-check" type="checkbox" name="sku_ids[]" value="' + row.sku_id + '" id="sku' + row.sku_id + '" ' + checked + '>'
                     + '<label class="form-check-label" for="sku' + row.sku_id + '">' + row.sku_code + sizeText
-                    + ' <span class="text-muted small">(Qty: ' + row.qty + ', ' + (row.status_label || '') + ')</span></label>'
+                    + ' <span class="text-muted small">(' + (row.status_label || '') + ', Rate: ' + unitPrice.toFixed(2) + ')</span></label>'
+                    + '</div>'
+                    + '<span class="badge badge-light border" style="min-width:60px;">Qty: ' + qty + '</span>'
                     + '</div>';
             });
             container.html(html);
+            recalcTotals();
         }
+
+        function recalcTotals() {
+            var productValue = 0;
+            $('#skuChecklist .sku-row').each(function () {
+                var row = $(this);
+                if (!row.find('.sku-check').is(':checked')) return;
+                var unitPrice = parseFloat(row.data('unit-price')) || 0;
+                var qty = parseFloat(row.data('qty')) || 0;
+                productValue += unitPrice * qty;
+            });
+            var shipping = parseFloat($('#shippingPriceInput').val()) || 0;
+            $('#productValueDisplay').text(productValue.toFixed(2));
+            $('#totalChargeDisplay').text((productValue + shipping).toFixed(2));
+        }
+
+        $(document).on('change input', '#skuChecklist .sku-check, #shippingPriceInput', recalcTotals);
 
         $('#vmsOrderSelect').select2({
             theme: 'bootstrap4',
@@ -200,6 +235,8 @@
         @if($shipment->exists && $shipment->company)
             document.getElementById('shippingPriceSymbol').textContent = '{{ optional($shipment->company->currency)->symbol ?? '₹' }}';
         @endif
+
+        recalcTotals();
     });
 </script>
 @endsection

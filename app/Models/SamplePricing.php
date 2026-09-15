@@ -35,4 +35,17 @@ class SamplePricing extends Model
             + (float) ($data['operational_cost'] ?? 0)
             + (float) ($data['stitching_cost'] ?? 0);
     }
+
+    /**
+     * The unit sale price to use for a given sample — the most recently
+     * added pricing entry for it, or 0 if the style was never priced.
+     */
+    public static function unitPriceForSample(?int $sampleId): float
+    {
+        if (!$sampleId) {
+            return 0.0;
+        }
+
+        return (float) (self::where('sample_id', $sampleId)->latest()->value('price_usd') ?? 0);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Support;
 
+use App\Models\SamplePricing;
 use App\Models\Sku;
 use App\Models\VmsSelldata;
 use Illuminate\Support\Collection;
@@ -149,6 +150,7 @@ class VmsOrderMatcher
                 'size' => $row->size,
                 'qty' => $row->qty,
                 'status' => $row->sendformaking,
+                'unit_price' => $sku ? SamplePricing::unitPriceForSample($sku->sample_id) : 0.0,
             ];
         })->filter(function ($row) { return $row->sku_id; })->values();
     }
