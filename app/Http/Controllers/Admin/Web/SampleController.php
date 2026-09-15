@@ -241,7 +241,7 @@ class SampleController extends Controller
 
         AuditLog::record('sample.updated', $sample, $before, $sample->fresh()->only('style_name', 'fabric', 'color', 'status'));
 
-        return redirect('/admin/samples')->with('success', 'Sample updated.');
+        return back()->with('success', 'Sample updated.');
     }
 
     public function destroy(Sample $sample)

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Applied to all /api/portal/* routes.
+ * Applied to the whole customer web portal (see routes/web.php).
  * Guarantees every authenticated customer user has a company_id,
  * and makes it available to controllers without re-checking each time.
  */
@@ -18,11 +18,15 @@ class EnsureCustomerScope
         $user = $request->user();
 
         if (! $user || ! $user->isCustomer() || ! $user->company_id) {
-            return response()->json(['message' => 'Unauthorized'], 403);
+            auth()->logout();
+
+            return redirect('/login')->withErrors(['email' => 'Please log in to continue.']);
         }
 
         if (! $user->company->is_active) {
-            return response()->json(['message' => 'Account suspended'], 403);
+            auth()->logout();
+
+            return redirect('/login')->withErrors(['email' => 'Your company account has been suspended. Please contact IBA support.']);
         }
 
         // Available in controllers via $request->attributes->get('company_id')

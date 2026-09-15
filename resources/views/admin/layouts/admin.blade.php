@@ -75,6 +75,13 @@
         .badge-pending{ background:#fff3cd; color:#8a6d00; }
         .badge-approved{ background:#d7f7ea; color:#0a7a52; }
         .badge-changes{ background:#ffe3d9; color:#b34700; }
+        .admin-toast{
+            position: fixed; top: 20px; right: 20px; z-index: 2000;
+            background: var(--iba-teal); color: #fff; padding: 12px 20px; border-radius: 8px;
+            box-shadow: 0 4px 14px rgba(0,0,0,.15); font-weight: 600; font-size: .9rem;
+            animation: adminToastIn .25s ease-out;
+        }
+        @keyframes adminToastIn{ from{ opacity:0; transform: translateY(-10px); } to{ opacity:1; transform: translateY(0); } }
     </style>
     @stack('styles')
 </head>
@@ -194,7 +201,9 @@
         </div>
         <section class="content">
             <div class="container-fluid">
-                @if(session('success'))<div class="alert alert-success">{{ session('success') }}</div>@endif
+                @if(session('success'))
+                    <div id="successToast" class="admin-toast"><i class="fas fa-check-circle mr-2"></i>{{ session('success') }}</div>
+                @endif
                 @yield('content')
             </div>
         </section>
@@ -238,6 +247,16 @@
             }
         });
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var toastEl = document.getElementById('successToast');
+        if (!toastEl) return;
+        setTimeout(function () {
+            toastEl.style.transition = 'opacity .3s ease';
+            toastEl.style.opacity = '0';
+            setTimeout(function () { toastEl.remove(); }, 300);
+        }, 3000);
+    });
 </script>
 @stack('scripts')
 </body>
