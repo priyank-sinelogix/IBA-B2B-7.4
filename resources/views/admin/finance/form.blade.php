@@ -2,7 +2,7 @@
 @section('title', 'New Ledger Entry')
 
 @section('content')
-<div class="card col-lg-6 p-0">
+<div class="card col-lg-12 p-0">
     <div class="card-header"><h3 class="card-title">New Ledger Entry</h3></div>
     <form method="POST" action="{{ url('/admin/finance') }}">
         @csrf
