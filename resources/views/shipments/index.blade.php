@@ -5,9 +5,10 @@
 <div class="card">
     <div class="card-header"><h3 class="card-title">Recent Tracking Reports</h3></div>
     <div class="card-body p-0">
-        <form class="d-flex p-3 border-bottom" method="GET">
+        <form class="d-flex flex-wrap p-3 border-bottom" method="GET" style="row-gap:.5rem;">
             @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search AWB, carrier, destination...'])
         </form>
+        <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead><tr><th>AWB / Tracking ID</th><th>Carrier</th><th>Origin</th><th>Destination</th><th class="text-right">Shipping Price</th><th>Status</th><th>Updated</th></tr></thead>
             <tbody>
@@ -28,6 +29,7 @@
             @endforelse
             </tbody>
         </table>
+        </div>
     </div>
     <div class="card-footer">{{ optional($shipments ?? null)->appends(request()->query())->links() }}</div>
 </div>

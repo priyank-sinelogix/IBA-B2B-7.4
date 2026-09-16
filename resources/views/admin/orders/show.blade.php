@@ -73,6 +73,7 @@
                 @elseif($vmsMatches->isEmpty())
                     <div class="text-center text-muted p-3">No orders found in VMS yet for this sample's SKUs (or the VMS server could not be reached).</div>
                 @else
+                    <div class="table-responsive">
                     <table class="table table-hover mb-0">
                         <thead><tr><th>Order ID</th><th>SKU</th><th>Size</th><th>Qty</th><th>Status</th><th>Order Date</th><th>Dispatch Date</th></tr></thead>
                         <tbody>
@@ -89,6 +90,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    </div>
                 @endif
             </div>
         </div>
@@ -96,6 +98,7 @@
         <div class="card">
             <div class="card-header"><h3 class="card-title">Linked Shipments</h3></div>
             <div class="card-body p-0">
+                <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead><tr><th>AWB</th><th>Carrier</th><th>Status</th><th></th></tr></thead>
                     <tbody>
@@ -111,6 +114,7 @@
                     @endforelse
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

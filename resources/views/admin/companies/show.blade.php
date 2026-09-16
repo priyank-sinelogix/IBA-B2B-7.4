@@ -67,6 +67,7 @@
         <div class="card">
             <div class="card-header"><h3 class="card-title">Recent Samples</h3></div>
             <div class="card-body p-0">
+                <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead><tr><th>Code</th><th>Style</th><th>Status</th><th></th></tr></thead>
                     <tbody>
@@ -82,6 +83,7 @@
                     @endforelse
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
 
@@ -91,6 +93,7 @@
                 <a href="{{ url('/admin/orders?company_id='.$company->id) }}" class="small">View All</a>
             </div>
             <div class="card-body p-0">
+                <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead><tr><th>Order ID</th><th>SKUs</th><th>Status</th><th>Order Date</th></tr></thead>
                     <tbody>
@@ -106,12 +109,14 @@
                     @endforelse
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
 
         <div class="card">
             <div class="card-header"><h3 class="card-title">Recent Shipments</h3></div>
             <div class="card-body p-0">
+                <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead><tr><th>AWB</th><th>Carrier</th><th>Status</th><th></th></tr></thead>
                     <tbody>
@@ -127,12 +132,14 @@
                     @endforelse
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
 
         <div class="card">
             <div class="card-header"><h3 class="card-title">Recent Ledger Entries</h3></div>
             <div class="card-body p-0">
+                <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead><tr><th>Date</th><th>Type</th><th class="text-right">Amount</th><th class="text-right">New Value</th></tr></thead>
                     <tbody>
@@ -148,6 +155,7 @@
                     @endforelse
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

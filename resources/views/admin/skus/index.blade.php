@@ -10,7 +10,7 @@
         </a>
     </div>
     <div class="card-body p-0">
-        <form class="d-flex p-3 border-bottom" method="GET">
+        <form class="d-flex flex-wrap p-3 border-bottom" method="GET" style="row-gap:.5rem;">
             <select name="sample_id" id="sampleFilterSelect" class="form-control mr-2" style="max-width:280px;">
                 <option value=""></option>
                 @if($selectedSample ?? null)
@@ -25,6 +25,7 @@
                 $('#sampleFilterSelect').on('select2:select select2:clear', function () { $(this).closest('form').submit(); });
             });
         </script>
+        <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead><tr><th>SKU Code</th><th>Client Company</th><th>Style</th><th>Fabric</th><th>Print</th><th>Colour</th><th>Size</th><th></th></tr></thead>
             <tbody>
@@ -50,6 +51,7 @@
             @endforelse
             </tbody>
         </table>
+        </div>
     </div>
     <div class="card-footer">{{ $skus->appends(request()->query())->links() }}</div>
 </div>

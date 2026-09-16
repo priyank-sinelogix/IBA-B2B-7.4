@@ -113,6 +113,7 @@
         <div class="card">
             <div class="card-header"><h3 class="card-title">Size Chart (submitted by client)</h3></div>
             <div class="card-body p-0">
+                <div class="table-responsive">
                 <table class="table table-bordered mb-0">
                     <thead>
                         <tr>
@@ -130,6 +131,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                </div>
             </div>
             <div class="card-footer text-muted small">This will be carried over automatically when you convert this request into a Sample.</div>
         </div>

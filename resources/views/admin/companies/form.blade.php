@@ -30,11 +30,11 @@
             </div>
             @if($company->exists)
                 <div class="form-row">
-                    <div class="form-group col-6">
+                    <div class="form-group col-12 col-sm-6">
                         <label>Credit Limit</label>
                         <input type="text" class="form-control" value="{{ \App\Support\Currency::display($company->credit_limit, $company->currency) }}" disabled>
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group col-12 col-sm-6">
                         <label>Used Balance</label>
                         <input type="text" class="form-control" value="{{ \App\Support\Currency::display($company->used_balance, $company->currency) }}" disabled>
                     </div>

@@ -108,6 +108,7 @@
                 @endif
             </div>
             <div class="card-body p-0">
+                <div class="table-responsive">
                 <table class="table table-bordered mb-0">
                     <thead>
                         <tr>
@@ -125,6 +126,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>
@@ -137,6 +139,7 @@
         <div class="card">
             <div class="card-header"><h3 class="card-title">Pricing</h3></div>
             <div class="card-body p-0">
+                <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead>
                         <tr><th>Style</th><th>Fabric</th><th class="text-right">Fabric Cost</th><th class="text-right">Accessories</th><th class="text-right">Operational Cost</th><th class="text-right">Stitching Cost</th><th class="text-right">COGP</th><th class="text-right">Margin</th><th class="text-right">Price</th></tr>
@@ -156,6 +159,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

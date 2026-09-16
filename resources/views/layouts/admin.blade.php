@@ -33,6 +33,20 @@
         table.table thead th:not(.no-sort):hover{ background:#f2f4f7; }
         table.table thead th[data-sort-dir="asc"]::after{ content:' \25B2'; font-size:.7em; }
         table.table thead th[data-sort-dir="desc"]::after{ content:' \25BC'; font-size:.7em; }
+        /* Plain <select class="form-control"> filters (per-page, status, etc.) looked like a
+           bare native dropdown. Custom arrow + matching teal focus ring, same as the admin panel. */
+        select.form-control{
+            appearance: none; -webkit-appearance: none; -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23495057' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right .65rem center;
+            background-size: 14px 14px;
+            padding-right: 2rem !important;
+        }
+        .form-control:focus{
+            border-color: var(--iba-teal);
+            box-shadow: 0 0 0 .2rem rgba(15,185,138,.15);
+        }
     </style>
     @stack('styles')
 </head>

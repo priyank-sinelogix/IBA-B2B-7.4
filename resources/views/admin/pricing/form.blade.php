@@ -31,21 +31,21 @@
             </div>
 
             <div class="form-row">
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-sm-6">
                     <label>Fabric Cost (₹)</label>
                     <input type="number" step="0.01" class="form-control cost-input" name="fabric_cost" value="{{ old('fabric_cost', $pricing->fabric_cost ?? 0) }}" required>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-sm-6">
                     <label>Accessories (₹)</label>
                     <input type="number" step="0.01" class="form-control cost-input" name="accessories_cost" value="{{ old('accessories_cost', $pricing->accessories_cost ?? 0) }}" required>
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-sm-6">
                     <label>Operational Cost (₹)</label>
                     <input type="number" step="0.01" class="form-control cost-input" name="operational_cost" value="{{ old('operational_cost', $pricing->operational_cost ?? 0) }}" required>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-sm-6">
                     <label>Stitching Cost (₹)</label>
                     <input type="number" step="0.01" class="form-control cost-input" name="stitching_cost" value="{{ old('stitching_cost', $pricing->stitching_cost ?? 0) }}" required>
                 </div>

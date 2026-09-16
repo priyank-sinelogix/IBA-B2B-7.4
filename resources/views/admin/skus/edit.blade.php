@@ -14,15 +14,15 @@
                 <input type="text" name="sku_code" class="form-control" value="{{ old('sku_code', $sku->sku_code) }}" required>
             </div>
             <div class="form-row">
-                <div class="form-group col-4">
+                <div class="form-group col-12 col-sm-4">
                     <label>Fabric</label>
                     <input type="text" name="fabric" class="form-control" value="{{ old('fabric', $sku->fabric) }}">
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-12 col-sm-4">
                     <label>Print</label>
                     <input type="text" name="print" class="form-control" value="{{ old('print', $sku->print) }}">
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-12 col-sm-4">
                     <label>Colour</label>
                     <input type="text" name="colour" class="form-control" value="{{ old('colour', $sku->colour) }}">
                 </div>

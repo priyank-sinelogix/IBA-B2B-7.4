@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-sm-6">
                     <label>Amount (<span id="amountCurrencyLabel">select company first</span>)</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text" id="amountCurrencySymbol">₹</span></div>
@@ -49,7 +49,7 @@
                     </div>
                     <small class="text-muted">Entered in the selected client's own currency — not converted.</small>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-sm-6">
                     <label>Reference No.</label>
                     <input type="text" name="reference_no" class="form-control" placeholder="INV-2024-001">
                 </div>

@@ -5,7 +5,7 @@
 <div class="card">
     <div class="card-header"><h3 class="card-title">New Sample Requests — All Clients</h3></div>
     <div class="card-body p-0">
-        <form class="d-flex p-3 border-bottom" method="GET">
+        <form class="d-flex flex-wrap p-3 border-bottom" method="GET" style="row-gap:.5rem;">
             <select name="status" class="form-control" style="max-width:220px;" onchange="this.form.submit()">
                 <option value="">All Status</option>
                 <option value="pending" {{ request('status')=='pending'?'selected':'' }}>Pending</option>
@@ -15,6 +15,7 @@
             </select>
             @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search style, fabric...'])
         </form>
+        <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead><tr><th>Client</th><th>Style</th><th>Fabric Pref.</th><th>Requested By</th><th>Status</th><th>Date</th><th></th></tr></thead>
             <tbody>
@@ -38,6 +39,7 @@
             @endforelse
             </tbody>
         </table>
+        </div>
     </div>
     <div class="card-footer">{{ $requests->appends(request()->query())->links() }}</div>
 </div>

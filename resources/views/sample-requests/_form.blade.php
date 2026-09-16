@@ -11,15 +11,15 @@
                 <input type="text" name="style_name" class="form-control" value="{{ old('style_name', $sampleRequest->style_name) }}" required>
             </div>
             <div class="form-row">
-                <div class="form-group col-4">
+                <div class="form-group col-12 col-sm-4">
                     <label>Fabric Preference</label>
                     <input type="text" name="fabric_preference" class="form-control" value="{{ old('fabric_preference', $sampleRequest->fabric_preference) }}" placeholder="e.g. Moss Crepe Spandex">
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-12 col-sm-4">
                     <label>Colour Preference</label>
                     <input type="text" name="colour_preference" class="form-control" value="{{ old('colour_preference', $sampleRequest->colour_preference) }}">
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-12 col-sm-4">
                     <label>Print Preference</label>
                     <input type="text" name="print_preference" class="form-control" value="{{ old('print_preference', $sampleRequest->print_preference) }}">
                 </div>
@@ -63,6 +63,7 @@
                     <button type="button" class="btn btn-sm btn-outline-primary" onclick="addSizeChartRow()"><i class="fas fa-plus mr-1"></i> Add Row</button>
                 </div>
             </div>
+            <div class="table-responsive">
             <table class="table table-bordered mb-0" id="sizeChartTable">
                 <thead>
                     <tr>
@@ -102,6 +103,7 @@
                     @endforelse
                 </tbody>
             </table>
+            </div>
         </div>
         <div class="card-footer">
             <button class="btn btn-iba">{{ $sampleRequest->exists ? 'Save Changes' : 'Submit Request' }}</button>

@@ -48,15 +48,15 @@
             @endunless
 
             <div class="form-row">
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-sm-6">
                     <label>Style Name</label>
                     <input type="text" name="style_name" class="form-control" value="{{ old('style_name', $sample->style_name) }}" required>
                 </div>
-                <div class="form-group col-3">
+                <div class="form-group col-12 col-sm-3">
                     <label>Fabric</label>
                     <input type="text" name="fabric" class="form-control" value="{{ old('fabric', $sample->fabric) }}" placeholder="Piqué 220 GSM">
                 </div>
-                <div class="form-group col-3">
+                <div class="form-group col-12 col-sm-3">
                     <label>Color</label>
                     <input type="text" name="color" class="form-control" value="{{ old('color', $sample->color) }}">
                 </div>

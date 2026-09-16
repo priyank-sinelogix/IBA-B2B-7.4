@@ -8,6 +8,7 @@
         <a href="{{ url('/admin/currencies/create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus mr-1"></i> Add Currency</a>
     </div>
     <div class="card-body p-0">
+        <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead><tr><th>Code</th><th>Symbol</th><th>Name</th><th class="text-right">Exchange Rate</th><th>Companies</th><th>Status</th><th></th></tr></thead>
             <tbody>
@@ -40,6 +41,7 @@
             @endforelse
             </tbody>
         </table>
+        </div>
     </div>
 </div>
 @endsection

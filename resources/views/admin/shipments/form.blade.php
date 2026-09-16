@@ -64,11 +64,11 @@
                         <input type="text" name="carrier" class="form-control" value="{{ old('carrier', $shipment->carrier) }}" placeholder="MAERSK / MSC / CMA CGM" required>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-6">
+                        <div class="form-group col-12 col-sm-6">
                             <label>Origin</label>
                             <input type="text" name="origin" class="form-control" value="{{ old('origin', $shipment->origin) }}">
                         </div>
-                        <div class="form-group col-6">
+                        <div class="form-group col-12 col-sm-6">
                             <label>Destination</label>
                             <input type="text" name="destination" class="form-control" value="{{ old('destination', $shipment->destination) }}">
                         </div>
@@ -98,11 +98,11 @@
                     <hr>
                     <p class="text-muted small mb-1">If you change the status above, these fields log the tracking event:</p>
                     <div class="form-row">
-                        <div class="form-group col-6">
+                        <div class="form-group col-12 col-sm-6">
                             <label>Event Location</label>
                             <input type="text" name="event_location" class="form-control" placeholder="e.g. Los Angeles Port">
                         </div>
-                        <div class="form-group col-6">
+                        <div class="form-group col-12 col-sm-6">
                             <label>Remarks</label>
                             <input type="text" name="event_remarks" class="form-control" placeholder="e.g. Cleared customs">
                         </div>

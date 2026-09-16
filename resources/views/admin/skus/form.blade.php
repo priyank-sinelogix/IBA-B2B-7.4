@@ -18,15 +18,15 @@
                 </select>
             </div>
             <div class="form-row">
-                <div class="form-group col-4">
+                <div class="form-group col-12 col-sm-4">
                     <label>Fabric</label>
                     <input type="text" name="fabric" id="fabricInput" class="form-control" placeholder="Moss Crepe Spandex" value="{{ old('fabric', optional($selectedSample)->fabric) }}">
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-12 col-sm-4">
                     <label>Print</label>
                     <input type="text" name="print" class="form-control" value="{{ old('print') }}">
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-12 col-sm-4">
                     <label>Colour</label>
                     <input type="text" name="colour" id="colourInput" class="form-control" placeholder="Black" value="{{ old('colour', optional($selectedSample)->color) }}">
                 </div>

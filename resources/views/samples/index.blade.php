@@ -13,10 +13,11 @@
         </div>
     </div>
     <div class="card-body p-0">
-        <form class="d-flex p-3 border-bottom" method="GET">
+        <form class="d-flex flex-wrap p-3 border-bottom" method="GET" style="row-gap:.5rem;">
             <input type="hidden" name="status" value="{{ request('status') }}">
             @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search code, style, fabric...'])
         </form>
+        <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead>
                 <tr>
@@ -48,6 +49,7 @@
             @endforelse
             </tbody>
         </table>
+        </div>
     </div>
     <div class="card-footer">
         {{ optional($samples ?? null)->links() }}

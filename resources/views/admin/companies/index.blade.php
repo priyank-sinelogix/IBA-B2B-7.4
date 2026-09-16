@@ -8,9 +8,10 @@
         <a href="{{ url('/admin/companies/create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus mr-1"></i> Add Company</a>
     </div>
     <div class="card-body p-0">
-        <form class="d-flex p-3 border-bottom" method="GET">
+        <form class="d-flex flex-wrap p-3 border-bottom" method="GET" style="row-gap:.5rem;">
             @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search name, code...'])
         </form>
+        <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead><tr><th>Name</th><th>Code</th><th>Currency</th><th>Users</th><th>Credit Limit</th><th>Used Balance</th><th>Status</th><th></th></tr></thead>
             <tbody>
@@ -37,6 +38,7 @@
             @endforelse
             </tbody>
         </table>
+        </div>
     </div>
     <div class="card-footer">{{ $companies->appends(request()->query())->links() }}</div>
 </div>

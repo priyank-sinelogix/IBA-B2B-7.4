@@ -10,7 +10,7 @@
         </a>
     </div>
     <div class="card-body p-0">
-        <form class="d-flex p-3 border-bottom" method="GET">
+        <form class="d-flex flex-wrap p-3 border-bottom" method="GET" style="row-gap:.5rem;">
             <select name="sample_id" id="sampleFilterSelect" class="form-control mr-2" style="max-width:280px;">
                 <option value=""></option>
                 @if($selectedSample)

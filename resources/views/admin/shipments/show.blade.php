@@ -47,6 +47,7 @@
         <div class="card">
             <div class="card-header"><h3 class="card-title">VMS Order — {{ $shipment->vms_orderid }}</h3></div>
             <div class="card-body p-0">
+                <div class="table-responsive">
                 <table class="table table-sm mb-0">
                     <thead><tr><th>SKU</th><th>Size</th><th class="text-right">Qty</th><th class="text-right">Rate</th><th class="text-right">Value</th></tr></thead>
                     <tbody>
@@ -80,6 +81,7 @@
                     </tfoot>
                     @endif
                 </table>
+                </div>
             </div>
         </div>
         @endif

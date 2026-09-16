@@ -104,6 +104,7 @@
                 <a href="{{ url('/orders') }}" class="small">View All</a>
             </div>
             <div class="card-body p-0">
+                <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead><tr><th>Order ID</th><th>SKUs</th><th>Status</th><th>Order Date</th><th>Dispatch Date</th></tr></thead>
                     <tbody>
@@ -120,6 +121,7 @@
                     @endforelse
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

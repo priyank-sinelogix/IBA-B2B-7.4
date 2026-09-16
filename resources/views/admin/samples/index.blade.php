@@ -8,7 +8,7 @@
         <a href="{{ url('/admin/samples/create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus mr-1"></i> New Sample</a>
     </div>
     <div class="card-body p-0">
-        <form class="d-flex p-3 border-bottom" method="GET">
+        <form class="d-flex flex-wrap p-3 border-bottom" method="GET" style="row-gap:.5rem;">
             <select name="company_id" id="companyFilterSelect" class="form-control mr-2" style="max-width:220px;">
                 <option value=""></option>
                 @if($selectedCompany ?? null)
@@ -30,6 +30,7 @@
             @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search code, style, fabric...'])
         </form>
 
+        <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead><tr><th></th><th>Code</th><th>Client</th><th>Style</th><th>Status</th><th>Submitted</th><th></th></tr></thead>
             <tbody>
@@ -59,6 +60,7 @@
             @endforelse
             </tbody>
         </table>
+        </div>
     </div>
     <div class="card-footer">{{ $samples->appends(request()->query())->links() }}</div>
 </div>

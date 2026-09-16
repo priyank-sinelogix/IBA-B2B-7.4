@@ -138,6 +138,7 @@
             <form method="POST" action="{{ url('/admin/samples/'.$sample->id.'/size-chart') }}">
                 @csrf
                 <div class="card-body p-0">
+                    <div class="table-responsive">
                     <table class="table table-bordered mb-0" id="sizeChartTable">
                         <thead>
                             <tr>
@@ -177,6 +178,7 @@
                         @endforelse
                         </tbody>
                     </table>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-primary btn-sm">Save Size Chart</button>
@@ -196,6 +198,7 @@
                 <a href="{{ url('/admin/skus/create?sample_id='.$sample->id) }}" class="btn btn-sm btn-outline-primary">Generate SKUs</a>
             </div>
             <div class="card-body p-0">
+                <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead><tr><th>SKU Code</th><th>Fabric</th><th>Colour</th><th>Size</th></tr></thead>
                     <tbody>
@@ -206,6 +209,7 @@
                     @endforelse
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>
@@ -218,6 +222,7 @@
                 <a href="{{ url('/admin/pricing/create?sample_id='.$sample->id) }}" class="btn btn-sm btn-outline-primary">Add Pricing</a>
             </div>
             <div class="card-body p-0">
+                <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead><tr><th>Style</th><th class="text-right">COGP</th><th class="text-right">Price</th></tr></thead>
                     <tbody>
@@ -228,6 +233,7 @@
                     @endforelse
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

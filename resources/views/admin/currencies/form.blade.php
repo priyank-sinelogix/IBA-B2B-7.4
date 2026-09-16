@@ -9,15 +9,15 @@
         @if($currency->exists) @method('PUT') @endif
         <div class="card-body">
             <div class="form-row">
-                <div class="form-group col-4">
+                <div class="form-group col-12 col-sm-4">
                     <label>Code</label>
                     <input type="text" name="code" class="form-control text-uppercase" value="{{ old('code', $currency->code) }}" placeholder="e.g. USD" maxlength="10" required>
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-12 col-sm-4">
                     <label>Symbol</label>
                     <input type="text" name="symbol" class="form-control" value="{{ old('symbol', $currency->symbol) }}" placeholder="e.g. $" maxlength="10" required>
                 </div>
-                <div class="form-group col-4">
+                <div class="form-group col-12 col-sm-4">
                     <label>Name</label>
                     <input type="text" name="name" class="form-control" value="{{ old('name', $currency->name) }}" placeholder="e.g. US Dollar" required>
                 </div>

@@ -32,6 +32,7 @@
 <div class="card">
     <div class="card-header"><h3 class="card-title">Recent Sample Submissions — All Clients</h3></div>
     <div class="card-body p-0">
+        <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead><tr><th>Sample Code</th><th>Client</th><th>Style</th><th>Status</th><th>Submitted</th></tr></thead>
             <tbody>
@@ -54,6 +55,7 @@
             @endforelse
             </tbody>
         </table>
+        </div>
     </div>
 </div>
 @endsection

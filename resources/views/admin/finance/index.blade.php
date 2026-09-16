@@ -8,7 +8,7 @@
         <a href="{{ url('/admin/finance/create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus mr-1"></i> New Entry</a>
     </div>
     <div class="card-body p-0">
-        <form class="d-flex p-3 border-bottom" method="GET">
+        <form class="d-flex flex-wrap p-3 border-bottom" method="GET" style="row-gap:.5rem;">
             <select name="company_id" id="companyFilterSelect" class="form-control mr-2" style="max-width:220px;">
                 <option value=""></option>
                 @if($selectedCompany ?? null)
@@ -23,6 +23,7 @@
                 $('#companyFilterSelect').on('select2:select select2:clear', function () { $(this).closest('form').submit(); });
             });
         </script>
+        <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead><tr><th>Date</th><th>Client</th><th>Type</th><th>Reference</th><th>Description</th><th class="text-right">Amount</th><th class="text-right">New Value</th></tr></thead>
             <tbody>
@@ -46,6 +47,7 @@
             @endforelse
             </tbody>
         </table>
+        </div>
     </div>
     <div class="card-footer">{{ $entries->appends(request()->query())->links() }}</div>
 </div>

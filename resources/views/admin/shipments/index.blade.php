@@ -8,9 +8,10 @@
         <a href="{{ url('/admin/shipments/create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus mr-1"></i> New Shipment</a>
     </div>
     <div class="card-body p-0">
-        <form class="d-flex p-3 border-bottom" method="GET">
+        <form class="d-flex flex-wrap p-3 border-bottom" method="GET" style="row-gap:.5rem;">
             @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search AWB, carrier, destination...'])
         </form>
+        <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead><tr><th>AWB</th><th>Client</th><th>Carrier</th><th>Origin</th><th>Destination</th><th class="text-right">Shipping Price</th><th>Status</th><th></th></tr></thead>
             <tbody>
@@ -37,6 +38,7 @@
             @endforelse
             </tbody>
         </table>
+        </div>
     </div>
     <div class="card-footer">{{ $shipments->appends(request()->query())->links() }}</div>
 </div>

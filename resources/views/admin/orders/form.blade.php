@@ -38,11 +38,11 @@
                         <input type="text" name="style_name" class="form-control" value="{{ old('style_name', $order->style_name) }}" required>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-6">
+                        <div class="form-group col-12 col-sm-6">
                             <label>Quantity</label>
                             <input type="number" name="quantity" class="form-control" value="{{ old('quantity', $order->quantity) }}" required>
                         </div>
-                        <div class="form-group col-6">
+                        <div class="form-group col-12 col-sm-6">
                             <label>ETA</label>
                             <input type="date" name="eta" class="form-control" value="{{ old('eta', optional($order->eta)->format('Y-m-d')) }}">
                         </div>

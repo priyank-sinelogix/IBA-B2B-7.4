@@ -63,6 +63,21 @@
             outline: none;
             border-color: var(--iba-teal);
         }
+        /* Plain <select class="form-control"> filters (per-page, status, etc.) — these had no
+           styling at all and looked like a bare native dropdown next to the Select2 fields
+           above. Custom arrow + matching teal focus ring so every field looks like one family. */
+        select.form-control{
+            appearance: none; -webkit-appearance: none; -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23495057' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right .65rem center;
+            background-size: 14px 14px;
+            padding-right: 2rem !important;
+        }
+        .form-control:focus{
+            border-color: var(--iba-teal);
+            box-shadow: 0 0 0 .2rem rgba(15,185,138,.15);
+        }
         .brand-link{ background:var(--iba-navy); border-bottom:1px solid rgba(255,255,255,.1); }
         .brand-text{ color:#fff; font-weight:800; letter-spacing:.5px; }
         .main-sidebar{ background:var(--iba-navy); }
@@ -77,6 +92,7 @@
         .badge-changes{ background:#ffe3d9; color:#b34700; }
         .admin-toast{
             position: fixed; top: 20px; right: 20px; z-index: 2000;
+            max-width: min(360px, calc(100vw - 40px)); word-wrap: break-word;
             background: var(--iba-teal); color: #fff; padding: 12px 20px; border-radius: 8px;
             box-shadow: 0 4px 14px rgba(0,0,0,.15); font-weight: 600; font-size: .9rem;
             animation: adminToastIn .25s ease-out;

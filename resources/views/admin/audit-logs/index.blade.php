@@ -5,9 +5,10 @@
 <div class="card">
     <div class="card-header"><h3 class="card-title">Full Activity Audit Trail</h3></div>
     <div class="card-body p-0">
-        <form class="d-flex p-3 border-bottom" method="GET">
+        <form class="d-flex flex-wrap p-3 border-bottom" method="GET" style="row-gap:.5rem;">
             @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search action...'])
         </form>
+        <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead><tr><th>Date</th><th>User</th><th>Client</th><th>Action</th><th>Subject</th><th>IP</th></tr></thead>
             <tbody>
@@ -25,6 +26,7 @@
             @endforelse
             </tbody>
         </table>
+        </div>
     </div>
     <div class="card-footer">{{ $logs->appends(request()->query())->links() }}</div>
 </div>
