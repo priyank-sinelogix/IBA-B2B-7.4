@@ -7,13 +7,11 @@
         <div class="card">
             <div class="card-header"><h3 class="card-title">Current Version</h3></div>
             <div class="card-body text-center">
-                <img src="{{ optional($sample->latestVersion)->signedImageUrl() ?? 'https://via.placeholder.com/300' }}" class="img-fluid rounded mb-3" style="max-height:280px;object-fit:cover;">
+                <img src="{{ optional($sample->latestVersion)->signedImageUrl() ?? 'https://via.placeholder.com/300' }}" class="img-fluid rounded mb-3 lightbox-img" style="max-height:280px;object-fit:cover;">
                 @if($sample->latestVersion && $sample->latestVersion->images->count() > 1)
                 <div class="mb-3">
                     @foreach($sample->latestVersion->images as $img)
-                        <a href="{{ $img->url() }}" target="_blank">
-                            <img src="{{ $img->url() }}" width="56" height="56" style="object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border">
-                        </a>
+                        <img src="{{ $img->url() }}" width="56" height="56" style="object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border lightbox-img">
                     @endforeach
                 </div>
                 @endif
@@ -43,7 +41,7 @@
                 <ul class="list-group list-group-flush">
                     @forelse($sample->versions ?? [] as $version)
                     <li class="list-group-item d-flex align-items-center">
-                        <img src="{{ $version->signedImageUrl() }}" width="40" height="40" style="object-fit:cover;border-radius:6px;" class="mr-3">
+                        <img src="{{ $version->signedImageUrl() }}" width="40" height="40" style="object-fit:cover;border-radius:6px;" class="mr-3 lightbox-img">
                         <div>
                             <div class="font-weight-bold small">Version {{ $version->version_no }}</div>
                             <div class="text-muted small">{{ $version->notes }}</div>

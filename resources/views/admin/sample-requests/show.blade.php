@@ -8,18 +8,16 @@
             <div class="card-header"><h3 class="card-title">Request Details</h3></div>
             <div class="card-body">
                 @if($sampleRequest->images->count())
-                <img src="{{ $sampleRequest->images->first()->url() }}" class="img-fluid rounded mb-2" style="max-height:240px;object-fit:cover;">
+                <img src="{{ $sampleRequest->images->first()->url() }}" class="img-fluid rounded mb-2 lightbox-img" style="max-height:240px;object-fit:cover;">
                 @if($sampleRequest->images->count() > 1)
                 <div class="mb-3">
                     @foreach($sampleRequest->images as $img)
-                        <a href="{{ $img->url() }}" target="_blank">
-                            <img src="{{ $img->url() }}" width="56" height="56" style="object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border">
-                        </a>
+                        <img src="{{ $img->url() }}" width="56" height="56" style="object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border lightbox-img">
                     @endforeach
                 </div>
                 @endif
                 @elseif($sampleRequest->reference_image_path)
-                <img src="{{ $sampleRequest->referenceImageUrl() }}" class="img-fluid rounded mb-3" style="max-height:240px;object-fit:cover;">
+                <img src="{{ $sampleRequest->referenceImageUrl() }}" class="img-fluid rounded mb-3 lightbox-img" style="max-height:240px;object-fit:cover;">
                 @endif
                 <dl class="row mb-0">
                     <dt class="col-4">Client</dt><dd class="col-8">{{ $sampleRequest->company->name }}</dd>

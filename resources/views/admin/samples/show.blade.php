@@ -14,13 +14,11 @@
             </div>
             <div class="card-body text-center">
                 <img src="{{ optional($sample->latestVersion)->signedImageUrl() ?? 'https://via.placeholder.com/300' }}"
-                     class="img-fluid rounded mb-3" style="max-height:300px;object-fit:cover;">
+                     class="img-fluid rounded mb-3 lightbox-img" style="max-height:300px;object-fit:cover;">
                 @if($sample->latestVersion && $sample->latestVersion->images->count() > 1)
                 <div class="mb-3">
                     @foreach($sample->latestVersion->images as $img)
-                        <a href="{{ $img->url() }}" target="_blank">
-                            <img src="{{ $img->url() }}" style="width:56px;height:56px;object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border">
-                        </a>
+                        <img src="{{ $img->url() }}" style="width:56px;height:56px;object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border lightbox-img">
                     @endforeach
                 </div>
                 @endif
@@ -55,7 +53,7 @@
                 <ul class="list-group list-group-flush">
                     @forelse($sample->versions as $version)
                     <li class="list-group-item d-flex align-items-center">
-                        <img src="{{ $version->signedImageUrl() }}" style="width:40px;height:40px;object-fit:cover;border-radius:6px;flex-shrink:0;" class="mr-3">
+                        <img src="{{ $version->signedImageUrl() }}" style="width:40px;height:40px;object-fit:cover;border-radius:6px;flex-shrink:0;" class="mr-3 lightbox-img">
                         <div>
                             <div class="font-weight-bold small">Version {{ $version->version_no }} ({{ $version->images->count() }} image{{ $version->images->count() == 1 ? '' : 's' }})</div>
                             <div class="text-muted small">{{ $version->notes }}</div>
