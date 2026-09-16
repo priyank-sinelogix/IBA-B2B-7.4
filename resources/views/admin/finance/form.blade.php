@@ -15,13 +15,30 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Entry Type</label>
-                <select name="type" class="form-control" required>
-                    <option value="invoice">Invoice (increases balance owed)</option>
-                    <option value="payment">Payment (reduces balance owed)</option>
-                    <option value="credit_note">Credit Note (reduces balance owed)</option>
-                    <option value="debit_note">Debit Note (increases balance owed)</option>
-                </select>
+                <label>What are you updating?</label>
+                <div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="targetUsedBalance" name="target" value="used_balance" class="custom-control-input" checked>
+                        <label class="custom-control-label" for="targetUsedBalance">Used Balance <small class="text-muted">— what the client currently owes</small></label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="targetCreditLimit" name="target" value="credit_limit" class="custom-control-input">
+                        <label class="custom-control-label" for="targetCreditLimit">Credit Limit <small class="text-muted">— the max credit allowed</small></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Direction</label>
+                <div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="dirIncrease" name="direction" value="increase" class="custom-control-input" checked>
+                        <label class="custom-control-label" for="dirIncrease">Increase</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="dirDecrease" name="direction" value="decrease" class="custom-control-input">
+                        <label class="custom-control-label" for="dirDecrease">Decrease</label>
+                    </div>
+                </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-6">

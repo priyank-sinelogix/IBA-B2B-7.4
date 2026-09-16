@@ -7,13 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class LedgerEntry extends Model
 {
     protected $fillable = [
-        'company_id', 'type', 'reference_no', 'amount', 'balance_after', 'description', 'order_id', 'shipment_id',
+        'company_id', 'type', 'reference_no', 'amount', 'value_after', 'description', 'order_id', 'shipment_id',
     ];
 
     protected $casts = [
         'amount' => 'decimal:2',
-        'balance_after' => 'decimal:2',
+        'value_after' => 'decimal:2',
     ];
+
+    /** True when this entry adjusted credit_limit instead of used_balance. */
+    public function isCreditLimitEntry(): bool
+    {
+        return strpos($this->type, 'credit_limit_') === 0;
+    }
 
     public function company()
     {

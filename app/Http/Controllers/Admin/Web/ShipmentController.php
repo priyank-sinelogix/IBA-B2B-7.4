@@ -167,8 +167,8 @@ class ShipmentController extends Controller
         }
 
         $alreadyCharged = round(
-            (float) LedgerEntry::where('shipment_id', $shipment->id)->where('type', 'invoice')->sum('amount')
-            - (float) LedgerEntry::where('shipment_id', $shipment->id)->where('type', 'credit_note')->sum('amount'),
+            (float) LedgerEntry::where('shipment_id', $shipment->id)->where('type', 'used_balance_increase')->sum('amount')
+            - (float) LedgerEntry::where('shipment_id', $shipment->id)->where('type', 'used_balance_decrease')->sum('amount'),
             2
         );
 
@@ -179,8 +179,8 @@ class ShipmentController extends Controller
 
         DB::transaction(function () use ($shipment, $delta) {
             $company = Company::lockForUpdate()->findOrFail($shipment->company_id);
-            $type = $delta > 0 ? 'invoice' : 'credit_note';
-            $newBalance = (float) $company->current_balance + $delta;
+            $type = $delta > 0 ? 'used_balance_increase' : 'used_balance_decrease';
+            $newBalance = (float) $company->used_balance + $delta;
 
             LedgerEntry::create([
                 'company_id' => $company->id,
@@ -189,13 +189,13 @@ class ShipmentController extends Controller
                 'type' => $type,
                 'reference_no' => $shipment->awb_number,
                 'amount' => abs($delta),
-                'balance_after' => $newBalance,
-                'description' => $type === 'invoice'
+                'value_after' => $newBalance,
+                'description' => $type === 'used_balance_increase'
                     ? 'Shipment invoice (product + shipping) — shipment '.$shipment->awb_number
                     : 'Shipment invoice adjustment — shipment '.$shipment->awb_number,
             ]);
 
-            $company->update(['current_balance' => $newBalance]);
+            $company->update(['used_balance' => $newBalance]);
         });
 
         AuditLog::record('shipment.invoice_synced', $shipment, null, ['delta' => $delta]);

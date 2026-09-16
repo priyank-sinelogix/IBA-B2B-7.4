@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         // --- Client company #1 ---
         $oceanic = Company::firstOrCreate(
             ['code' => 'OCEANIC-APPAREL'],
-            ['name' => 'Oceanic Apparel Ltd.', 'credit_limit' => 100000, 'current_balance' => 48750.60]
+            ['name' => 'Oceanic Apparel Ltd.', 'credit_limit' => 100000, 'used_balance' => 48750.60]
         );
 
         $alex = User::firstOrCreate(
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         // --- Client company #2 ---
         $northwind = Company::firstOrCreate(
             ['code' => 'NORTHWIND-TEX'],
-            ['name' => 'Northwind Textiles Inc.', 'credit_limit' => 60000, 'current_balance' => 12500]
+            ['name' => 'Northwind Textiles Inc.', 'credit_limit' => 60000, 'used_balance' => 12500]
         );
 
         User::firstOrCreate(
@@ -123,8 +123,8 @@ class DatabaseSeeder extends Seeder
         // --- Ledger ---
         if (LedgerEntry::where('company_id', $oceanic->id)->count() === 0) {
             LedgerEntry::create([
-                'company_id' => $oceanic->id, 'type' => 'invoice', 'reference_no' => 'INV-2024-118',
-                'amount' => 48750.60, 'balance_after' => 48750.60, 'description' => 'Order ORD-240512 invoice',
+                'company_id' => $oceanic->id, 'type' => 'used_balance_increase', 'reference_no' => 'INV-2024-118',
+                'amount' => 48750.60, 'value_after' => 48750.60, 'description' => 'Order ORD-240512 invoice',
             ]);
         }
 

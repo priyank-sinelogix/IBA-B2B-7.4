@@ -24,7 +24,7 @@
             });
         </script>
         <table class="table table-hover mb-0">
-            <thead><tr><th>Date</th><th>Client</th><th>Type</th><th>Reference</th><th>Description</th><th class="text-right">Amount</th><th class="text-right">Balance After</th></tr></thead>
+            <thead><tr><th>Date</th><th>Client</th><th>Type</th><th>Reference</th><th>Description</th><th class="text-right">Amount</th><th class="text-right">New Value</th></tr></thead>
             <tbody>
             @forelse($entries as $entry)
                 <tr>
@@ -39,7 +39,7 @@
                             <span class="text-muted small d-block">≈ {{ \App\Support\Currency::display(\App\Support\Currency::convert($entry->amount, $entry->company->currency, \App\Models\Currency::base()), \App\Models\Currency::base()) }}</span>
                         @endif
                     </td>
-                    <td class="text-right">{{ \App\Support\Currency::display($entry->balance_after, $entry->company->currency) }}</td>
+                    <td class="text-right">{{ \App\Support\Currency::display($entry->value_after, $entry->company->currency) }}</td>
                 </tr>
             @empty
                 <tr><td colspan="7" class="text-center text-muted p-4">No ledger entries yet.</td></tr>

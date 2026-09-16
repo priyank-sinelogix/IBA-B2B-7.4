@@ -23,7 +23,7 @@ class DashboardController extends Controller
         $stats = [
             'samples_pending' => Sample::where('company_id', $companyId)->where('status', 'pending')->count(),
             'active_orders' => VmsOrderMatcher::orderCount($skuCodes),
-            'balance' => $company->current_balance ?? 0,
+            'balance' => $company->used_balance ?? 0,
             'credit_limit' => $company->credit_limit ?? 0,
             'credit_used_pct' => $company->creditUsedPercent() ?? 0,
             'shipments_in_transit' => \App\Models\Shipment::where('company_id', $companyId)->where('status', 'in_transit')->count(),

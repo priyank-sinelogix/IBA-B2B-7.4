@@ -28,16 +28,28 @@
                 </select>
                 <small class="text-muted">Used for this client's credit limit, balance, and pricing. <a href="{{ url('/admin/currencies') }}" target="_blank">Manage currencies</a></small>
             </div>
-            <div class="form-row">
-                <div class="form-group col-6">
-                    <label>Credit Limit</label>
-                    <input type="number" step="0.01" name="credit_limit" class="form-control" value="{{ old('credit_limit', $company->credit_limit ?? 0) }}" required>
+            @if($company->exists)
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label>Credit Limit</label>
+                        <input type="text" class="form-control" value="{{ \App\Support\Currency::display($company->credit_limit, $company->currency) }}" disabled>
+                    </div>
+                    <div class="form-group col-6">
+                        <label>Used Balance</label>
+                        <input type="text" class="form-control" value="{{ \App\Support\Currency::display($company->used_balance, $company->currency) }}" disabled>
+                    </div>
                 </div>
-                <div class="form-group col-6">
-                    <label>Current Balance</label>
-                    <input type="number" step="0.01" name="current_balance" class="form-control" value="{{ old('current_balance', $company->current_balance ?? 0) }}" required>
+                <small class="text-muted d-block" style="margin-top:-10px; margin-bottom:1rem;">
+                    Credit limit and used balance can no longer be edited here — they only change through a
+                    <a href="{{ url('/admin/finance/create') }}">Finance ledger entry</a>, so the ledger always matches the company record.
+                </small>
+            @else
+                <div class="form-group">
+                    <label>Starting Credit Limit</label>
+                    <input type="number" step="0.01" name="credit_limit" class="form-control" value="{{ old('credit_limit', 0) }}" required>
+                    <small class="text-muted">Used balance starts at 0 for a new company and is only moved by Finance/Ledger entries afterwards.</small>
                 </div>
-            </div>
+            @endif
             <div class="form-group form-check">
                 <input type="checkbox" name="is_active" value="1" class="form-check-input" id="isActive" {{ old('is_active', $company->is_active ?? true) ? 'checked' : '' }}>
                 <label class="form-check-label" for="isActive">Active</label>

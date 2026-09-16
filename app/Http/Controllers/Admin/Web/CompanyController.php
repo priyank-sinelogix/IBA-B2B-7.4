@@ -48,6 +48,9 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $data = $this->validated($request);
+        // A brand-new company always starts with a clean ledger — used_balance is
+        // never accepted from the form, only ever moved by a Finance/Ledger entry.
+        $data['used_balance'] = 0;
         Company::create($data);
 
         return redirect('/admin/companies')->with('success', 'Client company created.');
@@ -61,7 +64,7 @@ class CompanyController extends Controller
 
     public function update(Request $request, Company $company)
     {
-        $data = $this->validated($request, $company->id);
+        $data = $this->validated($request, $company->id, $company->exists);
         $company->update($data);
 
         return redirect('/admin/companies')->with('success', 'Client company updated.');
@@ -73,15 +76,23 @@ class CompanyController extends Controller
         return back()->with('success', 'Client company deleted.');
     }
 
-    private function validated(Request $request, ?int $ignoreId = null): array
+    private function validated(Request $request, ?int $ignoreId = null, bool $isExistingCompany = false): array
     {
-        return $request->validate([
+        $rules = [
             'name' => 'required|string|max:255',
             'code' => 'required|string|max:100|unique:companies,code'.($ignoreId ? ",$ignoreId" : ''),
             'currency_id' => 'required|exists:currencies,id',
-            'credit_limit' => 'required|numeric|min:0',
-            'current_balance' => 'required|numeric',
             'is_active' => 'boolean',
-        ]);
+        ];
+
+        // credit_limit and used_balance are only settable at creation time (the
+        // starting limit). Once a company exists, both can only move through a
+        // Finance/Ledger entry — never accepted here, even if a request is tampered
+        // with, so the ledger and the company record can never disagree.
+        if (! $isExistingCompany) {
+            $rules['credit_limit'] = 'required|numeric|min:0';
+        }
+
+        return $request->validate($rules);
     }
 }

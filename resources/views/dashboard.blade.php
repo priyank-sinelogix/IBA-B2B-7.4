@@ -131,7 +131,7 @@
         <div class="card">
             <div class="card-header"><h3 class="card-title">Account Statement</h3></div>
             <div class="card-body">
-                <div class="text-muted small">Current Balance</div>
+                <div class="text-muted small">Used Balance</div>
                 <div class="h3 text-success">{{ \App\Support\Currency::display($stats['balance'] ?? 48750.60, $company->currency ?? null) }}</div>
                 <div class="d-flex justify-content-between small text-muted mb-1">
                     <span>Credit Limit: {{ \App\Support\Currency::display($stats['credit_limit'] ?? 100000, $company->currency ?? null) }}</span>

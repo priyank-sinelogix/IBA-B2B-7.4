@@ -7,8 +7,8 @@
         <div class="card">
             <div class="card-header"><h3 class="card-title">Account Statement</h3></div>
             <div class="card-body">
-                <div class="text-muted small">Current Balance</div>
-                <div class="h3 text-success">{{ \App\Support\Currency::display($company->current_balance ?? 48750.60, $company->currency ?? null) }}</div>
+                <div class="text-muted small">Used Balance</div>
+                <div class="h3 text-success">{{ \App\Support\Currency::display($company->used_balance ?? 48750.60, $company->currency ?? null) }}</div>
                 <div class="d-flex justify-content-between small text-muted mb-1">
                     <span>Credit Limit: {{ \App\Support\Currency::display($company->credit_limit ?? 100000, $company->currency ?? null) }}</span>
                     <span>{{ $company->creditUsedPercent() ?? 51 }}% Used</span>
@@ -28,7 +28,7 @@
                     @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search reference, description...'])
                 </form>
                 <table class="table table-hover mb-0">
-                    <thead><tr><th>Date</th><th>Type</th><th>Reference</th><th>Description</th><th class="text-right">Amount</th><th class="text-right">Balance</th></tr></thead>
+                    <thead><tr><th>Date</th><th>Type</th><th>Reference</th><th>Description</th><th class="text-right">Amount</th><th class="text-right">New Value</th></tr></thead>
                     <tbody>
                     @forelse($ledgerEntries ?? [] as $entry)
                         <tr>
@@ -37,7 +37,7 @@
                             <td>{{ $entry->reference_no }}</td>
                             <td>{{ $entry->description }}</td>
                             <td class="text-right">{{ \App\Support\Currency::display($entry->amount, $company->currency ?? null) }}</td>
-                            <td class="text-right">{{ \App\Support\Currency::display($entry->balance_after, $company->currency ?? null) }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($entry->value_after, $company->currency ?? null) }}</td>
                         </tr>
                     @empty
                         <tr><td colspan="6" class="text-center text-muted p-4">

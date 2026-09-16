@@ -23,11 +23,21 @@
                             <span class="text-muted small d-block">≈ {{ \App\Support\Currency::display(\App\Support\Currency::convert($company->credit_limit, $company->currency, \App\Models\Currency::base()), \App\Models\Currency::base()) }}</span>
                         @endif
                     </dd>
-                    <dt class="col-5">Current Balance</dt>
+                    <dt class="col-5">Used Balance</dt>
                     <dd class="col-7">
-                        {{ \App\Support\Currency::display($company->current_balance, $company->currency) }}
+                        {{ \App\Support\Currency::display($company->used_balance, $company->currency) }}
                         @if($company->currency && !$company->currency->is_base)
-                            <span class="text-muted small d-block">≈ {{ \App\Support\Currency::display(\App\Support\Currency::convert($company->current_balance, $company->currency, \App\Models\Currency::base()), \App\Models\Currency::base()) }}</span>
+                            <span class="text-muted small d-block">≈ {{ \App\Support\Currency::display(\App\Support\Currency::convert($company->used_balance, $company->currency, \App\Models\Currency::base()), \App\Models\Currency::base()) }}</span>
+                        @endif
+                    </dd>
+                    <dt class="col-5">Remaining Amount</dt>
+                    <dd class="col-7">
+                        @php $remaining = $company->remainingAmount(); @endphp
+                        <span class="font-weight-bold" style="color: {{ $remaining >= 0 ? '#28a745' : '#dc3545' }};">
+                            {{ $remaining >= 0 ? '+' : '−' }}{{ \App\Support\Currency::display(abs($remaining), $company->currency) }}
+                        </span>
+                        @if($remaining < 0)
+                            <span class="badge badge-danger ml-1">Over Limit</span>
                         @endif
                     </dd>
                     <dt class="col-5">Credit Used</dt><dd class="col-7">{{ $company->creditUsedPercent() }}%</dd>
@@ -124,14 +134,14 @@
             <div class="card-header"><h3 class="card-title">Recent Ledger Entries</h3></div>
             <div class="card-body p-0">
                 <table class="table table-hover mb-0">
-                    <thead><tr><th>Date</th><th>Type</th><th class="text-right">Amount</th><th class="text-right">Balance</th></tr></thead>
+                    <thead><tr><th>Date</th><th>Type</th><th class="text-right">Amount</th><th class="text-right">New Value</th></tr></thead>
                     <tbody>
                     @forelse($ledgerEntries as $le)
                         <tr>
                             <td>{{ $le->created_at->format('d M Y') }}</td>
                             <td class="text-capitalize">{{ str_replace('_',' ',$le->type) }}</td>
                             <td class="text-right">{{ \App\Support\Currency::display($le->amount, $company->currency) }}</td>
-                            <td class="text-right">{{ \App\Support\Currency::display($le->balance_after, $company->currency) }}</td>
+                            <td class="text-right">{{ \App\Support\Currency::display($le->value_after, $company->currency) }}</td>
                         </tr>
                     @empty
                         <tr><td colspan="4" class="text-center text-muted p-3">No ledger entries yet.</td></tr>

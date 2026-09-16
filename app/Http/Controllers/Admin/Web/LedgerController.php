@@ -38,30 +38,33 @@ class LedgerController extends Controller
     {
         $data = $request->validate([
             'company_id' => 'required|exists:companies,id',
-            'type' => 'required|in:invoice,payment,credit_note,debit_note',
+            'target' => 'required|in:used_balance,credit_limit',
+            'direction' => 'required|in:increase,decrease',
             'reference_no' => 'nullable|string|max:100',
             'amount' => 'required|numeric|min:0.01',
             'description' => 'nullable|string|max:1000',
         ]);
 
-        DB::transaction(function () use ($data, &$entry) {
+        $type = $data['target'].'_'.$data['direction'];
+        $signedAmount = $data['direction'] === 'increase' ? $data['amount'] : -$data['amount'];
+
+        DB::transaction(function () use ($data, $type, $signedAmount, &$entry) {
             $company = Company::lockForUpdate()->findOrFail($data['company_id']);
 
-            // invoice/debit_note increase what the client owes; payment/credit_note reduce it
-            $signedAmount = in_array($data['type'], ['invoice', 'debit_note'])
-                ? $data['amount']
-                : -$data['amount'];
+            $newValue = (float) $company->{$data['target']} + $signedAmount;
+            $company->update([$data['target'] => $newValue]);
 
-            $newBalance = (float) $company->current_balance + $signedAmount;
-
-            $entry = LedgerEntry::create(array_merge($data, [
-                'balance_after' => $newBalance,
-            ]));
-
-            $company->update(['current_balance' => $newBalance]);
+            $entry = LedgerEntry::create([
+                'company_id' => $company->id,
+                'type' => $type,
+                'reference_no' => $data['reference_no'] ?? null,
+                'amount' => $data['amount'],
+                'value_after' => $newValue,
+                'description' => $data['description'] ?? null,
+            ]);
         });
 
-        AuditLog::record('ledger.entry_created', $entry, null, $entry->only('type', 'amount', 'balance_after'));
+        AuditLog::record('ledger.entry_created', $entry, null, $entry->only('type', 'amount', 'value_after'));
 
         return redirect('/admin/finance')->with('success', 'Ledger entry recorded.');
     }

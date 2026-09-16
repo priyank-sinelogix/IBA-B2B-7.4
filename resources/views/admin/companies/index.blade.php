@@ -12,7 +12,7 @@
             @include('admin.partials.list-toolbar', ['searchPlaceholder' => 'Search name, code...'])
         </form>
         <table class="table table-hover mb-0">
-            <thead><tr><th>Name</th><th>Code</th><th>Currency</th><th>Users</th><th>Credit Limit</th><th>Balance</th><th>Status</th><th></th></tr></thead>
+            <thead><tr><th>Name</th><th>Code</th><th>Currency</th><th>Users</th><th>Credit Limit</th><th>Used Balance</th><th>Status</th><th></th></tr></thead>
             <tbody>
             @forelse($companies as $company)
                 <tr>
@@ -21,7 +21,7 @@
                     <td>{{ optional($company->currency)->code }}</td>
                     <td>{{ $company->users_count }}</td>
                     <td>{{ \App\Support\Currency::display($company->credit_limit, $company->currency) }}</td>
-                    <td>{{ \App\Support\Currency::display($company->current_balance, $company->currency) }}</td>
+                    <td>{{ \App\Support\Currency::display($company->used_balance, $company->currency) }}</td>
                     <td>{!! $company->is_active ? '<span class="badge badge-approved">Active</span>' : '<span class="badge badge-changes">Inactive</span>' !!}</td>
                     <td>
                         <a href="{{ url('/admin/companies/'.$company->id) }}" class="btn btn-sm btn-outline-primary">View</a>

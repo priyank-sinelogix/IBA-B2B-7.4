@@ -28,8 +28,8 @@
     <table class="summary">
         <tr>
             <td>
-                <div class="label">Current Balance</div>
-                <div class="value">{{ \App\Support\Currency::display($company->current_balance, $company->currency) }}</div>
+                <div class="label">Used Balance</div>
+                <div class="value">{{ \App\Support\Currency::display($company->used_balance, $company->currency) }}</div>
             </td>
             <td>
                 <div class="label">Credit Limit</div>
@@ -50,7 +50,7 @@
                 <th>Reference</th>
                 <th>Description</th>
                 <th class="text-right">Amount</th>
-                <th class="text-right">Balance</th>
+                <th class="text-right">New Value</th>
             </tr>
         </thead>
         <tbody>
@@ -61,7 +61,7 @@
                 <td>{{ $entry->reference_no }}</td>
                 <td>{{ $entry->description }}</td>
                 <td class="text-right">{{ \App\Support\Currency::display($entry->amount, $company->currency) }}</td>
-                <td class="text-right">{{ \App\Support\Currency::display($entry->balance_after, $company->currency) }}</td>
+                <td class="text-right">{{ \App\Support\Currency::display($entry->value_after, $company->currency) }}</td>
             </tr>
         @empty
             <tr><td colspan="6" style="text-align:center; color:#777;">No ledger entries found.</td></tr>

@@ -10,12 +10,12 @@ class Company extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'code', 'currency_id', 'credit_limit', 'current_balance', 'logo_path', 'is_active',
+        'name', 'code', 'currency_id', 'credit_limit', 'used_balance', 'logo_path', 'is_active',
     ];
 
     protected $casts = [
         'credit_limit' => 'decimal:2',
-        'current_balance' => 'decimal:2',
+        'used_balance' => 'decimal:2',
         'is_active' => 'boolean',
     ];
 
@@ -60,6 +60,14 @@ class Company extends Model
             return 0;
         }
 
-        return round(((float) $this->current_balance / (float) $this->credit_limit) * 100, 1);
+        return round(((float) $this->used_balance / (float) $this->credit_limit) * 100, 1);
+    }
+
+    /**
+     * Credit still available. Negative means used_balance has gone past credit_limit.
+     */
+    public function remainingAmount(): float
+    {
+        return round((float) $this->credit_limit - (float) $this->used_balance, 2);
     }
 }
