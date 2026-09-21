@@ -1,5 +1,7 @@
 @extends('site.layouts.app')
 @section('title', 'Contact')
+@section('full_title', 'Contact Sewgo | Garment Manufacturing Enquiries')
+@section('meta_description', 'Contact Sewgo for sampling, custom garment manufacturing, private label production and Just-in-Time manufacturing enquiries.')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/contact.css') }}">
@@ -9,7 +11,7 @@
 <section class="wrap contact-hero">
     <div class="contact-hero-inner">
         <div class="eyebrow" style="text-align:center;">Get In Touch</div>
-        <h1>Let's Build Something Together</h1>
+        <h1>Start Manufacturing with Sewgo</h1>
         <p>Have a question about JIT manufacturing, pricing, or partnering with Sewgo? Fill out the form below and our team will get back to you within 24 hours.</p>
         <div class="contact-hero-stats">
             <div class="chs-item"><i class="far fa-clock"></i><span>24H Response Time</span></div>
@@ -18,6 +20,10 @@
         </div>
     </div>
 </section>
+
+<div class="wrap" style="padding:6px 0 0;">
+    <p style="max-width:760px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Tell us about your product, expected volumes, fabrics, prints and manufacturing requirements. Our team will review the details and help determine the appropriate development and production process.</p>
+</div>
 
 <div class="wrap section">
     <div class="contact-row">

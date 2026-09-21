@@ -1,5 +1,7 @@
 @extends('site.layouts.app')
 @section('title', 'Sustainability')
+@section('full_title', 'Sustainable On-Demand Garment Manufacturing | Sewgo')
+@section('meta_description', 'A demand-led garment manufacturing model designed to reduce unnecessary production, excess finished inventory and apparel overproduction.')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/sustainability.css') }}">
@@ -10,7 +12,7 @@
     <img class="sustain-hero-bg" src="{{ asset('images/site/Sustanibility/SustanibilityHeroBanner.jpg') }}" alt="">
     <div class="sustain-hero-content">
         <div class="eyebrow">Sustainable Fashion. Responsible Future.</div>
-        <h1>Our Commitment to People, Planet &amp; Progress</h1>
+        <h1>Reducing Overproduction Through On-Demand Manufacturing</h1>
         <p class="lead">At Sewgo, sustainability is at the heart of everything we do. Our Just In Time manufacturing model reduces waste, saves resources and helps build a greener fashion industry.</p>
         <div class="sustain-mini-card">
             <div class="mini-stat"><img src="{{ asset('images/site/Sustanibility/HeadFeatures/LessWaste.png') }}" alt=""><div><strong>Less Waste</strong>Zero Overproduction</div></div>
@@ -20,6 +22,10 @@
         </div>
     </div>
 </section>
+
+<div class="wrap section" style="padding-top:10px; padding-bottom:0;">
+    <p style="max-width:820px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">One of the largest inefficiencies in traditional fashion manufacturing is producing garments before actual demand is known. Sewgo's Just-in-Time model moves production closer to real customer demand, helping reduce unnecessary finished inventory and overproduction.</p>
+</div>
 
 <div class="wrap section" style="padding-top:10px;">
     <div class="impact-panel">

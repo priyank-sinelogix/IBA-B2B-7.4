@@ -1,5 +1,7 @@
 @extends('site.layouts.app')
 @section('title', 'How JIT Works')
+@section('full_title', 'Just-in-Time Garment Manufacturing | How JIT Works | Sewgo')
+@section('meta_description', 'See how Sewgo enables fashion brands to manufacture garments against actual demand using technology-led Just-in-Time production.')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/how-jit-works.css') }}">
@@ -12,7 +14,7 @@
     <img class="jit-hero-bg" src="{{ asset('images/site/HowJitWorks/HowjJtWorksBanner.jpg') }}" alt="">
     <div class="jit-hero-content">
         <div class="eyebrow">Smarter Manufacturing. Made After You Sell.</div>
-        <h1>How Just In Time Manufacturing Works</h1>
+        <h1>How Just-in-Time Garment Manufacturing Works</h1>
         <p class="lead">At Sewgo, garments are produced only after an order is received. Our JIT model eliminates inventory risk, reduces waste, and ensures faster fulfillment with unmatched flexibility for modern brands.</p>
         <div style="display:flex; gap:12px; margin-top:22px;">
             <a href="{{ url('/contact') }}" class="btn btn-teal"><i class="far fa-calendar"></i> Book a Discovery Call</a>
@@ -241,6 +243,19 @@
         </div>
     </div>
 </div>
+
+<div class="wrap section">
+    <p style="max-width:760px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Sewgo's Just-in-Time manufacturing model is designed around actual demand rather than bulk production forecasts. Once a style, fabric, print and grading are approved, the product becomes production-ready and can be manufactured as orders are received.</p>
+    <div style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; margin:24px 0; font-family:'Manrope','Inter',sans-serif; font-weight:800; font-size:1.15rem; color:var(--navy);">
+        <span>Develop</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
+        <span>Approve</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
+        <span>Sell</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
+        <span>Manufacture</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
+        <span>Dispatch</span>
+    </div>
+    <p style="max-width:760px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">This gives brands the flexibility to offer a wider assortment without manufacturing every style, size, colour and print in bulk before knowing what customers will buy.</p>
+</div>
+
 <div class="wrap">
     <div class="cta-band-final jit-cta-final" style="background: linear-gradient(90deg, #0f2a4a 0%, #12395b 35%, #0b6c72 75%, #0e5843 100%);margin:0;">
         <div class="cta-band-final-text"><h3>Ready to Launch with JIT?</h3><p>Grow your brand without inventory risk. Let Sewgo handle production, so you can focus on sales.</p></div>

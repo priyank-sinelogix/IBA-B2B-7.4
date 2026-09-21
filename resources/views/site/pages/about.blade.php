@@ -1,5 +1,7 @@
 @extends('site.layouts.app')
 @section('title', 'About')
+@section('full_title', 'About Sewgo | Technology-Led Garment Manufacturing')
+@section('meta_description', 'Sewgo is powered by IBA Crafts and combines apparel manufacturing with technology to enable flexible, on-demand and Just-in-Time production.')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/about.css') }}">
@@ -10,7 +12,7 @@
     <img class="about-hero-bg" src="{{ asset('images/site/AboutUs/AboutUsBanner.jpg') }}" alt="Sewgo facility">
     <div class="about-hero-content">
         <div class="eyebrow">About Sewgo</div>
-        <h1>From Fashion Inventory Problems to a Smarter JIT Future.</h1>
+        <h1>Technology Meets Garment Manufacturing</h1>
         <p class="lead">Sewgo is the technology-powered JIT manufacturing platform of IBA Crafts, created to solve the waste and rigidity of traditional inventory-led fashion manufacturing.</p>
         <div class="about-mini-stats">
             <div class="about-mini-stat"><img src="{{ asset('images/site/AboutUs/BannerIcon/ProductionDispatch.png') }}" alt=""><div class="num">48H</div><span>Production &amp; Dispatch</span></div>
@@ -20,6 +22,11 @@
         </div>
     </div>
 </section>
+
+<div class="wrap section" style="padding-top:10px; padding-bottom:0;">
+    <p style="max-width:820px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Sewgo is the B2B manufacturing platform powered by IBA Crafts Pvt. Ltd., combining apparel manufacturing experience with a technology-led Just-in-Time production system.</p>
+    <p style="max-width:820px; margin:16px auto 0; text-align:center; color:var(--muted); font-size:1.05rem;">The model is designed to give fashion businesses greater flexibility in how they develop, manufacture and replenish products—moving production closer to actual customer demand rather than relying entirely on advance forecasting.</p>
+</div>
 
 <div class="wrap section" style="padding-top:10px;">
     <div class="about-head-left"><h2>Why Sewgo Exists</h2></div>

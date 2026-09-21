@@ -1,5 +1,7 @@
 @extends('site.layouts.app')
 @section('title', 'Home')
+@section('full_title', 'On-Demand Garment Manufacturing | MOQ 1 | Sewgo')
+@section('meta_description', 'Technology-led on-demand garment manufacturing for fashion brands. MOQ 1, custom production, private labelling and global fulfilment.')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/home.css') }}">
@@ -12,10 +14,11 @@
 
     <div class="home-hero-content">
         <div class="eyebrow">Just In Time (JIT) Manufacturing</div>
-        <h1>
+        <h1 class="home-hero-h1">Just-in-Time Garment Manufacturing for Fashion Brands</h1>
+        <div class="home-hero-tagline">
             <span class="line-navy">Sell First.</span>
             <span class="line-teal">Make Next.</span>
-        </h1>
+        </div>
         <!-- <h3>Only After You Sell.</h3> -->
         <p class="lead">We manufacture only when an order is placed. No inventory. No risk. Just speed, flexibility and complete visibility.</p>
 
@@ -227,6 +230,14 @@
         <div class="t-logo"><img src="{{ asset('images/site/TheEconomicTimes.png') }}" alt="The Economic Times"><span>ET MSME Awards 2025</span></div>
         <div class="t-logo"><img src="{{ asset('images/site/BuisnessWorld.png') }}" alt="Business World"><span>BW Retail 40 Under 40 Award 2024</span></div>
     </div>
+</section>
+
+<section class="wrap section">
+    <p style="max-width:820px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Sewgo is a technology-led garment manufacturing platform powered by IBA Crafts, enabling fashion brands to manufacture on demand from MOQ 1. Launch more styles, prints, colours and sizes without committing to large finished-garment inventory.</p>
+    <div class="section-head" style="margin-top:34px;">
+        <h2>Manufacture Against Demand, Not Forecasts</h2>
+    </div>
+    <p style="max-width:780px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Traditional apparel manufacturing requires brands to forecast demand and manufacture inventory in advance. Sewgo enables approved products to be produced against actual demand, helping brands respond faster, carry less finished inventory and reduce the risk of overproduction.</p>
 </section>
 
 <div class="wrap">

@@ -3,7 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Sewgo') | Powered by IBA Crafts</title>
+    <title>
+        @hasSection('full_title')
+            @yield('full_title')
+        @else
+            @yield('title', 'Sewgo') | Powered by IBA Crafts
+        @endif
+    </title>
     <meta name="description" content="@yield('meta_description', 'Sewgo is a technology-powered Just In Time garment manufacturing platform.')">
 
     <link rel="icon" href="{{ asset('images/site/favicon_icon.png') }}">

@@ -1,5 +1,7 @@
 @extends('site.layouts.app')
 @section('title', 'Who We Help')
+@section('full_title', 'Garment Manufacturing for Fashion & E-commerce Brands | Sewgo')
+@section('meta_description', 'Flexible garment manufacturing for fashion brands, D2C companies, e-commerce sellers, retailers, designers and growing apparel businesses.')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/who-we-help.css') }}">
@@ -10,8 +12,8 @@
     <img class="whh-hero-bg" src="{{ asset('images/site/WhoWeHelp/WhoWeHelpBanner.jpg') }}" alt="">
     <div class="whh-hero-content">
         <div class="eyebrow">Solutions by Business Type</div>
-        <h1>Built for Different Fashion Businesses.</h1>
-        <p class="lead">From startups to large retailers, Sewgo adapts Just In Time manufacturing to your business model.</p>
+        <h1>Flexible Manufacturing for Modern Fashion Businesses</h1>
+        <p class="lead">Sewgo works with brands that need greater flexibility than traditional bulk manufacturing can offer. Our model supports businesses launching new collections, testing products, expanding assortments or producing against online demand.</p>
         <div class="mini-stats">
             <div class="mini-stat"><img src="{{ asset('images/site/WhoWeHelp/BannerIcon/ManufacturedIn24hrs.png') }}" alt=""><div><strong>Manufactured in 24–48 Hours</strong></div></div>
             <div class="mini-stat"><img src="{{ asset('images/site/WhoWeHelp/BannerIcon/MOQ1.png') }}" alt=""><div><strong>MOQ 1 As low as 1 piece</strong></div></div>
@@ -120,6 +122,16 @@
                 <div class="whh-quote-stat"><div class="num">40+</div><div class="lbl">Countries</div></div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="wrap section">
+    <div class="section-head"><h2>Who We Work With</h2></div>
+    <div class="card-grid">
+        <div class="info-card"><h3>Fashion Brands</h3><p>Launch and replenish collections without committing every style to bulk production.</p></div>
+        <div class="info-card"><h3>D2C &amp; E-commerce Brands</h3><p>Connect production more closely with customer demand and reduce dependence on finished-goods inventory.</p></div>
+        <div class="info-card"><h3>Designers &amp; Emerging Brands</h3><p>Develop products and begin manufacturing without traditional high-volume production commitments.</p></div>
+        <div class="info-card"><h3>Established Brands &amp; Retailers</h3><p>Add flexible production capacity, expand assortment and manufacture selected products closer to actual demand.</p></div>
     </div>
 </div>
 
