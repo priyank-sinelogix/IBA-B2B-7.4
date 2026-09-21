@@ -122,7 +122,10 @@ img { max-width: 100%; display: block; }
 .info-card ul li { font-size: .84rem; color: var(--ink); margin-bottom: 7px; display: flex; gap: 8px; }
 .info-card ul li i { color: var(--teal-dark); margin-top: 3px; }
 
-.cta-band-final { background: var(--teal); padding: 44px; display: flex;
+.cta-band-final { 
+    /* background: var(--teal);  */
+    background: linear-gradient(90deg, #0f2a4a 0%, #12395b 35%, #0b6c72 75%, #0e5843 100%);
+    padding: 44px; display: flex;
     align-items: center; justify-content: center; gap: 150px; flex-wrap: wrap; margin: 60px 0; }
 .cta-band-final h3 { color: #fff; font-size: 1.4rem; margin-bottom: 6px; }
 .cta-band-final p { color: rgba(255,255,255,.92); margin: 0; }

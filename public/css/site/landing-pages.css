@@ -1,0 +1,15 @@
+/* ============================================
+   Sewgo Marketing Site — landing-pages.css
+   Shared styles for SEO landing pages
+   ============================================ */
+
+.landing-hero { text-align: center; padding-top: 64px; padding-bottom: 10px; }
+.landing-hero-inner { max-width: 760px; margin: 0 auto; }
+.landing-hero-inner h1 { margin-bottom: 16px; }
+.landing-hero-inner p { color: var(--muted); font-size: 1.05rem; margin: 0 auto; }
+
+.landing-cta-wrap { padding-bottom: 0px; }
+.landing-cta-band { margin: 0; 
+   /* background: linear-gradient(120deg, #0a3830 0%, #0e5947 55%, #12735a 100%);  */
+   background: linear-gradient(90deg, #0f2a4a 0%, #12395b 35%, #0b6c72 75%, #0e5843 100%);
+}

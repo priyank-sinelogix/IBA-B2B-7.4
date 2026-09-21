@@ -31,6 +31,14 @@ Route::get('/contact', [SiteController::class, 'contact']);
 Route::post('/contact', [SiteController::class, 'submitContact']);
 Route::get('/privacy-policy', [SiteController::class, 'privacyPolicy']);
 
+// SEO landing pages (Phase 2)
+Route::get('/on-demand-garment-manufacturing', [SiteController::class, 'onDemandManufacturing']);
+Route::get('/private-label-garment-manufacturing', [SiteController::class, 'privateLabelManufacturing']);
+Route::get('/custom-garment-manufacturer-india', [SiteController::class, 'customGarmentManufacturerIndia']);
+Route::get('/small-batch-garment-manufacturing', [SiteController::class, 'smallBatchManufacturing']);
+Route::get('/womens-garment-manufacturer', [SiteController::class, 'womensGarmentManufacturer']);
+Route::get('/plus-size-garment-manufacturer', [SiteController::class, 'plusSizeGarmentManufacturer']);
+
 // Guest - customer
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

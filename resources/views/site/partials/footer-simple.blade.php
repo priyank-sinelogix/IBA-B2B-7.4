@@ -26,6 +26,17 @@
                 </ul>
             </div>
             <div>
+                <h4>Manufacturing Solutions</h4>
+                <ul>
+                    <li><a href="{{ url('/on-demand-garment-manufacturing') }}">On-Demand Manufacturing</a></li>
+                    <li><a href="{{ url('/private-label-garment-manufacturing') }}">Private Label Manufacturing</a></li>
+                    <li><a href="{{ url('/custom-garment-manufacturer-india') }}">Custom Manufacturer in India</a></li>
+                    <li><a href="{{ url('/small-batch-garment-manufacturing') }}">Small Batch Manufacturing</a></li>
+                    <li><a href="{{ url('/womens-garment-manufacturer') }}">Women's Garment Manufacturer</a></li>
+                    <li><a href="{{ url('/plus-size-garment-manufacturer') }}">Plus Size Manufacturer</a></li>
+                </ul>
+            </div>
+            <div>
                 <h4>Contact Us</h4>
                 <ul>
                     <li>India – Noida, Uttar Pradesh</li>

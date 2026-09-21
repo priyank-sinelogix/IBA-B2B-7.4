@@ -63,6 +63,36 @@ class SiteController extends Controller
         return view('site.pages.privacy-policy');
     }
 
+    public function onDemandManufacturing()
+    {
+        return view('site.pages.on-demand-garment-manufacturing');
+    }
+
+    public function privateLabelManufacturing()
+    {
+        return view('site.pages.private-label-garment-manufacturing');
+    }
+
+    public function customGarmentManufacturerIndia()
+    {
+        return view('site.pages.custom-garment-manufacturer-india');
+    }
+
+    public function smallBatchManufacturing()
+    {
+        return view('site.pages.small-batch-garment-manufacturing');
+    }
+
+    public function womensGarmentManufacturer()
+    {
+        return view('site.pages.womens-garment-manufacturer');
+    }
+
+    public function plusSizeGarmentManufacturer()
+    {
+        return view('site.pages.plus-size-garment-manufacturer');
+    }
+
     public function submitContact(\Illuminate\Http\Request $request)
     {
         $data = $request->validate([
