@@ -97,7 +97,7 @@
             <p>Orders from your brand website, app, marketplace, or ERP system automatically trigger production planning at Sewgo.</p>
             <ul class="trigger-checklist">
                 <li><i class="fas fa-circle-check"></i><div><strong>Catalog-driven fulfillment</strong> — choose from our design library or upload your own styles.</div></li>
-                <li><i class="fas fa-circle-check"></i><div><strong>Made-after-sale model</strong> — we produce only what's ordered.</div></li>
+                <li><i class="fas fa-circle-check"></i><div><strong>Made-after-sale model</strong> — we produce only what's ordered, the core of <a href="{{ url('/on-demand-garment-manufacturing') }}">on-demand manufacturing</a>.</div></li>
                 <li><i class="fas fa-circle-check"></i><div><strong>Flexible SKU handling</strong> — multiple sizes, prints &amp; colors supported.</div></li>
                 <li><i class="fas fa-circle-check"></i><div><strong>Real-time visibility</strong> — track every stage from order to dispatch.</div></li>
             </ul>
@@ -170,7 +170,7 @@
         <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffFasterReplenishment.png') }}" alt=""></div><h4>Faster Replenishment</h4><p>Replenish bestsellers quickly with 24–48H dispatch.</p></div>
         <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffFlexibleStyles.png') }}" alt=""></div><h4>Flexible Styles / Sizes / Prints</h4><p>Launch more SKU variations with ease.</p></div>
         <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffBetterCashFlow.png') }}" alt=""></div><h4>Better Cash Flow</h4><p>Pay for what you sell. Improve working capital.</p></div>
-        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffPrivateLabel.png') }}" alt=""></div><h4>Private Label &amp; Packaging</h4><p>Custom tags, labels &amp; packaging to build your brand.</p></div>
+        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffPrivateLabel.png') }}" alt=""></div><h4><a href="{{ url('/private-label-garment-manufacturing') }}">Private Label</a> &amp; Packaging</h4><p>Custom tags, labels &amp; packaging to build your brand.</p></div>
         <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffGlobalFulfillment.png') }}" alt=""></div><h4>Global Fulfillment</h4><p>Ship worldwide with reliable logistics partners.</p></div>
     </div>
 </div>
@@ -245,7 +245,7 @@
 </div>
 
 <div class="wrap section">
-    <p style="max-width:760px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Sewgo's Just-in-Time manufacturing model is designed around actual demand rather than bulk production forecasts. Once a style, fabric, print and grading are approved, the product becomes production-ready and can be manufactured as orders are received.</p>
+    <p style="max-width:760px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Sewgo's Just-in-Time manufacturing model is designed around actual demand rather than bulk production forecasts, helping <a href="{{ url('/sustainability') }}">reduce overproduction</a> and unnecessary finished inventory. Once a style, fabric, print and grading are approved, the product becomes production-ready and can be manufactured as orders are received.</p>
     <div style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; margin:24px 0; font-family:'Manrope','Inter',sans-serif; font-weight:800; font-size:1.15rem; color:var(--navy);">
         <span>Develop</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
         <span>Approve</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>

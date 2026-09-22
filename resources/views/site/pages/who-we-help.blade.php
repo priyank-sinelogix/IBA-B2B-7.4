@@ -59,7 +59,7 @@
             <div class="icon-circle"><img src="{{ asset('images/site/WhoWeHelp/icon/InfluencersCreatorLedLabels.png') }}" alt=""></div>
             <h3>4. Influencers &amp; Creator-Led Labels</h3><p>Bring your vision to life — faster and leaner.</p>
             <ul>
-                <li><i class="fas fa-check"></i> Low MOQ, high flexibility</li>
+                <li><i class="fas fa-check"></i> MOQ 1, high flexibility</li>
                 <li><i class="fas fa-check"></i> Custom prints &amp; styles</li>
                 <li><i class="fas fa-check"></i> Build your unique brand</li>
                 <li><i class="fas fa-check"></i> Scale with confidence</li>

@@ -24,7 +24,7 @@
 </section>
 
 <div class="wrap section" style="padding-top:10px; padding-bottom:0;">
-    <p style="max-width:820px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">One of the largest inefficiencies in traditional fashion manufacturing is producing garments before actual demand is known. Sewgo's Just-in-Time model moves production closer to real customer demand, helping reduce unnecessary finished inventory and overproduction.</p>
+    <p style="max-width:820px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">One of the largest inefficiencies in traditional fashion manufacturing is producing garments before actual demand is known. Sewgo's Just-in-Time model moves production closer to real customer demand through <a href="{{ url('/on-demand-garment-manufacturing') }}">on-demand manufacturing</a>, helping reduce unnecessary finished inventory and overproduction.</p>
 </div>
 
 <div class="wrap section" style="padding-top:10px;">
