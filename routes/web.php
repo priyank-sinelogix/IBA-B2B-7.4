@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 // Public marketing site (Sewgo) — no auth required
 Route::get('/', [SiteController::class, 'home']);
+Route::get('/sitemap.xml', [SiteController::class, 'sitemap']);
 Route::get('/about', [SiteController::class, 'about']);
 Route::get('/services', [SiteController::class, 'services']);
 Route::get('/how-jit-works', [SiteController::class, 'howJitWorks']);

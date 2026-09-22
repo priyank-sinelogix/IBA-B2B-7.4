@@ -13,6 +13,32 @@ class SiteController extends Controller
         return view('site.pages.coming-soon', ['title' => $title]);
     }
 
+    public function sitemap()
+    {
+        $urls = [
+            ['loc' => '/', 'priority' => '1.0'],
+            ['loc' => '/about', 'priority' => '0.8'],
+            ['loc' => '/services', 'priority' => '0.8'],
+            ['loc' => '/how-jit-works', 'priority' => '0.8'],
+            ['loc' => '/who-we-help', 'priority' => '0.8'],
+            ['loc' => '/sustainability', 'priority' => '0.7'],
+            ['loc' => '/media', 'priority' => '0.6'],
+            ['loc' => '/awards', 'priority' => '0.6'],
+            ['loc' => '/contact', 'priority' => '0.7'],
+            ['loc' => '/on-demand-garment-manufacturing', 'priority' => '0.7'],
+            ['loc' => '/private-label-garment-manufacturing', 'priority' => '0.7'],
+            ['loc' => '/custom-garment-manufacturer-india', 'priority' => '0.7'],
+            ['loc' => '/small-batch-garment-manufacturing', 'priority' => '0.7'],
+            ['loc' => '/womens-garment-manufacturer', 'priority' => '0.7'],
+            ['loc' => '/plus-size-garment-manufacturer', 'priority' => '0.7'],
+            ['loc' => '/privacy-policy', 'priority' => '0.3'],
+        ];
+
+        return response()
+            ->view('site.sitemap', ['urls' => $urls])
+            ->header('Content-Type', 'text/xml');
+    }
+
     public function home()
     {
         return view('site.pages.home');
