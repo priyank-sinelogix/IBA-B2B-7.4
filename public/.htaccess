@@ -5,6 +5,16 @@
 
     RewriteEngine On
 
+    # Canonical domain: force https://sewgo.io (no www, HTTPS only).
+    # Scoped to the sewgo.io host only, so local development (localhost /
+    # 127.0.0.1) is never redirected.
+    RewriteCond %{HTTP_HOST} ^www\.sewgo\.io$ [NC]
+    RewriteRule ^ https://sewgo.io%{REQUEST_URI} [L,R=301]
+
+    RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP_HOST} ^sewgo\.io$ [NC]
+    RewriteRule ^ https://sewgo.io%{REQUEST_URI} [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

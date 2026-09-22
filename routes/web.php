@@ -18,6 +18,12 @@ use App\Http\Controllers\Admin\Web\PdfController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
+
+// Route::get('/new-feature', function () {
+//     return app(\App\Http\Controllers\Site\SiteController::class)->comingSoon('New Feature');
+// });
+
+
 // Public marketing site (Sewgo) — no auth required
 Route::get('/', [SiteController::class, 'home']);
 Route::get('/sitemap.xml', [SiteController::class, 'sitemap']);

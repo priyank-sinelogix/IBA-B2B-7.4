@@ -1,4 +1,16 @@
 User-agent: *
-Disallow:
+Allow: /
+
+Disallow: /admin
+Disallow: /login
+Disallow: /dashboard
+Disallow: /samples
+Disallow: /sample-requests
+Disallow: /orders
+Disallow: /shipments
+Disallow: /finance
+Disallow: /messages
+Disallow: /change-password
+Disallow: /logout
 
 Sitemap: https://sewgo.io/sitemap.xml

@@ -1,5 +1,6 @@
 @extends('site.layouts.app')
 @section('title', $title)
+@section('robots', 'noindex, nofollow')
 
 @section('content')
 <div class="wrap" style="padding:120px 24px; text-align:center;">

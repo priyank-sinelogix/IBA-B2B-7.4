@@ -5,9 +5,31 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Route as RouteFacade;
 
 class SiteController extends Controller
 {
+    // Custom priorities for known public pages; anything not listed here
+    // (e.g. a newly added public page) falls back to $defaultPriority below.
+    private array $sitemapPriorities = [
+        '/' => '1.0',
+        '/about' => '0.8',
+        '/services' => '0.8',
+        '/how-jit-works' => '0.8',
+        '/who-we-help' => '0.8',
+        '/sustainability' => '0.7',
+        '/contact' => '0.7',
+        '/media' => '0.6',
+        '/awards' => '0.6',
+        '/privacy-policy' => '0.3',
+    ];
+
+    private string $defaultSitemapPriority = '0.6';
+
+    // Actions on this controller that are public GET routes but should never
+    // appear in the sitemap (the sitemap itself, and unrouted helper views).
+    private array $sitemapExcludedActions = ['sitemap', 'comingSoon'];
+
     public function comingSoon($title = 'This Page')
     {
         return view('site.pages.coming-soon', ['title' => $title]);
@@ -15,24 +37,44 @@ class SiteController extends Controller
 
     public function sitemap()
     {
-        $urls = [
-            ['loc' => '/', 'priority' => '1.0'],
-            ['loc' => '/about', 'priority' => '0.8'],
-            ['loc' => '/services', 'priority' => '0.8'],
-            ['loc' => '/how-jit-works', 'priority' => '0.8'],
-            ['loc' => '/who-we-help', 'priority' => '0.8'],
-            ['loc' => '/sustainability', 'priority' => '0.7'],
-            ['loc' => '/media', 'priority' => '0.6'],
-            ['loc' => '/awards', 'priority' => '0.6'],
-            ['loc' => '/contact', 'priority' => '0.7'],
-            ['loc' => '/on-demand-garment-manufacturing', 'priority' => '0.7'],
-            ['loc' => '/private-label-garment-manufacturing', 'priority' => '0.7'],
-            ['loc' => '/custom-garment-manufacturer-india', 'priority' => '0.7'],
-            ['loc' => '/small-batch-garment-manufacturing', 'priority' => '0.7'],
-            ['loc' => '/womens-garment-manufacturer', 'priority' => '0.7'],
-            ['loc' => '/plus-size-garment-manufacturer', 'priority' => '0.7'],
-            ['loc' => '/privacy-policy', 'priority' => '0.3'],
-        ];
+        $urls = [];
+
+        foreach (RouteFacade::getRoutes() as $route) {
+            $action = $route->getActionName();
+
+            // Only auto-include public pages served directly by this
+            // controller. Admin, auth, dashboard and every other
+            // authenticated/system route lives on a different controller
+            // and is therefore never picked up here.
+            if (strpos($action, SiteController::class.'@') !== 0) {
+                continue;
+            }
+
+            $method = substr($action, strrpos($action, '@') + 1);
+            if (in_array($method, $this->sitemapExcludedActions, true)) {
+                continue;
+            }
+
+            if (!in_array('GET', $route->methods(), true)) {
+                continue;
+            }
+
+            $uri = $route->uri();
+            if (strpos($uri, '{') !== false) {
+                continue; // skip any route with parameters
+            }
+
+            $path = $uri === '/' ? '/' : '/'.ltrim($uri, '/');
+
+            $urls[] = [
+                'loc' => $path,
+                'priority' => $this->sitemapPriorities[$path] ?? $this->defaultSitemapPriority,
+            ];
+        }
+
+        usort($urls, function ($a, $b) {
+            return $b['priority'] <=> $a['priority'] ?: $a['loc'] <=> $b['loc'];
+        });
 
         return response()
             ->view('site.sitemap', ['urls' => $urls])

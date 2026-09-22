@@ -1,5 +1,6 @@
 @extends('site.layouts.app')
 @section('title', 'Partner Login')
+@section('robots', 'noindex, nofollow')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/partner-login.css') }}">

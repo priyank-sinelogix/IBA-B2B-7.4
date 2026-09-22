@@ -12,6 +12,8 @@
         @endif
     </title>
     <meta name="description" content="@yield('meta_description', 'Sewgo is a technology-powered Just In Time garment manufacturing platform.')">
+    <meta name="robots" content="@yield('robots', 'index, follow')">
+    <link rel="canonical" href="https://sewgo.io{{ request()->getPathInfo() }}">
 
     <link rel="icon" href="{{ asset('images/site/favicon_icon.png') }}">
 
