@@ -79,6 +79,9 @@ Route::middleware(['auth', 'customer.scope'])->group(function () {
 
     Route::get('/messages', [MessageWebController::class, 'index']);
     Route::post('/messages', [MessageWebController::class, 'store']);
+
+    Route::get('/change-password', [\App\Http\Controllers\Web\ProfileController::class, 'editPassword']);
+    Route::put('/change-password', [\App\Http\Controllers\Web\ProfileController::class, 'updatePassword']);
 });
 
 // Authenticated internal admin panel — full CRUD for the IBA team
@@ -122,6 +125,9 @@ Route::middleware(['auth', 'role:admin,super_admin'])->prefix('admin')->group(fu
     Route::delete('/finance/{entry}', [LedgerController::class, 'destroy']);
 
     Route::get('/audit-logs', [AuditLogController::class, 'index']);
+
+    Route::get('/change-password', [\App\Http\Controllers\Admin\Web\ProfileController::class, 'editPassword']);
+    Route::put('/change-password', [\App\Http\Controllers\Admin\Web\ProfileController::class, 'updatePassword']);
 
     // Client <-> IBA messaging, viewed/replied to from the admin side
     Route::get('/messages', [\App\Http\Controllers\Admin\Web\MessageController::class, 'index']);

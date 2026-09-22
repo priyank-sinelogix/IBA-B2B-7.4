@@ -18,10 +18,18 @@
                 <label>Email</label>
                 <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}" required>
             </div>
-            <div class="form-group">
-                <label>Password {{ $user->exists ? '(leave blank to keep current)' : '' }}</label>
-                <input type="password" name="password" class="form-control" {{ $user->exists ? '' : 'required' }}>
-            </div>
+            @if($user->exists)
+                <div class="form-group p-3" style="background:#fff8e6; border:1px solid #ffe4a3; border-radius:8px;">
+                    <label class="mb-1"><i class="fas fa-key text-warning mr-1"></i> <strong>Reset Password</strong></label>
+                    <div class="text-muted small mb-2">If this user has forgotten their password, set a new one here — no email or OTP needed. Leave blank to keep their current password unchanged.</div>
+                    <input type="password" name="password" class="form-control" placeholder="Enter new password to reset">
+                </div>
+            @else
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+            @endif
             <div class="form-group">
                 <label>Designation</label>
                 <input type="text" name="designation" class="form-control" value="{{ old('designation', $user->designation) }}" placeholder="Procurement Manager">

@@ -115,6 +115,8 @@
                     <i class="far fa-user-circle mr-1"></i> {{ auth()->user()->name ?? 'Staff' }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
+                    <a href="{{ url('/admin/change-password') }}" class="dropdown-item">Change Password</a>
+                    <div class="dropdown-divider"></div>
                     <form method="POST" action="{{ url('/admin/logout') }}">@csrf
                         <button class="dropdown-item">Logout</button>
                     </form>
