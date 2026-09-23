@@ -13,7 +13,7 @@
     <div class="landing-hero-inner">
         <div class="eyebrow">Manufacturing in India</div>
         <h1>Custom Garment Manufacturing in India for Global Brands</h1>
-        <p>Sewgo combines garment manufacturing infrastructure in India with a technology-led Just-in-Time production system. We work with fashion businesses on product development, sampling, custom prints, fabrics, sizing, production, private labelling and international fulfilment.</p>
+        <p>Sewgo combines garment manufacturing infrastructure in India with a technology-led <a href="{{ url('/how-jit-works') }}">Just-in-Time production system</a>. We work with fashion businesses on product development, sampling, custom prints, fabrics, sizing, production, <a href="{{ url('/private-label-garment-manufacturing') }}">private labelling</a> and international fulfilment.</p>
     </div>
 </section>
 

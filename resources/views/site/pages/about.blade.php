@@ -25,7 +25,7 @@
 </section>
 
 <div class="wrap section" style="padding-top:10px; padding-bottom:0;">
-    <p style="max-width:820px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Sewgo is the B2B manufacturing platform powered by IBA Crafts Pvt. Ltd., combining apparel manufacturing experience with a technology-led Just-in-Time production system for <a href="{{ url('/custom-garment-manufacturer-india') }}">custom garment manufacturing</a>.</p>
+    <p style="max-width:820px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Sewgo is the B2B manufacturing platform powered by IBA Crafts Pvt. Ltd., combining apparel manufacturing experience with a technology-led <a href="{{ url('/how-jit-works') }}">Just-in-Time production system</a> for <a href="{{ url('/custom-garment-manufacturer-india') }}">custom garment manufacturing</a>.</p>
     <p style="max-width:820px; margin:16px auto 0; text-align:center; color:var(--muted); font-size:1.05rem;">The model is designed to give fashion businesses greater flexibility in how they develop, manufacture and replenish products—moving production closer to actual customer demand rather than relying entirely on advance forecasting.</p>
 </div>
 

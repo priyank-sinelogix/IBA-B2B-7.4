@@ -49,7 +49,7 @@
 <div class="wrap" style="padding-bottom:40px;">
     <div class="cta-band-final services-cta-final" style="margin:0;">
         <img class="services-cta-icon" src="{{ asset('images/site/Services/IconQuoteBox.png') }}" alt="" loading="lazy">
-        <div class="cta-band-final-text"><h3>Let's Build the Future of Fashion, Together.</h3><p>Partner with Sewgo and experience the power of Just In Time manufacturing.</p></div>
+        <div class="cta-band-final-text"><h3>Let's Build the Future of Fashion, Together.</h3><p>Partner with Sewgo and experience the power of <a href="{{ url('/how-jit-works') }}">Just In Time manufacturing</a>.</p></div>
         <a href="{{ url('/contact') }}" class="btn-white">Request a Quote <i class="fas fa-arrow-right"></i></a>
     </div>
 </div>

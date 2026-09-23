@@ -14,7 +14,7 @@
     <div class="sustain-hero-content">
         <div class="eyebrow">Sustainable Fashion. Responsible Future.</div>
         <h1>Reducing Overproduction Through On-Demand Manufacturing</h1>
-        <p class="lead">At Sewgo, sustainability is at the heart of everything we do. Our Just In Time manufacturing model reduces waste, saves resources and helps build a greener fashion industry.</p>
+        <p class="lead">At Sewgo, sustainability is at the heart of everything we do. Our <a href="{{ url('/how-jit-works') }}">Just In Time manufacturing</a> model reduces waste, saves resources and helps build a greener fashion industry.</p>
         <div class="sustain-mini-card">
             <div class="mini-stat"><img src="{{ asset('images/site/Sustanibility/HeadFeatures/LessWaste.png') }}" alt="" loading="lazy"><div><strong>Less Waste</strong>Zero Overproduction</div></div>
             <div class="mini-stat"><img src="{{ asset('images/site/Sustanibility/HeadFeatures/WaterSaved.png') }}" alt="" loading="lazy"><div><strong>Water Saved</strong>10M+ Liters</div></div>

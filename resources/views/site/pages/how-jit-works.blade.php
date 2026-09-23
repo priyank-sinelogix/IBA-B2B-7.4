@@ -72,6 +72,18 @@
     </div>
 </div>
 
+<div class="wrap section" style="padding-bottom:0;">
+    <p style="max-width:760px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Sewgo's Just-in-Time manufacturing model is designed around actual demand rather than bulk production forecasts, helping <a href="{{ url('/sustainability') }}">reduce overproduction</a> and unnecessary finished inventory. Once a style, fabric, print and grading are approved, the product becomes production-ready and can be manufactured as orders are received.</p>
+    <div style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; margin:24px 0; font-family:'Manrope','Inter',sans-serif; font-weight:800; font-size:1.15rem; color:var(--navy);">
+        <span>Develop</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
+        <span>Approve</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
+        <span>Sell</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
+        <span>Manufacture</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
+        <span>Dispatch</span>
+    </div>
+    <p style="max-width:760px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">This gives brands the flexibility to offer a wider assortment without manufacturing every style, size, colour and print in bulk before knowing what customers will buy.</p>
+</div>
+
 <div class="wrap section">
   <div class="jit-flow-row">
     <div class="section-head jit-flow-head"><h2>The JIT Flow</h2><p>Production starts only after order confirmation. Simple, transparent, and built for speed.</p></div>
@@ -280,18 +292,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="wrap section">
-    <p style="max-width:760px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Sewgo's Just-in-Time manufacturing model is designed around actual demand rather than bulk production forecasts, helping <a href="{{ url('/sustainability') }}">reduce overproduction</a> and unnecessary finished inventory. Once a style, fabric, print and grading are approved, the product becomes production-ready and can be manufactured as orders are received.</p>
-    <div style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; margin:24px 0; font-family:'Manrope','Inter',sans-serif; font-weight:800; font-size:1.15rem; color:var(--navy);">
-        <span>Develop</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
-        <span>Approve</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
-        <span>Sell</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
-        <span>Manufacture</span><i class="fas fa-arrow-right" style="color:var(--teal); font-size:.9rem;"></i>
-        <span>Dispatch</span>
-    </div>
-    <p style="max-width:760px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">This gives brands the flexibility to offer a wider assortment without manufacturing every style, size, colour and print in bulk before knowing what customers will buy.</p>
 </div>
 
 <div class="wrap">

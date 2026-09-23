@@ -13,7 +13,7 @@
     <div class="landing-hero-inner">
         <div class="eyebrow">Plus Size Manufacturing</div>
         <h1>Plus Size Garment Manufacturing for Fashion Brands</h1>
-        <p>Sewgo helps fashion businesses develop and manufacture extended-size apparel with structured sampling, grading and production workflows. The Just-in-Time model can support wider size offerings without requiring brands to manufacture every size in large quantities before demand is known.</p>
+        <p>Sewgo helps fashion businesses develop and manufacture extended-size apparel with structured sampling, grading and production workflows. The <a href="{{ url('/how-jit-works') }}">Just-in-Time model</a> can support wider size offerings without requiring brands to manufacture every size in large quantities before demand is known.</p>
     </div>
 </section>
 

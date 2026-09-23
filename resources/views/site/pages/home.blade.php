@@ -42,6 +42,10 @@
     </div>
 </section>
 
+<div class="wrap" style="padding:10px 0 0;">
+    <p style="max-width:820px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Sewgo is a technology-led garment manufacturing platform powered by IBA Crafts, enabling fashion brands to <a href="{{ url('/on-demand-garment-manufacturing') }}">manufacture on demand</a> from MOQ 1. Launch more styles, prints, colours and sizes without committing to large finished-garment inventory.</p>
+</div>
+
 @include('site.partials.stat-band-standard')
 
 <section class="wrap section">
@@ -233,8 +237,7 @@
 </section>
 
 <section class="wrap section">
-    <p style="max-width:820px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Sewgo is a technology-led garment manufacturing platform powered by IBA Crafts, enabling fashion brands to <a href="{{ url('/on-demand-garment-manufacturing') }}">manufacture on demand</a> from MOQ 1. Launch more styles, prints, colours and sizes without committing to large finished-garment inventory.</p>
-    <div class="section-head" style="margin-top:34px;">
+    <div class="section-head">
         <h2>Manufacture Against Demand, Not Forecasts</h2>
     </div>
     <p style="max-width:780px; margin:0 auto; text-align:center; color:var(--muted); font-size:1.05rem;">Traditional apparel manufacturing requires brands to forecast demand and manufacture inventory in advance. Sewgo enables approved products to be produced against actual demand, helping brands respond faster, carry less finished inventory and <a href="{{ url('/sustainability') }}">reduce the risk of overproduction</a>.</p>
