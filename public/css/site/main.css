@@ -109,7 +109,7 @@ img { max-width: 100%; display: block; }
 .icon-card { text-align: center; }
 .icon-card .icon-circle { width: 85px; height: 85px; border-radius: 50%; background: var(--bg-mint);
     display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; color: var(--teal-dark); font-size: 1.25rem; }
-.icon-card h4 { font-size: .98rem; margin-bottom: 6px; }
+.icon-card h3 { font-size: .98rem; margin-bottom: 6px; }
 .icon-card p { color: var(--muted); font-size: .85rem; margin: 0; }
 
 .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
@@ -139,7 +139,7 @@ img { max-width: 100%; display: block; }
 .step-flow .step { text-align: center; position: relative; }
 .step-flow .step .num-badge { width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: #fff;
     display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; margin: 0 auto 10px; }
-.step-flow .step h4 { font-size: .88rem; margin-bottom: 4px; }
+.step-flow .step h3 { font-size: .88rem; margin-bottom: 4px; }
 .step-flow .step p { font-size: .78rem; color: var(--muted); margin: 0; }
 
 .logo-row { display: flex; align-items: center; justify-content: center; gap: 44px; flex-wrap: wrap; opacity: .75; filter: grayscale(1); }
@@ -174,7 +174,7 @@ img { max-width: 100%; display: block; }
 
 .badge-card { border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: left; }
 .badge-card .win { color: var(--teal-dark); font-weight: 700; font-size: .75rem; text-transform: uppercase; margin: 10px 0 6px; }
-.badge-card h4 { font-size: 1rem; margin-bottom: 8px; }
+.badge-card h3 { font-size: 1rem; margin-bottom: 8px; }
 .badge-card p { font-size: .82rem; color: var(--muted); margin: 0 0 10px; }
 .badge-card .year { font-weight: 800; color: var(--navy); }
 

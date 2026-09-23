@@ -2,6 +2,7 @@
 @section('title', 'Home')
 @section('full_title', 'On-Demand Garment Manufacturing | MOQ 1 | Sewgo')
 @section('meta_description', 'Technology-led on-demand garment manufacturing for fashion brands. MOQ 1, custom production, private labelling and global fulfilment.')
+@section('og_image', 'images/site/home-hero.jpg')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/home.css') }}">
@@ -19,14 +20,13 @@
             <span class="line-navy">Sell First.</span>
             <span class="line-teal">Make Next.</span>
         </div>
-        <!-- <h3>Only After You Sell.</h3> -->
         <p class="lead">We manufacture only when an order is placed. No inventory. No risk. Just speed, flexibility and complete visibility.</p>
 
         <div class="mini-stats">
-            <div class="mini-stat"><img src="{{ asset('images/site/Manufacturing.png') }}" alt=""><div><strong>Manufactured</strong>in 24–48 Hours</div></div>
-            <div class="mini-stat"><img src="{{ asset('images/site/MOQ.png') }}" alt=""><div><strong>MOQ 1</strong>No bar on styles</div></div>
-            <div class="mini-stat"><img src="{{ asset('images/site/Multiple.png') }}" alt=""><div><strong>Multiple</strong>sizes, colors &amp; prints</div></div>
-            <div class="mini-stat"><img src="{{ asset('images/site/Shipping.png') }}" alt=""><div><strong>Ship with</strong>branding</div></div>
+            <div class="mini-stat"><img src="{{ asset('images/site/Manufacturing.png') }}" alt="" loading="lazy"><div><strong>Manufactured</strong>in 24–48 Hours</div></div>
+            <div class="mini-stat"><img src="{{ asset('images/site/MOQ.png') }}" alt="" loading="lazy"><div><strong>MOQ 1</strong>No bar on styles</div></div>
+            <div class="mini-stat"><img src="{{ asset('images/site/Multiple.png') }}" alt="" loading="lazy"><div><strong>Multiple</strong>sizes, colors &amp; prints</div></div>
+            <div class="mini-stat"><img src="{{ asset('images/site/Shipping.png') }}" alt="" loading="lazy"><div><strong>Ship with</strong>branding</div></div>
         </div>
 
         <div class="home-hero-actions">
@@ -37,7 +37,7 @@
 
     <div class="home-hero-powered">
         <div class="lbl">Powered By</div>
-        <img src="{{ asset('images/site/ibacraftlogo.png') }}" alt="IBA Crafts" style="height:22px; margin:6px auto;">
+        <img src="{{ asset('images/site/ibacraftlogo.png') }}" alt="IBA Crafts" style="height:22px; margin:6px auto;" loading="lazy">
         <span>Premium JIT-in-Time Garment Manufacturing</span>
     </div>
 </section>
@@ -57,10 +57,10 @@
             <a href="{{ url('/how-jit-works') }}" class="know-more">Know More Details →</a>
             <p>On all JIT working models garment manufacturing unit only at the time of sales order or at stock-out of previous JIT-based sale is placed to the unit. Ensuring 0% liquidation &amp; 100% flexibility.</p>
             <div class="why-icons">
-                <div class="icon-card"><div class="icon-circle"><img src="{{ asset('images/site/NoWastage.png') }}" alt=""></div><h4>No Wastage</h4></div>
-                <div class="icon-card"><div class="icon-circle"><img src="{{ asset('images/site/JITTechnology.png') }}" alt=""></div><h4>JIT Technology</h4></div>
-                <div class="icon-card"><div class="icon-circle"><img src="{{ asset('images/site/AIDrivenManufacturing.png') }}" alt=""></div><h4>AI-Driven Manufacturing</h4></div>
-                <div class="icon-card"><div class="icon-circle"><img src="{{ asset('images/site/LogisticsAddon.png') }}" alt=""></div><h4>Logistics &amp; Add-on</h4></div>
+                <div class="icon-card"><div class="icon-circle"><img src="{{ asset('images/site/NoWastage.png') }}" alt="" loading="lazy"></div><h3>No Wastage</h3></div>
+                <div class="icon-card"><div class="icon-circle"><img src="{{ asset('images/site/JITTechnology.png') }}" alt="" loading="lazy"></div><h3>JIT Technology</h3></div>
+                <div class="icon-card"><div class="icon-circle"><img src="{{ asset('images/site/AIDrivenManufacturing.png') }}" alt="" loading="lazy"></div><h3>AI-Driven Manufacturing</h3></div>
+                <div class="icon-card"><div class="icon-circle"><img src="{{ asset('images/site/LogisticsAddon.png') }}" alt="" loading="lazy"></div><h3>Logistics &amp; Add-on</h3></div>
             </div>
         </div>
     </div>
@@ -77,29 +77,29 @@
         <div class="jit-process-flow">
             <div class="jit-process-step">
                 <span class="jit-process-badge">1</span>
-                <h4>Customer orders from their online store.</h4>
-                <div class="jit-process-img"><img src="{{ asset('images/site/Home/JitProcess/CustomerOrders.jpg') }}" alt=""></div>
+                <h3>Customer orders from their online store.</h3>
+                <div class="jit-process-img"><img src="{{ asset('images/site/Home/JitProcess/CustomerOrders.jpg') }}" alt="Customer placing an order on an online store" loading="lazy"></div>
                 <p>Customers place orders on your store (Shopify, Magento, etc.), which are instantly integrated into Sewgo's JIT system for immediate processing.</p>
             </div>
             <div class="jit-process-arrow"><span class="jit-process-arrow-line"></span><i class="fas fa-play"></i></div>
             <div class="jit-process-step">
                 <span class="jit-process-badge">2</span>
-                <h4>We customize and manufacture your order with care.</h4>
-                <div class="jit-process-img"><img src="{{ asset('images/site/Home/JitProcess/CustomizeManufacture.jpg') }}" alt=""></div>
+                <h3>We customize and manufacture your order with care.</h3>
+                <div class="jit-process-img"><img src="{{ asset('images/site/Home/JitProcess/CustomizeManufacture.jpg') }}" alt="Garment being customized and manufactured" loading="lazy"></div>
                 <p>We start with a white or grey fabric, customize it through printing, embroidery, or coloring, and then stitch it into a completed garment based on pre-approved designs.</p>
             </div>
             <div class="jit-process-arrow"><span class="jit-process-arrow-line"></span><i class="fas fa-play"></i></div>
             <div class="jit-process-step">
                 <span class="jit-process-badge">3</span>
-                <h4>Quality checked and delivered on time.</h4>
-                <div class="jit-process-img"><img src="{{ asset('images/site/Home/JitProcess/QualityDelivered.jpg') }}" alt=""></div>
+                <h3>Quality checked and delivered on time.</h3>
+                <div class="jit-process-img"><img src="{{ asset('images/site/Home/JitProcess/QualityDelivered.jpg') }}" alt="Quality-checked garment ready for delivery" loading="lazy"></div>
                 <p>Our team conducts quality checks on the garments produced within a 48-hour timeframe and then ships them directly to the designated destination.</p>
             </div>
             <div class="jit-process-arrow"><span class="jit-process-arrow-line"></span><i class="fas fa-play"></i></div>
             <div class="jit-process-step">
                 <span class="jit-process-badge">4</span>
-                <h4>Higher profits. Zero waste. Better for the planet.</h4>
-                <div class="jit-process-img"><img src="{{ asset('images/site/Home/JitProcess/HigherProfits.jpg') }}" alt=""></div>
+                <h3>Higher profits. Zero waste. Better for the planet.</h3>
+                <div class="jit-process-img"><img src="{{ asset('images/site/Home/JitProcess/HigherProfits.jpg') }}" alt="Fashion brand benefiting from higher profits and less waste" loading="lazy"></div>
                 <p>You retain the profits, as our model ensures there is no unsold inventory or wastage, maximizing your return on investment while minimizing environmental impact.</p>
             </div>
         </div>
@@ -122,9 +122,9 @@
                     <li><i class="fas fa-check"></i> Global shipping &amp; fulfillment support</li>
                 </ul>
             </div>
-            <div class="brand-card-media"><img src="{{ asset('images/site/BuiltforYourBrand.jpg') }}" alt=""></div>
+            <div class="brand-card-media"><img src="{{ asset('images/site/BuiltforYourBrand.jpg') }}" alt="Fashion brand styles built with Sewgo's JIT manufacturing" loading="lazy"></div>
             
-            <!-- <div class="brand-card-media"><img src="{{ asset('images/site/BuiltforYourBrand.jpg') }} alt=""></div> -->
+            <!-- <div class="brand-card-media"><img src="{{ asset('images/site/BuiltforYourBrand.jpg') }} alt="" loading="lazy"></div> -->
         </div>
         <div class="brand-card tint-teal">
             <div>
@@ -137,7 +137,7 @@
                     <li><i class="fas fa-check"></i> Sustainable fashion with less waste</li>
                 </ul>
             </div>
-            <div class="brand-card-media"><img src="{{ asset('images/site/BetterforYourCustomer.jpg') }}" alt=""></div>
+            <div class="brand-card-media"><img src="{{ asset('images/site/BetterforYourCustomer.jpg') }}" alt="Happy customer receiving a freshly manufactured garment" loading="lazy"></div>
 
         </div>
     </div>
@@ -149,23 +149,23 @@
         <h2>Apparel &amp; Home Solutions for Every Need</h2>
     </div>
     <div class="manufacture-row">
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/WomensWear.png') }}" alt=""><span>Women's Wear</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/MensWear.png') }}" alt=""><span>Men's Wear</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Kidswear.png') }}" alt=""><span>Kidswear</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Activewear.png') }}" alt=""><span>Activewear</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/LoungewearInnerwear.png') }}" alt=""><span>Loungewear &amp; Innerwear</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/HomeTextiles.png') }}" alt=""><span>Home Textiles</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/PlusSizeWear.png') }}" alt=""><span>Plus Size Wear</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Sleepwear.png') }}" alt=""><span>Sleepwear</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/ResortWear.png') }}" alt=""><span>Resort Wear</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/OccasionWear.png') }}" alt=""><span>Occasion Wear</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/FashionBasics.png') }}" alt=""><span>Fashion Basics</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/CustomizedUniforms.png') }}" alt=""><span>Customized Uniforms</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/WomensWear.png') }}" alt="" loading="lazy"><span>Women's Wear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/MensWear.png') }}" alt="" loading="lazy"><span>Men's Wear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Kidswear.png') }}" alt="" loading="lazy"><span>Kidswear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Activewear.png') }}" alt="" loading="lazy"><span>Activewear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/LoungewearInnerwear.png') }}" alt="" loading="lazy"><span>Loungewear &amp; Innerwear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/HomeTextiles.png') }}" alt="" loading="lazy"><span>Home Textiles</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/PlusSizeWear.png') }}" alt="" loading="lazy"><span>Plus Size Wear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Sleepwear.png') }}" alt="" loading="lazy"><span>Sleepwear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/ResortWear.png') }}" alt="" loading="lazy"><span>Resort Wear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/OccasionWear.png') }}" alt="" loading="lazy"><span>Occasion Wear</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/FashionBasics.png') }}" alt="" loading="lazy"><span>Fashion Basics</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/CustomizedUniforms.png') }}" alt="" loading="lazy"><span>Customized Uniforms</span></div>
         <div class="item hide_class"></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/CushionCovers.png') }}" alt=""><span>Cushion Covers</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Curtains.png') }}" alt=""><span>Curtains</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/TableLinen.png') }}" alt=""><span>Table Linen</span></div>
-        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/KitchenLinen.png') }}" alt=""><span>Kitchen Linen</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/CushionCovers.png') }}" alt="" loading="lazy"><span>Cushion Covers</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/Curtains.png') }}" alt="" loading="lazy"><span>Curtains</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/TableLinen.png') }}" alt="" loading="lazy"><span>Table Linen</span></div>
+        <div class="item"><img src="{{ asset('images/site/Home/Manufacture/KitchenLinen.png') }}" alt="" loading="lazy"><span>Kitchen Linen</span></div>
     </div>
     <!-- <div style="text-align:center; margin-top:30px;">
         <a href="{{ url('/services') }}" class="btn" style="border:1.5px solid var(--teal); color:var(--teal-dark);">Explore Design Library →</a>
@@ -179,9 +179,9 @@
             <h2>The Smarter Way to Manufacture</h2>
         </div>
         <div class="vs-grid">
-            <div class="vs-icon-circle"><img src="{{ asset('images/site/SewgoJIT.png') }}" alt=""></div>
+            <div class="vs-icon-circle"><img src="{{ asset('images/site/SewgoJIT.png') }}" alt="" loading="lazy"></div>
             <div class="vs-col bad">
-                <h4>Traditional Manufacturing</h4>
+                <h3>Traditional Manufacturing</h3>
                 <ul>
                     <li><i class="fas fa-xmark"></i> High inventory &amp; storage cost</li>
                     <li><i class="fas fa-xmark"></i> Long production &amp; delivery cycles</li>
@@ -192,7 +192,7 @@
             </div>
             <div class="vs-badge">VS</div>
             <div class="vs-col good">
-                <h4>Sewgo's Just In Time (JIT)</h4>
+                <h3>Sewgo's Just In Time (JIT)</h3>
                 <ul>
                     <li><i class="fas fa-check"></i> No inventory, no storage cost</li>
                     <li><i class="fas fa-check"></i> Manufacture + ship within 24–48H</li>
@@ -201,7 +201,7 @@
                     <li><i class="fas fa-check"></i> Cash flow friendly, pay as you sell</li>
                 </ul>
             </div>
-            <div class="vs-icon-circle"><img src="{{ asset('images/site/TraditionalManufacturing.png') }}" alt=""></div>
+            <div class="vs-icon-circle"><img src="{{ asset('images/site/TraditionalManufacturing.png') }}" alt="" loading="lazy"></div>
         </div>
     </div>
 </section>
@@ -209,10 +209,10 @@
 <section class="wrap" style="padding-bottom:30px;">
     <div class="sustain-band">
         <div class="wrap-inner">
-            <div class="item"><img src="{{ asset('images/site/SustainableDesign2.png') }}" alt=""><div><strong>Sustainable by Design</strong><span>We produce only what's sold. Together, we build a more sustainable tomorrow.</span></div></div>
-            <div class="item"><img src="{{ asset('images/site/WaterSaved2.png') }}" alt=""><div><strong>10M+</strong><span>Liters of Water Saved</span></div></div>
-            <div class="item"><img src="{{ asset('images/site/LessWaste2.png') }}" alt=""><div><strong>Less Waste</strong><span>Zero Overproduction</span></div></div>
-            <div class="item"><img src="{{ asset('images/site/LowerCarbon2.png') }}" alt=""><div><strong>Lower Carbon</strong><span>Lower Supply Chain</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/SustainableDesign2.png') }}" alt="" loading="lazy"><div><strong>Sustainable by Design</strong><span>We produce only what's sold. Together, we build a more sustainable tomorrow.</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/WaterSaved2.png') }}" alt="" loading="lazy"><div><strong>10M+</strong><span>Liters of Water Saved</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/LessWaste2.png') }}" alt="" loading="lazy"><div><strong>Less Waste</strong><span>Zero Overproduction</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/LowerCarbon2.png') }}" alt="" loading="lazy"><div><strong>Lower Carbon</strong><span>Lower Supply Chain</span></div></div>
         </div>
     </div>
 </section>
@@ -220,15 +220,15 @@
 <section class="wrap section trust-strip" style="padding-top:0;">
     <div class="eyebrow">Awarded. Trusted. Recognized.</div>
     <div class="trust-logos">
-        <div class="t-logo"><img src="{{ asset('images/site/NASSCOM.png') }}" alt="NASSCOM"><span>Emerge 50 · Winner 2025</span></div>
-        <div class="t-logo"><img src="{{ asset('images/site/SMEChampions.png') }}" alt="SME Champions"><span>Winner 2024</span></div>
-        <div class="t-logo"><img src="{{ asset('images/site/Entrepreneur.png') }}" alt="Entrepreneur"><span>India's Tech 25 – D2C · July 2024</span></div>
-        <!-- <div class="t-logo"><img src="{{ asset('images/site/IISIIIMTAngels.png') }}" alt="IISI · IIMT Angels"><span>Most Promising Startup Award 2022</span></div>
-        <div class="t-logo"><img src="{{ asset('images/site/MahindraMahindra.png') }}" alt="Mahindra &amp; Mahindra"><span>Spirit of Manufacturing Award 2021</span></div>
-        <div class="t-logo"><img src="{{ asset('images/site/StartupIndia.png') }}" alt="Startup India"><span>Recognized Startup</span></div> -->
-        <div class="t-logo"><img src="{{ asset('images/site/Seoul.png') }}" alt="Startup India"><span>Seoul Design Award 2025</span></div>
-        <div class="t-logo"><img src="{{ asset('images/site/TheEconomicTimes.png') }}" alt="The Economic Times"><span>ET MSME Awards 2025</span></div>
-        <div class="t-logo"><img src="{{ asset('images/site/BuisnessWorld.png') }}" alt="Business World"><span>BW Retail 40 Under 40 Award 2024</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/NASSCOM.png') }}" alt="NASSCOM" loading="lazy"><span>Emerge 50 · Winner 2025</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/SMEChampions.png') }}" alt="SME Champions" loading="lazy"><span>Winner 2024</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/Entrepreneur.png') }}" alt="Entrepreneur" loading="lazy"><span>India's Tech 25 – D2C · July 2024</span></div>
+        <!-- <div class="t-logo"><img src="{{ asset('images/site/IISIIIMTAngels.png') }}" alt="IISI · IIMT Angels" loading="lazy"><span>Most Promising Startup Award 2022</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/MahindraMahindra.png') }}" alt="Mahindra &amp; Mahindra" loading="lazy"><span>Spirit of Manufacturing Award 2021</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/StartupIndia.png') }}" alt="Startup India" loading="lazy"><span>Recognized Startup</span></div> -->
+        <div class="t-logo"><img src="{{ asset('images/site/Seoul.png') }}" alt="Startup India" loading="lazy"><span>Seoul Design Award 2025</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/TheEconomicTimes.png') }}" alt="The Economic Times" loading="lazy"><span>ET MSME Awards 2025</span></div>
+        <div class="t-logo"><img src="{{ asset('images/site/BuisnessWorld.png') }}" alt="Business World" loading="lazy"><span>BW Retail 40 Under 40 Award 2024</span></div>
     </div>
 </section>
 

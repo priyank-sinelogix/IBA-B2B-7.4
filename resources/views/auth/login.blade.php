@@ -25,7 +25,7 @@
             <div class="alert-error">{{ $errors->first() }}</div>
         @endif
 
-        <form method="POST" action="{{ url('/login') }}">
+        <form method="POST" action="{{ url('/login') }}" id="loginForm">
             @csrf
             <div class="field">
                 <label>Email Address</label>

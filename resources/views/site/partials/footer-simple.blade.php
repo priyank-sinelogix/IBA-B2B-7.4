@@ -3,7 +3,7 @@
     <div>
         <div class="footer-grid-simple">
             <div>
-                <h4>Useful Links</h4>
+                <div class="footer-col-label">Useful Links</div>
                 <ul>
                     <li><a href="{{ url('/') }}">Home</a></li>
                     <li><a href="{{ url('/services') }}">Services</a></li>
@@ -17,7 +17,7 @@
                 </ul>
             </div>
             <div>
-                <h4>Services</h4>
+                <div class="footer-col-label">Services</div>
                 <ul>
                     <li><a href="{{ url('/services') }}">Collaborative Designs</a></li>
                     <li><a href="{{ url('/services') }}">Logistics Assistance</a></li>
@@ -26,7 +26,7 @@
                 </ul>
             </div>
             <div>
-                <h4>Manufacturing Solutions</h4>
+                <div class="footer-col-label">Manufacturing Solutions</div>
                 <ul>
                     <li><a href="{{ url('/on-demand-garment-manufacturing') }}">On-Demand Manufacturing</a></li>
                     <li><a href="{{ url('/private-label-garment-manufacturing') }}">Private Label Manufacturing</a></li>
@@ -37,7 +37,7 @@
                 </ul>
             </div>
             <div>
-                <h4>Contact Us</h4>
+                <div class="footer-col-label">Contact Us</div>
                 <ul>
                     <li>India – Noida, Uttar Pradesh</li>
                     <li>USA – Cheyenne, Wyoming</li>

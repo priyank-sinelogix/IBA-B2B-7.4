@@ -2,6 +2,7 @@
 @section('title', 'Plus Size Garment Manufacturer')
 @section('full_title', 'Plus Size Garment Manufacturing | Sewgo')
 @section('meta_description', 'Flexible plus size garment manufacturing for fashion brands with product development, grading, private labels and on-demand production.')
+@section('service_name', 'Plus Size Garment Manufacturing')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/landing-pages.css') }}">
@@ -17,6 +18,7 @@
 </section>
 
 <div class="wrap section">
+    <div class="section-head"><h2>What We Offer</h2></div>
     <div class="card-grid">
         <div class="info-card"><h3>Sampling &amp; Fit Development</h3><p>Fit is developed and approved across extended sizes before production.</p></div>
         <div class="info-card"><h3>Grading &amp; Size Range</h3><p>Accurate grading ensures consistent fit across your full plus-size range.</p></div>

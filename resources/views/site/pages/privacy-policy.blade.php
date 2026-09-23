@@ -1,5 +1,6 @@
 @extends('site.layouts.app')
 @section('title', 'Privacy Policy')
+@section('full_title', 'Privacy Policy | Sewgo')
 @section('meta_description', 'Sewgo Privacy Policy — how IBA Crafts Pvt Ltd collects, uses, stores, and protects your information.')
 
 @push('page-styles')
@@ -18,7 +19,7 @@
 <div class="wrap legal-body">
     <div class="legal-layout">
         <aside class="legal-toc">
-            <h4>On This Page</h4>
+            <div class="legal-toc-label">On This Page</div>
             <ol>
                 <li><a href="#s1">Information We May Collect</a></li>
                 <li><a href="#s2">How We Use Your Information</a></li>

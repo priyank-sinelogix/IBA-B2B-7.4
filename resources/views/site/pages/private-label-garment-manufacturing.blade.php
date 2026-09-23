@@ -2,6 +2,7 @@
 @section('title', 'Private Label Garment Manufacturing')
 @section('full_title', 'Private Label Garment Manufacturing | Sewgo')
 @section('meta_description', 'Private label garment manufacturing for fashion brands with product development, printing, labelling, packaging and flexible production.')
+@section('service_name', 'Private Label Garment Manufacturing')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/landing-pages.css') }}">
@@ -17,6 +18,7 @@
 </section>
 
 <div class="wrap section">
+    <div class="section-head"><h2>What's Included in Private Label Manufacturing</h2></div>
     <div class="card-grid">
         <div class="info-card"><h3>Product Development &amp; Sampling</h3><p>Styles are developed and sampled against your specifications before moving into production.</p></div>
         <div class="info-card"><h3>Fabrics, Prints &amp; Colours</h3><p>Choose from a wide range of fabrics, prints and colourways to match your brand.</p></div>

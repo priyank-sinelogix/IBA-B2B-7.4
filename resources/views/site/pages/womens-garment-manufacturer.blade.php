@@ -2,6 +2,7 @@
 @section('title', "Women's Garment Manufacturer")
 @section('full_title', "Women's Garment Manufacturer in India | Sewgo")
 @section('meta_description', "Women's apparel manufacturing for fashion brands with sampling, custom prints, flexible production, private labels and global fulfilment.")
+@section('service_name', "Women's Garment Manufacturing")
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/landing-pages.css') }}">
@@ -17,6 +18,7 @@
 </section>
 
 <div class="wrap section">
+    <div class="section-head"><h2>What We Offer</h2></div>
     <div class="card-grid">
         <div class="info-card"><h3>Product Development</h3><p>Your women's wear designs are developed into production-ready styles.</p></div>
         <div class="info-card"><h3>Dresses &amp; Separates</h3><p>Manufacturing support across dresses, tops, bottoms and separates.</p></div>

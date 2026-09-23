@@ -18,7 +18,7 @@
         <li><a href="{{ url('/login') }}" class="{{ request()->is('partner-login') ? 'active' : '' }}">Partner Login</a></li>
 
         <li class="nav-cta">
-            <a href="{{ url('/contact') }}" class="btn btn-teal">
+            <a href="{{ url('/contact') }}" class="btn btn-teal" data-ga-event="request_quote_click">
                 <i class="fas fa-user-tie"></i> Request a Quote
             </a>
         </li>

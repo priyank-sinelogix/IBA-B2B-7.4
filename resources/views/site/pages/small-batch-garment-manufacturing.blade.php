@@ -2,6 +2,7 @@
 @section('title', 'Small Batch Garment Manufacturing')
 @section('full_title', 'Small Batch Garment Manufacturing | Sewgo')
 @section('meta_description', 'Flexible small-batch garment manufacturing for brands testing new products, launching collections or replenishing based on demand.')
+@section('service_name', 'Small Batch Garment Manufacturing')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/landing-pages.css') }}">
@@ -17,6 +18,7 @@
 </section>
 
 <div class="wrap section">
+    <div class="section-head"><h2>Why Choose Small-Batch Manufacturing</h2></div>
     <div class="card-grid">
         <div class="info-card"><h3>When Small-Batch Production Makes Sense</h3><p>Ideal for new launches, limited drops and styles where demand is still uncertain.</p></div>
         <div class="info-card"><h3>Test New Styles</h3><p>Introduce new styles in small quantities before committing to a full production run.</p></div>

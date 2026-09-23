@@ -36,7 +36,7 @@ section.whh-hero.wrap {
     width: auto; height: auto; background: transparent; border-radius: 0; margin: 0 auto 14px;
 }
 .why-model-grid .icon-card .icon-circle img { width: 42px; height: 42px; object-fit: contain; }
-.why-model-grid .icon-card h4 { color: var(--navy); font-size: .88rem; min-height: 2.3em; }
+.why-model-grid .icon-card h3 { color: var(--navy); font-size: .88rem; min-height: 2.3em; }
 .why-model-grid .icon-card p { font-size: .78rem; min-height: 2.2em; }
 
 .whh-cta-final { position: relative; overflow: hidden; border-radius: 14px;
@@ -109,7 +109,7 @@ section.whh-hero.wrap {
     width: auto; height: auto; background: transparent; border-radius: 0; margin: 0 auto 16px;
 }
 .supports-grid .icon-card .icon-circle img { width: 60px; height: 60px; object-fit: contain; }
-.supports-grid .icon-card h4 { color: var(--navy); font-size: 1rem; }
+.supports-grid .icon-card h3 { color: var(--navy); font-size: 1rem; }
 .supports-grid .icon-card p { font-size: .82rem; }
 
 .who-we-help-grid { grid-template-columns: repeat(5, 1fr); gap: 16px; }

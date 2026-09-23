@@ -2,6 +2,7 @@
 @section('title', 'On-Demand Garment Manufacturing')
 @section('full_title', 'On-Demand Garment Manufacturing | Sewgo')
 @section('meta_description', 'Manufacture garments closer to actual customer demand with Sewgo\'s technology-led on-demand production model for fashion brands.')
+@section('service_name', 'On-Demand Garment Manufacturing')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/landing-pages.css') }}">
@@ -17,6 +18,7 @@
 </section>
 
 <div class="wrap section">
+    <div class="section-head"><h2>What On-Demand Manufacturing Includes</h2></div>
     <div class="card-grid">
         <div class="info-card"><h3>How On-Demand Manufacturing Works</h3><p>Approved styles are held production-ready and manufactured as orders come in, rather than produced in bulk ahead of demand.</p></div>
         <div class="info-card"><h3>Benefits for Fashion Brands</h3><p>Lower inventory risk, better cash flow and the flexibility to offer a wider assortment without bulk commitments.</p></div>

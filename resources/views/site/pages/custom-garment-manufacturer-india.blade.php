@@ -2,6 +2,7 @@
 @section('title', 'Custom Garment Manufacturer in India')
 @section('full_title', 'Custom Garment Manufacturer in India | Sewgo')
 @section('meta_description', 'Technology-led custom garment manufacturing in India for global fashion brands, including sampling, printing, production and private labelling.')
+@section('service_name', 'Custom Garment Manufacturing in India')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/landing-pages.css') }}">
@@ -17,6 +18,7 @@
 </section>
 
 <div class="wrap section">
+    <div class="section-head"><h2>Our Custom Manufacturing Process</h2></div>
     <div class="card-grid">
         <div class="info-card"><h3>Custom Product Development</h3><p>Your designs are developed into production-ready styles by our in-house team.</p></div>
         <div class="info-card"><h3>Sampling &amp; Approval</h3><p>Samples are produced and refined until every detail is approved.</p></div>

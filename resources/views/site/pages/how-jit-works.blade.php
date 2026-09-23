@@ -2,16 +2,54 @@
 @section('title', 'How JIT Works')
 @section('full_title', 'Just-in-Time Garment Manufacturing | How JIT Works | Sewgo')
 @section('meta_description', 'See how Sewgo enables fashion brands to manufacture garments against actual demand using technology-led Just-in-Time production.')
+@section('og_image', 'images/site/HowJitWorks/HowjJtWorksBanner.jpg')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/how-jit-works.css') }}">
+@endpush
+
+@push('schema')
+    @php
+        $__faqSchema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => [
+                [
+                    '@type' => 'Question',
+                    'name' => 'When does production begin?',
+                    'acceptedAnswer' => ['@type' => 'Answer', 'text' => "Production begins immediately after an order is confirmed — there's no pre-production inventory."],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name' => 'What is the minimum order quantity?',
+                    'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Our MOQ starts at just 1 piece, so you can test styles before scaling.'],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name' => 'Can I offer multiple sizes and prints?',
+                    'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes — Sewgo supports multi-SKU flexibility across sizes, colours and prints in one order.'],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name' => 'How fast can orders be dispatched?',
+                    'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Most orders are produced and dispatched within 24–48 hours.'],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name' => 'Do you offer white label / custom branding?',
+                    'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Yes, including custom labels, hangtags and packaging for private label brands.'],
+                ],
+            ],
+        ];
+    @endphp
+    <script type="application/ld+json">{!! json_encode($__faqSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
 @endpush
 
 @section('content')
 
 
 <section class="wrap jit-hero">
-    <img class="jit-hero-bg" src="{{ asset('images/site/HowJitWorks/HowjJtWorksBanner.jpg') }}" alt="">
+    <img class="jit-hero-bg" src="{{ asset('images/site/HowJitWorks/HowjJtWorksBanner.jpg') }}" alt="Just-in-Time garment manufacturing production line">
     <div class="jit-hero-content">
         <div class="eyebrow">Smarter Manufacturing. Made After You Sell.</div>
         <h1>How Just-in-Time Garment Manufacturing Works</h1>
@@ -26,11 +64,11 @@
 
 <div class="wrap stat-band">
     <div class="row stat-band-grid">
-        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitDispatch.png') }}" alt=""><div><div class="num">24–48H</div><div class="lbl">Production &amp; Dispatch</div></div></div>
-        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitMoq.png') }}" alt=""><div><div class="num">MOQ 1</div><div class="lbl">Start From 1 Piece</div></div></div>
-        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitSizes.png') }}" alt=""><div><div class="num">Multiple</div><div class="lbl">Sizes &amp; Prints</div></div></div>
-        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitShipping.png') }}" alt=""><div><div class="num">Global</div><div class="lbl">Shipping</div></div></div>
-        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitBrands.png') }}" alt=""><div><div class="num">1000+</div><div class="lbl">Brands Served</div></div></div>
+        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitDispatch.png') }}" alt="" loading="lazy"><div><div class="num">24–48H</div><div class="lbl">Production &amp; Dispatch</div></div></div>
+        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitMoq.png') }}" alt="" loading="lazy"><div><div class="num">MOQ 1</div><div class="lbl">Start From 1 Piece</div></div></div>
+        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitSizes.png') }}" alt="" loading="lazy"><div><div class="num">Multiple</div><div class="lbl">Sizes &amp; Prints</div></div></div>
+        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitShipping.png') }}" alt="" loading="lazy"><div><div class="num">Global</div><div class="lbl">Shipping</div></div></div>
+        <div class="col-6 col-lg stat"><img src="{{ asset('images/site/HowJitWorks/icon/JitBrands.png') }}" alt="" loading="lazy"><div><div class="num">1000+</div><div class="lbl">Brands Served</div></div></div>
     </div>
 </div>
 
@@ -39,51 +77,51 @@
     <div class="section-head jit-flow-head"><h2>The JIT Flow</h2><p>Production starts only after order confirmation. Simple, transparent, and built for speed.</p></div>
     <div class="step-flow jit-flow">
         <div class="step">
-            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepOrder.png') }}" alt=""></div>
+            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepOrder.png') }}" alt="" loading="lazy"></div>
             <span class="num-badge">01</span>
-            <h4>Customer Order Received</h4>
+            <h3>Customer Order Received</h3>
             <p>Order placed via website, brand portal or marketplace.</p>
         </div>
         <i class="fas fa-arrow-right step-arrow"></i>
         <div class="step">
-            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepStyle.png') }}" alt=""></div>
+            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepStyle.png') }}" alt="" loading="lazy"></div>
             <span class="num-badge">02</span>
-            <h4>Style &amp; Specifications Matched</h4>
+            <h3>Style &amp; Specifications Matched</h3>
             <p>Style, size, color, print &amp; quantity confirmed.</p>
         </div>
         <i class="fas fa-arrow-right step-arrow"></i>
         <div class="step">
-            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepFabric.png') }}" alt=""></div>
+            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepFabric.png') }}" alt="" loading="lazy"></div>
             <span class="num-badge">03</span>
-            <h4>Fabric / Print / Trim Allocation</h4>
+            <h3>Fabric / Print / Trim Allocation</h3>
             <p>Materials allocated from approved suppliers.</p>
         </div>
         <i class="fas fa-arrow-right step-arrow"></i>
         <div class="step">
-            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepCutting.png') }}" alt=""></div>
+            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepCutting.png') }}" alt="" loading="lazy"></div>
             <span class="num-badge">04</span>
-            <h4>Cutting &amp; Production Begins</h4>
+            <h3>Cutting &amp; Production Begins</h3>
             <p>Cutting scheduled as per confirmed order.</p>
         </div>
         <i class="fas fa-arrow-right step-arrow"></i>
         <div class="step">
-            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepStitching.png') }}" alt=""></div>
+            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepStitching.png') }}" alt="" loading="lazy"></div>
             <span class="num-badge">05</span>
-            <h4>Stitching / Finishing / Branding</h4>
+            <h3>Stitching / Finishing / Branding</h3>
             <p>Sewing, finishing, labeling &amp; branding completed.</p>
         </div>
         <i class="fas fa-arrow-right step-arrow"></i>
         <div class="step">
-            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepQuality.png') }}" alt=""></div>
+            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepQuality.png') }}" alt="" loading="lazy"></div>
             <span class="num-badge">06</span>
-            <h4>Quality Check</h4>
+            <h3>Quality Check</h3>
             <p>Multi-level QC for size, print accuracy, stitching &amp; construction.</p>
         </div>
         <i class="fas fa-arrow-right step-arrow"></i>
         <div class="step">
-            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepPacked.png') }}" alt=""></div>
+            <div class="step-icon-box"><img src="{{ asset('images/site/HowJitWorks/JitFlow/JitStepPacked.png') }}" alt="" loading="lazy"></div>
             <span class="num-badge">07</span>
-            <h4>Packed &amp; Shipped</h4>
+            <h3>Packed &amp; Shipped</h3>
             <p>Secure packing and dispatch within 24–48 hours.*</p>
         </div>
     </div>
@@ -103,7 +141,7 @@
             </ul>
         </div>
         <div class="trigger-media">
-            <img src="{{ asset('images/site/HowJitWorks/TriggerProduction/OrderTriggerDiagram.jpg') }}" alt="How orders trigger production">
+            <img src="{{ asset('images/site/HowJitWorks/TriggerProduction/OrderTriggerDiagram.jpg') }}" alt="How orders trigger production" loading="lazy">
         </div>
     </div>
 </div>
@@ -125,39 +163,39 @@
             <div class="codesign-visual">
                 <div class="codesign-flow">
                     <div class="codesign-step">
-                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/ShareIdeas.png') }}" alt=""></div>
+                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/ShareIdeas.png') }}" alt="" loading="lazy"></div>
                         <span>Share Your Ideas<br>or Mood Board</span>
                     </div>
                     <i class="fas fa-arrow-right codesign-arrow"></i>
                     <div class="codesign-step">
-                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/DesignRefine.png') }}" alt=""></div>
+                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/DesignRefine.png') }}" alt="" loading="lazy"></div>
                         <span>We Design &amp;<br>Refine Together</span>
                     </div>
                     <i class="fas fa-arrow-right codesign-arrow"></i>
                     <div class="codesign-step">
-                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/SampleIn48Hrs.png') }}" alt=""></div>
+                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/SampleIn48Hrs.png') }}" alt="" loading="lazy"></div>
                         <span>Sample in 48 Hrs<br>(virtual / physical)</span>
                     </div>
                     <i class="fas fa-arrow-right codesign-arrow"></i>
                     <div class="codesign-step">
-                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/ProduceShip.png') }}" alt=""></div>
+                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/ProduceShip.png') }}" alt="" loading="lazy"></div>
                         <span>Produce &amp; Ship<br>On Time</span>
                     </div>
                     <i class="fas fa-arrow-right codesign-arrow"></i>
                     <div class="codesign-step">
-                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/BrandReady.png') }}" alt=""></div>
+                        <div class="codesign-step-icon"><img src="{{ asset('images/site/HowJitWorks/CoCreate/BrandReady.png') }}" alt="" loading="lazy"></div>
                         <span>Your Brand,<br>Ready to Sell</span>
                     </div>
                 </div>
-                <div class="codesign-media"><img src="{{ asset('images/site/HowJitWorks/CoCreate/CoCreateWorkspace2.jpg') }}" alt=""></div>
+                <div class="codesign-media"><img src="{{ asset('images/site/HowJitWorks/CoCreate/CoCreateWorkspace2.jpg') }}" alt="Design team co-creating a garment collection with a brand" loading="lazy"></div>
             </div>
         </div>
         <div class="codesign-stats">
-            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatCountries.png') }}" alt=""><div><strong>40+</strong><span>Countries</span></div></div>
-            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatPrints.png') }}" alt=""><div><strong>2,000+</strong><span>Prints Available</span></div></div>
-            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatDispatch.png') }}" alt=""><div><strong>48H</strong><span>Dispatch</span></div></div>
-            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatTeam.png') }}" alt=""><div><strong>170+</strong><span>Team Members</span></div></div>
-            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatSustainable.png') }}" alt=""><div><strong>Sustainable</strong><span>Fashion Made Easy</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatCountries.png') }}" alt="" loading="lazy"><div><strong>40+</strong><span>Countries</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatPrints.png') }}" alt="" loading="lazy"><div><strong>2,000+</strong><span>Prints Available</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatDispatch.png') }}" alt="" loading="lazy"><div><strong>48H</strong><span>Dispatch</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatTeam.png') }}" alt="" loading="lazy"><div><strong>170+</strong><span>Team Members</span></div></div>
+            <div class="item"><img src="{{ asset('images/site/HowJitWorks/CoCreate/StatSustainable.png') }}" alt="" loading="lazy"><div><strong>Sustainable</strong><span>Fashion Made Easy</span></div></div>
         </div>
     </div>
 </div>
@@ -165,13 +203,13 @@
 <div class="wrap section" style="padding-top:0;">
     <div class="section-head"><h2>What Makes Sewgo Different</h2><p>Our JIT model is designed to help brands grow smarter.</p></div>
     <div class="diff-cards">
-        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffNoDeadStock.png') }}" alt=""></div><h4>No Dead Stock</h4><p>Produce only after you sell. Zero unsold inventory.</p></div>
-        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffNoBulkInventory.png') }}" alt=""></div><h4>No Bulk Inventory</h4><p>No large upfront investment in stock.</p></div>
-        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffFasterReplenishment.png') }}" alt=""></div><h4>Faster Replenishment</h4><p>Replenish bestsellers quickly with 24–48H dispatch.</p></div>
-        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffFlexibleStyles.png') }}" alt=""></div><h4>Flexible Styles / Sizes / Prints</h4><p>Launch more SKU variations with ease.</p></div>
-        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffBetterCashFlow.png') }}" alt=""></div><h4>Better Cash Flow</h4><p>Pay for what you sell. Improve working capital.</p></div>
-        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffPrivateLabel.png') }}" alt=""></div><h4><a href="{{ url('/private-label-garment-manufacturing') }}">Private Label</a> &amp; Packaging</h4><p>Custom tags, labels &amp; packaging to build your brand.</p></div>
-        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffGlobalFulfillment.png') }}" alt=""></div><h4>Global Fulfillment</h4><p>Ship worldwide with reliable logistics partners.</p></div>
+        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffNoDeadStock.png') }}" alt="" loading="lazy"></div><h3>No Dead Stock</h3><p>Produce only after you sell. Zero unsold inventory.</p></div>
+        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffNoBulkInventory.png') }}" alt="" loading="lazy"></div><h3>No Bulk Inventory</h3><p>No large upfront investment in stock.</p></div>
+        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffFasterReplenishment.png') }}" alt="" loading="lazy"></div><h3>Faster Replenishment</h3><p>Replenish bestsellers quickly with 24–48H dispatch.</p></div>
+        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffFlexibleStyles.png') }}" alt="" loading="lazy"></div><h3>Flexible Styles / Sizes / Prints</h3><p>Launch more SKU variations with ease.</p></div>
+        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffBetterCashFlow.png') }}" alt="" loading="lazy"></div><h3>Better Cash Flow</h3><p>Pay for what you sell. Improve working capital.</p></div>
+        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffPrivateLabel.png') }}" alt="" loading="lazy"></div><h3><a href="{{ url('/private-label-garment-manufacturing') }}">Private Label</a> &amp; Packaging</h3><p>Custom tags, labels &amp; packaging to build your brand.</p></div>
+        <div class="diff-card"><div class="diff-icon"><img src="{{ asset('images/site/HowJitWorks/WhatMakesSewgoDifferent/DiffGlobalFulfillment.png') }}" alt="" loading="lazy"></div><h3>Global Fulfillment</h3><p>Ship worldwide with reliable logistics partners.</p></div>
     </div>
 </div>
 
@@ -182,37 +220,37 @@
             <div class="dispatch-item">
                 <div class="dispatch-text">
                     <span class="dispatch-num">01</span>
-                    <h4>Design Library</h4>
+                    <h3>Design Library</h3>
                     <p>Browse thousands of styles or upload your own designs. Choose sizes, colors &amp; prints from our configurator.</p>
                 </div>
-                <div class="dispatch-media"><img src="{{ asset('images/site/HowJitWorks/DigitalDispatch/DispatchDesignLibrary.jpg') }}" alt=""></div>
+                <div class="dispatch-media"><img src="{{ asset('images/site/HowJitWorks/DigitalDispatch/DispatchDesignLibrary.jpg') }}" alt="Digital design library of ready-to-produce garment styles" loading="lazy"></div>
             </div>
             <i class="fas fa-arrow-right dispatch-arrow"></i>
             <div class="dispatch-item">
                 <div class="dispatch-text">
                     <span class="dispatch-num">02</span>
-                    <h4>Production</h4>
+                    <h3>Production</h3>
                     <p>Order triggers material allocation, cutting, stitching &amp; finishing in our smart manufacturing units.</p>
                 </div>
-                <div class="dispatch-media"><img src="{{ asset('images/site/HowJitWorks/DigitalDispatch/DispatchProduction.jpg') }}" alt=""></div>
+                <div class="dispatch-media"><img src="{{ asset('images/site/HowJitWorks/DigitalDispatch/DispatchProduction.jpg') }}" alt="Garment cutting and stitching in production" loading="lazy"></div>
             </div>
             <i class="fas fa-arrow-right dispatch-arrow"></i>
             <div class="dispatch-item">
                 <div class="dispatch-text">
                     <span class="dispatch-num">03</span>
-                    <h4>Quality Assurance</h4>
+                    <h3>Quality Assurance</h3>
                     <p>Multi-level QC checks ensure perfect fit, print accuracy, stitching &amp; finishing.</p>
                 </div>
-                <div class="dispatch-media"><img src="{{ asset('images/site/HowJitWorks/DigitalDispatch/DispatchQualityAssurance.jpg') }}" alt=""></div>
+                <div class="dispatch-media"><img src="{{ asset('images/site/HowJitWorks/DigitalDispatch/DispatchQualityAssurance.jpg') }}" alt="Quality assurance check on finished garments" loading="lazy"></div>
             </div>
             <i class="fas fa-arrow-right dispatch-arrow"></i>
             <div class="dispatch-item">
                 <div class="dispatch-text">
                     <span class="dispatch-num">04</span>
-                    <h4>Logistics</h4>
+                    <h3>Logistics</h3>
                     <p>Packed securely and dispatched within 24–48 hours* with real-time tracking.</p>
                 </div>
-                <div class="dispatch-media"><img src="{{ asset('images/site/HowJitWorks/DigitalDispatch/DispatchLogistics.jpg') }}" alt=""></div>
+                <div class="dispatch-media"><img src="{{ asset('images/site/HowJitWorks/DigitalDispatch/DispatchLogistics.jpg') }}" alt="Packed garments ready for global logistics dispatch" loading="lazy"></div>
             </div>
         </div>
 </div>
@@ -224,11 +262,11 @@
             <h2>Technology + Manufacturing</h2>
             <p>Sewgo combines digital intelligence with world-class manufacturing.</p>
             <div class="tech-icons">
-                <div class="tech-item"><div class="tech-icon"><img src="{{ asset('images/site/HowJitWorks/TechnologyManufacturing/TechSmartOrderEngine.png') }}" alt=""></div><h4>Smart Order Engine</h4><p>Automated order capture &amp; planning.</p></div>
-                <div class="tech-item"><div class="tech-icon"><img src="{{ asset('images/site/HowJitWorks/TechnologyManufacturing/TechDesignLibrary.png') }}" alt=""></div><h4>Design Library</h4><p>10,500+ ready styles &amp; customization.</p></div>
-                <div class="tech-item"><div class="tech-icon"><img src="{{ asset('images/site/HowJitWorks/TechnologyManufacturing/TechDemandLedProduction.png') }}" alt=""></div><h4>Demand-Led Production</h4><p>We produce only what's sold.</p></div>
-                <div class="tech-item"><div class="tech-icon"><img src="{{ asset('images/site/HowJitWorks/TechnologyManufacturing/TechQualityAssurance.png') }}" alt=""></div><h4>Quality Assurance</h4><p>Multi-stage QC for consistent quality.</p></div>
-                <div class="tech-item"><div class="tech-icon"><img src="{{ asset('images/site/HowJitWorks/TechnologyManufacturing/TechLogisticsSupport.png') }}" alt=""></div><h4>Logistics Support</h4><p>Global shipping &amp; tracking.</p></div>
+                <div class="tech-item"><div class="tech-icon"><img src="{{ asset('images/site/HowJitWorks/TechnologyManufacturing/TechSmartOrderEngine.png') }}" alt="" loading="lazy"></div><h3>Smart Order Engine</h3><p>Automated order capture &amp; planning.</p></div>
+                <div class="tech-item"><div class="tech-icon"><img src="{{ asset('images/site/HowJitWorks/TechnologyManufacturing/TechDesignLibrary.png') }}" alt="" loading="lazy"></div><h3>Design Library</h3><p>10,500+ ready styles &amp; customization.</p></div>
+                <div class="tech-item"><div class="tech-icon"><img src="{{ asset('images/site/HowJitWorks/TechnologyManufacturing/TechDemandLedProduction.png') }}" alt="" loading="lazy"></div><h3>Demand-Led Production</h3><p>We produce only what's sold.</p></div>
+                <div class="tech-item"><div class="tech-icon"><img src="{{ asset('images/site/HowJitWorks/TechnologyManufacturing/TechQualityAssurance.png') }}" alt="" loading="lazy"></div><h3>Quality Assurance</h3><p>Multi-stage QC for consistent quality.</p></div>
+                <div class="tech-item"><div class="tech-icon"><img src="{{ asset('images/site/HowJitWorks/TechnologyManufacturing/TechLogisticsSupport.png') }}" alt="" loading="lazy"></div><h3>Logistics Support</h3><p>Global shipping &amp; tracking.</p></div>
             </div>
         </div>
         <div class="faq-panel">

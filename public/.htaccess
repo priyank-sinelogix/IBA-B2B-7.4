@@ -19,6 +19,13 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
+    # Serve a pre-generated WebP version of an image automatically when the
+    # browser supports it and a "<name>.<ext>.webp" sibling exists on disk.
+    # No <img> markup needs to change — this is pure content negotiation.
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    RewriteCond %{REQUEST_FILENAME}\.webp -f
+    RewriteRule ^(.+)\.(jpe?g|png)$ $1.$2.webp [L,T=image/webp,E=accept:1]
+
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
@@ -28,4 +35,10 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Tell caches/CDNs the response varies by Accept, since the same image
+    # URL can now serve either the original or its WebP version.
+    Header append Vary Accept env=REDIRECT_accept
 </IfModule>

@@ -2,6 +2,7 @@
 @section('title', 'About')
 @section('full_title', 'About Sewgo | Technology-Led Garment Manufacturing')
 @section('meta_description', 'Sewgo is powered by IBA Crafts and combines apparel manufacturing with technology to enable flexible, on-demand and Just-in-Time production.')
+@section('og_image', 'images/site/AboutUs/AboutUsBanner.jpg')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/about.css') }}">
@@ -15,10 +16,10 @@
         <h1>Technology Meets Garment Manufacturing</h1>
         <p class="lead">Sewgo is the technology-powered JIT manufacturing platform of IBA Crafts, created to solve the waste and rigidity of traditional inventory-led fashion manufacturing.</p>
         <div class="about-mini-stats">
-            <div class="about-mini-stat"><img src="{{ asset('images/site/AboutUs/BannerIcon/ProductionDispatch.png') }}" alt=""><div class="num">48H</div><span>Production &amp; Dispatch</span></div>
-            <div class="about-mini-stat"><img src="{{ asset('images/site/AboutUs/BannerIcon/MinimumOrder.png') }}" alt=""><div class="num">MOQ 1</div><span>Minimum Order</span></div>
-            <div class="about-mini-stat"><img src="{{ asset('images/site/AboutUs/BannerIcon/GarmentsShipped.png') }}" alt=""><div class="num">1M+</div><span>Garments Shipped</span></div>
-            <div class="about-mini-stat"><img src="{{ asset('images/site/AboutUs/BannerIcon/CountriesServed.png') }}" alt=""><div class="num">40+</div><span>Countries Served</span></div>
+            <div class="about-mini-stat"><img src="{{ asset('images/site/AboutUs/BannerIcon/ProductionDispatch.png') }}" alt="" loading="lazy"><div class="num">48H</div><span>Production &amp; Dispatch</span></div>
+            <div class="about-mini-stat"><img src="{{ asset('images/site/AboutUs/BannerIcon/MinimumOrder.png') }}" alt="" loading="lazy"><div class="num">MOQ 1</div><span>Minimum Order</span></div>
+            <div class="about-mini-stat"><img src="{{ asset('images/site/AboutUs/BannerIcon/GarmentsShipped.png') }}" alt="" loading="lazy"><div class="num">1M+</div><span>Garments Shipped</span></div>
+            <div class="about-mini-stat"><img src="{{ asset('images/site/AboutUs/BannerIcon/CountriesServed.png') }}" alt="" loading="lazy"><div class="num">40+</div><span>Countries Served</span></div>
         </div>
     </div>
 </section>
@@ -32,11 +33,11 @@
     <div class="about-head-left"><h2>Why Sewgo Exists</h2></div>
     <div class="why-exists-row">
         <div class="why-exists-item">
-            <div class="icon-circle"><img src="{{ asset('images/site/AboutUs/WhySwegoExists/TraditionalManufacturing.png') }}" alt=""></div>
+            <div class="icon-circle"><img src="{{ asset('images/site/AboutUs/WhySwegoExists/TraditionalManufacturing.png') }}" alt="" loading="lazy"></div>
             <p>Traditional fashion manufacturing locks capital in unsold inventory, causes waste, weakens cash flow and forces brands to overproduce in a world that changes every day. It slows decisions, limits innovation, and hurts both businesses and the planet.</p>
         </div>
         <div class="why-exists-item">
-            <div class="icon-circle"><img src="{{ asset('images/site/AboutUs/WhySwegoExists/SewgoSolution.png') }}" alt=""></div>
+            <div class="icon-circle"><img src="{{ asset('images/site/AboutUs/WhySwegoExists/SewgoSolution.png') }}" alt="" loading="lazy"></div>
             <p>Sewgo was created to change that. We built a JIT manufacturing platform that connects real demand to real production — so brands can move faster, reduce risk, stay manufacturing only what sells and build more sustainable businesses.</p>
         </div>
     </div>
@@ -46,18 +47,18 @@
     <div class="about-head-left"><h2>The Story Behind Sewgo</h2></div>
     <div class="story-grid">
         <div class="story-card">
-            <div class="story-icon"><img src="{{ asset('images/site/AboutUs/TheStoryBehingSwego/ProblemWeSaw.png') }}" alt=""></div>
-            <h4>1. The Problem We Saw Every Day</h4>
+            <div class="story-icon"><img src="{{ asset('images/site/AboutUs/TheStoryBehingSwego/ProblemWeSaw.png') }}" alt="" loading="lazy"></div>
+            <h3>1. The Problem We Saw Every Day</h3>
             <p>Traditional manufacturing keeps too much inventory in the system—tying up capital and creating waste. By the time trends shift, it's often too late. We knew there had to be a better way.</p>
         </div>
         <div class="story-card">
-            <div class="story-icon"><img src="{{ asset('images/site/AboutUs/TheStoryBehingSwego/ExperienceThatChanged.png') }}" alt=""></div>
-            <h4>2. The Experience That Changed Our Thinking</h4>
+            <div class="story-icon"><img src="{{ asset('images/site/AboutUs/TheStoryBehingSwego/ExperienceThatChanged.png') }}" alt="" loading="lazy"></div>
+            <h3>2. The Experience That Changed Our Thinking</h3>
             <p>As a manufacturing partner to leading global brands, IBA Crafts felt the pain firsthand—tight timelines, urgent reorders and missed opportunities. It pushed us to rethink everything we knew about scale, speed and responsiveness.</p>
         </div>
         <div class="story-card">
-            <div class="story-icon"><img src="{{ asset('images/site/AboutUs/TheStoryBehingSwego/SolutionWeBuilt.png') }}" alt=""></div>
-            <h4>3. The Solution We Built Together</h4>
+            <div class="story-icon"><img src="{{ asset('images/site/AboutUs/TheStoryBehingSwego/SolutionWeBuilt.png') }}" alt="" loading="lazy"></div>
+            <h3>3. The Solution We Built Together</h3>
             <p>Sewgo was born to connect real demand with real-time production. A platform that gives brands the agility to launch, test, adapt and win—manufacturing only what sells.</p>
         </div>
     </div>
@@ -71,13 +72,13 @@
             <p>This is not a concept. It's live, commercial manufacturing capacity built on decades of real-world execution.</p>
         </div>
         <div class="built-by-stats">
-            <div class="built-by-stat"><img src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/GarmentsShipped.png') }}" alt=""><div class="num">1M+</div><span>Garments Shipped</span></div>
-            <div class="built-by-stat"><img src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/CountriesServed.png') }}" alt=""><div class="num">40+</div><span>Countries Served</span></div>
-            <div class="built-by-stat"><img src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/Employees.png') }}" alt=""><div class="num">170+</div><span>Employees</span></div>
-            <div class="built-by-stat"><img src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/GarmentsPerDay.png') }}" alt=""><div class="num">2,500</div><span>Garments/Day Capacity</span></div>
+            <div class="built-by-stat"><img src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/GarmentsShipped.png') }}" alt="" loading="lazy"><div class="num">1M+</div><span>Garments Shipped</span></div>
+            <div class="built-by-stat"><img src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/CountriesServed.png') }}" alt="" loading="lazy"><div class="num">40+</div><span>Countries Served</span></div>
+            <div class="built-by-stat"><img src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/Employees.png') }}" alt="" loading="lazy"><div class="num">170+</div><span>Employees</span></div>
+            <div class="built-by-stat"><img src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/GarmentsPerDay.png') }}" alt="" loading="lazy"><div class="num">2,500</div><span>Garments/Day Capacity</span></div>
         </div>
         <div class="built-by-media">
-            <img class="built-by-img" src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/BuiltByIbaCrafts.jpg') }}" alt="">
+            <img class="built-by-img" src="{{ asset('images/site/AboutUs/BuiltByIBACrafts/BuiltByIbaCrafts.jpg') }}" alt="IBA Crafts manufacturing facility" loading="lazy">
         </div>
     </div>
 </div>
@@ -86,19 +87,19 @@
     <div class="about-head-left"><h2>What We Believe</h2></div>
     <div class="card-grid believe-grid">
         <div class="info-card believe-card">
-            <img src="{{ asset('images/site/AboutUs/WhatWeBelieve/Mission.png') }}" alt="">
+            <img src="{{ asset('images/site/AboutUs/WhatWeBelieve/Mission.png') }}" alt="" loading="lazy">
             <div><h3>Mission</h3><p>Make on-demand manufacturing accessible to fashion brands of every size.</p></div>
         </div>
         <div class="info-card believe-card">
-            <img src="{{ asset('images/site/AboutUs/WhatWeBelieve/Vision.png') }}" alt="">
+            <img src="{{ asset('images/site/AboutUs/WhatWeBelieve/Vision.png') }}" alt="" loading="lazy">
             <div><h3>Vision</h3><p>A future in which fashion demand, not forecasts, drives production.</p></div>
         </div>
         <div class="info-card believe-card">
-            <img src="{{ asset('images/site/AboutUs/WhatWeBelieve/Values.png') }}" alt="">
+            <img src="{{ asset('images/site/AboutUs/WhatWeBelieve/Values.png') }}" alt="" loading="lazy">
             <div><h3>Values</h3><p>Innovation, transparency, quality, agility, sustainability.</p></div>
         </div>
         <div class="info-card believe-card">
-            <img src="{{ asset('images/site/AboutUs/WhatWeBelieve/Promise.png') }}" alt="">
+            <img src="{{ asset('images/site/AboutUs/WhatWeBelieve/Promise.png') }}" alt="" loading="lazy">
             <div><h3>Promise</h3><p>Right product, right time, right cost, responsible and reliable.</p></div>
         </div>
     </div>
@@ -108,23 +109,23 @@
     <div class="about-head-left"><h2>Leadership</h2></div>
     <div class="card-grid leadership-grid">
         <div class="leader-card">
-            <img src="{{ asset('images/site/AboutUs/leadership/NitinKapoor.png') }}" alt="">
+            <img src="{{ asset('images/site/AboutUs/leadership/NitinKapoor.png') }}" alt="Nitin Kapoor, CEO and Co-Founder of Sewgo" loading="lazy">
             <div class="leader-info">
-                <h4>Nitin Kapoor</h4><span>CEO &amp; Co-Founder</span>
+                <h3>Nitin Kapoor</h3><span>CEO &amp; Co-Founder</span>
                 <a href="https://www.linkedin.com/in/nitinkapoorjustintime/" class="leader-linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="leader-card">
-            <img src="{{ asset('images/site/AboutUs/leadership/HemaKapoor.png') }}" alt="">
+            <img src="{{ asset('images/site/AboutUs/leadership/HemaKapoor.png') }}" alt="Hema Kapoor, Co-Founder and Creative Director of Sewgo" loading="lazy">
             <div class="leader-info">
-                <h4>Hema Kapoor</h4><span>Co-Founder &amp; Creative Director</span>
+                <h3>Hema Kapoor</h3><span>Co-Founder &amp; Creative Director</span>
                 <a href="https://www.linkedin.com/in/hema-n-kapoor/" class="leader-linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="leader-card">
-            <img src="{{ asset('images/site/AboutUs/leadership/AmitGupta.png') }}" alt="">
+            <img src="{{ asset('images/site/AboutUs/leadership/AmitGupta.png') }}" alt="Amit Gupta, Co-Founder and COO of Sewgo" loading="lazy">
             <div class="leader-info">
-                <h4>Amit Gupta</h4><span>Co-Founder &amp; COO</span>
+                <h3>Amit Gupta</h3><span>Co-Founder &amp; COO</span>
                 <a href="https://www.linkedin.com/company/iba-crafts-private-limited/posts/?feedView=all" class="leader-linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
@@ -134,11 +135,11 @@
 <div class="wrap section" style="padding-top:0;">
     <div class="about-head-left"><h2>Recognition &amp; Trust</h2></div>
     <div class="recognition-logo-row">
-        <img src="{{ asset('images/site/AboutUs/RecognitionTrust/Nasscom.png') }}" alt="NASSCOM Emerge 50">
-        <img src="{{ asset('images/site/AboutUs/RecognitionTrust/Tally.png') }}" alt="Tally MSME Honours">
-        <img src="{{ asset('images/site/AboutUs/RecognitionTrust/EntrepreneurIndia.png') }}" alt="Entrepreneur India">
-        <img src="{{ asset('images/site/AboutUs/RecognitionTrust/StartupIndia.png') }}" alt="#startupindia">
-        <img src="{{ asset('images/site/AboutUs/RecognitionTrust/SustainabilityHandbook.png') }}" alt="Sustainability Handbook Member">
+        <img src="{{ asset('images/site/AboutUs/RecognitionTrust/Nasscom.png') }}" alt="NASSCOM Emerge 50" loading="lazy">
+        <img src="{{ asset('images/site/AboutUs/RecognitionTrust/Tally.png') }}" alt="Tally MSME Honours" loading="lazy">
+        <img src="{{ asset('images/site/AboutUs/RecognitionTrust/EntrepreneurIndia.png') }}" alt="Entrepreneur India" loading="lazy">
+        <img src="{{ asset('images/site/AboutUs/RecognitionTrust/StartupIndia.png') }}" alt="#startupindia" loading="lazy">
+        <img src="{{ asset('images/site/AboutUs/RecognitionTrust/SustainabilityHandbook.png') }}" alt="Sustainability Handbook Member" loading="lazy">
     </div>
 </div>
 

@@ -56,6 +56,15 @@
             <p class="contact-form-sub">Fill in your details and our team will reach out shortly.</p>
             @if (session('success'))
                 <div class="alert-success"><i class="fas fa-circle-check"></i> {{ session('success') }}</div>
+                @push('page-scripts')
+                <script>
+                    // Fires once, only on the redirect-back after a real successful
+                    // POST /contact — never on a plain page load/refresh.
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'generate_lead', { form_name: 'contact_form' });
+                    }
+                </script>
+                @endpush
             @endif
             <form method="POST" action="{{ url('/contact') }}">
                 @csrf

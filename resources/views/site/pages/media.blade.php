@@ -1,5 +1,8 @@
 @extends('site.layouts.app')
 @section('title', 'Media')
+@section('full_title', 'Sewgo in the Media | Press & Coverage')
+@section('meta_description', "See how Sewgo's technology-led Just-in-Time garment manufacturing model is featured in leading publications and industry press.")
+@section('og_image', 'images/site/Media/MediaBanner.jpg')
 
 @push('page-styles')
 <link rel="stylesheet" href="{{ asset('css/site/media.css') }}">
@@ -7,7 +10,7 @@
 
 @section('content')
 <div class="wrap hero-dark">
-    <img class="bg" src="{{ asset('images/site/Media/MediaBanner.jpg') }}" alt="">
+    <img class="bg" src="{{ asset('images/site/Media/MediaBanner.jpg') }}" alt="Sewgo featured in fashion and business media">
     <div class="wrap">
         <h1>In the Media</h1>
         <p class="lead">From leading publications to industry voices, see how Sewgo is redefining the future of fashion manufacturing.</p>
@@ -17,15 +20,15 @@
 <div class="wrap section">
     <div class="media-stats-grid">
         <div class="media-stat-card">
-            <img src="{{ asset('images/site/Media/MediaFeatures.png') }}" alt="">
+            <img src="{{ asset('images/site/Media/MediaFeatures.png') }}" alt="" loading="lazy">
             <div><strong>30+</strong><span>Media Features</span></div>
         </div>
         <div class="media-stat-card">
-            <img src="{{ asset('images/site/Media/IndustryInterviews.png') }}" alt="">
+            <img src="{{ asset('images/site/Media/IndustryInterviews.png') }}" alt="" loading="lazy">
             <div><strong>10+</strong><span>Industry Interviews</span></div>
         </div>
         <div class="media-stat-card">
-            <img src="{{ asset('images/site/Media/GlobalMediaPresence.png') }}" alt="">
+            <img src="{{ asset('images/site/Media/GlobalMediaPresence.png') }}" alt="" loading="lazy">
             <div><strong>Global</strong><span>Media Presence</span></div>
         </div>
     </div>
@@ -34,14 +37,14 @@
 <div class="wrap section media-featured-section" style="padding-top:0;">
     <div class="section-head media-section-head"><h2>Featured In</h2></div>
     <div class="logo-row media-logo-row">
-        <img src="{{ asset('images/site/Media/logo/Forbes.png') }}" alt="Forbes">
-        <img src="{{ asset('images/site/Media/logo/TheEconomicTimes.png') }}" alt="The Economic Times">
-        <!-- <img src="{{ asset('images/site/Media/logo/YourStory.png') }}" alt="YourStory"> -->
-        <img src="{{ asset('images/site/Media/logo/BWBusinessworld.png') }}" alt="BW Businessworld">
-        <img src="{{ asset('images/site/Media/logo/SMEFutures.png') }}" alt="SME Futures">
-        <!-- <img src="{{ asset('images/site/Media/logo/EntrepreneurIndia.png') }}" alt="Entrepreneur India"> -->
-        <!-- <img src="{{ asset('images/site/Media/logo/FashionNetwork.png') }}" alt="Fashion Network"> -->
-        <!-- <img src="{{ asset('images/site/Media/logo/Inc42.png') }}" alt="Inc42"> -->
+        <img src="{{ asset('images/site/Media/logo/Forbes.png') }}" alt="Forbes" loading="lazy">
+        <img src="{{ asset('images/site/Media/logo/TheEconomicTimes.png') }}" alt="The Economic Times" loading="lazy">
+        <!-- <img src="{{ asset('images/site/Media/logo/YourStory.png') }}" alt="YourStory" loading="lazy"> -->
+        <img src="{{ asset('images/site/Media/logo/BWBusinessworld.png') }}" alt="BW Businessworld" loading="lazy">
+        <img src="{{ asset('images/site/Media/logo/SMEFutures.png') }}" alt="SME Futures" loading="lazy">
+        <!-- <img src="{{ asset('images/site/Media/logo/EntrepreneurIndia.png') }}" alt="Entrepreneur India" loading="lazy"> -->
+        <!-- <img src="{{ asset('images/site/Media/logo/FashionNetwork.png') }}" alt="Fashion Network" loading="lazy"> -->
+        <!-- <img src="{{ asset('images/site/Media/logo/Inc42.png') }}" alt="Inc42" loading="lazy"> -->
     </div>
 </div>
 
@@ -134,8 +137,8 @@
         @foreach ($pressItems as $item)
         @php [$logo, $name, $clip] = $item; $link = $item[3] ?? null; @endphp
         <div class="press-card" data-clip="{{ asset('images/site/Media/Press/'.$clip) }}" data-name="{{ $name }}" @if($link) data-link="{{ $link }}" @endif>
-            <img class="press-logo" src="{{ asset('images/site/Media/LogoMedia/'.$logo) }}" alt="{{ $name }}">
-            <img class="press-clip" src="{{ asset('images/site/Media/Press/'.$clip) }}" alt="">
+            <img class="press-logo" src="{{ asset('images/site/Media/LogoMedia/'.$logo) }}" alt="{{ $name }}" loading="lazy">
+            <img class="press-clip" src="{{ asset('images/site/Media/Press/'.$clip) }}" alt="Sewgo press coverage in {{ $name }}" loading="lazy">
         </div>
         @endforeach
     </div>
@@ -143,12 +146,12 @@
 
 <div class="press-modal" id="pressModal">
     <span class="press-modal-close" id="pressModalClose">&times;</span>
-    <img id="pressModalImg" src="" alt="">
+    <img id="pressModalImg" src="" alt="" loading="lazy">
 </div>
 
 <div class="wrap" style="">
     <div class="subscribe-box">
-        <img class="subscribe-icon" src="{{ asset('images/site/Media/StayUpdated.png') }}" alt="">
+        <img class="subscribe-icon" src="{{ asset('images/site/Media/StayUpdated.png') }}" alt="" loading="lazy">
         <div style="">
             <h3 style="font-size:1.1rem; margin-bottom:4px;">Stay Updated</h3>
             <p style="color:var(--muted); font-size:.86rem; margin:0;">Get the latest updates, media features and industry insights straight to your inbox.</p>
