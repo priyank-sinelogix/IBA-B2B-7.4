@@ -161,7 +161,7 @@ class ShipmentController extends Controller
         } else {
             $shipment->load('skus');
             $productValue = $shipment->skus->sum(function ($sku) {
-                return SamplePricing::unitPriceForSample($sku->sample_id) * (int) ($sku->pivot->qty ?? 0);
+                return SamplePricing::unitPriceForSku($sku->sample_id, $sku->sku_code) * (int) ($sku->pivot->qty ?? 0);
             });
             $desiredTotal = round($productValue + (float) ($shipment->shipping_price ?? 0), 2);
         }

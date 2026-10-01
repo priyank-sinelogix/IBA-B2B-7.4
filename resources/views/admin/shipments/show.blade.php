@@ -40,7 +40,7 @@
         @if($shipment->vms_orderid)
         @php
             $productValue = $shipment->skus->sum(function ($sku) {
-                return \App\Models\SamplePricing::unitPriceForSample($sku->sample_id) * (int) ($sku->pivot->qty ?? 0);
+                return \App\Models\SamplePricing::unitPriceForSku($sku->sample_id, $sku->sku_code) * (int) ($sku->pivot->qty ?? 0);
             });
             $totalCharge = $productValue + (float) ($shipment->shipping_price ?? 0);
         @endphp
@@ -52,7 +52,7 @@
                     <thead><tr><th>SKU</th><th>Size</th><th class="text-right">Qty</th><th class="text-right">Rate</th><th class="text-right">Value</th></tr></thead>
                     <tbody>
                     @forelse($shipment->skus as $sku)
-                        @php $rate = \App\Models\SamplePricing::unitPriceForSample($sku->sample_id); @endphp
+                        @php $rate = \App\Models\SamplePricing::unitPriceForSku($sku->sample_id, $sku->sku_code); @endphp
                         <tr>
                             <td>{{ $sku->sku_code }}</td>
                             <td>{{ $sku->size ?? '—' }}</td>

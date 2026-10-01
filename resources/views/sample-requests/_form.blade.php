@@ -75,15 +75,15 @@
                     @forelse($sampleRequest->sizeChartRows ?? [] as $row)
                     <tr>
                         <td><input type="text" name="specification[]" class="form-control form-control-sm" value="{{ $row->specification }}"></td>
-                        <td><input type="number" step="0.01" name="xs[]" class="form-control form-control-sm" value="{{ $row->xs }}"></td>
-                        <td><input type="number" step="0.01" name="s[]" class="form-control form-control-sm" value="{{ $row->s }}"></td>
-                        <td><input type="number" step="0.01" name="m[]" class="form-control form-control-sm" value="{{ $row->m }}"></td>
-                        <td><input type="number" step="0.01" name="l[]" class="form-control form-control-sm" value="{{ $row->l }}"></td>
-                        <td><input type="number" step="0.01" name="xl[]" class="form-control form-control-sm" value="{{ $row->xl }}"></td>
-                        <td><input type="number" step="0.01" name="xxl[]" class="form-control form-control-sm" value="{{ $row->xxl }}"></td>
-                        <td><input type="number" step="0.01" name="xxxl[]" class="form-control form-control-sm" value="{{ $row->xxxl }}"></td>
-                        <td><input type="number" step="0.01" name="xxxxl[]" class="form-control form-control-sm" value="{{ $row->xxxxl }}"></td>
-                        <td><input type="number" step="0.01" name="xxxxxl[]" class="form-control form-control-sm" value="{{ $row->xxxxxl }}"></td>
+                        <td><input type="number" step="0.01" name="xs[]" class="form-control form-control-sm" value="{{ \App\Models\SizeChartRow::fmt($row->xs) }}"></td>
+                        <td><input type="number" step="0.01" name="s[]" class="form-control form-control-sm" value="{{ \App\Models\SizeChartRow::fmt($row->s) }}"></td>
+                        <td><input type="number" step="0.01" name="m[]" class="form-control form-control-sm" value="{{ \App\Models\SizeChartRow::fmt($row->m) }}"></td>
+                        <td><input type="number" step="0.01" name="l[]" class="form-control form-control-sm" value="{{ \App\Models\SizeChartRow::fmt($row->l) }}"></td>
+                        <td><input type="number" step="0.01" name="xl[]" class="form-control form-control-sm" value="{{ \App\Models\SizeChartRow::fmt($row->xl) }}"></td>
+                        <td><input type="number" step="0.01" name="xxl[]" class="form-control form-control-sm" value="{{ \App\Models\SizeChartRow::fmt($row->xxl) }}"></td>
+                        <td><input type="number" step="0.01" name="xxxl[]" class="form-control form-control-sm" value="{{ \App\Models\SizeChartRow::fmt($row->xxxl) }}"></td>
+                        <td><input type="number" step="0.01" name="xxxxl[]" class="form-control form-control-sm" value="{{ \App\Models\SizeChartRow::fmt($row->xxxxl) }}"></td>
+                        <td><input type="number" step="0.01" name="xxxxxl[]" class="form-control form-control-sm" value="{{ \App\Models\SizeChartRow::fmt($row->xxxxxl) }}"></td>
                         <td><button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('tr').remove()">&times;</button></td>
                     </tr>
                     @empty

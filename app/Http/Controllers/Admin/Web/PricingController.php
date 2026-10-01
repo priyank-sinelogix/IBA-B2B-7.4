@@ -37,14 +37,42 @@ class PricingController extends Controller
 
     public function store(Request $request)
     {
-        $data = $this->validated($request);
-        $data['cogp'] = SamplePricing::calculateCogp($data);
-        $data['price_usd'] = $data['cogp'] + $data['margin'];
+        $data = $request->validate([
+            'sample_id' => 'required|exists:samples,id',
+            'styles' => 'required|array|min:1',
+            'styles.*' => 'string|max:255',
+            'fabric' => 'nullable|string|max:255',
+            'fabric_cost' => 'required|numeric|min:0',
+            'accessories_cost' => 'required|numeric|min:0',
+            'operational_cost' => 'required|numeric|min:0',
+            'stitching_cost' => 'required|numeric|min:0',
+            'margin' => 'required|numeric|min:0',
+        ]);
+        $cogp = SamplePricing::calculateCogp($data);
+        $priceUsd = $cogp + $data['margin'];
 
-        $pricing = SamplePricing::create($data);
-        AuditLog::record('pricing.created', $pricing, null, $pricing->only('style', 'price_usd'));
+        // One SKU can be selected, or several at once (e.g. every size under a
+        // sample that shares the same cost breakdown) — each gets its own
+        // pricing row so unitPriceForSku() can resolve it individually.
+        foreach (array_unique($data['styles']) as $style) {
+            $pricing = SamplePricing::create([
+                'sample_id' => $data['sample_id'],
+                'style' => $style,
+                'fabric' => $data['fabric'] ?? null,
+                'fabric_cost' => $data['fabric_cost'],
+                'accessories_cost' => $data['accessories_cost'],
+                'operational_cost' => $data['operational_cost'],
+                'stitching_cost' => $data['stitching_cost'],
+                'cogp' => $cogp,
+                'margin' => $data['margin'],
+                'price_usd' => $priceUsd,
+            ]);
+            AuditLog::record('pricing.created', $pricing, null, $pricing->only('style', 'price_usd'));
+        }
 
-        return redirect('/admin/pricing?sample_id='.$data['sample_id'])->with('success', 'Pricing entry added.');
+        $count = count(array_unique($data['styles']));
+
+        return redirect('/admin/pricing?sample_id='.$data['sample_id'])->with('success', $count.' pricing '.($count === 1 ? 'entry' : 'entries').' added.');
     }
 
     public function edit(SamplePricing $pricing)

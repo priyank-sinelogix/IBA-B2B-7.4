@@ -48,4 +48,27 @@ class SamplePricing extends Model
 
         return (float) (self::where('sample_id', $sampleId)->latest()->value('price_usd') ?? 0);
     }
+
+    /**
+     * The unit sale price for one specific SKU — matched on its own sample_id
+     * + style (style holds the SKU/display code, see admin.pricing.form).
+     * Falls back to unitPriceForSample() when no SKU-specific entry exists,
+     * so samples priced the old way (one entry, no per-size breakdown) still
+     * resolve a price instead of silently charging 0.
+     */
+    public static function unitPriceForSku(?int $sampleId, ?string $skuCode): float
+    {
+        if (!$sampleId) {
+            return 0.0;
+        }
+
+        if ($skuCode) {
+            $price = self::where('sample_id', $sampleId)->where('style', $skuCode)->latest()->value('price_usd');
+            if ($price !== null) {
+                return (float) $price;
+            }
+        }
+
+        return self::unitPriceForSample($sampleId);
+    }
 }

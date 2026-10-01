@@ -123,8 +123,8 @@
                     @foreach($sampleRequest->sizeChartRows as $row)
                         <tr>
                             <td>{{ $row->specification }}</td>
-                            <td>{{ $row->xs }}</td><td>{{ $row->s }}</td><td>{{ $row->m }}</td><td>{{ $row->l }}</td>
-                            <td>{{ $row->xl }}</td><td>{{ $row->xxl }}</td><td>{{ $row->xxxl }}</td><td>{{ $row->xxxxl }}</td><td>{{ $row->xxxxxl }}</td>
+                            <td>{{ \App\Models\SizeChartRow::fmt($row->xs) }}</td><td>{{ \App\Models\SizeChartRow::fmt($row->s) }}</td><td>{{ \App\Models\SizeChartRow::fmt($row->m) }}</td><td>{{ \App\Models\SizeChartRow::fmt($row->l) }}</td>
+                            <td>{{ \App\Models\SizeChartRow::fmt($row->xl) }}</td><td>{{ \App\Models\SizeChartRow::fmt($row->xxl) }}</td><td>{{ \App\Models\SizeChartRow::fmt($row->xxxl) }}</td><td>{{ \App\Models\SizeChartRow::fmt($row->xxxxl) }}</td><td>{{ \App\Models\SizeChartRow::fmt($row->xxxxxl) }}</td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -22,8 +22,16 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Style (SKU / display code)</label>
-                <input type="text" name="style" class="form-control" value="{{ old('style', $pricing->style ?? '') }}" placeholder="LBD-LUCREZIA-MCS-BLK-1802" required>
+                @if(isset($pricing))
+                    <label>Style (SKU / display code)</label>
+                    <select name="style" id="styleSelect" class="form-control">
+                        <option value="{{ $pricing->style }}" selected>{{ $pricing->style }}</option>
+                    </select>
+                @else
+                    <label>SKU(s)</label>
+                    <select name="styles[]" id="styleSelect" class="form-control" multiple="multiple"></select>
+                    <small class="text-muted">Select a Sample first, then pick one or more of its SKUs — each gets its own pricing entry with the same costs below.</small>
+                @endif
             </div>
             <div class="form-group">
                 <label>Fabric</label>
@@ -77,9 +85,37 @@
     document.addEventListener('DOMContentLoaded', function () {
         ibaAjaxSelect2('#sampleSelect', 'samples', { placeholder: 'Search sample / style...' });
 
+        function currentSampleId() {
+            return $('#sampleSelect').val() || '';
+        }
+
+        var isEditMode = {{ isset($pricing) ? 'true' : 'false' }};
+
+        $('#styleSelect').select2({
+            theme: 'bootstrap4',
+            width: '100%',
+            placeholder: isEditMode ? 'Select SKU...' : 'Select SKU(s)...',
+            allowClear: isEditMode,
+            minimumInputLength: 0,
+            ajax: {
+                url: '{{ url('/admin/ajax/search') }}/skus',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return { sample_id: currentSampleId(), q: params.term || '' };
+                },
+                processResults: function (data) {
+                    return { results: data.results };
+                },
+                cache: true
+            }
+        });
+
         $('#sampleSelect').on('select2:select', function (e) {
             var data = e.params.data || {};
             document.getElementById('fabricInput').value = data.fabric || '';
+            // Sample changed — any previously picked SKUs belonged to the old sample.
+            $('#styleSelect').val(null).trigger('change');
         });
     });
     // Visual convenience only — the server recalculates COGP/Price from the actual submitted values.

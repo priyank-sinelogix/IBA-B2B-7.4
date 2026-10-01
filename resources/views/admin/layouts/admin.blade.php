@@ -46,6 +46,56 @@
             border-color: var(--iba-teal);
             box-shadow: 0 0 0 .2rem rgba(15,185,138,.15);
         }
+        /* Select2 multi-select (e.g. Pricing form's SKU picker) — same form-control
+           look as the single-select above, plus chip styling (none of this existed
+           before, so chips fell back to the unstyled select2 default and overlapped). */
+        .select2-container--bootstrap4 .select2-selection--multiple{
+            min-height: calc(2.25rem + 2px);
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            padding: .25rem .5rem;
+        }
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__rendered{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: .3rem;
+            padding: 0;
+            margin: 0;
+        }
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice{
+            background-color: var(--iba-teal);
+            border: none;
+            border-radius: .2rem;
+            color: #fff;
+            padding: .2rem .5rem;
+            margin: 0;
+            font-size: .85rem;
+            display: flex;
+            align-items: center;
+        }
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove{
+            color: #fff;
+            margin-right: .4rem;
+            font-weight: 700;
+            order: -1;
+        }
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove:hover{
+            color: #fff;
+            opacity: .7;
+        }
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-search--inline .select2-search__field{
+            margin: .2rem 0 0;
+            padding: 0 .25rem;
+        }
+        .select2-container--bootstrap4.select2-container--focus .select2-selection--multiple,
+        .select2-container--bootstrap4.select2-container--open .select2-selection--multiple{
+            border-color: var(--iba-teal);
+            box-shadow: 0 0 0 .2rem rgba(15,185,138,.15);
+        }
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__clear{
+            margin-left: auto;
+        }
         .select2-dropdown{
             border-color: #ced4da;
             border-radius: .25rem;

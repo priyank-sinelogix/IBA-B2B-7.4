@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Order;
 use App\Models\Sample;
+use App\Models\Sku;
 use App\Support\VmsOrderMatcher;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -25,6 +26,12 @@ class AjaxSearchController extends Controller
             $query = Sample::query()->orderBy('style_name');
         } elseif ($type === 'orders') {
             $query = Order::query()->orderBy('order_no');
+        } elseif ($type === 'skus') {
+            $sampleId = (int) $request->get('sample_id');
+            if (!$sampleId) {
+                return response()->json(['results' => [], 'pagination' => ['more' => false]]);
+            }
+            $query = Sku::query()->where('sample_id', $sampleId)->orderBy('size');
         } else {
             $query = null;
         }
@@ -45,6 +52,8 @@ class AjaxSearchController extends Controller
                     $w->where('style_name', 'like', "%{$q}%")->orWhere('sample_code', 'like', "%{$q}%");
                 } elseif ($type === 'orders') {
                     $w->where('order_no', 'like', "%{$q}%")->orWhere('style_name', 'like', "%{$q}%");
+                } elseif ($type === 'skus') {
+                    $w->where('sku_code', 'like', "%{$q}%");
                 }
             });
         }
@@ -67,6 +76,12 @@ class AjaxSearchController extends Controller
                     'text' => $item->sample_code.' — '.$item->style_name,
                     'fabric' => $item->fabric,
                     'colour' => $item->color,
+                ];
+            }
+            if ($type === 'skus') {
+                return [
+                    'id' => $item->sku_code,
+                    'text' => $item->sku_code.($item->size ? ' — '.$item->size : ''),
                 ];
             }
             return ['id' => $item->id, 'text' => $item->order_no.' — '.$item->style_name];
