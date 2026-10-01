@@ -54,6 +54,35 @@ img { max-width: 100%; display: block; }
     .wrap { margin: 0 12px; padding: 0 6px; }
 }
 
+/* ===== Scroll to top ===== */
+.scroll-top-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #fff;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(15, 42, 74, .25);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity .25s ease, transform .25s ease, background .2s ease;
+    z-index: 999;
+}
+.scroll-top-btn.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.scroll-top-btn:hover { background: var(--teal-dark); }
+@media (max-width: 700px) {
+    .scroll-top-btn { right: 16px; bottom: 16px; width: 42px; height: 42px; font-size: 1rem; }
+}
+
 /* ===== Buttons ===== */
 .btn {
     display: inline-flex; align-items: center; gap: 8px;

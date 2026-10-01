@@ -68,6 +68,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // ============================================
+    // Scroll-to-top button
+    // ============================================
+    var scrollTopBtn = document.getElementById('scrollTopBtn');
+    if (scrollTopBtn) {
+        var toggleScrollTopBtn = function () {
+            scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+        };
+        toggleScrollTopBtn();
+        window.addEventListener('scroll', toggleScrollTopBtn);
+        scrollTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
     // Registration / sign-up: the public site's only account-entry form is
     // Partner Login (there is no separate self-serve sign-up form).
     var loginForm = document.getElementById('loginForm');
