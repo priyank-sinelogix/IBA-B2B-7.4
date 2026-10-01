@@ -78,6 +78,8 @@ class LedgerController extends Controller
      */
     public function destroy(LedgerEntry $entry)
     {
+        abort_unless(auth()->user()->isSuperAdmin(), 403, 'Only super admins can delete ledger entries.');
+
         DB::transaction(function () use ($entry) {
             $company = Company::lockForUpdate()->findOrFail($entry->company_id);
             $target = $entry->isCreditLimitEntry() ? 'credit_limit' : 'used_balance';

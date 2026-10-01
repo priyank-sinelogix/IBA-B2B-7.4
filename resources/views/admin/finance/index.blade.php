@@ -42,10 +42,12 @@
                     </td>
                     <td class="text-right">{{ \App\Support\Currency::display($entry->value_after, $entry->company->currency) }}</td>
                     <td>
-                        <form method="POST" action="{{ url('/admin/finance/'.$entry->id) }}" class="d-inline" onsubmit="return confirm('Delete this ledger entry? The company\'s balance will be corrected to remove its effect. This cannot be undone.')">
-                            @csrf @method('DELETE')
-                            <button class="btn btn-sm btn-outline-danger">Delete</button>
-                        </form>
+                        @if(auth()->user()->isSuperAdmin())
+                            <form method="POST" action="{{ url('/admin/finance/'.$entry->id) }}" class="d-inline delete-ledger-form">
+                                @csrf @method('DELETE')
+                                <button type="button" class="btn btn-sm btn-outline-danger btn-delete-ledger">Delete</button>
+                            </form>
+                        @endif
                     </td>
                 </tr>
             @empty
@@ -57,4 +59,38 @@
     </div>
     <div class="card-footer">{{ $entries->appends(request()->query())->links() }}</div>
 </div>
+
+@if(auth()->user()->isSuperAdmin())
+<div class="modal fade" id="deleteLedgerModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete this ledger entry?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                The company's balance will be corrected to remove this entry's effect. This cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteLedgerBtn">Yes, Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var formToDelete = null;
+
+        $(document).on('click', '.btn-delete-ledger', function () {
+            formToDelete = $(this).closest('form');
+            $('#deleteLedgerModal').modal('show');
+        });
+
+        $('#confirmDeleteLedgerBtn').on('click', function () {
+            if (formToDelete) formToDelete.submit();
+        });
+    });
+</script>
+@endif
 @endsection
