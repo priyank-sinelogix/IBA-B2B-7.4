@@ -69,10 +69,27 @@ class LedgerController extends Controller
         return redirect('/admin/finance')->with('success', 'Ledger entry recorded.');
     }
 
+    /**
+     * Deletes one ledger entry and reverses its effect on the company's
+     * balance — unlike a normal correction (a new reversing entry, leaving
+     * both in the history) this removes the mistaken entry outright, for
+     * when the entry itself should never have existed (wrong company, typo'd
+     * amount, duplicate, etc).
+     */
     public function destroy(LedgerEntry $entry)
     {
-        // Deliberately no delete — financial records should stay immutable for audit purposes.
-        // Post a reversing entry (credit_note/debit_note) instead.
-        abort(405, 'Ledger entries are immutable. Post a reversing entry instead.');
+        DB::transaction(function () use ($entry) {
+            $company = Company::lockForUpdate()->findOrFail($entry->company_id);
+            $target = $entry->isCreditLimitEntry() ? 'credit_limit' : 'used_balance';
+            $sign = str_ends_with($entry->type, '_increase') ? -1 : 1;
+            $newValue = (float) $company->{$target} + ($sign * (float) $entry->amount);
+            $company->update([$target => $newValue]);
+
+            AuditLog::record('ledger.entry_deleted', $entry, $entry->only('type', 'amount', 'value_after'), [$target => $newValue]);
+
+            $entry->delete();
+        });
+
+        return redirect('/admin/finance')->with('success', 'Ledger entry deleted and balance corrected.');
     }
 }

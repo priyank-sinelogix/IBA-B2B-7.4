@@ -25,7 +25,7 @@
         </script>
         <div class="table-responsive">
         <table class="table table-hover mb-0">
-            <thead><tr><th>Date</th><th>Client</th><th>Type</th><th>Reference</th><th>Description</th><th class="text-right">Amount</th><th class="text-right">New Value</th></tr></thead>
+            <thead><tr><th>Date</th><th>Client</th><th>Type</th><th>Reference</th><th>Description</th><th class="text-right">Amount</th><th class="text-right">New Value</th><th></th></tr></thead>
             <tbody>
             @forelse($entries as $entry)
                 <tr>
@@ -41,9 +41,15 @@
                         @endif
                     </td>
                     <td class="text-right">{{ \App\Support\Currency::display($entry->value_after, $entry->company->currency) }}</td>
+                    <td>
+                        <form method="POST" action="{{ url('/admin/finance/'.$entry->id) }}" class="d-inline" onsubmit="return confirm('Delete this ledger entry? The company\'s balance will be corrected to remove its effect. This cannot be undone.')">
+                            @csrf @method('DELETE')
+                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
-                <tr><td colspan="7" class="text-center text-muted p-4">No ledger entries yet.</td></tr>
+                <tr><td colspan="8" class="text-center text-muted p-4">No ledger entries yet.</td></tr>
             @endforelse
             </tbody>
         </table>
