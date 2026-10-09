@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\ShipmentWebController;
 use App\Http\Controllers\Web\FinanceWebController;
 use App\Http\Controllers\Web\MessageWebController;
 use App\Http\Controllers\Web\SampleRequestWebController;
+use App\Http\Controllers\Web\BrandingAssetWebController;
 use App\Http\Controllers\Admin\Web\AdminAuthController;
 use App\Http\Controllers\Admin\Web\CompanyController;
 use App\Http\Controllers\Admin\Web\LedgerController;
@@ -76,6 +77,12 @@ Route::middleware(['auth', 'customer.scope'])->group(function () {
     Route::get('/sample-requests/{sampleRequest}/edit', [SampleRequestWebController::class, 'edit']);
     Route::put('/sample-requests/{sampleRequest}', [SampleRequestWebController::class, 'update']);
 
+    Route::get('/branding-assets', [BrandingAssetWebController::class, 'index']);
+    Route::post('/branding-assets/request', [BrandingAssetWebController::class, 'storeRequest']);
+    Route::get('/branding-assets/{brandingAsset}', [BrandingAssetWebController::class, 'show']);
+    Route::post('/branding-assets/{brandingAsset}/approve', [BrandingAssetWebController::class, 'approve']);
+    Route::post('/branding-assets/{brandingAsset}/revise', [BrandingAssetWebController::class, 'requestRevision']);
+
     Route::get('/orders', [OrderWebController::class, 'index']);
 
     Route::get('/shipments', [ShipmentWebController::class, 'index']);
@@ -118,6 +125,15 @@ Route::middleware(['auth', 'role:admin,super_admin'])->prefix('admin')->group(fu
     Route::get('/sample-requests/{sampleRequest}', [\App\Http\Controllers\Admin\Web\SampleRequestController::class, 'show']);
     Route::post('/sample-requests/{sampleRequest}/status', [\App\Http\Controllers\Admin\Web\SampleRequestController::class, 'updateStatus']);
     Route::post('/sample-requests/{sampleRequest}/convert', [\App\Http\Controllers\Admin\Web\SampleRequestController::class, 'convert']);
+
+    Route::resource('branding-assets', \App\Http\Controllers\Admin\Web\BrandingAssetController::class);
+    Route::post('/branding-assets/{brandingAsset}/comment', [\App\Http\Controllers\Admin\Web\BrandingAssetController::class, 'storeComment']);
+
+    // Client-submitted new branding asset requests
+    Route::get('/branding-asset-requests', [\App\Http\Controllers\Admin\Web\BrandingAssetRequestController::class, 'index']);
+    Route::get('/branding-asset-requests/{brandingAssetRequest}', [\App\Http\Controllers\Admin\Web\BrandingAssetRequestController::class, 'show']);
+    Route::post('/branding-asset-requests/{brandingAssetRequest}/status', [\App\Http\Controllers\Admin\Web\BrandingAssetRequestController::class, 'updateStatus']);
+    Route::post('/branding-asset-requests/{brandingAssetRequest}/convert', [\App\Http\Controllers\Admin\Web\BrandingAssetRequestController::class, 'convert']);
 
     // SKU generation
     Route::resource('skus', SkuController::class)->except(['show']);

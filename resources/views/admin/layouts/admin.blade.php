@@ -204,6 +204,16 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ url('/admin/branding-asset-requests') }}" class="nav-link {{ request()->is('admin/branding-asset-requests*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-plus-circle"></i><p>Branding Requests</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/admin/branding-assets') }}" class="nav-link {{ request()->is('admin/branding-assets*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tags"></i><p>Branding & Labels</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ url('/admin/skus') }}" class="nav-link {{ request()->is('admin/skus*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-barcode"></i><p>SKUs</p>
                         </a>

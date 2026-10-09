@@ -139,8 +139,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/documents') }}" class="nav-link {{ request()->is('documents*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-folder"></i><p>Documents</p>
+                        <a href="{{ url('/branding-assets') }}" class="nav-link {{ request()->is('branding-assets*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tags"></i><p>Branding & Labels</p>
                         </a>
                     </li>
                 </ul>

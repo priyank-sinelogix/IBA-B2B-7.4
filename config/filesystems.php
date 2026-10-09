@@ -51,7 +51,11 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            // No hardcoded 'url' here on purpose: with APP_URL pinned to one port,
+            // every image URL broke whenever the app was served from a different
+            // port/host (local dev often runs serve on a different port than
+            // APP_URL). Omitting it makes Storage::url() return a host-relative
+            // "/storage/..." path instead, which resolves correctly everywhere.
             'visibility' => 'public',
         ],
 

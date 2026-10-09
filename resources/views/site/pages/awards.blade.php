@@ -42,6 +42,8 @@
         <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/sme.png') }}" alt="" loading="lazy"><h3>India SME 100</h3><p>Honored as one of India's leading small and medium enterprises for outstanding business performance.</p><div class="year">2023</div></div>
         <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/Top100.png') }}" alt="" loading="lazy"><h3>Top 100 Startups to Watch Out for 2025</h3><p>Moomaya (By IBA Crafts), led by Nitin Kapoor, was featured among Forbes India’s Top 100 Startups to Watch Out for 2025. </p><div class="year">2025</div></div>
         <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/BuisnessWorld.png') }}" alt="" loading="lazy"><h3>BW Retail World 40 Under 40 Award</h3><p>Proudly recognized among BW Retail World’s 40 Under 40, an esteemed recognition celebrating young leaders who are shaping the future of India’s retail industry through innovation, entrepreneurial vision, leadership, and business excellence.</p><div class="year">2023</div></div>
+        <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/EconomicsTimes.png') }}" alt="" loading="lazy"><h3>India Cross-Border Excellence Awards 2026 – Winner</h3><p>Recognized as the Winner in the E-Commerce – Fashion &amp; Apparel category, presented by The Economic Times and Payoneer.</p><div class="year">2026</div></div>
+    
     </div>
 </div>
 
