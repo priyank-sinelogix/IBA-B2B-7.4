@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>@yield('title', 'Dashboard') | IBA Partner Portal</title>
+    <link rel="icon" href="{{ asset('images/site/favicon_icon.png') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
@@ -15,8 +16,9 @@
             --iba-navy:#0f2a4a;
             --iba-teal:#0fb98a;
         }
-        .brand-link{ background:#fff; border-bottom:1px solid #eef0f2; }
+        .brand-link{ background:#fff; border-bottom:1px solid #eef0f2; display:flex; align-items:center; gap:10px; }
         .brand-text{ color:var(--iba-navy); font-weight:800; letter-spacing:.5px; }
+        .brand-image-sewgo{ height:35px; width:auto; }
         .main-sidebar{ background:#fff; }
         .nav-sidebar .nav-link.active{ background:#eaf6ff; color:var(--iba-navy); border-radius:8px; font-weight:600; }
         .nav-sidebar .nav-link{ color:#4a5568; border-radius:8px; margin-bottom:2px; }
@@ -83,6 +85,7 @@
     <!-- Sidebar -->
     <aside class="main-sidebar sidebar-light-primary elevation-1">
         <a href="{{ url('/dashboard') }}" class="brand-link">
+            <img src="{{ asset('images/site/logo.png') }}" alt="Sewgo" class="brand-image-sewgo">
             <span class="brand-text">IBA <small class="d-block text-muted" style="font-size:.6rem;letter-spacing:2px;">JUST IN TIME GARMENTS</small></span>
         </a>
         <div class="sidebar">

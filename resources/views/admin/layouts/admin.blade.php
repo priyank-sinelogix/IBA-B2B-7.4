@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>@yield('title', 'Admin') | IBA Admin Panel</title>
+    <link rel="icon" href="{{ asset('images/site/favicon_icon.png') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css">
@@ -129,8 +130,9 @@
             border-color: var(--iba-teal);
             box-shadow: 0 0 0 .2rem rgba(15,185,138,.15);
         }
-        .brand-link{ background:var(--iba-navy); border-bottom:1px solid rgba(255,255,255,.1); }
+        .brand-link{ background:var(--iba-navy); border-bottom:1px solid rgba(255,255,255,.1); display:flex; align-items:center; gap:10px; }
         .brand-text{ color:#fff; font-weight:800; letter-spacing:.5px; }
+        .brand-image-sewgo{ height:45px; width:auto; filter:brightness(0) invert(1); }
         .main-sidebar{ background:var(--iba-navy); }
         .nav-sidebar .nav-link{ color:#c7d2e0; border-radius:8px; margin-bottom:2px; }
         .nav-sidebar .nav-link.active{ background:var(--iba-teal); color:#fff; font-weight:600; }
@@ -178,6 +180,7 @@
 
     <aside class="main-sidebar sidebar-dark-primary elevation-1">
         <a href="{{ url('/admin/dashboard') }}" class="brand-link">
+            <img src="{{ asset('images/site/logo.png') }}" alt="Sewgo" class="brand-image-sewgo">
             <span class="brand-text">IBA <small class="d-block text-white-50" style="font-size:.6rem;letter-spacing:2px;">ADMIN PANEL</small></span>
         </a>
         <div class="sidebar">
