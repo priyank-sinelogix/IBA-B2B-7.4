@@ -11,11 +11,11 @@
             </div>
             <div class="card-body text-center">
                 <img src="{{ optional($brandingAsset->latestVersion)->coverUrl() ?? 'https://via.placeholder.com/300' }}"
-                     class="img-fluid rounded mb-3" style="max-height:300px;object-fit:cover;">
+                     class="img-fluid rounded mb-3 lightbox-img" style="max-height:300px;object-fit:cover;">
                 @if($brandingAsset->latestVersion && $brandingAsset->latestVersion->images->count() > 1)
                 <div class="mb-3">
                     @foreach($brandingAsset->latestVersion->images as $img)
-                        <img src="{{ $img->url() }}" style="width:56px;height:56px;object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border">
+                        <img src="{{ $img->url() }}" style="width:56px;height:56px;object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border lightbox-img">
                     @endforeach
                 </div>
                 @endif
@@ -46,7 +46,7 @@
                 <ul class="list-group list-group-flush">
                     @foreach($brandingAsset->versions->reverse() as $v)
                     <li class="list-group-item d-flex align-items-center">
-                        <img src="{{ $v->coverUrl() }}" style="width:40px;height:40px;object-fit:cover;border-radius:6px;" class="mr-2 border">
+                        <img src="{{ $v->coverUrl() }}" style="width:40px;height:40px;object-fit:cover;border-radius:6px;" class="mr-2 border lightbox-img">
                         <div>
                             <strong>v{{ $v->version_no }}</strong>
                             <div class="text-muted small">{{ $v->notes ?: 'No notes' }}</div>

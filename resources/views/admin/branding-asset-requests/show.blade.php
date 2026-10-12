@@ -1,5 +1,5 @@
 @extends('admin.layouts.admin')
-@section('title', 'Branding Asset Request — '.$brandingAssetRequest->name)
+@section('title', 'Branding & Labels Request — '.$brandingAssetRequest->name)
 
 @section('content')
 <div class="row">
@@ -8,11 +8,11 @@
             <div class="card-header"><h3 class="card-title">Request Details</h3></div>
             <div class="card-body">
                 @if($brandingAssetRequest->images->count())
-                <img src="{{ $brandingAssetRequest->images->first()->url() }}" class="img-fluid rounded mb-2" style="max-height:240px;object-fit:cover;">
+                <img src="{{ $brandingAssetRequest->images->first()->url() }}" class="img-fluid rounded mb-2 lightbox-img" style="max-height:240px;object-fit:cover;">
                 @if($brandingAssetRequest->images->count() > 1)
                 <div class="mb-3">
                     @foreach($brandingAssetRequest->images as $img)
-                        <img src="{{ $img->url() }}" width="56" height="56" style="object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border">
+                        <img src="{{ $img->url() }}" width="56" height="56" style="object-fit:cover;border-radius:6px;" class="mr-1 mb-1 border lightbox-img">
                     @endforeach
                 </div>
                 @endif
@@ -71,7 +71,7 @@
         </div>
         @else
         <div class="card">
-            <div class="card-header"><h3 class="card-title">Accept & Convert to Branding Asset</h3></div>
+            <div class="card-header"><h3 class="card-title">Accept & Convert to Branding & Labels</h3></div>
             <form method="POST" action="{{ url('/admin/branding-asset-requests/'.$brandingAssetRequest->id.'/convert') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary">Convert to Branding Asset</button>
+                    <button class="btn btn-primary">Convert to Branding & Labels</button>
                 </div>
             </form>
         </div>

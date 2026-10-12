@@ -156,7 +156,7 @@
             <form method="POST" action="{{ url('/branding-assets/request') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title">Request New Branding Asset</h5>
+                    <h5 class="modal-title">Request New Branding & Labels</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">

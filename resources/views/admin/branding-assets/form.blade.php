@@ -1,10 +1,10 @@
 @extends('admin.layouts.admin')
-@section('title', $brandingAsset->exists ? 'Edit Branding Asset' : 'New Branding Asset')
+@section('title', $brandingAsset->exists ? 'Edit Branding & Labels' : 'New Branding & Labels')
 
 @section('content')
 <div class="card col-lg-7 p-0">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h3 class="card-title">{{ $brandingAsset->exists ? 'Edit' : 'New' }} Branding Asset</h3>
+        <h3 class="card-title">{{ $brandingAsset->exists ? 'Edit' : 'New' }} Branding & Labels</h3>
         @if($brandingAsset->exists)
         <a href="{{ url('/admin/branding-assets/'.$brandingAsset->id) }}" class="btn btn-sm btn-outline-primary">View</a>
         @endif

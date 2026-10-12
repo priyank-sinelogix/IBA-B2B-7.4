@@ -205,7 +205,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ url('/admin/branding-asset-requests') }}" class="nav-link {{ request()->is('admin/branding-asset-requests*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-plus-circle"></i><p>Branding Requests</p>
+                            <i class="nav-icon fas fa-plus-circle"></i><p>Branding & Labels Request</p>
                         </a>
                     </li>
                     <li class="nav-item">

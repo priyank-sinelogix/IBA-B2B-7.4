@@ -1,9 +1,9 @@
 @extends('admin.layouts.admin')
-@section('title', 'Branding Asset Requests')
+@section('title', 'Branding & Labels Request')
 
 @section('content')
 <div class="card">
-    <div class="card-header"><h3 class="card-title">New Branding Asset Requests — All Clients</h3></div>
+    <div class="card-header"><h3 class="card-title">New Branding & Labels Requests — All Clients</h3></div>
     <div class="card-body p-0">
         <form class="d-flex flex-wrap p-3 border-bottom" method="GET" style="row-gap:.5rem;">
             <select name="status" class="form-control" style="max-width:220px;" onchange="this.form.submit()">
