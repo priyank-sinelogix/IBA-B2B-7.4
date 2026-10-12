@@ -106,11 +106,11 @@
                             <i class="nav-icon fas fa-tshirt"></i><p>Sampling</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="{{ url('/samples?status=pending') }}" class="nav-link">
                             <i class="nav-icon fas fa-check-circle"></i><p>Approvals</p>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a href="{{ url('/orders') }}" class="nav-link {{ request()->is('orders*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-box"></i><p>Orders</p>
