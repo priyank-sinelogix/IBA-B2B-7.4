@@ -21,7 +21,7 @@
     <div class="section-head"><h2>Celebrating Excellence</h2><p>Our journey of innovation and commitment has been recognized by leading organizations across industry and government.</p></div>
 
     <div class="card-grid awards-grid">
-        <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/EconomicsTimes.png') }}" alt="" loading="lazy"><h3>ET MSME Awards 2025 Finalist</h3><p>Recognized for innovation, excellence, and impact in India's MSME sector.</p><div class="year">2025</div></div>
+        <div class="badge-card"><img class="badge-icon" style="width:75px;" src="{{ asset('images/site/Awards/Award/EconomicsTimes.png') }}" alt="" loading="lazy"><h3>ET MSME Awards 2025 Finalist</h3><p>Recognized for innovation, excellence, and impact in India's MSME sector.</p><div class="year">2025</div></div>
         <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/Nascom.png') }}" alt="" loading="lazy"><h3>NASSCOM Deep Tech Emerge 50 Award 2025</h3><p>Selected among India's leading deep-tech startups in manufacturing innovation.</p><div class="year">2025</div></div>
         <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/Seoul.png') }}" alt="" loading="lazy"><h3>Seoul Design Award 2025 Finalist</h3><p>Recognized for pioneering sustainable innovation in garment manufacturing.</p><div class="year">2025</div></div>
         <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/Xindus.png') }}" alt="" loading="lazy"><h3>Top 10 Export Volume Award 2024–25</h3><p>Honoring exceptional export growth and international business excellence.</p><div class="year">2024–2025</div></div>
@@ -42,7 +42,15 @@
         <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/sme.png') }}" alt="" loading="lazy"><h3>India SME 100</h3><p>Honored as one of India's leading small and medium enterprises for outstanding business performance.</p><div class="year">2023</div></div>
         <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/Top100.png') }}" alt="" loading="lazy"><h3>Top 100 Startups to Watch Out for 2025</h3><p>Moomaya (By IBA Crafts), led by Nitin Kapoor, was featured among Forbes India’s Top 100 Startups to Watch Out for 2025. </p><div class="year">2025</div></div>
         <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/BuisnessWorld.png') }}" alt="" loading="lazy"><h3>BW Retail World 40 Under 40 Award</h3><p>Proudly recognized among BW Retail World’s 40 Under 40, an esteemed recognition celebrating young leaders who are shaping the future of India’s retail industry through innovation, entrepreneurial vision, leadership, and business excellence.</p><div class="year">2023</div></div>
-        <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/EconomicsTimes.png') }}" alt="" loading="lazy"><h3>India Cross-Border Excellence Awards 2026 – Winner</h3><p>Recognized as the Winner in the E-Commerce – Fashion &amp; Apparel category, presented by The Economic Times and Payoneer.</p><div class="year">2026</div></div>
+        <div class="badge-card">
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+                <img class="badge-icon" style="width:60px;margin-bottom:0;" src="{{ asset('images/site/Awards/Award/EconomicsTimes.png') }}" alt="" loading="lazy">
+                <img class="badge-icon" style="width:90px;margin-bottom:0;" src="{{ asset('images/site/Awards/Award/Payoneer.png') }}" alt="" loading="lazy">
+            </div>
+            <h3>India Cross-Border Excellence Awards 2026 – Winner</h3>
+            <p>Recognized as the Winner in the E-Commerce – Fashion &amp; Apparel category, presented by The Economic Times and Payoneer.</p>
+            <div class="year">2026</div>
+        </div>
     
     </div>
 </div>
