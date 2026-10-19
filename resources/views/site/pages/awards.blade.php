@@ -51,7 +51,8 @@
             <p>Recognized as the Winner in the E-Commerce – Fashion &amp; Apparel category, presented by The Economic Times and Payoneer.</p>
             <div class="year">2026</div>
         </div>
-    
+        <div class="badge-card"><img class="badge-icon" src="{{ asset('images/site/Awards/Award/GlobalSustainability.png') }}" alt="" loading="lazy"><h3>Global Sustainability Awards 2026 – SDG 12 Winner</h3><p>Recognized as the SDG 12 Winner at Global Sustainability Awards 2026, Delhi Chapter, for IBA Crafts' innovative contribution to sustainable solutions.</p><div class="year">2026</div></div>
+
     </div>
 </div>
 
