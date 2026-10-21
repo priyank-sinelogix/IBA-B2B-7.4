@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route as RouteFacade;
@@ -188,6 +189,18 @@ class SiteController extends Controller
             // $description .= ($description ? "\n\n" : '') . implode("\n", $extra);
             $description .= ($description ? "\n\n" : '');
         }
+
+        // The submit button isn't disabled on click, and the external API
+        // call below can take a few seconds — in that gap an impatient
+        // double-click (or a browser "resend form" after refresh) fires a
+        // second identical POST, which the external API turns into a second
+        // email. Drop a repeat of the same person's submission within 60s
+        // instead of posting it again.
+        $dedupeKey = 'contact_submit_'.md5(strtolower($data['work_email']).'|'.strtolower($data['company']));
+        if (Cache::has($dedupeKey)) {
+            return redirect('/contact')->with('success', "Thanks! We've received your message and will get back to you within 24 hours.");
+        }
+        Cache::put($dedupeKey, true, now()->addSeconds(60));
 
         try {
             $response = Http::timeout(10)->withOptions(['verify' => false])->post('https://s4sassy.com/API_NewDevelopment/sewgo.php?typ=save_addr', [

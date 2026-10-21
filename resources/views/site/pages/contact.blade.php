@@ -66,7 +66,7 @@
                 </script>
                 @endpush
             @endif
-            <form method="POST" action="{{ url('/contact') }}">
+            <form method="POST" action="{{ url('/contact') }}" id="contactForm">
                 @csrf
                 <div class="form-row">
                     <div class="field"><label>First Name</label><input type="text" name="first_name" value="{{ old('first_name') }}" required></div>
@@ -117,4 +117,18 @@
         </div>
     </div>
 </div>
+
+@push('page-scripts')
+<script>
+    // Prevents a double-click (or double-tap) from firing two POSTs while the
+    // form is submitting — the cause of clients getting duplicate emails.
+    document.getElementById('contactForm').addEventListener('submit', function () {
+        var btn = this.querySelector('button[type=submit]');
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        }
+    });
+</script>
+@endpush
 @endsection
