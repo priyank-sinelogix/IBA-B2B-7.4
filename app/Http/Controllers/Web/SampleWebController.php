@@ -12,7 +12,7 @@ class SampleWebController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Sample::with('latestVersion')->where('company_id', $request->user()->company_id);
+        $query = Sample::with('latestVersion')->withExists('unreadAdminComments')->where('company_id', $request->user()->company_id);
 
         if ($request->filled('status')) {
             $query->where('status', $request->get('status'));

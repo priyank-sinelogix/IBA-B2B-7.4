@@ -61,4 +61,45 @@ class Sample extends Model
     {
         return $this->hasMany(SamplePricing::class);
     }
+
+    // "Unread" here means: the LAST word on this sample belongs to the other
+    // side — not merely "posted since I last opened the page". The flag
+    // stays up regardless of how many times it's viewed, and only clears
+    // once this side posts their own reply (which makes their comment the
+    // latest one again).
+    public function unreadAdminComments()
+    {
+        return $this->hasMany(SampleComment::class)
+            ->whereHas('user', function ($uq) {
+                $uq->whereIn('role', ['admin', 'super_admin']);
+            })
+            ->where('sample_comments.id', function ($q) {
+                $q->selectRaw('MAX(id)')
+                    ->from('sample_comments as sc2')
+                    ->whereColumn('sc2.sample_id', 'sample_comments.sample_id');
+            });
+    }
+
+    public function unreadClientComments()
+    {
+        return $this->hasMany(SampleComment::class)
+            ->whereHas('user', function ($uq) {
+                $uq->where('role', 'customer');
+            })
+            ->where('sample_comments.id', function ($q) {
+                $q->selectRaw('MAX(id)')
+                    ->from('sample_comments as sc2')
+                    ->whereColumn('sc2.sample_id', 'sample_comments.sample_id');
+            });
+    }
+
+    public function scopeHasUnreadAdminComment($query)
+    {
+        return $query->whereHas('unreadAdminComments');
+    }
+
+    public function scopeHasUnreadClientComment($query)
+    {
+        return $query->whereHas('unreadClientComments');
+    }
 }

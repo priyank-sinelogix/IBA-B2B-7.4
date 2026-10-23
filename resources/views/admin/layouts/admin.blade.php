@@ -203,7 +203,14 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ url('/admin/samples') }}" class="nav-link {{ request()->is('admin/samples*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-tshirt"></i><p>Samples</p>
+                            <i class="nav-icon fas fa-tshirt"></i><p>Samples
+                                @php
+                                    $unreadSampleClientCommentCount = \App\Models\Sample::hasUnreadClientComment()->count();
+                                @endphp
+                                @if($unreadSampleClientCommentCount > 0)
+                                    <span class="badge badge-danger right">{{ $unreadSampleClientCommentCount }}</span>
+                                @endif
+                            </p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -278,7 +285,7 @@
     <div class="content-wrapper" style="background:#f7f8fa;">
         <div class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2"><div class="col-sm-6"><h1 class="m-0">@yield('title')</h1></div></div>
+                <div class="row mb-2"><div class="col-sm-6"><h1 class="m-0">@yield('title') @yield('title-actions')</h1></div></div>
             </div>
         </div>
         <section class="content">

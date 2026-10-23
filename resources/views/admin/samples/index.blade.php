@@ -37,7 +37,12 @@
             @forelse($samples as $sample)
                 <tr>
                     <td><img src="{{ optional($sample->latestVersion)->signedImageUrl() ?? 'https://via.placeholder.com/44' }}" style="width:40px;height:40px;object-fit:cover;border-radius:6px;"></td>
-                    <td><a href="{{ url('/admin/samples/'.$sample->id) }}">{{ $sample->sample_code }}</a></td>
+                    <td>
+                        <a href="{{ url('/admin/samples/'.$sample->id) }}">{{ $sample->sample_code }}</a>
+                        @if($sample->unread_client_comments_exists ?? false)
+                            <span class="badge badge-danger ml-1" title="New reply from client"><i class="fas fa-comment-dots"></i> New</span>
+                        @endif
+                    </td>
                     <td>{{ $sample->company->name }}</td>
                     <td>{{ $sample->style_name }}</td>
                     <td>
@@ -47,7 +52,7 @@
                     </td>
                     <td>{{ optional($sample->submitted_at)->format('d M Y') }}</td>
                     <td>
-                        <a href="{{ url('/admin/samples/'.$sample->id) }}" class="btn btn-sm btn-outline-primary">View</a>
+                        <a href="{{ url('/admin/samples/'.$sample->id) }}" class="btn btn-sm {{ ($sample->unread_client_comments_exists ?? false) ? 'btn-success' : 'btn-outline-primary' }}">View</a>
                         <a href="{{ url('/admin/samples/'.$sample->id.'/edit') }}" class="btn btn-sm btn-outline-secondary">Edit</a>
                         <form method="POST" action="{{ url('/admin/samples/'.$sample->id) }}" class="d-inline" onsubmit="return confirm('Delete this sample?')">
                             @csrf @method('DELETE')

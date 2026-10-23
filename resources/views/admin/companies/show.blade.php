@@ -73,10 +73,15 @@
                     <tbody>
                     @forelse($samples as $s)
                         <tr>
-                            <td>{{ $s->sample_code }}</td>
+                            <td>
+                                {{ $s->sample_code }}
+                                @if($s->unread_client_comments_exists ?? false)
+                                    <span class="badge badge-danger ml-1" title="New reply from client"><i class="fas fa-comment-dots"></i> New</span>
+                                @endif
+                            </td>
                             <td>{{ $s->style_name }}</td>
                             <td class="text-capitalize">{{ str_replace('_',' ',$s->status) }}</td>
-                            <td><a href="{{ url('/admin/samples/'.$s->id) }}" class="btn btn-sm btn-outline-secondary">View</a></td>
+                            <td><a href="{{ url('/admin/samples/'.$s->id) }}" class="btn btn-sm {{ ($s->unread_client_comments_exists ?? false) ? 'btn-success' : 'btn-outline-secondary' }}">View</a></td>
                         </tr>
                     @empty
                         <tr><td colspan="4" class="text-center text-muted p-3">No samples yet.</td></tr>

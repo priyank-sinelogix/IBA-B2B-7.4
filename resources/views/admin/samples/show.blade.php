@@ -1,6 +1,10 @@
 @extends('admin.layouts.admin')
 @section('title', $sample->sample_code)
 
+@section('title-actions')
+    <button type="button" class="btn btn-sm btn-outline-secondary ml-2" data-toggle="modal" data-target="#renameSampleModal" title="Edit code" style="vertical-align:middle;"><i class="fas fa-pen"></i></button>
+@endsection
+
 @section('content')
 <div class="row">
     <div class="col-lg-5">
@@ -233,6 +237,33 @@
                 </table>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rename sample modal -->
+<div class="modal fade" id="renameSampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="POST" action="{{ url('/admin/samples/'.$sample->id.'/code') }}">
+                @csrf
+                @method('PATCH')
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Sample Code</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    @if ($errors->any())<div class="alert alert-danger">{{ $errors->first() }}</div>@endif
+                    <div class="form-group mb-0">
+                        <label>Code</label>
+                        <input type="text" name="sample_code" class="form-control" value="{{ $sample->sample_code }}" maxlength="100" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

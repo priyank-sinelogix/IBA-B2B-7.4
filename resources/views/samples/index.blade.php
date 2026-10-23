@@ -28,7 +28,12 @@
             @forelse($samples ?? [] as $sample)
                 <tr>
                     <td><img src="{{ optional($sample->latestVersion)->signedImageUrl() ?? 'https://via.placeholder.com/48' }}" width="44" height="44" style="object-fit:cover;border-radius:8px;"></td>
-                    <td><a href="{{ url('/samples/'.$sample->id) }}">{{ $sample->sample_code }}</a></td>
+                    <td>
+                        <a href="{{ url('/samples/'.$sample->id) }}">{{ $sample->sample_code }}</a>
+                        @if($sample->unread_admin_comments_exists ?? false)
+                            <span class="badge badge-danger ml-1" title="New comment from IBA team"><i class="fas fa-comment-dots"></i> New</span>
+                        @endif
+                    </td>
                     <td>{{ $sample->style_name }}</td>
                     <td>{{ $sample->fabric }}</td>
                     <td>{{ $sample->color }}</td>
@@ -39,7 +44,7 @@
                     </td>
                     <td>{{ optional($sample->submitted_at)->format('d M Y') }}</td>
                     <td>
-                        <a href="{{ url('/samples/'.$sample->id) }}" class="btn btn-sm btn-outline-secondary">Open</a>
+                        <a href="{{ url('/samples/'.$sample->id) }}" class="btn btn-sm {{ ($sample->unread_admin_comments_exists ?? false) ? 'btn-success' : 'btn-outline-secondary' }}">Open</a>
                     </td>
                 </tr>
             @empty

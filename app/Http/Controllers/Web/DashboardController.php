@@ -27,6 +27,7 @@ class DashboardController extends Controller
             'credit_limit' => $company->credit_limit ?? 0,
             'credit_used_pct' => $company->creditUsedPercent() ?? 0,
             'shipments_in_transit' => \App\Models\Shipment::where('company_id', $companyId)->where('status', 'in_transit')->count(),
+            'samples_with_new_admin_comments' => Sample::where('company_id', $companyId)->hasUnreadAdminComment()->count(),
         ];
 
         $pendingSamples = Sample::with('latestVersion')

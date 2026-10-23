@@ -114,6 +114,9 @@ Route::middleware(['auth', 'role:admin,super_admin'])->prefix('admin')->group(fu
     Route::resource('shipments', \App\Http\Controllers\Admin\Web\ShipmentController::class);
     Route::resource('users', \App\Http\Controllers\Admin\Web\UserController::class);
 
+    // Quick inline rename from the sample's detail page (just the code, no other fields)
+    Route::patch('/samples/{sample}/code', [\App\Http\Controllers\Admin\Web\SampleController::class, 'updateCode']);
+
     // Admin posting their own point/comment on a sample (visible to the client too)
     Route::post('/samples/{sample}/comment', [\App\Http\Controllers\Admin\Web\SampleController::class, 'storeComment']);
     Route::post('/samples/{sample}/size-chart', [\App\Http\Controllers\Admin\Web\SampleController::class, 'updateSizeChart']);

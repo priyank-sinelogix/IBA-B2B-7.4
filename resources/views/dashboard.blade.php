@@ -3,6 +3,16 @@
 
 @section('content')
 
+@if(($stats['samples_with_new_admin_comments'] ?? 0) > 0)
+<div class="alert d-flex align-items-center justify-content-between mb-3" style="background:#fff3cd;border:1px solid #ffe8a1;border-radius:10px;">
+    <div><i class="fas fa-comment-dots mr-2" style="color:#8a6d00;"></i>
+        <strong>{{ $stats['samples_with_new_admin_comments'] }}</strong>
+        {{ Str::plural('sample', $stats['samples_with_new_admin_comments']) }} {{ $stats['samples_with_new_admin_comments'] == 1 ? 'has' : 'have' }} new comments from our team.
+    </div>
+    <a href="{{ url('/samples') }}" class="btn btn-sm btn-outline-dark">Review Now</a>
+</div>
+@endif
+
 <!-- Stat cards -->
 <div class="row">
     <div class="col-lg-3 col-6">

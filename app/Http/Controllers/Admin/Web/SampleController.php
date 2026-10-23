@@ -13,7 +13,7 @@ class SampleController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Sample::with(['company', 'latestVersion']);
+        $query = Sample::with(['company', 'latestVersion'])->withExists('unreadClientComments');
 
         if ($request->filled('company_id')) {
             $query->where('company_id', $request->get('company_id'));
@@ -40,6 +40,7 @@ class SampleController extends Controller
     public function show(Sample $sample)
     {
         $sample->load(['company.currency', 'versions.images', 'comments.user', 'sizeChartRows', 'sizeChartApprovedBy', 'skus', 'pricings']);
+
         return view('admin.samples.show', compact('sample'));
     }
 
@@ -149,6 +150,20 @@ class SampleController extends Controller
     {
         $value = trim((string) $value);
         return $value === '' ? null : (float) $value;
+    }
+
+    public function updateCode(Request $request, Sample $sample)
+    {
+        $data = $request->validate([
+            'sample_code' => ['required', 'string', 'max:100', \Illuminate\Validation\Rule::unique('samples', 'sample_code')->ignore($sample->id)],
+        ]);
+
+        $before = $sample->only('sample_code');
+        $sample->update(['sample_code' => $data['sample_code']]);
+
+        AuditLog::record('sample.code_updated', $sample, $before, $sample->only('sample_code'));
+
+        return back()->with('success', 'Sample code updated.');
     }
 
     public function storeComment(Request $request, Sample $sample)

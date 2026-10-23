@@ -103,7 +103,14 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ url('/samples') }}" class="nav-link {{ request()->is('samples*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-tshirt"></i><p>Sampling</p>
+                            <i class="nav-icon fas fa-tshirt"></i><p>Sampling
+                                @php
+                                    $unreadSampleCommentCount = auth()->user() ? \App\Models\Sample::where('company_id', auth()->user()->company_id)->hasUnreadAdminComment()->count() : 0;
+                                @endphp
+                                @if($unreadSampleCommentCount > 0)
+                                    <span class="badge badge-danger right">{{ $unreadSampleCommentCount }}</span>
+                                @endif
+                            </p>
                         </a>
                     </li>
                     <!-- <li class="nav-item">

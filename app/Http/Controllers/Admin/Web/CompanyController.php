@@ -27,7 +27,7 @@ class CompanyController extends Controller
     public function show(Company $company)
     {
         $company->load('users', 'currency');
-        $samples = $company->samples()->latest('submitted_at')->take(10)->get();
+        $samples = $company->samples()->withExists('unreadClientComments')->latest('submitted_at')->take(10)->get();
         $skuCodes = Sku::whereHas('sample', function ($q) use ($company) {
             $q->where('company_id', $company->id);
         })->pluck('sku_code');
